@@ -11,12 +11,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{64A88384
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{57BD0CD8-DCE9-4F5B-8A75-3A1A1EE18309}"
 	ProjectSection(SolutionItems) = preProject
-		BarcodeRender.Common.targets = BarcodeRender.Common.targets
-		BarcodeRender.CSharp.targets = BarcodeRender.CSharp.targets
-		Signing\BarcodeRender.pfx = Signing\BarcodeRender.pfx
-		BarcodeRender.Wix.targets = BarcodeRender.Wix.targets
-		Versioning\SharedAssemblySuiteInfo.cs = Versioning\SharedAssemblySuiteInfo.cs
-		Versioning\SharedAssemblyVersion.cs = Versioning\SharedAssemblyVersion.cs
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{78C5EE8A-4424-4E9D-A8CA-88351282A587}"
@@ -26,9 +20,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{78C5EE
 		.nuget\NuGet.targets = .nuget\NuGet.targets
 	EndProjectSection
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BarcodeRender", "BarcodeRender\BarcodeRender.csproj", "{A96E1B05-9603-46E6-8B0F-0F033C01D10D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BarcodeRender.Drawing", "BarcodeRender.Drawing\BarcodeRender.Drawing.csproj", "{A96E1B05-9603-46E6-8B0F-0F033C01D10D}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Zen.Barcode.Core", "Zen.Barcode.Core\Zen.Barcode.Core.csproj", "{77484B9B-7400-4C6E-A997-CAB7FA7F9B1E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "T2t.Barcode.Drawing", "T2t.Barcode.Drawing\T2t.Barcode.Drawing.csproj", "{77484B9B-7400-4C6E-A997-CAB7FA7F9B1E}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BarcodeRender.Skia", "BarcodeRender.Skia\BarcodeRender.Skia.csproj", "{52E7402C-6104-4365-9AD6-AA47B639F8AC}"
 EndProject

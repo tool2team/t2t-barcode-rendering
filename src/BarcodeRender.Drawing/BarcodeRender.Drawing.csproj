@@ -3,8 +3,8 @@
   <PropertyGroup>
     <TargetFrameworks>net7.0-windows</TargetFrameworks>
     <Configurations>Debug;Release</Configurations>
-    <RootNamespace>BarcodeRender.Drawing</RootNamespace>
-    <AssemblyName>BarcodeRender.Drawing</AssemblyName>
+    <RootNamespace>BarcodeRender</RootNamespace>
+    <AssemblyName>BarcodeRender</AssemblyName>
     <LangVersion>latest</LangVersion>
     <ImplicitUsings>enable</ImplicitUsings>
     <OutputType>WinExe</OutputType>
@@ -12,7 +12,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Zen.Barcode.Core\Zen.Barcode.Core.csproj" />
+    <ProjectReference Include="..\T2t.Barcode.Drawing\T2t.Barcode.Drawing.csproj" />
   </ItemGroup>
 
 </Project>
