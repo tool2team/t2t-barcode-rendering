@@ -4,10 +4,9 @@
 // </copyright>
 //-----------------------------------------------------------------------
 
-namespace Zen.Barcode
+namespace T2t.Barcode.Drawing
 {
 	using System;
-	using Zen.Barcode.Properties;
 
 	/// <summary>
 	/// <b>BarcodeDrawFactory</b> returns draw agents capable of generating 
@@ -37,7 +36,7 @@ namespace Zen.Barcode
 		/// Gets an agent capable of rendering a Code39 barcode without
 		/// adding a checksum glyph.
 		/// </summary>
-		/// <value>A <see cref="T:Zen.Barcode.Code39BarcodeDraw"/> object.</value>
+		/// <value>A <see cref="T:T2t.Barcode.Drawing.Code39BarcodeDraw"/> object.</value>
 		public static Code39BarcodeDraw Code39WithoutChecksum
 		{
 			get
@@ -55,7 +54,7 @@ namespace Zen.Barcode
 		/// Gets an agent capable of rendering a Code39 barcode with an
 		/// added checksum glyph.
 		/// </summary>
-		/// <value>A <see cref="T:Zen.Barcode.Code39BarcodeDraw"/> object.</value>
+		/// <value>A <see cref="T:T2t.Barcode.Drawing.Code39BarcodeDraw"/> object.</value>
 		public static Code39BarcodeDraw Code39WithChecksum
 		{
 			get
@@ -73,7 +72,7 @@ namespace Zen.Barcode
 		/// Gets an agent capable of rendering a Code93 barcode with added
 		/// checksum glyphs.
 		/// </summary>
-		/// <value>A <see cref="T:Zen.Barcode.Code93BarcodeDraw"/> object.</value>
+		/// <value>A <see cref="T:T2t.Barcode.Drawing.Code93BarcodeDraw"/> object.</value>
 		public static Code93BarcodeDraw Code93WithChecksum
 		{
 			get
@@ -91,7 +90,7 @@ namespace Zen.Barcode
 		/// Gets an agent capable of rendering a Code128 barcode with added
 		/// checksum glyphs.
 		/// </summary>
-		/// <value>A <see cref="T:Zen.Barcode.Code128BarcodeDraw"/> object.</value>
+		/// <value>A <see cref="T:T2t.Barcode.Drawing.Code128BarcodeDraw"/> object.</value>
 		public static Code128BarcodeDraw Code128WithChecksum
 		{
 			get
@@ -108,7 +107,7 @@ namespace Zen.Barcode
 		/// <summary>
 		/// Gets an agent capable of rendering a Code11 barcode.
 		/// </summary>
-		/// <value>A <see cref="T:Zen.Barcode.Code11BarcodeDraw"/> object.</value>
+		/// <value>A <see cref="T:T2t.Barcode.Drawing.Code11BarcodeDraw"/> object.</value>
 		public static Code11BarcodeDraw Code11WithoutChecksum
 		{
 			get
@@ -126,7 +125,7 @@ namespace Zen.Barcode
 		/// Gets an agent capable of rendering a Code11 barcode with added
 		/// checksum glyphs.
 		/// </summary>
-		/// <value>A <see cref="T:Zen.Barcode.Code11BarcodeDraw"/> object.</value>
+		/// <value>A <see cref="T:T2t.Barcode.Drawing.Code11BarcodeDraw"/> object.</value>
 		public static Code11BarcodeDraw Code11WithChecksum
 		{
 			get
@@ -144,7 +143,7 @@ namespace Zen.Barcode
 		/// Gets an agent capable of rendering a Code EAN-13 barcode with
 		/// added checksum glyphs.
 		/// </summary>
-		/// <value>A <see cref="T:Zen.Barcode.CodeEan13BarcodeDraw"/> object.</value>
+		/// <value>A <see cref="T:T2t.Barcode.Drawing.CodeEan13BarcodeDraw"/> object.</value>
 		public static CodeEan13BarcodeDraw CodeEan13WithChecksum
 		{
 			get
@@ -162,7 +161,7 @@ namespace Zen.Barcode
 		/// Gets an agent capable of rendering a Code EAN-8 barcode with
 		/// added checksum glyphs.
 		/// </summary>
-		/// <value>A <see cref="T:Zen.Barcode.CodeEan8BarcodeDraw"/> object.</value>
+		/// <value>A <see cref="T:T2t.Barcode.Drawing.CodeEan8BarcodeDraw"/> object.</value>
 		public static CodeEan8BarcodeDraw CodeEan8WithChecksum
 		{
 			get
@@ -180,7 +179,7 @@ namespace Zen.Barcode
 		/// Gets an agent capable of rendering a Code 25 barcode without
 		/// checksum glyphs.
 		/// </summary>
-		/// <value>A <see cref="T:Zen.Barcode.Code25BarcodeDraw"/> object.</value>
+		/// <value>A <see cref="T:T2t.Barcode.Drawing.Code25BarcodeDraw"/> object.</value>
 		public static Code25BarcodeDraw Code25StandardWithoutChecksum
 		{
 			get
@@ -198,7 +197,7 @@ namespace Zen.Barcode
 		/// Gets an agent capable of rendering a Code 25 barcode with
 		/// added checksum glyphs.
 		/// </summary>
-		/// <value>A <see cref="T:Zen.Barcode.Code25BarcodeDraw"/> object.</value>
+		/// <value>A <see cref="T:T2t.Barcode.Drawing.Code25BarcodeDraw"/> object.</value>
 		public static Code25BarcodeDraw Code25StandardWithChecksum
 		{
 			get
@@ -216,7 +215,7 @@ namespace Zen.Barcode
 		/// Gets an agent capable of rendering a Code 25 barcode without
 		/// checksum glyphs.
 		/// </summary>
-		/// <value>A <see cref="T:Zen.Barcode.Code25BarcodeDraw"/> object.</value>
+		/// <value>A <see cref="T:T2t.Barcode.Drawing.Code25BarcodeDraw"/> object.</value>
 		public static Code25BarcodeDraw Code25InterleavedWithoutChecksum
 		{
 			get
@@ -234,7 +233,7 @@ namespace Zen.Barcode
 		/// Gets an agent capable of rendering a Code 25 barcode with
 		/// added checksum glyphs.
 		/// </summary>
-		/// <value>A <see cref="T:Zen.Barcode.Code25BarcodeDraw"/> object.</value>
+		/// <value>A <see cref="T:T2t.Barcode.Drawing.Code25BarcodeDraw"/> object.</value>
 		public static Code25BarcodeDraw Code25InterleavedWithChecksum
 		{
 			get
@@ -252,7 +251,7 @@ namespace Zen.Barcode
 		/// Gets an agent capable of rendering a Code PDF417 barcode with
 		/// added checksum glyphs.
 		/// </summary>
-		/// <value>A <see cref="T:Zen.Barcode.CodePdf417BarcodeDraw"/> object.</value>
+		/// <value>A <see cref="T:T2t.Barcode.Drawing.CodePdf417BarcodeDraw"/> object.</value>
 		public static CodePdf417BarcodeDraw CodePdf417
 		{
 			get
@@ -268,7 +267,7 @@ namespace Zen.Barcode
 		/// <summary>
 		/// Gets an agent capable of rendering a Code QR barcode.
 		/// </summary>
-		/// <value>A <see cref="T:Zen.Barcode.CodeQrBarcodeDraw"/> object.</value>
+		/// <value>A <see cref="T:T2t.Barcode.Drawing.CodeQrBarcodeDraw"/> object.</value>
 		public static CodeQrBarcodeDraw CodeQr
 		{
 			get
@@ -288,10 +287,10 @@ namespace Zen.Barcode
 		/// barcode symbology.
 		/// </summary>
 		/// <param name="symbology">
-		/// A value from the <see cref="T:Zen.Barcode.BarcodeSymbology"/> enumeration.
+		/// A value from the <see cref="T:T2t.Barcode.Drawing.BarcodeSymbology"/> enumeration.
 		/// </param>
 		/// <returns>
-		/// A class derived from <see cref="T:Zen.Barcode.BarcodeDraw"/>.
+		/// A class derived from <see cref="T:T2t.Barcode.Drawing.BarcodeDraw"/>.
 		/// </returns>
 		/// <exception cref="T:System.ArgumentException">
 		/// Thrown if the specified symbology is invalid or unknown.
@@ -329,8 +328,7 @@ namespace Zen.Barcode
 				case BarcodeSymbology.CodeQr:
 					return CodeQr;
 				default:
-					throw new ArgumentException(
-						Resources.BarcodeSymbologyInvalid, "symbology");
+					throw new ArgumentException("BarcodeSymbologyInvalid", nameof(symbology));
 			}
 		}
 		#endregion

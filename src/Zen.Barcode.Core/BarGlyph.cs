@@ -1,14 +1,10 @@
-using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace Zen.Barcode
+namespace T2t.Barcode.Drawing
 {
-	/// <summary>
-	/// <b>BarGlyph</b> extends the <see cref="T:Zen.Barcode.Glyph"/> base
-	/// class and adds a bit-encoding to describe a bar-code glyph.
-	/// </summary>
-	public class BarGlyph : Glyph, IBarGlyph
+    /// <summary>
+    /// <b>BarGlyph</b> extends the <see cref="T:T2t.Barcode.Drawing.Glyph"/> base
+    /// class and adds a bit-encoding to describe a bar-code glyph.
+    /// </summary>
+    public class BarGlyph : Glyph, IBarGlyph
 	{
 		#region Private Fields
 		private short _bitEncoding; 
@@ -16,7 +12,7 @@ namespace Zen.Barcode
 
 		#region Public Constructors
 		/// <summary>
-		/// Initialises a new instance of the <see cref="T:Zen.Barcode.Glyph"/> 
+		/// Initialises a new instance of the <see cref="T:T2t.Barcode.Drawing.Glyph"/> 
 		/// class with the specified bit encoding.
 		/// </summary>
 		/// <param name="character">Character represented by glyph.</param>

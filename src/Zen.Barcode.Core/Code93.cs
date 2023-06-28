@@ -4,23 +4,22 @@
 // </copyright>
 //-----------------------------------------------------------------------
 
-namespace Zen.Barcode
+namespace T2t.Barcode.Drawing
 {
-	using System;
-	using System.Collections.Generic;
-	using System.Drawing;
-	using System.Text;
+    using System;
+    using System.Collections.Generic;
+    using System.Drawing;
 
-	/// <summary>
-	/// <b>Code93GlyphFactory</b> concrete implementation of 
-	/// <see cref="GlyphFactory"/> for providing Code 93 bar-code glyph
-	/// objects.
-	/// </summary>
-	public class Code93GlyphFactory : GlyphFactory
+    /// <summary>
+    /// <b>Code93GlyphFactory</b> concrete implementation of 
+    /// <see cref="GlyphFactory"/> for providing Code 93 bar-code glyph
+    /// objects.
+    /// </summary>
+    public class Code93GlyphFactory : GlyphFactory
 	{
 		#region Private Fields
 		private static Code93GlyphFactory _theFactory;
-		private static object _syncFactory = new object();
+		private static object _syncFactory = new();
 
 		private BarGlyph[] _glyphs;
 		private CompositeGlyph[] _compositeGlyphs;
@@ -239,7 +238,7 @@ namespace Zen.Barcode
 	{
 		#region Private Fields
 		private static Code93Checksum _theChecksum;
-		private static object _syncChecksum = new object();
+		private static object _syncChecksum = new();
 		#endregion
 
 		#region Private Constructors
@@ -294,7 +293,7 @@ namespace Zen.Barcode
 			text += firstCheck;
 			char secondCheck = GetChecksumChar(text, 15);
 
-			List<Glyph> result = new List<Glyph>();
+			List<Glyph> result = new();
 			result.Add(Factory.GetRawGlyph(firstCheck));
 			result.Add(Factory.GetRawGlyph(secondCheck));
 			return result.ToArray();
@@ -379,7 +378,7 @@ namespace Zen.Barcode
 		/// <returns>A collection of <see cref="T:Glyph"/> objects.</returns>
 		protected override Glyph[] GetFullBarcode(string text)
 		{
-			List<Glyph> result = new List<Glyph>();
+			List<Glyph> result = new();
 			result.AddRange(Factory.GetGlyphs(text));
 			if (Checksum != null)
 			{

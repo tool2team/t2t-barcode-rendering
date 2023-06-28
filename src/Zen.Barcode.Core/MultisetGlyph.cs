@@ -4,11 +4,9 @@
 // </copyright>
 //-----------------------------------------------------------------------
 
-namespace Zen.Barcode
+namespace T2t.Barcode.Drawing
 {
     using System;
-    using System.Collections.Generic;
-    using System.Text;
 
     /// <summary>
     /// <b>MultisetGlyph</b> serves as a base class for barcode symbologies
@@ -22,7 +20,7 @@ namespace Zen.Barcode
 
         #region Public Constructors
         /// <summary>
-        /// Initialises a new instance of <see cref="T:Zen.Barcode.MultisetGlyph"/>
+        /// Initialises a new instance of <see cref="T:T2t.Barcode.Drawing.MultisetGlyph"/>
         /// class.
         /// </summary>
         /// <param name="characters"></param>

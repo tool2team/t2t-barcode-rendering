@@ -4,7 +4,7 @@
 // </copyright>
 //-----------------------------------------------------------------------
 
-namespace Zen.Barcode
+namespace T2t.Barcode.Drawing
 {
 	using System;
 	using System.Drawing;
@@ -223,7 +223,7 @@ namespace Zen.Barcode
 	{
 		#region Protected Constructors
 		/// <summary>
-		/// Initializes a new instance of <see cref="T:Zen.Barcode.BarcodeDraw"/> class.
+		/// Initializes a new instance of <see cref="T:T2t.Barcode.Drawing.BarcodeDraw"/> class.
 		/// </summary>
 		protected BarcodeDraw()
 		{
@@ -235,7 +235,7 @@ namespace Zen.Barcode
 		/// Draws the specified text using the supplied barcode metrics.
 		/// </summary>
 		/// <param name="text">The text.</param>
-		/// <param name="metrics">A <see cref="T:Zen.Barcode.BarcodeMetrics"/> object.</param>
+		/// <param name="metrics">A <see cref="T:T2t.Barcode.Drawing.BarcodeMetrics"/> object.</param>
 		/// <returns>
 		/// An <see cref="Image"/> object containing the rendered barcode.
 		/// </returns>
@@ -276,11 +276,11 @@ namespace Zen.Barcode
 		}
 
 		/// <summary>
-		/// Gets a <see cref="T:Zen.Barcode.BarcodeMetrics"/> object containing default
+		/// Gets a <see cref="T:T2t.Barcode.Drawing.BarcodeMetrics"/> object containing default
 		/// settings for the specified maximum bar height.
 		/// </summary>
 		/// <param name="maxHeight">The maximum barcode height.</param>
-		/// <returns>A <see cref="T:Zen.Barcode.BarcodeMetrics"/> object.</returns>
+		/// <returns>A <see cref="T:T2t.Barcode.Drawing.BarcodeMetrics"/> object.</returns>
 		public abstract BarcodeMetrics GetDefaultMetrics(int maxHeight);
 
 		/// <summary>
@@ -291,7 +291,7 @@ namespace Zen.Barcode
 		/// <param name="desiredBarcodeDimensions">The desired barcode dimensions in hundredth of an inch.</param>
 		/// <param name="printResolution">The print resolution in pixels per inch.</param>
 		/// <param name="barcodeCharLength">Length of the barcode in characters.</param>
-		/// <returns>A <see cref="T:Zen.Barcode.BarcodeMetrics"/> object.</returns>
+		/// <returns>A <see cref="T:T2t.Barcode.Drawing.BarcodeMetrics"/> object.</returns>
 		public abstract BarcodeMetrics GetPrintMetrics(
 			Size desiredBarcodeDimensions, Size printResolution,
 			int barcodeCharLength);
@@ -303,10 +303,10 @@ namespace Zen.Barcode
 	/// glyph factory and optional checksum generator classes.
 	/// </summary>
 	/// <typeparam name="TGlyphFactory">
-	/// A <see cref="T:Zen.Barcode.GlyphFactory"/> derived type.
+	/// A <see cref="T:T2t.Barcode.Drawing.GlyphFactory"/> derived type.
 	/// </typeparam>
 	/// <typeparam name="TChecksum">
-	/// A <see cref="T:Zen.Barcode.Checksum"/> derived type.
+	/// A <see cref="T:T2t.Barcode.Drawing.Checksum"/> derived type.
 	/// </typeparam>
 	public abstract class BarcodeDrawBase<TGlyphFactory, TChecksum> : BarcodeDraw
 		where TGlyphFactory : GlyphFactory
@@ -321,7 +321,7 @@ namespace Zen.Barcode
 
 		#region Protected Constructors
 		/// <summary>
-		/// Initialises an instance of <see cref="T:Zen.Barcode.BarcodeDraw"/>.
+		/// Initialises an instance of <see cref="T:T2t.Barcode.Drawing.BarcodeDraw"/>.
 		/// </summary>
 		/// <param name="factory">The factory.</param>
 		/// <param name="encodingBitCount">
@@ -335,7 +335,7 @@ namespace Zen.Barcode
 		}
 
 		/// <summary>
-		/// Initialises an instance of <see cref="T:Zen.Barcode.BarcodeDraw"/>.
+		/// Initialises an instance of <see cref="T:T2t.Barcode.Drawing.BarcodeDraw"/>.
 		/// </summary>
 		/// <param name="factory">The factory.</param>
 		/// <param name="encodingBitCount">
@@ -352,7 +352,7 @@ namespace Zen.Barcode
 		}
 
 		/// <summary>
-		/// Initialises an instance of <see cref="T:Zen.Barcode.BarcodeDraw"/>.
+		/// Initialises an instance of <see cref="T:T2t.Barcode.Drawing.BarcodeDraw"/>.
 		/// </summary>
 		/// <param name="factory">The factory.</param>
 		/// <param name="checksum">The checksum.</param>
@@ -369,7 +369,7 @@ namespace Zen.Barcode
 		}
 
 		/// <summary>
-		/// Initialises an instance of <see cref="T:Zen.Barcode.BarcodeDraw"/>.
+		/// Initialises an instance of <see cref="T:T2t.Barcode.Drawing.BarcodeDraw"/>.
 		/// </summary>
 		/// <param name="factory">The factory.</param>
 		/// <param name="checksum">The checksum.</param>
@@ -393,7 +393,7 @@ namespace Zen.Barcode
 		/// Draws the specified text using the supplied barcode metrics.
 		/// </summary>
 		/// <param name="text">The text.</param>
-		/// <param name="metrics">A <see cref="T:Zen.Barcode.BarcodeMetrics"/> object.</param>
+		/// <param name="metrics">A <see cref="T:T2t.Barcode.Drawing.BarcodeMetrics"/> object.</param>
 		/// <returns></returns>
 		public override sealed Image Draw(string text, BarcodeMetrics metrics)
 		{
@@ -457,7 +457,7 @@ namespace Zen.Barcode
 		/// Draws the specified text using the supplied barcode metrics.
 		/// </summary>
 		/// <param name="text">The text.</param>
-		/// <param name="metrics">A <see cref="T:Zen.Barcode.BarcodeMetrics"/> object.</param>
+		/// <param name="metrics">A <see cref="T:T2t.Barcode.Drawing.BarcodeMetrics"/> object.</param>
 		/// <returns>
 		/// An <see cref="Image"/> object containing the rendered barcode.
 		/// </returns>
@@ -486,10 +486,10 @@ namespace Zen.Barcode
 				metrics.MaxWidth * metrics.Scale);
 
 			// Create image of correct size
-			Bitmap image = new Bitmap(totalImageWidth, metrics.MaxHeight);
+			Bitmap image = new(totalImageWidth, metrics.MaxHeight);
 			using (Graphics dc = Graphics.FromImage(image))
 			{
-				Rectangle bounds = new Rectangle(0, 0, totalImageWidth, metrics.MaxHeight);
+				Rectangle bounds = new(0, 0, totalImageWidth, metrics.MaxHeight);
 				Render(
 					barcode,
 					dc,
@@ -528,7 +528,7 @@ namespace Zen.Barcode
 		/// Gets the glyphs needed to render a full barcode.
 		/// </summary>
 		/// <param name="text">Text to convert into bar-code.</param>
-		/// <returns>A collection of <see cref="T:Zen.Barcode.Glyph"/> objects.</returns>
+		/// <returns>A collection of <see cref="T:T2t.Barcode.Drawing.Glyph"/> objects.</returns>
 		protected abstract Glyph[] GetFullBarcode(string text);
 
 		/// <summary>
@@ -598,11 +598,11 @@ namespace Zen.Barcode
 		/// <summary>
 		/// Gets the glyph's barcode encoding bit count.
 		/// </summary>
-		/// <param name="glyph">A <see cref="T:Zen.Barcode.Glyph"/> to be queried.</param>
+		/// <param name="glyph">A <see cref="T:T2t.Barcode.Drawing.Glyph"/> to be queried.</param>
 		/// <returns>Number of bits needed to encode the glyph.</returns>
 		/// <remarks>
 		/// By default this method returns the underlying encoding bit width.
-		/// If the glyph implements <see cref="T:Zen.Barcode.IVaryLengthGlyph"/> then the
+		/// If the glyph implements <see cref="T:T2t.Barcode.Drawing.IVaryLengthGlyph"/> then the
 		/// encoding width is requested from the interface.
 		/// </remarks>
 		protected virtual int GetEncodingBitCount(Glyph glyph)
@@ -619,7 +619,7 @@ namespace Zen.Barcode
 		/// <summary>
 		/// Gets the glyph's width encoding bit count.
 		/// </summary>
-		/// <param name="glyph">A <see cref="T:Zen.Barcode.Glyph"/> to be queried.</param>
+		/// <param name="glyph">A <see cref="T:T2t.Barcode.Drawing.Glyph"/> to be queried.</param>
 		/// <returns>Number of bits needed to encode the width of the glyph.</returns>
 		/// <remarks>
 		/// By default this method returns the underlying width bit count.
@@ -635,7 +635,7 @@ namespace Zen.Barcode
 		/// incorporating the specified inter-glyph spacing.
 		/// </summary>
 		/// <param name="barcode">
-		/// Collection of <see cref="T:Zen.Barcode.Glyph"/> objects to be rendered.
+		/// Collection of <see cref="T:T2t.Barcode.Drawing.Glyph"/> objects to be rendered.
 		/// </param>
 		/// <param name="interGlyphSpace">Amount of inter-glyph space (in pixels) to be applied.</param>
 		/// <returns>Width in pixels.</returns>
@@ -648,7 +648,7 @@ namespace Zen.Barcode
 		/// <summary>
 		/// Renders the specified bar-code to the specified graphics port.
 		/// </summary>
-		/// <param name="barcode">A collection of <see cref="T:Zen.Barcode.Glyph"/> objects representing the
+		/// <param name="barcode">A collection of <see cref="T:T2t.Barcode.Drawing.Glyph"/> objects representing the
 		/// barcode to be rendered.</param>
 		/// <param name="dc">A <see cref="T:System.Drawing.Graphics"/> representing the draw context.</param>
 		/// <param name="bounds">The bounding rectangle.</param>
@@ -680,7 +680,7 @@ namespace Zen.Barcode
 		/// <summary>
 		/// Renders the barcode bars.
 		/// </summary>
-		/// <param name="barcode">A collection of <see cref="T:Zen.Barcode.Glyph"/> objects representing the
+		/// <param name="barcode">A collection of <see cref="T:T2t.Barcode.Drawing.Glyph"/> objects representing the
 		/// barcode to be rendered.</param>
 		/// <param name="dc">A <see cref="T:System.Drawing.Graphics"/> representing the draw context.</param>
 		/// <param name="bounds">The bounding rectangle.</param>
@@ -719,7 +719,7 @@ namespace Zen.Barcode
 		/// Renders the bar-code glyph.
 		/// </summary>
 		/// <param name="glyphIndex">Index of the glyph.</param>
-		/// <param name="glyph">A <see cref="T:Zen.Barcode.Glyph"/> object to be rendered.</param>
+		/// <param name="glyph">A <see cref="T:T2t.Barcode.Drawing.Glyph"/> object to be rendered.</param>
 		/// <param name="dc">A <see cref="T:System.Drawing.Graphics"/> representing the draw context.</param>
 		/// <param name="bounds">The bounding rectangle.</param>
 		/// <param name="barOffset">The bar offset.</param>
@@ -832,7 +832,7 @@ namespace Zen.Barcode
 		/// <summary>
 		/// Gets the height of the glyph.
 		/// </summary>
-		/// <param name="glyph">A <see cref="T:Zen.Barcode.Glyph"/> to be queried.</param>
+		/// <param name="glyph">A <see cref="T:T2t.Barcode.Drawing.Glyph"/> to be queried.</param>
 		/// <param name="barMinHeight">Minimum bar height in pixels.</param>
 		/// <param name="barMaxHeight">Maximum bar height in pixels.</param>
 		/// <returns>The height of associated glyph.</returns>

@@ -4,24 +4,23 @@
 // </copyright>
 //-----------------------------------------------------------------------
 
-namespace Zen.Barcode
+namespace T2t.Barcode.Drawing
 {
-	using System;
-	using System.Collections.Generic;
-	using System.Drawing;
-	using System.Text;
-	using System.Text.RegularExpressions;
+    using System;
+    using System.Collections.Generic;
+    using System.Drawing;
+    using System.Text.RegularExpressions;
 
-	/// <summary>
-	/// <b>CodeEan13GlyphFactory</b> concrete implementation of 
-	/// <see cref="GlyphFactory"/> for providing Code EAN 13 bar-code glyph
-	/// objects.
-	/// </summary>
-	public sealed class CodeEan13GlyphFactory : GlyphFactory
+    /// <summary>
+    /// <b>CodeEan13GlyphFactory</b> concrete implementation of 
+    /// <see cref="GlyphFactory"/> for providing Code EAN 13 bar-code glyph
+    /// objects.
+    /// </summary>
+    public sealed class CodeEan13GlyphFactory : GlyphFactory
 	{
 		#region Private Fields
 		private static CodeEan13GlyphFactory _theFactory;
-		private static object _syncFactory = new object();
+		private static object _syncFactory = new();
 
 		private BarGlyph[] _glyphs;
 		private CompositeGlyph[] _compositeGlyphs;
@@ -72,7 +71,7 @@ namespace Zen.Barcode
 		/// </remarks>
 		public override Glyph[] GetGlyphs(string text, bool allowComposite)
 		{
-			List<Glyph> result = new List<Glyph>();
+			List<Glyph> result = new();
 			for (int index = 0; index < text.Length; ++index)
 			{
 				int digit = text[index] - '0';
@@ -190,7 +189,7 @@ namespace Zen.Barcode
 	{
 		#region Private Fields
 		private static CodeEan13Checksum _theChecksum;
-		private static object _syncChecksum = new object();
+		private static object _syncChecksum = new();
 		#endregion
 
 		#region Private Constructors
@@ -379,7 +378,7 @@ namespace Zen.Barcode
 			barcodeText = barcodeText.Substring(1);
 
 			// Build result with composite glyphs
-			List<Glyph> result = new List<Glyph>();
+			List<Glyph> result = new();
 			result.AddRange(Factory.GetGlyphs(barcodeText, true));
 
 			// Now translate each composite glyph using the parity

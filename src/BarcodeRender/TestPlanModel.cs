@@ -1,24 +1,20 @@
-using System;
-using System.Collections.Generic;
-using System.Drawing;
 using System.Drawing.Imaging;
-using System.IO;
 using System.Text;
 using System.Xml.Serialization;
 
-using Zen.Barcode;
+using T2t.Barcode.Drawing;
 
-namespace BarcodeRender
+namespace BarcodeRender.Drawing
 {
-	/// <summary>
-	/// Notification delegate called during image export.
-	/// </summary>
-	/// <param name="current"></param>
-	/// <param name="total"></param>
-	/// <param name="operation"></param>
-	/// <param name="detail"></param>
-	/// <returns></returns>
-	public delegate bool ExportProgressHandler (int done, int total,
+    /// <summary>
+    /// Notification delegate called during image export.
+    /// </summary>
+    /// <param name="current"></param>
+    /// <param name="total"></param>
+    /// <param name="operation"></param>
+    /// <param name="detail"></param>
+    /// <returns></returns>
+    public delegate bool ExportProgressHandler (int done, int total,
 		string operation, string detail);
 
 	/// <summary>

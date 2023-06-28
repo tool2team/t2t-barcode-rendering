@@ -4,12 +4,8 @@
 // </copyright>
 //-----------------------------------------------------------------------
 
-namespace Zen.Barcode
+namespace T2t.Barcode.Drawing
 {
-    using System;
-    using System.Collections.Generic;
-    using System.Text;
-
     /// <summary>
     /// <c>IVaryLengthGlyph</c> identifies a glyph object as supporting a 
     /// custom bit encoding width

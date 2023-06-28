@@ -4,7 +4,7 @@
 // </copyright>
 //-----------------------------------------------------------------------
 
-namespace Zen.Barcode
+namespace T2t.Barcode.Drawing
 {
 	using System;
 	using System.Collections.Generic;
@@ -797,7 +797,7 @@ namespace Zen.Barcode
 		/// Draws the specified text using the supplied barcode metrics.
 		/// </summary>
 		/// <param name="text">The text.</param>
-		/// <param name="metrics">A <see cref="T:Zen.Barcode.BarcodeMetrics"/> object.</param>
+		/// <param name="metrics">A <see cref="T:T2t.Barcode.Drawing.BarcodeMetrics"/> object.</param>
 		/// <returns></returns>
 		public override Image Draw(string text, BarcodeMetrics metrics)
 		{

@@ -4,11 +4,10 @@
 // </copyright>
 //-----------------------------------------------------------------------
 
-namespace Zen.Barcode
+namespace T2t.Barcode.Drawing
 {
     using System;
     using System.Collections.Generic;
-    using System.Text;
 
     /// <summary>
     /// Abstract class factory for retrieval of barcode glyph objects.
@@ -27,7 +26,7 @@ namespace Zen.Barcode
         #region Protected Constructors
         /// <summary>
         /// Initializes a new instance of the 
-        /// <see cref="T:Zen.Barcode.GlyphFactory"/> class.
+        /// <see cref="T:T2t.Barcode.Drawing.GlyphFactory"/> class.
         /// </summary>
         protected GlyphFactory()
         {
@@ -56,12 +55,12 @@ namespace Zen.Barcode
         }
 
         /// <summary>
-        /// Gets the <see cref="T:Zen.Barcode.BarGlyph"/> at the specified
+        /// Gets the <see cref="T:T2t.Barcode.Drawing.BarGlyph"/> at the specified
         /// ordinal index.
         /// </summary>
         /// <param name="index">The glyph ordinal index.</param>
         /// <returns>
-        /// A <see cref="T:Zen.Barcode.BarGlyph"/> glyph object.
+        /// A <see cref="T:T2t.Barcode.Drawing.BarGlyph"/> glyph object.
         /// </returns>
         public virtual BarGlyph GetRawGlyph(int index)
         {
@@ -69,12 +68,12 @@ namespace Zen.Barcode
         }
 
         /// <summary>
-        /// Gets the <see cref="T:Zen.Barcode.BarGlyph"/> that corresponds
+        /// Gets the <see cref="T:T2t.Barcode.Drawing.BarGlyph"/> that corresponds
         /// to the specified character.
         /// </summary>
         /// <param name="character">The character to be located.</param>
         /// <returns>
-        /// A <see cref="T:Zen.Barcode.BarGlyph"/> glyph object.
+        /// A <see cref="T:T2t.Barcode.Drawing.BarGlyph"/> glyph object.
         /// </returns>
         public virtual BarGlyph GetRawGlyph(char character)
         {
@@ -86,7 +85,7 @@ namespace Zen.Barcode
         /// Gets the index of this glyph.
         /// </summary>
         /// <param name="glyph">
-        /// The <see cref="T:Zen.Barcode.BarGlyph"/> to be located.
+        /// The <see cref="T:T2t.Barcode.Drawing.BarGlyph"/> to be located.
         /// </param>
         /// <returns>
         /// The ordinal index of the glyph or -1 if not found.
@@ -107,12 +106,12 @@ namespace Zen.Barcode
         }
 
         /// <summary>
-        /// Gets the array of <see cref="T:Zen.Barcode.Glyph"/> objects that
+        /// Gets the array of <see cref="T:T2t.Barcode.Drawing.Glyph"/> objects that
         /// correspond to the specified character.
         /// </summary>
         /// <param name="character">The character to be translated.</param>
         /// <returns>
-        /// A collection of <see cref="T:Zen.Barcode.Glyph"/> objects.
+        /// A collection of <see cref="T:T2t.Barcode.Drawing.Glyph"/> objects.
         /// </returns>
         /// <remarks>
         /// <para>
@@ -129,14 +128,14 @@ namespace Zen.Barcode
         }
 
         /// <summary>
-        /// Gets the array of <see cref="T:Zen.Barcode.Glyph"/> objects that
+        /// Gets the array of <see cref="T:T2t.Barcode.Drawing.Glyph"/> objects that
         /// correspond to the specified character.
         /// </summary>
         /// <param name="character">The character to be translated.</param>
         /// <param name="allowComposite">if set to <c>true</c> to allow 
         /// composite glyphs to be returned.</param>
         /// <returns>
-        /// A collection of <see cref="T:Zen.Barcode.Glyph"/> objects.
+        /// A collection of <see cref="T:T2t.Barcode.Drawing.Glyph"/> objects.
         /// </returns>
         /// <remarks>
         /// This method may return more than one glyph depending on the
@@ -158,14 +157,14 @@ namespace Zen.Barcode
         }
 
         /// <summary>
-        /// Gets the array of <see cref="T:Zen.Barcode.Glyph"/> objects that
+        /// Gets the array of <see cref="T:T2t.Barcode.Drawing.Glyph"/> objects that
         /// correspond to the specified string.
         /// </summary>
         /// <param name="text">
         /// A <see cref="T:System.String"/> containing text to be translated.
         /// </param>
         /// <returns>
-        /// A collection of <see cref="T:Zen.Barcode.Glyph"/> objects.
+        /// A collection of <see cref="T:T2t.Barcode.Drawing.Glyph"/> objects.
         /// </returns>
         public virtual Glyph[] GetGlyphs(string text)
         {
@@ -173,7 +172,7 @@ namespace Zen.Barcode
         }
 
         /// <summary>
-        /// Gets the array of <see cref="T:Zen.Barcode.Glyph"/> objects that 
+        /// Gets the array of <see cref="T:T2t.Barcode.Drawing.Glyph"/> objects that 
         /// correspond to the specified string.
         /// </summary>
         /// <param name="text">
@@ -182,7 +181,7 @@ namespace Zen.Barcode
         /// <param name="allowComposite">if set to <c>true</c> to allow 
         /// composite glyphs to be returned.</param>
         /// <returns>
-        /// A collection of <see cref="T:Zen.Barcode.Glyph"/> objects.
+        /// A collection of <see cref="T:T2t.Barcode.Drawing.Glyph"/> objects.
         /// </returns>
         public virtual Glyph[] GetGlyphs(string text, bool allowComposite)
         {
@@ -191,7 +190,7 @@ namespace Zen.Barcode
                 return new Glyph[0];
             }
 
-            List<Glyph> glyphs = new List<Glyph>();
+            List<Glyph> glyphs = new();
             foreach (char character in text)
             {
                 glyphs.AddRange(GetGlyphs(character, allowComposite));
@@ -202,7 +201,7 @@ namespace Zen.Barcode
 
         #region Protected Methods
         /// <summary>
-        /// Gets the collection of <see cref="T:Zen.Barcode.BarGlyph"/> that 
+        /// Gets the collection of <see cref="T:T2t.Barcode.Drawing.BarGlyph"/> that 
         /// represent the raw bar-code glyphs for the given bar-code symbology.
         /// </summary>
         /// <returns>The full collection of <see cref="T:BarGlyph"/> objects
@@ -210,12 +209,12 @@ namespace Zen.Barcode
         protected abstract BarGlyph[] GetGlyphs();
 
         /// <summary>
-        /// Gets the collection of <see cref="T:Zen.Barcode.CompositeGlyph"/>
+        /// Gets the collection of <see cref="T:T2t.Barcode.Drawing.CompositeGlyph"/>
         /// that represent the composite bar-code glyphs for the given bar-code
         /// symbology.
         /// </summary>
         /// <returns>
-        /// The full collection of <see cref="T:Zen.Barcode.CompositeGlyph"/>
+        /// The full collection of <see cref="T:T2t.Barcode.Drawing.CompositeGlyph"/>
         /// objects associated with this symbology.
         /// </returns>
         protected abstract CompositeGlyph[] GetCompositeGlyphs();

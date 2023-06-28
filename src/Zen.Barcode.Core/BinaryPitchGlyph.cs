@@ -4,12 +4,8 @@
 // </copyright>
 //-----------------------------------------------------------------------
 
-namespace Zen.Barcode
+namespace T2t.Barcode.Drawing
 {
-    using System;
-    using System.Collections.Generic;
-    using System.Text;
-
     /// <summary>
 	/// <b>BinaryPitchGlyph</b> represents a two-state variable pitched
 	/// barcode glyph characters (Code 3 of 9 is a good example) where
@@ -23,7 +19,7 @@ namespace Zen.Barcode
 
 		#region Public Constructors
 		/// <summary>
-		/// Initialises a new instance of the <see cref="Zen.Barcode.BinaryPitchGlyph"/>
+		/// Initialises a new instance of the <see cref="T2t.Barcode.Drawing.BinaryPitchGlyph"/>
 		/// class.
 		/// </summary>
 		/// <param name="character">The character.</param>

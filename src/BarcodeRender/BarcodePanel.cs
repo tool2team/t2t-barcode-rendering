@@ -1,19 +1,13 @@
-using System;
-using System.Collections.Generic;
 using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Text;
-using System.Windows.Forms;
 
-using Zen.Barcode;
+using T2t.Barcode.Drawing;
 
-namespace BarcodeRender
+namespace BarcodeRender.Drawing
 {
-	/// <summary>
-	/// <c>BarcodePanel</c> encapsulates a Windows Forms barcode control.
-	/// </summary>
-	public partial class BarcodePanel : Panel
+    /// <summary>
+    /// <c>BarcodePanel</c> encapsulates a Windows Forms barcode control.
+    /// </summary>
+    public partial class BarcodePanel : Panel
 	{
 		#region Private Fields
 		private BarcodeSymbology _symbology;

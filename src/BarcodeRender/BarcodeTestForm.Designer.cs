@@ -1,4 +1,6 @@
-﻿namespace BarcodeRender
+﻿using T2t.Barcode.Drawing;
+
+namespace BarcodeRender.Drawing
 {
 	partial class BarcodeTestForm
 	{
@@ -47,7 +49,7 @@
 			this.label5 = new System.Windows.Forms.Label ();
 			this.scannerResult = new System.Windows.Forms.TextBox ();
 			this.label2 = new System.Windows.Forms.Label ();
-			this.barcodePanel = new BarcodeRender.BarcodePanel ();
+			this.barcodePanel = new BarcodeRender.Drawing.BarcodePanel ();
 			this.barcodeLabel = new System.Windows.Forms.TextBox ();
 			this.label1 = new System.Windows.Forms.Label ();
 			this.nextTestButton = new System.Windows.Forms.Button ();
@@ -206,7 +208,7 @@
 			this.barcodePanel.Location = new System.Drawing.Point (6, 129);
 			this.barcodePanel.Name = "barcodePanel";
 			this.barcodePanel.Size = new System.Drawing.Size (410, 88);
-			this.barcodePanel.Symbology = Zen.Barcode.BarcodeSymbology.Unknown;
+			this.barcodePanel.Symbology = BarcodeSymbology.Unknown;
 			this.barcodePanel.TabIndex = 3;
 			// 
 			// barcodeLabel

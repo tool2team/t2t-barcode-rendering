@@ -4,12 +4,8 @@
 // </copyright>
 //-----------------------------------------------------------------------
 
-namespace Zen.Barcode
+namespace T2t.Barcode.Drawing
 {
-    using System;
-    using System.Collections.Generic;
-    using System.Text;
-
     /// <summary>
     /// Represents a composite glyph.
     /// </summary>
@@ -27,7 +23,7 @@ namespace Zen.Barcode
 
         #region Public Constructors
         /// <summary>
-        /// Initializes a new instance of the <see cref="T:Zen.Barcode.CompositeGlyph"/>
+        /// Initializes a new instance of the <see cref="T:T2t.Barcode.Drawing.CompositeGlyph"/>
         /// class.
         /// </summary>
         /// <param name="character">The character.</param>
@@ -43,9 +39,9 @@ namespace Zen.Barcode
 
         #region Public Properties
         /// <summary>
-        /// Gets the first <see cref="T:Zen.Barcode.BarGlyph"/> object.
+        /// Gets the first <see cref="T:T2t.Barcode.Drawing.BarGlyph"/> object.
         /// </summary>
-        /// <value>A <see cref="T:Zen.Barcode.BarGlyph"/>.</value>
+        /// <value>A <see cref="T:T2t.Barcode.Drawing.BarGlyph"/>.</value>
         public BarGlyph First
         {
             get
@@ -55,9 +51,9 @@ namespace Zen.Barcode
         }
 
         /// <summary>
-        /// Gets the second <see cref="T:Zen.Barcode.BarGlyph"/> object.
+        /// Gets the second <see cref="T:T2t.Barcode.Drawing.BarGlyph"/> object.
         /// </summary>
-        /// <value>A <see cref="T:Zen.Barcode.BarGlyph"/>.</value>
+        /// <value>A <see cref="T:T2t.Barcode.Drawing.BarGlyph"/>.</value>
         public BarGlyph Second
         {
             get

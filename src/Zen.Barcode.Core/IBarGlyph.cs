@@ -4,14 +4,10 @@
 // </copyright>
 //-----------------------------------------------------------------------
 
-namespace Zen.Barcode
+namespace T2t.Barcode.Drawing
 {
-    using System;
-    using System.Collections.Generic;
-    using System.Text;
-
     /// <summary>
-    /// <c>IBarGlyph</c> extends <see cref="T:Zen.Barcode.IGlyph"/> by 
+    /// <c>IBarGlyph</c> extends <see cref="T:T2t.Barcode.Drawing.IGlyph"/> by 
     /// specifying a bit encoding for a given character. 
     /// The bits indicate where bars are drawn.
     /// </summary>

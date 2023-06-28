@@ -4,24 +4,23 @@
 // </copyright>
 //-----------------------------------------------------------------------
 
-namespace Zen.Barcode
+namespace T2t.Barcode.Drawing
 {
-	using System;
-	using System.Collections.Generic;
-	using System.Drawing;
-	using System.Text;
-	using System.Text.RegularExpressions;
+    using System;
+    using System.Collections.Generic;
+    using System.Drawing;
+    using System.Text.RegularExpressions;
 
-	/// <summary>
-	/// <b>CodeEan8GlyphFactory</b> concrete implementation of 
-	/// <see cref="GlyphFactory"/> for providing Code EAN-8 bar-code glyph
-	/// objects.
-	/// </summary>
-	public sealed class CodeEan8GlyphFactory : GlyphFactory
+    /// <summary>
+    /// <b>CodeEan8GlyphFactory</b> concrete implementation of 
+    /// <see cref="GlyphFactory"/> for providing Code EAN-8 bar-code glyph
+    /// objects.
+    /// </summary>
+    public sealed class CodeEan8GlyphFactory : GlyphFactory
 	{
 		#region Private Fields
 		private static CodeEan8GlyphFactory _theFactory;
-		private static object _syncFactory = new object();
+		private static object _syncFactory = new();
 
 		private BarGlyph[] _glyphs;
 		private CompositeGlyph[] _compositeGlyphs;
@@ -72,7 +71,7 @@ namespace Zen.Barcode
 		/// </remarks>
 		public override Glyph[] GetGlyphs(string text, bool allowComposite)
 		{
-			List<Glyph> result = new List<Glyph>();
+			List<Glyph> result = new();
 			for (int index = 0; index < text.Length; ++index)
 			{
 				int digit = text[index] - '0';
@@ -171,7 +170,7 @@ namespace Zen.Barcode
 	{
 		#region Private Fields
 		private static CodeEan8Checksum _theChecksum;
-		private static object _syncChecksum = new object();
+		private static object _syncChecksum = new();
 		#endregion
 
 		#region Private Constructors
@@ -347,7 +346,7 @@ namespace Zen.Barcode
 			}
 
 			// Build result with composite glyphs
-			List<Glyph> result = new List<Glyph>();
+			List<Glyph> result = new();
 			result.AddRange(Factory.GetGlyphs(barcodeText, true));
 
 			for (int index = 0; index < result.Count; ++index)

@@ -4,12 +4,8 @@
 // </copyright>
 //-----------------------------------------------------------------------
 
-namespace Zen.Barcode
+namespace T2t.Barcode.Drawing
 {
-    using System;
-    using System.Collections.Generic;
-    using System.Text;
-
     /// <summary>
     /// <b>Glyph</b> represents the base class for describing a barcode
     /// character.
@@ -31,7 +27,7 @@ namespace Zen.Barcode
         private char _character;
 
         /// <summary>
-        /// Initialises a new instance of the <see cref="T:Zen.Barcode.Glyph"/>
+        /// Initialises a new instance of the <see cref="T:T2t.Barcode.Drawing.Glyph"/>
         /// class with the specified bit encoding.
         /// </summary>
         /// <param name="character">Character represented by glyph.</param>

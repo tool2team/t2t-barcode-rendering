@@ -4,23 +4,22 @@
 // </copyright>
 //-----------------------------------------------------------------------
 
-namespace Zen.Barcode
+namespace T2t.Barcode.Drawing
 {
-	using System;
-	using System.Collections.Generic;
-	using System.Drawing;
-	using System.Text;
+    using System;
+    using System.Collections.Generic;
+    using System.Drawing;
 
-	/// <summary>
-	/// <b>Code11GlyphFactory</b> concrete implementation of 
-	/// <see cref="GlyphFactory"/> for providing Code 11 bar-code glyph
-	/// objects.
-	/// </summary>
-	public sealed class Code11GlyphFactory : GlyphFactory
+    /// <summary>
+    /// <b>Code11GlyphFactory</b> concrete implementation of 
+    /// <see cref="GlyphFactory"/> for providing Code 11 bar-code glyph
+    /// objects.
+    /// </summary>
+    public sealed class Code11GlyphFactory : GlyphFactory
 	{
 		#region Private Fields
 		private static Code11GlyphFactory _theFactory;
-		private static object _syncFactory = new object();
+		private static object _syncFactory = new();
 
 		private BarGlyph[] _glyphs;
 		#endregion
@@ -108,7 +107,7 @@ namespace Zen.Barcode
 	{
 		#region Private Fields
 		private static Code11Checksum _theChecksum;
-		private static object _syncChecksum = new object();
+		private static object _syncChecksum = new();
 		#endregion
 
 		#region Private Constructors
@@ -266,7 +265,7 @@ namespace Zen.Barcode
 		/// <returns>A collection of <see cref="T:Glyph"/> objects.</returns>
 		protected override Glyph[] GetFullBarcode(string text)
 		{
-			List<Glyph> result = new List<Glyph>();
+			List<Glyph> result = new();
 			result.AddRange(Factory.GetGlyphs(text));
 			if (Checksum != null)
 			{

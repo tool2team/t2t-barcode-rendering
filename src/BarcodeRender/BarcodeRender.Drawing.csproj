@@ -1,0 +1,18 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFrameworks>net7.0-windows</TargetFrameworks>
+    <Configurations>Debug;Release</Configurations>
+    <RootNamespace>BarcodeRender</RootNamespace>
+    <AssemblyName>BarcodeRender</AssemblyName>
+    <LangVersion>latest</LangVersion>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <OutputType>WinExe</OutputType>
+    <UseWindowsForms>True</UseWindowsForms>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\BarcodeRenderer.Drawing.Core\BarcodeRenderer.Drawing.Core.csproj" />
+  </ItemGroup>
+
+</Project>

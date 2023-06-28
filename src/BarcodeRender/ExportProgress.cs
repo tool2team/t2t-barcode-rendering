@@ -1,15 +1,8 @@
-using System;
-using System.Collections.Generic;
 using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Text;
-using System.Windows.Forms;
-using System.Threading;
 
-namespace BarcodeRender
+namespace BarcodeRender.Drawing
 {
-	public partial class ExportProgress : Form
+    public partial class ExportProgress : Form
 	{
 		private bool _cancelled;
 		private bool _finished;

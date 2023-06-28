@@ -4,13 +4,13 @@
 // </copyright>
 //-----------------------------------------------------------------------
 
-namespace Zen.Barcode
+namespace T2t.Barcode.Drawing
 {
 	using System;
 	using System.Drawing;
 	using System.IO;
+	using System.Reflection;
 	using System.Text;
-	using Zen.Barcode.Properties;
 
 	/// <summary>
 	/// <c>CodeQrBarcodeDraw</c> extends <see cref="BarcodeDraw"/> to support
@@ -48,27 +48,27 @@ namespace Zen.Barcode
 
 				public static String FromASCIIByteArray(byte[] characters)
 				{
-					ASCIIEncoding encoding = new ASCIIEncoding();
+					ASCIIEncoding encoding = new();
 					String constructedString = encoding.GetString(characters);
 					return constructedString;
 				}
 
 				public static String FromUnicodeByteArray(byte[] characters)
 				{
-					UnicodeEncoding encoding = new UnicodeEncoding();
+					UnicodeEncoding encoding = new();
 					String constructedString = encoding.GetString(characters);
 					return constructedString;
 				}
 
 				public static byte[] AsciiStringToByteArray(String str)
 				{
-					ASCIIEncoding encoding = new ASCIIEncoding();
+					ASCIIEncoding encoding = new();
 					return encoding.GetBytes(str);
 				}
 
 				public static byte[] UnicodeStringToByteArray(String str)
 				{
-					UnicodeEncoding encoding = new UnicodeEncoding();
+					UnicodeEncoding encoding = new();
 					return encoding.GetBytes(str);
 				}
 			}
@@ -659,21 +659,19 @@ namespace Zen.Barcode
 				sbyte[] rsBlockOrderTemp = new sbyte[128];
 				try
 				{
-					String fileName = "qrv" + Convert.ToString(_version) + "_" + Convert.ToString(ec);
-					using (Stream memoryStream = new MemoryStream((byte[])Resources.ResourceManager.GetObject(fileName), false))
-					{
-						using (BufferedStream bis = new BufferedStream(memoryStream))
-						{
-							SystemUtils.ReadInput(bis, matrixX, 0, matrixX.Length);
-							SystemUtils.ReadInput(bis, matrixY, 0, matrixY.Length);
-							SystemUtils.ReadInput(bis, maskArray, 0, maskArray.Length);
-							SystemUtils.ReadInput(bis, formatInformationX2, 0, formatInformationX2.Length);
-							SystemUtils.ReadInput(bis, formatInformationY2, 0, formatInformationY2.Length);
-							SystemUtils.ReadInput(bis, rsEccCodewords, 0, rsEccCodewords.Length);
-							SystemUtils.ReadInput(bis, rsBlockOrderTemp, 0, rsBlockOrderTemp.Length);
-						}
-					}
-				}
+                    var assembly = Assembly.GetExecutingAssembly();
+                    var resourceName = $"qrv{_version}_{ec}.dat";
+
+                    using Stream memoryStream = assembly.GetManifestResourceStream(resourceName);
+                    using BufferedStream bis = new(memoryStream);
+                    SystemUtils.ReadInput(bis, matrixX, 0, matrixX.Length);
+                    SystemUtils.ReadInput(bis, matrixY, 0, matrixY.Length);
+                    SystemUtils.ReadInput(bis, maskArray, 0, maskArray.Length);
+                    SystemUtils.ReadInput(bis, formatInformationX2, 0, formatInformationX2.Length);
+                    SystemUtils.ReadInput(bis, formatInformationY2, 0, formatInformationY2.Length);
+                    SystemUtils.ReadInput(bis, rsEccCodewords, 0, rsEccCodewords.Length);
+                    SystemUtils.ReadInput(bis, rsBlockOrderTemp, 0, rsBlockOrderTemp.Length);
+                }
 				catch (Exception e)
 				{
 					SystemUtils.WriteStackTrace(e, Console.Error);
@@ -705,13 +703,15 @@ namespace Zen.Barcode
 
 				try
 				{
-					//String filename = QRCODE_DATA_PATH + "/qrvfr" + System.Convert.ToString(qrcodeVersion) + ".dat";
-					//StreamReader reader = new StreamReader(filename);
+                    //String filename = QRCODE_DATA_PATH + "/qrvfr" + System.Convert.ToString(qrcodeVersion) + ".dat";
+                    //StreamReader reader = new StreamReader(filename);
 
-					String fileName = "qrvfr" + Convert.ToString(_version);
-					Stream memoryStream = new MemoryStream((byte[])Resources.ResourceManager.GetObject(fileName), false);
+                    var assembly = Assembly.GetExecutingAssembly();
+                    var resourceName = $"qrvfr{_version}.dat";
 
-					BufferedStream bis = new BufferedStream(memoryStream);
+                    using Stream memoryStream = assembly.GetManifestResourceStream(resourceName);
+
+					BufferedStream bis = new(memoryStream);
 					SystemUtils.ReadInput(bis, frameData, 0, frameData.Length);
 					bis.Close();
 					memoryStream.Close();
@@ -920,18 +920,16 @@ namespace Zen.Barcode
 				}
 				try
 				{
-					String fileName = "rsc" + rsEccCodewords.ToString();
-					using (Stream memoryStream = new MemoryStream((byte[])Resources.ResourceManager.GetObject(fileName), false))
-					{
-						using (BufferedStream bis = new BufferedStream(memoryStream))
-						{
-							for (int i = 0; i < 256; i++)
-							{
-								SystemUtils.ReadInput(bis, rsCalTableArray[i], 0, rsCalTableArray[i].Length);
-							}
-						}
-					}
-				}
+                    var assembly = Assembly.GetExecutingAssembly();
+                    var resourceName = $"rsc{rsEccCodewords}.dat";
+
+                    using Stream memoryStream = assembly.GetManifestResourceStream(resourceName);
+                    using BufferedStream bis = new(memoryStream);
+                    for (int i = 0; i < 256; i++)
+                    {
+                        SystemUtils.ReadInput(bis, rsCalTableArray[i], 0, rsCalTableArray[i].Length);
+                    }
+                }
 				catch (Exception e)
 				{
 					SystemUtils.WriteStackTrace(e, Console.Error);
@@ -1194,8 +1192,8 @@ namespace Zen.Barcode
 			public virtual Bitmap Encode(String content, Encoding encoding)
 			{
 				bool[][] matrix = CalculateQrCode(encoding.GetBytes(content));
-				SolidBrush brush = new SolidBrush(_backgroundColor);
-				Bitmap image = new Bitmap((matrix.Length * _scale) + 1, (matrix.Length * _scale) + 1);
+				SolidBrush brush = new(_backgroundColor);
+				Bitmap image = new((matrix.Length * _scale) + 1, (matrix.Length * _scale) + 1);
 				Graphics g = Graphics.FromImage(image);
 				g.FillRectangle(brush, new Rectangle(0, 0, image.Width, image.Height));
 				brush.Color = _foregroundColor;
@@ -1240,7 +1238,7 @@ namespace Zen.Barcode
 		/// Draws the specified text using the supplied barcode metrics.
 		/// </summary>
 		/// <param name="text">The text.</param>
-		/// <param name="metrics">A <see cref="T:Zen.Barcode.BarcodeMetrics"/> object.</param>
+		/// <param name="metrics">A <see cref="T:T2t.Barcode.Drawing.BarcodeMetrics"/> object.</param>
 		/// <returns></returns>
 		public override sealed Image Draw(string text, BarcodeMetrics metrics)
 		{
@@ -1248,16 +1246,16 @@ namespace Zen.Barcode
 		}
 
 		/// <summary>
-		/// Gets a <see cref="T:Zen.Barcode.BarcodeMetrics"/> object containing default
+		/// Gets a <see cref="T:T2t.Barcode.Drawing.BarcodeMetrics"/> object containing default
 		/// settings for the specified maximum bar height.
 		/// </summary>
 		/// <param name="maxHeight">The maximum barcode height.</param>
 		/// <returns>
-		/// A <see cref="T:Zen.Barcode.BarcodeMetrics"/> object.
+		/// A <see cref="T:T2t.Barcode.Drawing.BarcodeMetrics"/> object.
 		/// </returns>
 		public override BarcodeMetrics GetDefaultMetrics(int maxHeight)
 		{
-			QRCodeEncoder temp = new QRCodeEncoder();
+			QRCodeEncoder temp = new();
 			return new BarcodeMetricsQr
 				{
 					Scale = temp.Scale,
@@ -1278,7 +1276,7 @@ namespace Zen.Barcode
 		/// <param name="printResolution">The print resolution in pixels per inch.</param>
 		/// <param name="barcodeCharLength">Length of the barcode in characters.</param>
 		/// <returns>
-		/// A <see cref="T:Zen.Barcode.BarcodeMetrics"/> object.
+		/// A <see cref="T:T2t.Barcode.Drawing.BarcodeMetrics"/> object.
 		/// </returns>
 		public override BarcodeMetrics GetPrintMetrics(
 			Size desiredBarcodeDimensions, Size printResolution, int barcodeCharLength)
@@ -1296,8 +1294,8 @@ namespace Zen.Barcode
 		/// <returns></returns>
 		protected virtual Image DrawQr(string text, BarcodeMetricsQr metrics)
 		{
-			QRCodeEncoder encoder = new QRCodeEncoder
-			{
+			QRCodeEncoder encoder = new()
+            {
 				Scale = metrics.Scale,
 				Version = metrics.Version,
 				EncodeMode = metrics.EncodeMode,

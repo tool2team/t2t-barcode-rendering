@@ -4,23 +4,22 @@
 // </copyright>
 //-----------------------------------------------------------------------
 
-namespace Zen.Barcode
+namespace T2t.Barcode.Drawing
 {
-	using System;
-	using System.Collections.Generic;
-	using System.Drawing;
-	using System.Text;
+    using System;
+    using System.Collections.Generic;
+    using System.Drawing;
 
-	/// <summary>
-	/// <b>Code25GlyphFactory</b> base class for all code 25 
-	/// <see cref="GlyphFactory"/> objects.
-	/// </summary>
-	public abstract class Code25GlyphFactory : GlyphFactory
+    /// <summary>
+    /// <b>Code25GlyphFactory</b> base class for all code 25 
+    /// <see cref="GlyphFactory"/> objects.
+    /// </summary>
+    public abstract class Code25GlyphFactory : GlyphFactory
 	{
 		#region Private Fields
 		private static Code25StandardGlyphFactory _theStdFactory;
 		private static Code25InterleavedGlyphFactory _theIntFactory;
-		private static object _syncFactory = new object();
+		private static object _syncFactory = new();
 		#endregion
 
 		#region Protected Constructors
@@ -209,7 +208,7 @@ namespace Zen.Barcode
 		#region Private Fields
 		private static Code25Checksum _theStdChecksum;
 		private static Code25Checksum _theIntChecksum;
-		private static object _syncChecksum = new object();
+		private static object _syncChecksum = new();
 		#endregion
 
 		#region Private Constructors
@@ -384,7 +383,7 @@ namespace Zen.Barcode
 		/// <returns>A collection of <see cref="T:Glyph"/> objects.</returns>
 		protected override Glyph[] GetFullBarcode(string text)
 		{
-			List<Glyph> result = new List<Glyph>();
+			List<Glyph> result = new();
 
 			// If text is odd length
 			if (Factory is Code25InterleavedGlyphFactory)
@@ -458,7 +457,7 @@ namespace Zen.Barcode
 		/// <summary>
 		/// Renders the barcode bars.
 		/// </summary>
-		/// <param name="barcode">A collection of <see cref="T:Zen.Barcode.Glyph"/> objects representing the
+		/// <param name="barcode">A collection of <see cref="T:T2t.Barcode.Drawing.Glyph"/> objects representing the
 		/// barcode to be rendered.</param>
 		/// <param name="dc">A <see cref="T:System.Drawing.Graphics"/> representing the draw context.</param>
 		/// <param name="bounds">The bounding rectangle.</param>

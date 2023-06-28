@@ -1,4 +1,4 @@
-namespace BarcodeRender
+namespace BarcodeRender.Drawing
 {
 	partial class ExportProgress
 	{

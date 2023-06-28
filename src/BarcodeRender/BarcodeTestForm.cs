@@ -1,21 +1,13 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections;
 using System.ComponentModel;
-using System.Data;
-using System.Drawing;
 using System.Drawing.Printing;
-using System.IO;
-using System.Runtime.Serialization;
-using System.Runtime.Serialization.Formatters;
 using System.Text;
-using System.Windows.Forms;
 using System.Xml;
 using System.Xml.Serialization;
 
-using Zen.Barcode;
+using T2t.Barcode.Drawing;
 
-namespace BarcodeRender
+namespace BarcodeRender.Drawing
 {
 	/// <summary>
 	/// <c>BarcodeTestForm</c> is designed to support the printing and

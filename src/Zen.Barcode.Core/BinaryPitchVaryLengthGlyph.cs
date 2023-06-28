@@ -4,12 +4,8 @@
 // </copyright>
 //-----------------------------------------------------------------------
 
-namespace Zen.Barcode
+namespace T2t.Barcode.Drawing
 {
-    using System;
-    using System.Collections.Generic;
-    using System.Text;
-
     /// <summary>
     /// Represents a barcode symbology where characters have different two 
     /// width settings and a variable number of encoding bits.
@@ -22,7 +18,7 @@ namespace Zen.Barcode
 
         #region Public Constructors
         /// <summary>
-        /// Initialises a new instance of the <see cref="Zen.Barcode.BinaryPitchGlyph"/>
+        /// Initialises a new instance of the <see cref="T2t.Barcode.Drawing.BinaryPitchGlyph"/>
         /// class.
         /// </summary>
         /// <param name="character">The character.</param>

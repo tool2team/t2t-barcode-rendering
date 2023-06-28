@@ -4,12 +4,8 @@
 // </copyright>
 //-----------------------------------------------------------------------
 
-namespace Zen.Barcode
+namespace T2t.Barcode.Drawing
 {
-    using System;
-    using System.Collections.Generic;
-    using System.Text;
-
     /// <summary>
     /// <c>VaryLengthGlyph</c> serves as a base class for variable length
     /// fixed-pitch bar-code glyphs.
@@ -22,7 +18,7 @@ namespace Zen.Barcode
 
         #region Public Constructors
         /// <summary>
-        /// Initializes a new instance of the <see cref="T:Zen.Barcode.VaryLengthGlyph"/>
+        /// Initializes a new instance of the <see cref="T:T2t.Barcode.Drawing.VaryLengthGlyph"/>
         /// class.
         /// </summary>
         /// <param name="character">The character.</param>
