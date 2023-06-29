@@ -31,9 +31,9 @@ jobs:
            dotnet pack --configuration Release --output nupkg src/T2t.Barcode.Svg/T2t.Barcode.Svg.csproj
 
     - name: Set NuGet API Key
-      uses: NuGet/nuget-setapikey-action@v1
-      with:
-        nuget-api-key: ${{ secrets.NUGET_API_KEY }}
+      run: echo "//nuget.org/api/v2/:API_KEY" > nuget.config
+      env:
+        API_KEY: ${{ secrets.NUGET_API_KEY }}
 
     - name: Publish to NuGet
       run: dotnet nuget push "./nupkg/*.nupkg" --source "https://api.nuget.org/v3/index.json"
