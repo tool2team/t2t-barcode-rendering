@@ -38,6 +38,7 @@ jobs:
 
     - name: Publish to NuGet
       run: |
-        dotnet nuget add source --api-key ${{ secrets.NUGET_API_KEY }} --name nuget.org "https://api.nuget.org/v3/index.json"
-        # dotnet nuget add source --api-key ${{ secrets.GITHUB_TOKEN }} --name github "https://nuget.pkg.github.com/tool2team/index.json"
-        dotnet nuget push "./nupkg/*.nupkg"
+        # dotnet nuget add source -u sinsedrix -p ${{ secrets.NUGET_API_KEY }} --name nuget.org "https://api.nuget.org/v3/index.json"
+        # dotnet nuget add source -u sinsedrix -p ${{ secrets.PKGREG_TOKEN }} --name nuget.org "https://nuget.pkg.github.com/tool2team/index.json"
+        dotnet nuget push "./nupkg/*.nupkg" --source "https://api.nuget.org/v3/index.json" --api-key ${{ secrets.NUGET_API_KEY }} 
+        dotnet nuget push "./nupkg/*.nupkg" --source "https://nuget.pkg.github.com/tool2team/index.json" --api-key ${{ secrets.PKGREG_TOKEN }} 
