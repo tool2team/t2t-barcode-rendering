@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFrameworks>net5.0-windows</TargetFrameworks>
+    <TargetFrameworks>net7.0-windows</TargetFrameworks>
     <Configurations>Debug;Release</Configurations>
     <RootNamespace>BarcodeRenderer.Skia.Skia</RootNamespace>
     <AssemblyName>BarcodeRenderer.Skia.Skia</AssemblyName>

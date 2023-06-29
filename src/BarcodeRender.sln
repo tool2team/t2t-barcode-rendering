@@ -11,13 +11,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{64A88384
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{57BD0CD8-DCE9-4F5B-8A75-3A1A1EE18309}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{78C5EE8A-4424-4E9D-A8CA-88351282A587}"
-	ProjectSection(SolutionItems) = preProject
-		.nuget\NuGet.Config = .nuget\NuGet.Config
-		.nuget\nuget.exe = .nuget\nuget.exe
-		.nuget\NuGet.targets = .nuget\NuGet.targets
-	EndProjectSection
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BarcodeRender.Drawing", "BarcodeRender.Drawing\BarcodeRender.Drawing.csproj", "{A96E1B05-9603-46E6-8B0F-0F033C01D10D}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "T2t.Barcode.Drawing", "T2t.Barcode.Drawing\T2t.Barcode.Drawing.csproj", "{77484B9B-7400-4C6E-A997-CAB7FA7F9B1E}"

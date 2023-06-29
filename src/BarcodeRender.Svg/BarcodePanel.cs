@@ -111,7 +111,7 @@ namespace BarcodeRenderer.Skia
 
 					SvgDocument svgDoc = SvgDocument.FromSvg<SvgDocument>(drawObject.Draw(Text, metrics));
                     Bitmap bitmap = svgDoc.Draw();
-					bitmap.Save("test.png", System.Drawing.Imaging.ImageFormat.Png);
+					//bitmap.Save("test.png", System.Drawing.Imaging.ImageFormat.Png);
                     BackgroundImage = bitmap;
                 }
 				catch
