@@ -18,22 +18,22 @@ jobs:
       with:
         dotnet-version: '7.0'
 
-    - name: Restore dependencies
-      run: dotnet restore --source "https://api.nuget.org/v3/index.json"
-
     - name: Build and pack T2t.Barcode.Drawing
       run: |
-        dotnet build --configuration Release src/T2t.Barcode.Drawing/T2t.Barcode.Drawing.csproj
+        dotnet restore --source "https://api.nuget.org/v3/index.json" src/T2t.Barcode.Drawing/T2t.Barcode.Drawing.csproj
+        dotnet build --configuration Release --no-restore src/T2t.Barcode.Drawing/T2t.Barcode.Drawing.csproj
         dotnet pack --configuration Release --output nupkg src/T2t.Barcode.Drawing/T2t.Barcode.Drawing.csproj
 
     - name: Build and pack T2t.Barcode.Skia
       run: |
-        dotnet build --configuration Release src/T2t.Barcode.Skia/T2t.Barcode.Skia.csproj
+        dotnet restore --source "https://api.nuget.org/v3/index.json" src/T2t.Barcode.Skia/T2t.Barcode.Skia.csproj
+        dotnet build --configuration Release --no-restore src/T2t.Barcode.Skia/T2t.Barcode.Skia.csproj
         dotnet pack --configuration Release --output nupkg src/T2t.Barcode.Skia/T2t.Barcode.Skia.csproj
 
     - name: Build and pack T2t.Barcode.Svg
       run: |
-        dotnet build --configuration Release src/T2t.Barcode.Svg/T2t.Barcode.Svg.csproj
+        dotnet restore --source "https://api.nuget.org/v3/index.json" src/T2t.Barcode.Svg/T2t.Barcode.Svg.csproj
+        dotnet build --configuration Release --no-restore src/T2t.Barcode.Svg/T2t.Barcode.Svg.csproj
         dotnet pack --configuration Release --output nupkg src/T2t.Barcode.Svg/T2t.Barcode.Svg.csproj
 
     - name: Set NuGet API Key
