@@ -1242,7 +1242,7 @@ namespace T2t.Barcode.Skia
 			int lastP = 0;
 			int startN = 0;
 			int digitCount = 0;
-            int index, ptrS;
+            int index;
             bool lastTxt, txt;
             Segment v;
             Segment vp;
