@@ -110,7 +110,7 @@ namespace BarcodeRenderer.Skia
 			}
 
 			// Create new group as required.
-			SymbologyTestGroup newGroup = new SymbologyTestGroup (symbology);
+			SymbologyTestGroup newGroup = new(symbology);
 			newGroup.AddTestCase (text);
 			GroupTests.Add (newGroup);
 		}
@@ -195,7 +195,7 @@ namespace BarcodeRenderer.Skia
 					}
 
 					// Determine file name
-					StringBuilder imageFileName = new StringBuilder ();
+					StringBuilder imageFileName = new();
 					if (flattenHierarchy)
 					{
 						imageFileName.AppendFormat ("{0}-",
@@ -442,7 +442,7 @@ namespace BarcodeRenderer.Skia
 		/// <param name="test">The test.</param>
 		public void AddTestCase (string test)
 		{
-			SymbologyTestItem item = new SymbologyTestItem (test);
+			SymbologyTestItem item = new(test);
 			TestItems.Add (item);
 		}
 

@@ -165,7 +165,7 @@ namespace BarcodeRenderer.Skia
 		{
 			for (int index = 0; index < codes; ++index)
 			{
-				StringBuilder builder = new StringBuilder ();
+				StringBuilder builder = new();
 				while (builder.Length < length)
 				{
 					int value = RandomGenerator.Next (10);
@@ -180,7 +180,7 @@ namespace BarcodeRenderer.Skia
 		{
 			for (int index = 0; index < codes; ++index)
 			{
-				StringBuilder builder = new StringBuilder ();
+				StringBuilder builder = new();
 				while (builder.Length < length)
 				{
 					int value = RandomGenerator.Next (26);
@@ -299,7 +299,7 @@ namespace BarcodeRenderer.Skia
 			}
 
             // Determine size to allocate for each barcode
-            SizeF barcodeArea = new SizeF
+            SizeF barcodeArea = new()
             {
                 Width = (e.MarginBounds.Width / _barcodeColumns),
                 Height = (e.MarginBounds.Height / numLines)
@@ -316,18 +316,18 @@ namespace BarcodeRenderer.Skia
 				}
 
 				// Determine placement rectangle
-				PointF topLeft = new PointF (
+				PointF topLeft = new(
 					((index % _barcodeColumns) * barcodeArea.Width) + e.MarginBounds.Left,
 					((index / _barcodeColumns) * barcodeArea.Height) + e.MarginBounds.Top);
-				RectangleF drawRectangle = new RectangleF (
+				RectangleF drawRectangle = new(
 					topLeft, barcodeArea);
 
-				PointF textLocation = new PointF (topLeft.X, topLeft.Y);
+				PointF textLocation = new(topLeft.X, topLeft.Y);
 
 				// Render barcode image and label
 				using (SymbologyTestCase testCase = _testIterator.Current)
 				{
-					PointF imageLocation = new PointF (topLeft.X, topLeft.Y);
+					PointF imageLocation = new(topLeft.X, topLeft.Y);
 					imageLocation.X += (drawRectangle.Width - testCase.BarcodeImage.Width) / 2;
 					imageLocation.Y += _barcodePadding;
 					e.Graphics.DrawImage (testCase.BarcodeImage, imageLocation);
@@ -368,17 +368,17 @@ namespace BarcodeRenderer.Skia
 			testTree.Nodes.Clear ();
 			if (_testPlan != null)
 			{
-				TreeNode root = new TreeNode ("Symbologies");
+				TreeNode root = new("Symbologies");
 				foreach (SymbologyTestGroup group in _testPlan.GroupTests)
 				{
-                    TreeNode groupNode = new TreeNode(group.Symbology.ToString())
+                    TreeNode groupNode = new(group.Symbology.ToString())
                     {
                         Tag = group
                     };
 
                     foreach (SymbologyTestItem item in group.TestItems)
 					{
-                        TreeNode itemNode = new TreeNode(item.Barcode)
+                        TreeNode itemNode = new(item.Barcode)
                         {
                             Tag = item
                         };
@@ -427,7 +427,7 @@ namespace BarcodeRenderer.Skia
 
 			// Iterate child nodes of this node
 			BiIterator<TreeNode, TreeNodeCollection> iter =
-				new BiIterator<TreeNode, TreeNodeCollection> ();
+				new();
 			foreach (TreeNode childNode in iter.GetEnumerator (nextNode, currentNode.Nodes))
 			{
 				// Recurse children of node and stop if we change selection
@@ -577,7 +577,7 @@ namespace BarcodeRenderer.Skia
 			{
                 // Open XML file reader
                 // TODO: Incorporate schema based validation
-                XmlReaderSettings readerConfig = new XmlReaderSettings
+                XmlReaderSettings readerConfig = new()
                 {
                     CloseInput = true,
                     ConformanceLevel = ConformanceLevel.Document,
@@ -589,7 +589,7 @@ namespace BarcodeRenderer.Skia
 					FileAccess.Read, FileShare.Read), readerConfig))
 				{
 					// Pass to XmlSerializer
-					XmlSerializer xmlSerializer = new XmlSerializer (
+					XmlSerializer xmlSerializer = new(
 						typeof (SymbologyTestPlan),
 						new Type[] { typeof (SymbologyTestGroup),
 							typeof (SymbologyTestItem) });
@@ -609,7 +609,7 @@ namespace BarcodeRenderer.Skia
 
 		private void DoSave (string fileName)
 		{
-            XmlWriterSettings writerConfig = new XmlWriterSettings
+            XmlWriterSettings writerConfig = new()
             {
                 CloseOutput = true,
                 ConformanceLevel = ConformanceLevel.Document,
@@ -623,7 +623,7 @@ namespace BarcodeRenderer.Skia
 				FileShare.None), writerConfig))
 			{
 				// Pass to XmlSerializer
-				XmlSerializer xmlSerializer = new XmlSerializer (
+				XmlSerializer xmlSerializer = new(
 					typeof (SymbologyTestPlan),
 					new Type[] { typeof (SymbologyTestGroup),
 							typeof (SymbologyTestItem) });
@@ -686,7 +686,7 @@ namespace BarcodeRenderer.Skia
 		#region Image Export
 		private void exportImageToolStripMenuItem_Click (object sender, EventArgs e)
 		{
-			ExportBarcodeImagesForm export = new ExportBarcodeImagesForm();
+			ExportBarcodeImagesForm export = new();
 			if (export.ShowDialog () == DialogResult.OK)
 			{
 				ExportProgress.Start (

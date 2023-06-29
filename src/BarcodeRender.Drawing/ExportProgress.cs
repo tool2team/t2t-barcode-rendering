@@ -33,7 +33,7 @@ namespace BarcodeRender.Drawing
 			string rootFolder, bool overwriteFiles, 
 			bool flattenHierarchy, int maxBarHeight)
 		{
-            ExportWorkerState state = new ExportWorkerState
+            ExportWorkerState state = new()
             {
                 TestPlan = testPlan,
                 Folder = rootFolder,
@@ -48,7 +48,7 @@ namespace BarcodeRender.Drawing
 		private static void WorkerThread (object state)
 		{
 			// Start our background worker
-			ExportProgress progressForm = new ExportProgress ();
+			ExportProgress progressForm = new();
 			progressForm.exportWorker.RunWorkerAsync (state);
 
 			// Run our message loop
@@ -99,7 +99,7 @@ namespace BarcodeRender.Drawing
 			// Issue callback on UI thread as required.
 			if (InvokeRequired)
 			{
-				ExportProgressHandler handler = new ExportProgressHandler(UpdateProgress);
+				ExportProgressHandler handler = new(UpdateProgress);
 				return (bool)Invoke(handler, done, total, operation, detail);
 			}
 
