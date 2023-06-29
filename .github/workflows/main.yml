@@ -16,7 +16,7 @@ jobs:
     - name: Setup .NET
       uses: actions/setup-dotnet@v1
       with:
-        dotnet-version: '5.x'  # Spécifiez la version .NET appropriée
+        dotnet-version: '7.0'
 
     - name: Build and pack T2t.Barcode.Drawing
       run: |
