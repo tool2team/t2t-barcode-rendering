@@ -19,16 +19,19 @@ jobs:
         dotnet-version: '5.x'  # Spécifiez la version .NET appropriée
 
     - name: Build and pack T2t.Barcode.Drawing
-      run: dotnet build --configuration Release src/T2t.Barcode.Drawing/T2t.Barcode.Drawing.csproj
-           dotnet pack --configuration Release --output nupkg src/T2t.Barcode.Drawing/T2t.Barcode.Drawing.csproj
+      run: |
+        dotnet build --configuration Release src/T2t.Barcode.Drawing/T2t.Barcode.Drawing.csproj
+        dotnet pack --configuration Release --output nupkg src/T2t.Barcode.Drawing/T2t.Barcode.Drawing.csproj
 
     - name: Build and pack T2t.Barcode.Skia
-      run: dotnet build --configuration Release src/T2t.Barcode.Skia/T2t.Barcode.Skia.csproj
-           dotnet pack --configuration Release --output nupkg src/T2t.Barcode.Skia/T2t.Barcode.Skia.csproj
+      run: |
+        dotnet build --configuration Release src/T2t.Barcode.Skia/T2t.Barcode.Skia.csproj
+        dotnet pack --configuration Release --output nupkg src/T2t.Barcode.Skia/T2t.Barcode.Skia.csproj
 
     - name: Build and pack T2t.Barcode.Svg
-      run: dotnet build --configuration Release src/T2t.Barcode.Svg/T2t.Barcode.Svg.csproj
-           dotnet pack --configuration Release --output nupkg src/T2t.Barcode.Svg/T2t.Barcode.Svg.csproj
+      run: |
+        dotnet build --configuration Release src/T2t.Barcode.Svg/T2t.Barcode.Svg.csproj
+        dotnet pack --configuration Release --output nupkg src/T2t.Barcode.Svg/T2t.Barcode.Svg.csproj
 
     - name: Set NuGet API Key
       run: echo "//nuget.org/api/v2/:API_KEY" > nuget.config
