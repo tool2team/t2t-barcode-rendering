@@ -18,6 +18,9 @@ jobs:
       with:
         dotnet-version: '7.0'
 
+    - name: Restore dependencies
+      run: dotnet restore --source "https://api.nuget.org/v3/index.json"
+
     - name: Build and pack T2t.Barcode.Drawing
       run: |
         dotnet build --configuration Release src/T2t.Barcode.Drawing/T2t.Barcode.Drawing.csproj
