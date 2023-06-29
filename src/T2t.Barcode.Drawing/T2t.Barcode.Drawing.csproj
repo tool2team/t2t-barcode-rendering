@@ -4,8 +4,8 @@
 	<TargetFrameworks>net6.0-windows;net7.0-windows</TargetFrameworks>
     <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
     <Configurations>Debug;Release</Configurations>
-    <RootNamespace>T2t.Barcode.Skia</RootNamespace>
-    <AssemblyName>T2t.Barcode.Skia</AssemblyName>
+    <RootNamespace>T2t.Barcode.Drawing</RootNamespace>
+    <AssemblyName>T2t.Barcode.Drawing</AssemblyName>
     <OutputType>Library</OutputType>
     <LangVersion>latest</LangVersion>
     <ImplicitUsings>enable</ImplicitUsings>
