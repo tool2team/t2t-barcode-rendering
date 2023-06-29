@@ -250,7 +250,7 @@ namespace T2t.Barcode.Drawing
 					sum += digitValue;
 				}
 			}
-			sum = sum % 10;
+			sum %= 10;
 			if (sum > 0)
 			{
 				sum = 10 - sum;

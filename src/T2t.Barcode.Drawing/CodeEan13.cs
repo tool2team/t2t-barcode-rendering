@@ -269,7 +269,7 @@ namespace T2t.Barcode.Drawing
 					sum += digitValue;
 				}
 			}
-			sum = sum % 10;
+			sum %= 10;
 			if (sum > 0)
 			{
 				sum = 10 - sum;
@@ -375,7 +375,7 @@ namespace T2t.Barcode.Drawing
 			{
 				barcodeText += Checksum.GetChecksumChar(barcodeText);
 			}
-			barcodeText = barcodeText.Substring(1);
+			barcodeText = barcodeText[1..];
 
 			// Build result with composite glyphs
 			List<Glyph> result = new();

@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFrameworks>net7.0</TargetFrameworks>
+	<TargetFrameworks>net5.0;net6.0;net7.0</TargetFrameworks>
     <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
     <Configurations>Debug;Release</Configurations>
     <RootNamespace>T2t.Barcode.Skia</RootNamespace>
@@ -9,7 +9,7 @@
     <OutputType>Library</OutputType>
     <LangVersion>latest</LangVersion>
     <ImplicitUsings>enable</ImplicitUsings>
-    <RepositoryUrl>https://github.com/sinsedrix/BarcodeRenderingFramework</RepositoryUrl>
+    <RepositoryUrl>https://github.com/tool2team/t2t-barcode-rendering</RepositoryUrl>
   </PropertyGroup>
 
 	<ItemGroup>

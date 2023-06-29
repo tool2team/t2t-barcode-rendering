@@ -1,0 +1,22 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFrameworks>net5.0-windows</TargetFrameworks>
+    <Configurations>Debug;Release</Configurations>
+    <RootNamespace>BarcodeRenderer.Skia.Skia</RootNamespace>
+    <AssemblyName>BarcodeRenderer.Skia.Skia</AssemblyName>
+    <LangVersion>latest</LangVersion>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <OutputType>WinExe</OutputType>
+    <UseWindowsForms>True</UseWindowsForms>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Svg" Version="3.4.4" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\T2t.Barcode.Svg\T2t.Barcode.Svg.csproj" />
+  </ItemGroup>
+
+</Project>

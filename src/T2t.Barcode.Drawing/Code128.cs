@@ -333,19 +333,19 @@ namespace T2t.Barcode.Drawing
 					bool lastChar = (charIndex == (subBlock.Length - 1));
 					char character = subBlock[charIndex];
 
-					// Detect when dealing with numeric sequence and attempt
-					//	to encode digits using double density encoding scheme
-					int glyphIndex = -1;
-					if (set == 2 && char.IsDigit(character))
+                    // Detect when dealing with numeric sequence and attempt
+                    //	to encode digits using double density encoding scheme
+                    int glyphIndex;
+                    if (set == 2 && char.IsDigit(character))
 					{
 						if (!lastChar && char.IsDigit(subBlock[charIndex + 1]))
 						{
-							glyphIndex = Int32.Parse(subBlock.Substring(charIndex, 2));
+							glyphIndex = int.Parse(subBlock.Substring(charIndex, 2));
 							++charIndex;
 						}
 						else
 						{
-							glyphIndex = Int32.Parse(subBlock.Substring(charIndex, 1));
+							glyphIndex = int.Parse(subBlock.Substring(charIndex, 1));
 						}
 					}
 
@@ -636,7 +636,7 @@ namespace T2t.Barcode.Drawing
 
 			// Must have something...
 			System.Diagnostics.Debug.Assert(index > 0);
-			subBlock = text.Substring(0, index);
+			subBlock = text[..index];
 			switch (state)
 			{
 				case BlockParserState.UseSetA:
@@ -657,7 +657,7 @@ namespace T2t.Barcode.Drawing
 			}
 
 			// Return remaining text
-			return text.Substring(index);
+			return text[index..];
 		}
 		#endregion
 	}
@@ -735,7 +735,7 @@ namespace T2t.Barcode.Drawing
 				checksum += (index * Factory.GetRawGlyphIndex(
 					((BarGlyph)(fullGlyph[index]))));
 			}
-			checksum = checksum % 103;
+			checksum %= 103;
 			return new Glyph[] { Factory.GetRawGlyph((int)checksum) };
 		}
 		#endregion

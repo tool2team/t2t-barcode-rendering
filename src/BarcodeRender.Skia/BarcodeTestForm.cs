@@ -298,14 +298,14 @@ namespace BarcodeRenderer.Skia
 				++numLines;
 			}
 
-			// Determine size to allocate for each barcode
-			SizeF barcodeArea = new SizeF ();
-			barcodeArea.Width =
-				(e.MarginBounds.Width / _barcodeColumns);
-			barcodeArea.Height =
-				(e.MarginBounds.Height / numLines);
+            // Determine size to allocate for each barcode
+            SizeF barcodeArea = new SizeF
+            {
+                Width = (e.MarginBounds.Width / _barcodeColumns),
+                Height = (e.MarginBounds.Height / numLines)
+            };
 
-			e.HasMorePages = true;
+            e.HasMorePages = true;
 			for (int index = 0; index < _barcodesPerPage; ++index)
 			{
 				// Fetch the next test
@@ -371,14 +371,18 @@ namespace BarcodeRenderer.Skia
 				TreeNode root = new TreeNode ("Symbologies");
 				foreach (SymbologyTestGroup group in _testPlan.GroupTests)
 				{
-					TreeNode groupNode = new TreeNode (group.Symbology.ToString ());
-					groupNode.Tag = group;
+                    TreeNode groupNode = new TreeNode(group.Symbology.ToString())
+                    {
+                        Tag = group
+                    };
 
-					foreach (SymbologyTestItem item in group.TestItems)
+                    foreach (SymbologyTestItem item in group.TestItems)
 					{
-						TreeNode itemNode = new TreeNode (item.Barcode);
-						itemNode.Tag = item;
-						groupNode.Nodes.Add (itemNode);
+                        TreeNode itemNode = new TreeNode(item.Barcode)
+                        {
+                            Tag = item
+                        };
+                        groupNode.Nodes.Add (itemNode);
 					}
 
 					root.Nodes.Add (groupNode);
@@ -571,14 +575,16 @@ namespace BarcodeRenderer.Skia
 			if (SaveModified () &&
 				openFileDialog.ShowDialog (this) == DialogResult.OK)
 			{
-				// Open XML file reader
-				// TODO: Incorporate schema based validation
-				XmlReaderSettings readerConfig = new XmlReaderSettings ();
-				readerConfig.CloseInput = true;
-				readerConfig.ConformanceLevel = ConformanceLevel.Document;
-				readerConfig.IgnoreComments = true;
+                // Open XML file reader
+                // TODO: Incorporate schema based validation
+                XmlReaderSettings readerConfig = new XmlReaderSettings
+                {
+                    CloseInput = true,
+                    ConformanceLevel = ConformanceLevel.Document,
+                    IgnoreComments = true
+                };
 
-				using (XmlReader xmlReader = XmlReader.Create (
+                using (XmlReader xmlReader = XmlReader.Create (
 					new FileStream (openFileDialog.FileName, FileMode.Open,
 					FileAccess.Read, FileShare.Read), readerConfig))
 				{
@@ -603,14 +609,16 @@ namespace BarcodeRenderer.Skia
 
 		private void DoSave (string fileName)
 		{
-			XmlWriterSettings writerConfig = new XmlWriterSettings ();
-			writerConfig.CloseOutput = true;
-			writerConfig.ConformanceLevel = ConformanceLevel.Document;
-			writerConfig.Encoding = Encoding.UTF8;
-			writerConfig.Indent = true;
-			writerConfig.IndentChars = "\t";
+            XmlWriterSettings writerConfig = new XmlWriterSettings
+            {
+                CloseOutput = true,
+                ConformanceLevel = ConformanceLevel.Document,
+                Encoding = Encoding.UTF8,
+                Indent = true,
+                IndentChars = "\t"
+            };
 
-			using (XmlWriter xmlWriter = XmlWriter.Create (
+            using (XmlWriter xmlWriter = XmlWriter.Create (
 				new FileStream (fileName, FileMode.Create, FileAccess.Write,
 				FileShare.None), writerConfig))
 			{

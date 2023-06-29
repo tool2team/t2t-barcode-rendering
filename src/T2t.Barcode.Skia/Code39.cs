@@ -302,7 +302,7 @@ namespace T2t.Barcode.Skia
 				}
 				sum += checkValue;
 			}
-			return Factory.GetRawGlyph((int)(sum % 43)).Character;
+			return Factory.GetRawGlyph(sum % 43).Character;
 		}
 		#endregion
 	}

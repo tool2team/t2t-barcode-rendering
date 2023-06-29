@@ -187,7 +187,7 @@ namespace T2t.Barcode.Skia
 				int checkValue = Factory.GetRawCharIndex(text[text.Length - index - 1]);
 				sum += (checkValue * ((index % 10) + 1));
 			}
-			return Factory.GetRawGlyph((int)(sum % weight)).Character;
+			return Factory.GetRawGlyph(sum % weight).Character;
 		}
 		#endregion
 	}

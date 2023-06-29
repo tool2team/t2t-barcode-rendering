@@ -46,27 +46,27 @@ namespace T2t.Barcode.Drawing
 					return false;
 				}
 
-				public static String FromASCIIByteArray(byte[] characters)
+				public static string FromASCIIByteArray(byte[] characters)
 				{
 					ASCIIEncoding encoding = new();
-					String constructedString = encoding.GetString(characters);
+                    string constructedString = encoding.GetString(characters);
 					return constructedString;
 				}
 
-				public static String FromUnicodeByteArray(byte[] characters)
+				public static string FromUnicodeByteArray(byte[] characters)
 				{
 					UnicodeEncoding encoding = new();
-					String constructedString = encoding.GetString(characters);
+                    string constructedString = encoding.GetString(characters);
 					return constructedString;
 				}
 
-				public static byte[] AsciiStringToByteArray(String str)
+				public static byte[] AsciiStringToByteArray(string str)
 				{
 					ASCIIEncoding encoding = new();
 					return encoding.GetBytes(str);
 				}
 
-				public static byte[] UnicodeStringToByteArray(String str)
+				public static byte[] UnicodeStringToByteArray(string str)
 				{
 					UnicodeEncoding encoding = new();
 					return encoding.GetBytes(str);
@@ -81,7 +81,7 @@ namespace T2t.Barcode.Drawing
 				/// <param name="start">The starting index of the target array.</param>
 				/// <param name="count">The maximum number of characters to read from the source Stream.</param>
 				/// <returns>The number of characters read. The number will be less than or equal to count depending on the data available in the source Stream. Returns -1 if the end of the stream is reached.</returns>
-				public static System.Int32 ReadInput(System.IO.Stream sourceStream, sbyte[] target, int start, int count)
+				public static int ReadInput(System.IO.Stream sourceStream, sbyte[] target, int start, int count)
 				{
 					// Returns 0 bytes if not enough space in target
 					if (target.Length == 0)
@@ -106,7 +106,7 @@ namespace T2t.Barcode.Drawing
 				/// <param name="start">The starting index of the target array.</param>
 				/// <param name="count">The maximum number of characters to read from the source TextReader.</param>
 				/// <returns>The number of characters read. The number will be less than or equal to count depending on the data available in the source TextReader. Returns -1 if the end of the stream is reached.</returns>
-				public static System.Int32 ReadInput(System.IO.TextReader sourceTextReader, short[] target, int start, int count)
+				public static int ReadInput(System.IO.TextReader sourceTextReader, short[] target, int start, int count)
 				{
 					// Returns 0 bytes if not enough space in target
 					if (target.Length == 0)
@@ -211,7 +211,7 @@ namespace T2t.Barcode.Drawing
 				/// </summary>
 				/// <param name="sourceString">The string to be converted</param>
 				/// <returns>The new array of bytes</returns>
-				public static byte[] ToByteArray(String sourceString)
+				public static byte[] ToByteArray(string sourceString)
 				{
 					return System.Text.UTF8Encoding.UTF8.GetBytes(sourceString);
 				}
@@ -221,7 +221,7 @@ namespace T2t.Barcode.Drawing
 				/// </summary>
 				/// <param name="tempObjectArray">Array to convert.</param>
 				/// <returns>An array of byte type elements.</returns>
-				public static byte[] ToByteArray(System.Object[] tempObjectArray)
+				public static byte[] ToByteArray(object[] tempObjectArray)
 				{
 					byte[] byteArray = null;
 					if (tempObjectArray != null)
@@ -411,24 +411,23 @@ namespace T2t.Barcode.Drawing
 			{
 				int originaldataLength;
 				int i = 0;
-				int structureAppendParity = 0;
+                originaldataLength = originaldata.Length;
 
-				originaldataLength = originaldata.Length;
-
-				if (originaldataLength > 1)
-				{
-					structureAppendParity = 0;
-					while (i < originaldataLength)
-					{
-						structureAppendParity = (structureAppendParity ^ (originaldata[i] & 0xFF));
-						i++;
-					}
-				}
-				else
-				{
-					structureAppendParity = -1;
-				}
-				return structureAppendParity;
+                int structureAppendParity;
+                if (originaldataLength > 1)
+                {
+                    structureAppendParity = 0;
+                    while (i < originaldataLength)
+                    {
+                        structureAppendParity ^= (originaldata[i] & 0xFF);
+                        i++;
+                    }
+                }
+                else
+                {
+                    structureAppendParity = -1;
+                }
+                return structureAppendParity;
 			}
 
 			public virtual bool[][] CalculateQrCode(byte[] qrcodeData)
@@ -569,12 +568,12 @@ namespace T2t.Barcode.Drawing
 						{
 							if ((i % 3) == 0)
 							{
-								dataValue[dataCounter] = (int)(qrcodeData[i] - 0x30);
+								dataValue[dataCounter] = qrcodeData[i] - 0x30;
 								dataBits[dataCounter] = 4;
 							}
 							else
 							{
-								dataValue[dataCounter] = dataValue[dataCounter] * 10 + (int)(qrcodeData[i] - 0x30);
+								dataValue[dataCounter] = dataValue[dataCounter] * 10 + (qrcodeData[i] - 0x30);
 
 								if ((i % 3) == 1)
 								{
@@ -786,10 +785,10 @@ namespace T2t.Barcode.Drawing
 
 				/* --- format information --- */
 				sbyte formatInformationValue = (sbyte)(((sbyte)(ec << 3)) | maskNumber);
-				String[] formatInformationArray = new String[] { "101010000010010", "101000100100101", "101111001111100", "101101101001011", "100010111111001", "100000011001110", "100111110010111", "100101010100000", "111011111000100", "111001011110011", "111110110101010", "111100010011101", "110011000101111", "110001100011000", "110110001000001", "110100101110110", "001011010001001", "001001110111110", "001110011100111", "001100111010000", "000011101100010", "000001001010101", "000110100001100", "000100000111011", "011010101011111", "011000001101000", "011111100110001", "011101000000110", "010010010110100", "010000110000011", "010111011011010", "010101111101101" };
+                string[] formatInformationArray = new string[] { "101010000010010", "101000100100101", "101111001111100", "101101101001011", "100010111111001", "100000011001110", "100111110010111", "100101010100000", "111011111000100", "111001011110011", "111110110101010", "111100010011101", "110011000101111", "110001100011000", "110110001000001", "110100101110110", "001011010001001", "001001110111110", "001110011100111", "001100111010000", "000011101100010", "000001001010101", "000110100001100", "000100000111011", "011010101011111", "011000001101000", "011111100110001", "011101000000110", "010010010110100", "010000110000011", "010111011011010", "010101111101101" };
 				for (int i = 0; i < 15; i++)
 				{
-					sbyte content = (sbyte)System.SByte.Parse(formatInformationArray[formatInformationValue].Substring(i, (i + 1) - (i)));
+					sbyte content = sbyte.Parse(formatInformationArray[formatInformationValue][i..(i + 1)]);
 					matrixContent[formatInformationX1[i] & 0xFF][formatInformationY1[i] & 0xFF] = (sbyte)(content * 255);
 					matrixContent[formatInformationX2[i] & 0xFF][formatInformationY2[i] & 0xFF] = (sbyte)(content * 255);
 				}
@@ -875,7 +874,7 @@ namespace T2t.Barcode.Drawing
 							}
 							else
 							{
-								buffer = (buffer & ((1 << bufferBits) - 1));
+								buffer &= ((1 << bufferBits) - 1);
 								flag = true;
 							}
 							codewordsCounter++;
@@ -935,17 +934,16 @@ namespace T2t.Barcode.Drawing
 					SystemUtils.WriteStackTrace(e, Console.Error);
 				}
 
-				/* ---- RS-ECC prepare */
-				int i2 = 0;
-				int j = 0;
+                int j = 0;
 				int rsBlockNumber = 0;
 
 				sbyte[][] rsTemp = new sbyte[rsBlockOrder.Length][];
 				sbyte[] res = new sbyte[maxCodewords];
 				Array.Copy(codewords, 0, res, 0, codewords.Length);
 
-				i2 = 0;
-				while (i2 < rsBlockOrder.Length)
+                /* ---- RS-ECC prepare */
+                int i2 = 0;
+                while (i2 < rsBlockOrder.Length)
 				{
 					rsTemp[i2] = new sbyte[(rsBlockOrder[i2] & 0xFF) - rsEccCodewords];
 					i2++;
@@ -1012,7 +1010,7 @@ namespace T2t.Barcode.Drawing
 				return res;
 			}
 
-			private static sbyte[] calculateByteArrayBits(sbyte[] xa, sbyte[] xb, String ind)
+			private static sbyte[] calculateByteArrayBits(sbyte[] xa, sbyte[] xb, string ind)
 			{
 				int ll;
 				int ls;
@@ -1042,7 +1040,7 @@ namespace T2t.Barcode.Drawing
 				{
 					if (i < ls)
 					{
-						if ((System.Object)ind == (System.Object)"xor")
+						if (ind == (object)"xor")
 						{
 							res[i] = (sbyte)(xl[i] ^ xs[i]);
 						}
@@ -1114,8 +1112,8 @@ namespace T2t.Barcode.Drawing
 									d2[maskNumber] += 3;
 								}
 
-								d2And = d2And >> 1;
-								d2Or = d2Or >> 1;
+								d2And >>= 1;
+								d2Or >>= 1;
 							}
 
 							if (((xData[maskNumber] & 0x1F) == 0) || ((xData[maskNumber] & 0x1F) == 0x1F))
@@ -1165,7 +1163,7 @@ namespace T2t.Barcode.Drawing
 				int[] d4Value = new int[] { 90, 80, 70, 60, 50, 40, 30, 20, 10, 0, 0, 10, 20, 30, 40, 50, 60, 70, 80, 90, 90 };
 				for (int maskNumber = 0; maskNumber < 8; maskNumber++)
 				{
-					d4[maskNumber] = d4Value[(int)((20 * d4Counter[maskNumber]) / maxCodewordsBitWithRemain)];
+					d4[maskNumber] = d4Value[(20 * d4Counter[maskNumber]) / maxCodewordsBitWithRemain];
 					int demerit = d1[maskNumber] + d2[maskNumber] + d3[maskNumber] + d4[maskNumber];
 					if (demerit < minValue || maskNumber == 0)
 					{
@@ -1189,7 +1187,7 @@ namespace T2t.Barcode.Drawing
 			/// <returns>
 			/// A <see cref="Bitmap"/> object representing the QR barcode.
 			/// </returns>
-			public virtual Bitmap Encode(String content, Encoding encoding)
+			public virtual Bitmap Encode(string content, Encoding encoding)
 			{
 				bool[][] matrix = CalculateQrCode(encoding.GetBytes(content));
 				SolidBrush brush = new(_backgroundColor);
@@ -1219,7 +1217,7 @@ namespace T2t.Barcode.Drawing
 			/// <returns>
 			/// A <see cref="Bitmap"/> object representing the QR barcode.
 			/// </returns>
-			public virtual Bitmap Encode(String content)
+			public virtual Bitmap Encode(string content)
 			{
 				if (QRCodeUtility.IsUnicode(content))
 				{

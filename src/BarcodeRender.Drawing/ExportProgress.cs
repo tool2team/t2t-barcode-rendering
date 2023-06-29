@@ -33,14 +33,16 @@ namespace BarcodeRender.Drawing
 			string rootFolder, bool overwriteFiles, 
 			bool flattenHierarchy, int maxBarHeight)
 		{
-			ExportWorkerState state = new ExportWorkerState ();
-			state.TestPlan = testPlan;
-			state.Folder = rootFolder;
-			state.OverwriteFiles = overwriteFiles;
-			state.FlattenHierarchy = flattenHierarchy;
-			state.MaxBarHeight = maxBarHeight;
+            ExportWorkerState state = new ExportWorkerState
+            {
+                TestPlan = testPlan,
+                Folder = rootFolder,
+                OverwriteFiles = overwriteFiles,
+                FlattenHierarchy = flattenHierarchy,
+                MaxBarHeight = maxBarHeight
+            };
 
-			new Thread (new ParameterizedThreadStart (WorkerThread)).Start (state);
+            new Thread (new ParameterizedThreadStart (WorkerThread)).Start (state);
 		}
 
 		private static void WorkerThread (object state)
@@ -74,7 +76,7 @@ namespace BarcodeRender.Drawing
 					{
 						if (done < total)
 						{
-							exportWorker.ReportProgress ((int) (((float) done / (float) total) * 100.0f));
+							exportWorker.ReportProgress ((int) ((done / (float) total) * 100.0f));
 						}
 						else
 						{

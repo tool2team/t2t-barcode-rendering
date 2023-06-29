@@ -121,133 +121,133 @@ namespace T2t.Barcode.Drawing
 				int mode = ALPHA;
 				int ptr = 0;
 				int fullBytes = 0;
-				int v = 0;
-				int k;
-				int size;
+                int k;
+                int size;
 				length += start;
-				for (k = start; k < length; ++k)
-				{
-					v = GetTextTypeAndValue(length, k);
-					if ((v & mode) != 0)
-					{
-						dest[ptr++] = v & 0xff;
-						continue;
-					}
-					if ((v & Ibyte) != 0)
-					{
-						if ((ptr & 1) != 0)
-						{
-							dest[ptr++] = (mode & PUNCTUATION) != 0 ? PAL : PS;
-							mode = (mode & PUNCTUATION) != 0 ? ALPHA : mode;
-						}
-						dest[ptr++] = BYTESHIFT;
-						dest[ptr++] = v & 0xff;
-						fullBytes += 2;
-						continue;
-					}
-					switch (mode)
-					{
+                int v;
+                for (k = start; k < length; ++k)
+                {
+                    v = GetTextTypeAndValue(length, k);
+                    if ((v & mode) != 0)
+                    {
+                        dest[ptr++] = v & 0xff;
+                        continue;
+                    }
+                    if ((v & Ibyte) != 0)
+                    {
+                        if ((ptr & 1) != 0)
+                        {
+                            dest[ptr++] = (mode & PUNCTUATION) != 0 ? PAL : PS;
+                            mode = (mode & PUNCTUATION) != 0 ? ALPHA : mode;
+                        }
+                        dest[ptr++] = BYTESHIFT;
+                        dest[ptr++] = v & 0xff;
+                        fullBytes += 2;
+                        continue;
+                    }
+                    switch (mode)
+                    {
 
-						case ALPHA:
-							if ((v & LOWER) != 0)
-							{
-								dest[ptr++] = LL;
-								dest[ptr++] = v & 0xff;
-								mode = LOWER;
-							}
-							else if ((v & MIXED) != 0)
-							{
-								dest[ptr++] = ML;
-								dest[ptr++] = v & 0xff;
-								mode = MIXED;
-							}
-							else if ((GetTextTypeAndValue(length, k + 1) &
-								GetTextTypeAndValue(length, k + 2) & PUNCTUATION) != 0)
-							{
-								dest[ptr++] = ML;
-								dest[ptr++] = PL;
-								dest[ptr++] = v & 0xff;
-								mode = PUNCTUATION;
-							}
-							else
-							{
-								dest[ptr++] = PS;
-								dest[ptr++] = v & 0xff;
-							}
-							break;
+                        case ALPHA:
+                            if ((v & LOWER) != 0)
+                            {
+                                dest[ptr++] = LL;
+                                dest[ptr++] = v & 0xff;
+                                mode = LOWER;
+                            }
+                            else if ((v & MIXED) != 0)
+                            {
+                                dest[ptr++] = ML;
+                                dest[ptr++] = v & 0xff;
+                                mode = MIXED;
+                            }
+                            else if ((GetTextTypeAndValue(length, k + 1) &
+                                GetTextTypeAndValue(length, k + 2) & PUNCTUATION) != 0)
+                            {
+                                dest[ptr++] = ML;
+                                dest[ptr++] = PL;
+                                dest[ptr++] = v & 0xff;
+                                mode = PUNCTUATION;
+                            }
+                            else
+                            {
+                                dest[ptr++] = PS;
+                                dest[ptr++] = v & 0xff;
+                            }
+                            break;
 
-						case LOWER:
-							if ((v & ALPHA) != 0)
-							{
-								if ((GetTextTypeAndValue(length, k + 1) &
-									GetTextTypeAndValue(length, k + 2) & ALPHA) != 0)
-								{
-									dest[ptr++] = ML;
-									dest[ptr++] = AL;
-									mode = ALPHA;
-								}
-								else
-								{
-									dest[ptr++] = AS;
-								}
-								dest[ptr++] = v & 0xff;
-							}
-							else if ((v & MIXED) != 0)
-							{
-								dest[ptr++] = ML;
-								dest[ptr++] = v & 0xff;
-								mode = MIXED;
-							}
-							else if ((GetTextTypeAndValue(length, k + 1) &
-								GetTextTypeAndValue(length, k + 2) & PUNCTUATION) != 0)
-							{
-								dest[ptr++] = ML;
-								dest[ptr++] = PL;
-								dest[ptr++] = v & 0xff;
-								mode = PUNCTUATION;
-							}
-							else
-							{
-								dest[ptr++] = PS;
-								dest[ptr++] = v & 0xff;
-							}
-							break;
+                        case LOWER:
+                            if ((v & ALPHA) != 0)
+                            {
+                                if ((GetTextTypeAndValue(length, k + 1) &
+                                    GetTextTypeAndValue(length, k + 2) & ALPHA) != 0)
+                                {
+                                    dest[ptr++] = ML;
+                                    dest[ptr++] = AL;
+                                    mode = ALPHA;
+                                }
+                                else
+                                {
+                                    dest[ptr++] = AS;
+                                }
+                                dest[ptr++] = v & 0xff;
+                            }
+                            else if ((v & MIXED) != 0)
+                            {
+                                dest[ptr++] = ML;
+                                dest[ptr++] = v & 0xff;
+                                mode = MIXED;
+                            }
+                            else if ((GetTextTypeAndValue(length, k + 1) &
+                                GetTextTypeAndValue(length, k + 2) & PUNCTUATION) != 0)
+                            {
+                                dest[ptr++] = ML;
+                                dest[ptr++] = PL;
+                                dest[ptr++] = v & 0xff;
+                                mode = PUNCTUATION;
+                            }
+                            else
+                            {
+                                dest[ptr++] = PS;
+                                dest[ptr++] = v & 0xff;
+                            }
+                            break;
 
-						case MIXED:
-							if ((v & LOWER) != 0)
-							{
-								dest[ptr++] = LL;
-								dest[ptr++] = v & 0xff;
-								mode = LOWER;
-							}
-							else if ((v & ALPHA) != 0)
-							{
-								dest[ptr++] = AL;
-								dest[ptr++] = v & 0xff;
-								mode = ALPHA;
-							}
-							else if ((GetTextTypeAndValue(length, k + 1)
-								& GetTextTypeAndValue(length, k + 2) & PUNCTUATION) != 0)
-							{
-								dest[ptr++] = PL;
-								dest[ptr++] = v & 0xff;
-								mode = PUNCTUATION;
-							}
-							else
-							{
-								dest[ptr++] = PS;
-								dest[ptr++] = v & 0xff;
-							}
-							break;
+                        case MIXED:
+                            if ((v & LOWER) != 0)
+                            {
+                                dest[ptr++] = LL;
+                                dest[ptr++] = v & 0xff;
+                                mode = LOWER;
+                            }
+                            else if ((v & ALPHA) != 0)
+                            {
+                                dest[ptr++] = AL;
+                                dest[ptr++] = v & 0xff;
+                                mode = ALPHA;
+                            }
+                            else if ((GetTextTypeAndValue(length, k + 1)
+                                & GetTextTypeAndValue(length, k + 2) & PUNCTUATION) != 0)
+                            {
+                                dest[ptr++] = PL;
+                                dest[ptr++] = v & 0xff;
+                                mode = PUNCTUATION;
+                            }
+                            else
+                            {
+                                dest[ptr++] = PS;
+                                dest[ptr++] = v & 0xff;
+                            }
+                            break;
 
-						case PUNCTUATION:
-							dest[ptr++] = PAL;
-							mode = ALPHA;
-							--k;
-							break;
-					}
-				}
-				if ((ptr & 1) != 0)
+                        case PUNCTUATION:
+                            dest[ptr++] = PAL;
+                            mode = ALPHA;
+                            --k;
+                            break;
+                    }
+                }
+                if ((ptr & 1) != 0)
 					dest[ptr++] = PS;
 				size = (ptr + fullBytes) / 2;
 				if (size + _owner._cwPtr > MAX_DATA_CODEWORDS)
@@ -346,7 +346,7 @@ namespace T2t.Barcode.Drawing
 					}
 
 					// add the digit
-					_owner._codewords[ret + retLast] += ((int)_owner._text[ni] & 0xff);
+					_owner._codewords[ret + retLast] += (_owner._text[ni] & 0xff);
 
 					// propagate carry
 					for (k = retLast; k > 0; --k)
@@ -375,7 +375,7 @@ namespace T2t.Barcode.Drawing
 						for (j = 0; j < size; ++j)
 						{
 							_owner._codewords[_owner._cwPtr++] =
-								(int)_owner._text[k + j] & 0xff;
+                                _owner._text[k + j] & 0xff;
 						}
 					}
 					else
@@ -1112,8 +1112,8 @@ namespace T2t.Barcode.Drawing
 		private void RenderEdgePattern(int row, bool start)
 		{
 			int rowMod = row % 3;
-			int edge = 0;
-			if (start)
+            int edge;
+            if (start)
 			{
 				switch (rowMod)
 				{
@@ -1243,60 +1243,58 @@ namespace T2t.Barcode.Drawing
 			int lastP = 0;
 			int startN = 0;
 			int digitCount = 0;
-			char c = (char)(0);
-			int index, ptrS;
-			bool lastTxt, txt;
-			Segment v;
-			Segment vp;
-			Segment vn;
+            int index, ptrS;
+            bool lastTxt, txt;
+            Segment v;
+            Segment vp;
+            Segment vn;
 
-			// Put digit runs greater than 13 characters into segment blocks
-			for (index = 0; index < textLength; ++index)
-			{
-				c = (char)(_text[index] & 0xff);
-				if (char.IsDigit(c))
-				{
-					if (digitCount == 0)
-					{
-						startN = index;
-					}
-					++digitCount;
-					continue;
-				}
-				if (digitCount >= 13)
-				{
-					if (lastP != startN)
-					{
-						c = (char)(_text[lastP] & 0xff);
-						ptrS = lastP;
-						lastTxt = (c >= ' ' && c < 127) || c == '\r' || c == '\n' || c == '\t';
-						for (int j = lastP; j < startN; ++j)
-						{
-							c = (char)(_text[j] & 0xff);
-							txt = (c >= ' ' && c < 127) || c == '\r' || c == '\n' || c == '\t';
-							if (txt != lastTxt)
-							{
-								_segmentList.Add(lastTxt ? SegmentTypes.Text : SegmentTypes.Binary, lastP, j);
-								lastP = j;
-								lastTxt = txt;
-							}
-						}
-						_segmentList.Add(lastTxt ? SegmentTypes.Text : SegmentTypes.Binary, lastP, startN);
-					}
-					_segmentList.Add(SegmentTypes.Numeric, startN, index);
-					lastP = index;
-				}
-				digitCount = 0;
-			}
-			if (digitCount < 13)
+            char c;
+            // Put digit runs greater than 13 characters into segment blocks
+            for (index = 0; index < textLength; ++index)
+            {
+                c = (char)(_text[index] & 0xff);
+                if (char.IsDigit(c))
+                {
+                    if (digitCount == 0)
+                    {
+                        startN = index;
+                    }
+                    ++digitCount;
+                    continue;
+                }
+                if (digitCount >= 13)
+                {
+                    if (lastP != startN)
+                    {
+                        c = (char)(_text[lastP] & 0xff);
+                        lastTxt = (c >= ' ' && c < 127) || c == '\r' || c == '\n' || c == '\t';
+                        for (int j = lastP; j < startN; ++j)
+                        {
+                            c = (char)(_text[j] & 0xff);
+                            txt = (c >= ' ' && c < 127) || c == '\r' || c == '\n' || c == '\t';
+                            if (txt != lastTxt)
+                            {
+                                _segmentList.Add(lastTxt ? SegmentTypes.Text : SegmentTypes.Binary, lastP, j);
+                                lastP = j;
+                                lastTxt = txt;
+                            }
+                        }
+                        _segmentList.Add(lastTxt ? SegmentTypes.Text : SegmentTypes.Binary, lastP, startN);
+                    }
+                    _segmentList.Add(SegmentTypes.Numeric, startN, index);
+                    lastP = index;
+                }
+                digitCount = 0;
+            }
+            if (digitCount < 13)
 			{
 				startN = textLength;
 			}
 			if (lastP != startN)
 			{
 				c = (char)(_text[lastP] & 0xff);
-				ptrS = lastP;
-				lastTxt = (c >= ' ' && c < 127) || c == '\r' || c == '\n' || c == '\t';
+                lastTxt = (c >= ' ' && c < 127) || c == '\r' || c == '\n' || c == '\t';
 				for (int j = lastP; j < startN; ++j)
 				{
 					c = (char)(_text[j] & 0xff);
@@ -1472,7 +1470,7 @@ namespace T2t.Barcode.Drawing
 						c[j] = '\n';
 					}
 				}
-				System.Console.Out.WriteLine("" + v.Type + new System.String(c));
+				System.Console.Out.WriteLine("" + v.Type + new string(c));
 			}
 		}
 
@@ -1482,7 +1480,7 @@ namespace T2t.Barcode.Drawing
 
 			try
 			{
-				Char[] cArray = sValue.ToCharArray();
+                char[] cArray = sValue.ToCharArray();
 
 				for (int k = 0; k < cArray.Length; k++)
 				{
