@@ -1,0 +1,37 @@
+name: Deploy NuGet Packages
+
+on:
+  release:
+    types:
+      - created
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v1
+      with:
+        dotnet-version: '5.x'  # Spécifiez la version .NET appropriée
+
+    - name: Build and pack T2t.Barcode.Drawing
+      run: dotnet build --configuration Release src/T2t.Barcode.Drawing/T2t.Barcode.Drawing.csproj
+           dotnet pack --configuration Release --output nupkg src/T2t.Barcode.Drawing/T2t.Barcode.Drawing.csproj
+
+    - name: Build and pack T2t.Barcode.Skia
+      run: dotnet build --configuration Release src/T2t.Barcode.Skia/T2t.Barcode.Skia.csproj
+           dotnet pack --configuration Release --output nupkg src/T2t.Barcode.Skia/T2t.Barcode.Skia.csproj
+
+    - name: Build and pack T2t.Barcode.Svg
+      run: dotnet build --configuration Release src/T2t.Barcode.Svg/T2t.Barcode.Svg.csproj
+           dotnet pack --configuration Release --output nupkg src/T2t.Barcode.Svg/T2t.Barcode.Svg.csproj
+
+    - name: Publish to NuGet
+      uses: NuGet/nuget-setapikey-action@v1
+      with:
+        nuget-api-key: ${{ secrets.NUGET_API_KEY }}
+      run: dotnet nuget push "./nupkg/*.nupkg" --source "https://api.nuget.org/v3/index.json"
