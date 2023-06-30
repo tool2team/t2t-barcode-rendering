@@ -1,6 +1,6 @@
-# Zen Barcode Rendering Framework
+# Barcode Rendering Library
 
-The bar-code rendering framework quite simply encapsulates the native rendering of barcode symbologies without requiring third-party fonts.
+The bar-code rendering library quite simply encapsulates the native rendering of barcode symbologies without requiring third-party fonts.
 
 The framework makes it easy to define new symbologies and use the resultant images from web or forms applications in a variety of usage scenarios.
 
@@ -16,6 +16,8 @@ Currently supported bar-code symbologies;
 * Code PDF417 2D (still alpha – still broken)
 * Code QR 2D (new)
 
-A sample web application is included to demonstrate usage of the rendering classes from a web environment - it's still rather simple though!
+## Integration
 
-Support for embedding barcodes directly into SQL Server 2008 Reporting Services reports.
+* T2t.Barcode.Drawing : windows only depending on System.Drawing.Common
+* T2t.Barcode.Skia : multi platform depending on SkiaSharp
+* T2t.Barcode.Svg : multi platform, no dependency
