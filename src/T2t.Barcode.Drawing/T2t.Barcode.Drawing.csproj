@@ -3,6 +3,7 @@
   <PropertyGroup>
 	<TargetFrameworks>net6.0-windows;net7.0-windows</TargetFrameworks>
     <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+	<PackageOutputPath>nupkg</PackageOutputPath>
     <Configurations>Debug;Release</Configurations>
     <RootNamespace>T2t.Barcode.Drawing</RootNamespace>
     <AssemblyName>T2t.Barcode.Drawing</AssemblyName>
