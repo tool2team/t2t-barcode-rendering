@@ -39,4 +39,4 @@ jobs:
         ls src/*/nupkg/*
         dotnet nuget push "src/*/nupkg/*.nupkg" --source "https://nuget.pkg.github.com/tool2team/index.json" --api-key ${{ secrets.PKGREG_TOKEN }} 
         dotnet nuget add source -u sinsedrix -p ${{ secrets.NUGET_API_KEY }} --name nuget.org "https://api.nuget.org/v3/index.json"
-        dotnet nuget push "src/*/nupkg/*.nupkg" --source "https://api.nuget.org/v3/index.json"
+        dotnet nuget push "src/*/nupkg/*.nupkg"
