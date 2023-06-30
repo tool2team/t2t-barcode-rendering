@@ -20,24 +20,21 @@ jobs:
 
     - name: Build and pack T2t.Barcode.Drawing
       run: |
-        cd src/T2t.Barcode.Drawing
-        dotnet restore --source "https://api.nuget.org/v3/index.json"
-        dotnet build --configuration Release --no-restore --version "${{ github.ref_name }}"
-        dotnet pack --configuration Release --output ../nupkg --version "${{ github.ref_name }}"
+        dotnet restore src/T2t.Barcode.Drawing/T2t.Barcode.Drawing.csproj --source "https://api.nuget.org/v3/index.json"
+        dotnet build src/T2t.Barcode.Drawing/T2t.Barcode.Drawing.csproj --configuration Release --no-restore --version "${{ github.ref_name }}"
+        dotnet pack src/T2t.Barcode.Drawing/T2t.Barcode.Drawing.csproj --configuration Release --output nupkg --version "${{ github.ref_name }}"
 
     - name: Build and pack T2t.Barcode.Skia
       run: |
-        cd src/T2t.Barcode.Skia
-        dotnet restore --source "https://api.nuget.org/v3/index.json" 
-        dotnet build --configuration Release --no-restore --version ${{ github.ref_name }}
-        dotnet pack --configuration Release --output ../nupkg --version ${{ github.ref_name }}
+        dotnet restore src/T2t.Barcode.Skia/T2t.Barcode.Skia.csproj --source "https://api.nuget.org/v3/index.json" 
+        dotnet build src/T2t.Barcode.Skia/T2t.Barcode.Skia.csproj --configuration Release --no-restore --version ${{ github.ref_name }}
+        dotnet pack src/T2t.Barcode.Skia/T2t.Barcode.Skia.csproj --configuration Release --output nupkg --version ${{ github.ref_name }}
 
     - name: Build and pack T2t.Barcode.Svg
       run: |
-        cd src/T2t.Barcode.Svg
-        dotnet restore --source "https://api.nuget.org/v3/index.json"
-        dotnet build --configuration Release --no-restore --version ${{ github.ref_name }}
-        dotnet pack --configuration Release --output ../nupkg --version ${{ github.ref_name }}
+        dotnet restore src/T2t.Barcode.Svg/T2t.Barcode.Svg.csproj --source "https://api.nuget.org/v3/index.json"
+        dotnet build src/T2t.Barcode.Svg/T2t.Barcode.Svg.csproj --configuration Release --no-restore --version ${{ github.ref_name }}
+        dotnet pack src/T2t.Barcode.Svg/T2t.Barcode.Svg.csproj --configuration Release --output nupkg --version ${{ github.ref_name }}
 
     # 
     # dotnet nuget add source -u sinsedrix -p ${{ secrets.PKGREG_TOKEN }} --name nuget.org "https://nuget.pkg.github.com/tool2team/index.json"
