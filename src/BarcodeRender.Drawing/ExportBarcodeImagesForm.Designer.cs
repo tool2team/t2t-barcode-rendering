@@ -1,5 +1,5 @@
-namespace BarcodeRender.Drawing
-{
+namespace BarcodeRender.Drawing;
+
 	partial class ExportBarcodeImagesForm
 	{
 		/// <summary>
@@ -149,4 +149,3 @@ namespace BarcodeRender.Drawing
 		private System.Windows.Forms.Button okButton;
 		private System.Windows.Forms.Button cancelButton;
 	}
-}

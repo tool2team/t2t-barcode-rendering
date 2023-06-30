@@ -3,12 +3,12 @@ using System.ComponentModel;
 
 using T2t.Barcode.Skia;
 
-namespace BarcodeRenderer.Skia
-{
-    /// <summary>
-    /// <c>BarcodePanel</c> encapsulates a Windows Forms barcode control.
-    /// </summary>
-    public partial class BarcodePanel : Panel
+namespace BarcodeRenderer.Skia;
+
+/// <summary>
+/// <c>BarcodePanel</c> encapsulates a Windows Forms barcode control.
+/// </summary>
+public partial class BarcodePanel : Panel
 	{
 		#region Private Fields
 		private BarcodeSymbology _symbology;
@@ -108,12 +108,12 @@ namespace BarcodeRenderer.Skia
 					var metrics = drawObject.GetDefaultMetrics(_maxBarHeight);
 					metrics.Scale = 2;
 
-                    SKBitmap skBitmap = drawObject.Draw(Text, metrics);
-                    using var skImage = SKImage.FromBitmap(skBitmap);
-                    using var data = skImage.Encode(SKEncodedImageFormat.Png, 100);
-                    using var stream = data.AsStream();
-                    BackgroundImage = Image.FromStream(stream);
-                }
+                SKBitmap skBitmap = drawObject.Draw(Text, metrics);
+                using var skImage = SKImage.FromBitmap(skBitmap);
+                using var data = skImage.Encode(SKEncodedImageFormat.Png, 100);
+                using var stream = data.AsStream();
+                BackgroundImage = Image.FromStream(stream);
+            }
 				catch
 				{
 					BackgroundImage = null;
@@ -136,4 +136,3 @@ namespace BarcodeRenderer.Skia
 		}
 		#endregion
 	}
-}

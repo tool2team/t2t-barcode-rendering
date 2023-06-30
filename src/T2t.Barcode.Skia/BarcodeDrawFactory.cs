@@ -4,8 +4,8 @@
 // </copyright>
 //-----------------------------------------------------------------------
 
-namespace T2t.Barcode.Skia
-{
+namespace T2t.Barcode.Skia;
+
 	using System;
 
 	/// <summary>
@@ -414,4 +414,3 @@ namespace T2t.Barcode.Skia
 		/// </summary>
 		CodeQr = 14,
 	}
-}

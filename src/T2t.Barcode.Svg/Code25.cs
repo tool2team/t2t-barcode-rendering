@@ -4,17 +4,18 @@
 // </copyright>
 //-----------------------------------------------------------------------
 
-namespace T2t.Barcode.Svg
-{
-    
-    using System;
-    using System.Collections.Generic;
+namespace T2t.Barcode.Svg;
 
-    /// <summary>
-    /// <b>Code25GlyphFactory</b> base class for all code 25 
-    /// <see cref="GlyphFactory"/> objects.
-    /// </summary>
-    public abstract class Code25GlyphFactory : GlyphFactory
+
+using System;
+using System.Collections.Generic;
+using T2t.Barcode.Core;
+
+/// <summary>
+/// <b>Code25GlyphFactory</b> base class for all code 25 
+/// <see cref="GlyphFactory"/> objects.
+/// </summary>
+public abstract class Code25GlyphFactory : GlyphFactory
 	{
 		#region Private Fields
 		private static Code25StandardGlyphFactory _theStdFactory;
@@ -368,8 +369,8 @@ namespace T2t.Barcode.Svg
 			T2Size desiredBarcodeDimensions, T2Size printResolution,
 			int barcodeCharLength)
 		{
-            int maxHeight = desiredBarcodeDimensions.Height * printResolution.Height / 100;
-            int narrowBarWidth = (printResolution.Width * desiredBarcodeDimensions.Width) /
+        int maxHeight = desiredBarcodeDimensions.Height * printResolution.Height / 100;
+        int narrowBarWidth = (printResolution.Width * desiredBarcodeDimensions.Width) /
 				(100 * (24 + (barcodeCharLength * 11)));
 			return new BarcodeMetrics1d(narrowBarWidth, maxHeight);
 		}
@@ -473,16 +474,16 @@ namespace T2t.Barcode.Svg
 		protected override List<string> RenderBars(Glyph[] barcode, T2Rect bounds, int interGlyphSpace, int barMinHeight, int barMinWidth, int barMaxWidth)
 		{
 			List<string> res = new();
-            // Standard Code 2 of 5 can be rendered via base class
-            if (Factory is not Code25InterleavedGlyphFactory)
+        // Standard Code 2 of 5 can be rendered via base class
+        if (Factory is not Code25InterleavedGlyphFactory)
 			{
 				return base.RenderBars(barcode, bounds, interGlyphSpace, barMinHeight, barMinWidth, barMaxWidth);
 			}
 
-            // Interleaved version needs custom rendering support
+        // Interleaved version needs custom rendering support
 
-            int barOffset = 0;
-            for (int index = 0; index < barcode.Length; )
+        int barOffset = 0;
+        for (int index = 0; index < barcode.Length; )
 			{
 				BarGlyph glyph = (BarGlyph)barcode[index];
 				float height = GetGlyphHeight(glyph, barMinHeight, bounds.Height);
@@ -512,7 +513,7 @@ namespace T2t.Barcode.Svg
 						}
 						else
 						{
-                            res.Add(string.Format(RectTmpl, barOffset, bounds.Top, barMinWidth, height, "black"));
+                        res.Add(string.Format(RectTmpl, barOffset, bounds.Top, barMinWidth, height, "black"));
 							barOffset += barMinWidth;
 						}
 
@@ -537,4 +538,3 @@ namespace T2t.Barcode.Svg
 		}
 		#endregion
 	}
-}

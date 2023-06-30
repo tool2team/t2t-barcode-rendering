@@ -4,8 +4,8 @@
 // </copyright>
 //-----------------------------------------------------------------------
 
-namespace T2t.Barcode.Svg
-{
+namespace T2t.Barcode.Svg;
+
 	using System;
 
 	/// <summary>
@@ -394,4 +394,3 @@ namespace T2t.Barcode.Svg
 		/// </summary>
 		CodeQr = 14,
 	}
-}

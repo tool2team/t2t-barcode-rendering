@@ -1,8 +1,8 @@
 using System.ComponentModel;
 
-namespace BarcodeRender.Drawing
-{
-    public partial class ExportProgress : Form
+namespace BarcodeRender.Drawing;
+
+public partial class ExportProgress : Form
 	{
 		private bool _cancelled;
 		private bool _finished;
@@ -33,16 +33,16 @@ namespace BarcodeRender.Drawing
 			string rootFolder, bool overwriteFiles, 
 			bool flattenHierarchy, int maxBarHeight)
 		{
-            ExportWorkerState state = new()
-            {
-                TestPlan = testPlan,
-                Folder = rootFolder,
-                OverwriteFiles = overwriteFiles,
-                FlattenHierarchy = flattenHierarchy,
-                MaxBarHeight = maxBarHeight
-            };
+        ExportWorkerState state = new()
+        {
+            TestPlan = testPlan,
+            Folder = rootFolder,
+            OverwriteFiles = overwriteFiles,
+            FlattenHierarchy = flattenHierarchy,
+            MaxBarHeight = maxBarHeight
+        };
 
-            new Thread (new ParameterizedThreadStart (WorkerThread)).Start (state);
+        new Thread (new ParameterizedThreadStart (WorkerThread)).Start (state);
 		}
 
 		private static void WorkerThread (object state)
@@ -145,4 +145,3 @@ namespace BarcodeRender.Drawing
 			Close ();
 		}
 	}
-}

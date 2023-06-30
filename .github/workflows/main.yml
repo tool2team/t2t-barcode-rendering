@@ -33,10 +33,9 @@ jobs:
         dotnet restore src/T2t.Barcode.Svg/T2t.Barcode.Svg.csproj --source "https://api.nuget.org/v3/index.json"
         dotnet build src/T2t.Barcode.Svg/T2t.Barcode.Svg.csproj --configuration Release --no-restore -p:Version="${{ github.ref_name }}"
 
-    # dotnet nuget add source -u sinsedrix -p ${{ secrets.NUGET_API_KEY }} --name nuget.org "https://api.nuget.org/v3/index.json"
-    # dotnet nuget update source nuget.org -u sinsedrix -p ${{ secrets.NUGET_API_KEY }} --store-password-in-clear-text
+    # Don't manage to push on nuget.org => have to upload manually
+    # dotnet nuget push "src/*/nupkg/*.nupkg" --source "https://api.nuget.org/v3/index.json" --api-key ${{ secrets.NUGET_API_KEY }}
     - name: Publish to NuGet and Github
       run: |
         ls src/*/nupkg/*
         dotnet nuget push "src/*/nupkg/*.nupkg" --source "https://nuget.pkg.github.com/tool2team/index.json" --api-key ${{ secrets.PKGREG_TOKEN }}
-        dotnet nuget push "src/*/nupkg/*.nupkg" --source "https://api.nuget.org/v3/index.json" --api-key ${{ secrets.NUGET_API_KEY }}

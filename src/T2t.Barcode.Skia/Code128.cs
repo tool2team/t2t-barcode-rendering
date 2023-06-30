@@ -4,17 +4,18 @@
 // </copyright>
 //-----------------------------------------------------------------------
 
-namespace T2t.Barcode.Skia
-{
-    using SkiaSharp;
-    using System;
-    using System.Collections.Generic;
+namespace T2t.Barcode.Skia;
 
-    /// <summary>
-    /// <b>Code128Glyph</b> extends <see cref="T:MultisetGlyph"/> by defining
-    /// the three Code128 barcode sections.
-    /// </summary>
-    public class Code128Glyph : MultisetGlyph
+using SkiaSharp;
+using System;
+using System.Collections.Generic;
+using T2t.Barcode.Core;
+
+/// <summary>
+/// <b>Code128Glyph</b> extends <see cref="T:MultisetGlyph"/> by defining
+/// the three Code128 barcode sections.
+/// </summary>
+public class Code128Glyph : MultisetGlyph
 	{
 		#region Private Fields
 		private Code128SpecialGlyph[] _special;
@@ -333,10 +334,10 @@ namespace T2t.Barcode.Skia
 					bool lastChar = (charIndex == (subBlock.Length - 1));
 					char character = subBlock[charIndex];
 
-                    // Detect when dealing with numeric sequence and attempt
-                    //	to encode digits using double density encoding scheme
-                    int glyphIndex;
-                    if (set == 2 && char.IsDigit(character))
+                // Detect when dealing with numeric sequence and attempt
+                //	to encode digits using double density encoding scheme
+                int glyphIndex;
+                if (set == 2 && char.IsDigit(character))
 					{
 						if (!lastChar && char.IsDigit(subBlock[charIndex + 1]))
 						{
@@ -846,4 +847,3 @@ namespace T2t.Barcode.Skia
 		}
 		#endregion
 	}
-}

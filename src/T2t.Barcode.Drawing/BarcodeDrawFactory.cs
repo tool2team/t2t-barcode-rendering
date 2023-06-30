@@ -4,8 +4,8 @@
 // </copyright>
 //-----------------------------------------------------------------------
 
-namespace T2t.Barcode.Drawing
-{
+namespace T2t.Barcode.Drawing;
+
 	using System;
 
 	/// <summary>
@@ -414,4 +414,3 @@ namespace T2t.Barcode.Drawing
 		/// </summary>
 		CodeQr = 14,
 	}
-}

@@ -1,5 +1,5 @@
-namespace BarcodeRender.Drawing
-{
+namespace BarcodeRender.Drawing;
+
 	partial class BarcodePanel
 	{
 		/// <summary>
@@ -41,4 +41,3 @@ namespace BarcodeRender.Drawing
 
 		#endregion
 	}
-}

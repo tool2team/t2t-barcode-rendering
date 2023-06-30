@@ -7,8 +7,8 @@ using System.Xml.Serialization;
 
 using T2t.Barcode.Skia;
 
-namespace BarcodeRenderer.Skia
-{
+namespace BarcodeRenderer.Skia;
+
 	/// <summary>
 	/// <c>BarcodeTestForm</c> is designed to support the printing and
 	/// subsequent testing (by using a barcode scanner) to validate the
@@ -298,14 +298,14 @@ namespace BarcodeRenderer.Skia
 				++numLines;
 			}
 
-            // Determine size to allocate for each barcode
-            SizeF barcodeArea = new()
-            {
-                Width = (e.MarginBounds.Width / _barcodeColumns),
-                Height = (e.MarginBounds.Height / numLines)
-            };
+        // Determine size to allocate for each barcode
+        SizeF barcodeArea = new()
+        {
+            Width = (e.MarginBounds.Width / _barcodeColumns),
+            Height = (e.MarginBounds.Height / numLines)
+        };
 
-            e.HasMorePages = true;
+        e.HasMorePages = true;
 			for (int index = 0; index < _barcodesPerPage; ++index)
 			{
 				// Fetch the next test
@@ -371,18 +371,18 @@ namespace BarcodeRenderer.Skia
 				TreeNode root = new("Symbologies");
 				foreach (SymbologyTestGroup group in _testPlan.GroupTests)
 				{
-                    TreeNode groupNode = new(group.Symbology.ToString())
-                    {
-                        Tag = group
-                    };
+                TreeNode groupNode = new(group.Symbology.ToString())
+                {
+                    Tag = group
+                };
 
-                    foreach (SymbologyTestItem item in group.TestItems)
+                foreach (SymbologyTestItem item in group.TestItems)
 					{
-                        TreeNode itemNode = new(item.Barcode)
-                        {
-                            Tag = item
-                        };
-                        groupNode.Nodes.Add (itemNode);
+                    TreeNode itemNode = new(item.Barcode)
+                    {
+                        Tag = item
+                    };
+                    groupNode.Nodes.Add (itemNode);
 					}
 
 					root.Nodes.Add (groupNode);
@@ -575,16 +575,16 @@ namespace BarcodeRenderer.Skia
 			if (SaveModified () &&
 				openFileDialog.ShowDialog (this) == DialogResult.OK)
 			{
-                // Open XML file reader
-                // TODO: Incorporate schema based validation
-                XmlReaderSettings readerConfig = new()
-                {
-                    CloseInput = true,
-                    ConformanceLevel = ConformanceLevel.Document,
-                    IgnoreComments = true
-                };
+            // Open XML file reader
+            // TODO: Incorporate schema based validation
+            XmlReaderSettings readerConfig = new()
+            {
+                CloseInput = true,
+                ConformanceLevel = ConformanceLevel.Document,
+                IgnoreComments = true
+            };
 
-                using (XmlReader xmlReader = XmlReader.Create (
+            using (XmlReader xmlReader = XmlReader.Create (
 					new FileStream (openFileDialog.FileName, FileMode.Open,
 					FileAccess.Read, FileShare.Read), readerConfig))
 				{
@@ -609,16 +609,16 @@ namespace BarcodeRenderer.Skia
 
 		private void DoSave (string fileName)
 		{
-            XmlWriterSettings writerConfig = new()
-            {
-                CloseOutput = true,
-                ConformanceLevel = ConformanceLevel.Document,
-                Encoding = Encoding.UTF8,
-                Indent = true,
-                IndentChars = "\t"
-            };
+        XmlWriterSettings writerConfig = new()
+        {
+            CloseOutput = true,
+            ConformanceLevel = ConformanceLevel.Document,
+            Encoding = Encoding.UTF8,
+            Indent = true,
+            IndentChars = "\t"
+        };
 
-            using (XmlWriter xmlWriter = XmlWriter.Create (
+        using (XmlWriter xmlWriter = XmlWriter.Create (
 				new FileStream (fileName, FileMode.Create, FileAccess.Write,
 				FileShare.None), writerConfig))
 			{
@@ -699,4 +699,3 @@ namespace BarcodeRenderer.Skia
 		#endregion
 		#endregion
 	}
-}

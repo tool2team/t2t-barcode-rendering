@@ -4,12 +4,12 @@ using System.ComponentModel;
 
 using T2t.Barcode.Svg;
 
-namespace BarcodeRenderer.Skia
-{
-    /// <summary>
-    /// <c>BarcodePanel</c> encapsulates a Windows Forms barcode control.
-    /// </summary>
-    public partial class BarcodePanel : Panel
+namespace BarcodeRenderer.Skia;
+
+/// <summary>
+/// <c>BarcodePanel</c> encapsulates a Windows Forms barcode control.
+/// </summary>
+public partial class BarcodePanel : Panel
 	{
 		#region Private Fields
 		private BarcodeSymbology _symbology;
@@ -110,10 +110,10 @@ namespace BarcodeRenderer.Skia
 					metrics.Scale = 2;
 
 					SvgDocument svgDoc = SvgDocument.FromSvg<SvgDocument>(drawObject.Draw(Text, metrics));
-                    Bitmap bitmap = svgDoc.Draw();
+                Bitmap bitmap = svgDoc.Draw();
 					//bitmap.Save("test.png", System.Drawing.Imaging.ImageFormat.Png);
-                    BackgroundImage = bitmap;
-                }
+                BackgroundImage = bitmap;
+            }
 				catch
 				{
 					BackgroundImage = null;
@@ -136,4 +136,3 @@ namespace BarcodeRenderer.Skia
 		}
 		#endregion
 	}
-}

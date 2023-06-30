@@ -1,5 +1,5 @@
-﻿namespace BarcodeRenderer.Skia
-{
+﻿namespace BarcodeRenderer.Skia;
+
 	partial class BarcodeTestForm
 	{
 		/// <summary>
@@ -147,19 +147,19 @@
 			// 
 			this.testSymbology.FormattingEnabled = true;
 			this.testSymbology.Items.AddRange (new object[] {
-            "Code 39 (No Checksum)",
-            "Code 39 (With Checksum)",
-            "Code 93 (With Checksum)",
-            "Code 128 (With Checksum)",
-            "Code 11 (No Checksum)",
-            "Code 11 (With Checksum)",
-            "Code EAN-13 (With Checksum)",
-            "Code EAN-8 (With Checksum)",
-            "Code 25 Standard (No Checksum)",
-            "Code 25 Standard (With Checksum)",
-            "Code 25 Interleaved (No Checksum)",
-            "Code 25 Interleaved (With Checksum)",
-            "Code PDF417 (With Checksum)"});
+        "Code 39 (No Checksum)",
+        "Code 39 (With Checksum)",
+        "Code 93 (With Checksum)",
+        "Code 128 (With Checksum)",
+        "Code 11 (No Checksum)",
+        "Code 11 (With Checksum)",
+        "Code EAN-13 (With Checksum)",
+        "Code EAN-8 (With Checksum)",
+        "Code 25 Standard (No Checksum)",
+        "Code 25 Standard (With Checksum)",
+        "Code 25 Interleaved (No Checksum)",
+        "Code 25 Interleaved (With Checksum)",
+        "Code PDF417 (With Checksum)"});
 			this.testSymbology.Location = new System.Drawing.Point (160, 57);
 			this.testSymbology.Name = "testSymbology";
 			this.testSymbology.Size = new System.Drawing.Size (191, 21);
@@ -253,10 +253,10 @@
 			// mainMenu
 			// 
 			this.mainMenu.Items.AddRange (new System.Windows.Forms.ToolStripItem[] {
-            this.fileToolStripMenuItem,
-            this.editToolStripMenuItem,
-            this.toolsToolStripMenuItem,
-            this.helpToolStripMenuItem});
+        this.fileToolStripMenuItem,
+        this.editToolStripMenuItem,
+        this.toolsToolStripMenuItem,
+        this.helpToolStripMenuItem});
 			this.mainMenu.Location = new System.Drawing.Point (0, 0);
 			this.mainMenu.Name = "mainMenu";
 			this.mainMenu.Size = new System.Drawing.Size (694, 24);
@@ -266,19 +266,19 @@
 			// fileToolStripMenuItem
 			// 
 			this.fileToolStripMenuItem.DropDownItems.AddRange (new System.Windows.Forms.ToolStripItem[] {
-            this.newToolStripMenuItem,
-            this.openToolStripMenuItem,
-            this.toolStripSeparator,
-            this.saveToolStripMenuItem,
-            this.saveAsToolStripMenuItem,
-            this.toolStripSeparator1,
-            this.exportImageToolStripMenuItem,
-            this.toolStripSeparator2,
-            this.printToolStripMenuItem,
-            this.pageSetupToolStripMenuItem,
-            this.printPreviewToolStripMenuItem,
-            this.toolStripSeparator3,
-            this.exitToolStripMenuItem});
+        this.newToolStripMenuItem,
+        this.openToolStripMenuItem,
+        this.toolStripSeparator,
+        this.saveToolStripMenuItem,
+        this.saveAsToolStripMenuItem,
+        this.toolStripSeparator1,
+        this.exportImageToolStripMenuItem,
+        this.toolStripSeparator2,
+        this.printToolStripMenuItem,
+        this.pageSetupToolStripMenuItem,
+        this.printPreviewToolStripMenuItem,
+        this.toolStripSeparator3,
+        this.exitToolStripMenuItem});
 			this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
 			this.fileToolStripMenuItem.Size = new System.Drawing.Size (37, 20);
 			this.fileToolStripMenuItem.Text = "&File";
@@ -382,14 +382,14 @@
 			// editToolStripMenuItem
 			// 
 			this.editToolStripMenuItem.DropDownItems.AddRange (new System.Windows.Forms.ToolStripItem[] {
-            this.undoToolStripMenuItem,
-            this.redoToolStripMenuItem,
-            this.toolStripSeparator4,
-            this.cutToolStripMenuItem,
-            this.copyToolStripMenuItem,
-            this.pasteToolStripMenuItem,
-            this.toolStripSeparator5,
-            this.selectAllToolStripMenuItem});
+        this.undoToolStripMenuItem,
+        this.redoToolStripMenuItem,
+        this.toolStripSeparator4,
+        this.cutToolStripMenuItem,
+        this.copyToolStripMenuItem,
+        this.pasteToolStripMenuItem,
+        this.toolStripSeparator5,
+        this.selectAllToolStripMenuItem});
 			this.editToolStripMenuItem.Name = "editToolStripMenuItem";
 			this.editToolStripMenuItem.Size = new System.Drawing.Size (39, 20);
 			this.editToolStripMenuItem.Text = "&Edit";
@@ -454,8 +454,8 @@
 			// toolsToolStripMenuItem
 			// 
 			this.toolsToolStripMenuItem.DropDownItems.AddRange (new System.Windows.Forms.ToolStripItem[] {
-            this.customizeToolStripMenuItem,
-            this.optionsToolStripMenuItem});
+        this.customizeToolStripMenuItem,
+        this.optionsToolStripMenuItem});
 			this.toolsToolStripMenuItem.Name = "toolsToolStripMenuItem";
 			this.toolsToolStripMenuItem.Size = new System.Drawing.Size (48, 20);
 			this.toolsToolStripMenuItem.Text = "&Tools";
@@ -475,11 +475,11 @@
 			// helpToolStripMenuItem
 			// 
 			this.helpToolStripMenuItem.DropDownItems.AddRange (new System.Windows.Forms.ToolStripItem[] {
-            this.contentsToolStripMenuItem,
-            this.indexToolStripMenuItem,
-            this.searchToolStripMenuItem,
-            this.toolStripSeparator6,
-            this.aboutToolStripMenuItem});
+        this.contentsToolStripMenuItem,
+        this.indexToolStripMenuItem,
+        this.searchToolStripMenuItem,
+        this.toolStripSeparator6,
+        this.aboutToolStripMenuItem});
 			this.helpToolStripMenuItem.Name = "helpToolStripMenuItem";
 			this.helpToolStripMenuItem.Size = new System.Drawing.Size (44, 20);
 			this.helpToolStripMenuItem.Text = "&Help";
@@ -631,4 +631,3 @@
 		private System.Windows.Forms.ToolStripMenuItem exportImageToolStripMenuItem;
 		private System.Windows.Forms.FolderBrowserDialog exportImageFolderBrowserDialog;
 	}
-}

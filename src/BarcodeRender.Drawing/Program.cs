@@ -1,6 +1,6 @@
-namespace BarcodeRender.Drawing
-{
-    static class Program
+namespace BarcodeRender.Drawing;
+
+static class Program
 	{
 		/// <summary>
 		/// The main entry point for the application.
@@ -13,4 +13,3 @@ namespace BarcodeRender.Drawing
 			Application.Run (new BarcodeTestForm ());
 		}
 	}
-}

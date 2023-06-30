@@ -4,19 +4,20 @@
 // </copyright>
 //-----------------------------------------------------------------------
 
-namespace T2t.Barcode.Drawing
-{
-    using System;
-    using System.Collections.Generic;
-    using System.Drawing;
-    using System.Text.RegularExpressions;
+namespace T2t.Barcode.Drawing;
 
-    /// <summary>
-    /// <b>CodeEan8GlyphFactory</b> concrete implementation of 
-    /// <see cref="GlyphFactory"/> for providing Code EAN-8 bar-code glyph
-    /// objects.
-    /// </summary>
-    public sealed class CodeEan8GlyphFactory : GlyphFactory
+using System;
+using System.Collections.Generic;
+using System.Drawing;
+using System.Text.RegularExpressions;
+using T2t.Barcode.Core;
+
+/// <summary>
+/// <b>CodeEan8GlyphFactory</b> concrete implementation of 
+/// <see cref="GlyphFactory"/> for providing Code EAN-8 bar-code glyph
+/// objects.
+/// </summary>
+public sealed class CodeEan8GlyphFactory : GlyphFactory
 	{
 		#region Private Fields
 		private static CodeEan8GlyphFactory _theFactory;
@@ -406,4 +407,3 @@ namespace T2t.Barcode.Drawing
 		}
 		#endregion
 	}
-}

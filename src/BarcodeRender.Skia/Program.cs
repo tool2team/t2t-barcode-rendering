@@ -1,6 +1,6 @@
-namespace BarcodeRenderer.Skia
-{
-    static class Program
+namespace BarcodeRenderer.Skia;
+
+static class Program
 	{
 		/// <summary>
 		/// The main entry point for the application.
@@ -13,4 +13,3 @@ namespace BarcodeRenderer.Skia
 			Application.Run (new BarcodeTestForm ());
 		}
 	}
-}

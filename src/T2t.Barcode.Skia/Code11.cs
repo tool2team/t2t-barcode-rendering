@@ -4,18 +4,19 @@
 // </copyright>
 //-----------------------------------------------------------------------
 
-namespace T2t.Barcode.Skia
-{
-    using SkiaSharp;
-    using System;
-    using System.Collections.Generic;
+namespace T2t.Barcode.Skia;
 
-    /// <summary>
-    /// <b>Code11GlyphFactory</b> concrete implementation of 
-    /// <see cref="GlyphFactory"/> for providing Code 11 bar-code glyph
-    /// objects.
-    /// </summary>
-    public sealed class Code11GlyphFactory : GlyphFactory
+using SkiaSharp;
+using System;
+using System.Collections.Generic;
+using T2t.Barcode.Core;
+
+/// <summary>
+/// <b>Code11GlyphFactory</b> concrete implementation of 
+/// <see cref="GlyphFactory"/> for providing Code 11 bar-code glyph
+/// objects.
+/// </summary>
+public sealed class Code11GlyphFactory : GlyphFactory
 	{
 		#region Private Fields
 		private static Code11GlyphFactory _theFactory;
@@ -250,8 +251,8 @@ namespace T2t.Barcode.Skia
 			SKSizeI desiredBarcodeDimensions, SKSizeI printResolution,
 			int barcodeCharLength)
 		{
-            int maxHeight = desiredBarcodeDimensions.Height * printResolution.Height / 100;
-            int narrowBarWidth = (printResolution.Width * desiredBarcodeDimensions.Width) /
+        int maxHeight = desiredBarcodeDimensions.Height * printResolution.Height / 100;
+        int narrowBarWidth = (printResolution.Width * desiredBarcodeDimensions.Width) /
 				(100 * (24 + (barcodeCharLength * 12)));
 			return new BarcodeMetrics1d(narrowBarWidth, narrowBarWidth * 2, maxHeight);
 		}
@@ -288,4 +289,3 @@ namespace T2t.Barcode.Skia
 		}
 		#endregion
 	}
-}

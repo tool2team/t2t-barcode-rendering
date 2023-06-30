@@ -4,18 +4,19 @@
 // </copyright>
 //-----------------------------------------------------------------------
 
-namespace T2t.Barcode.Skia
-{
-    using SkiaSharp;
-    using System;
-    using System.Collections.Generic;
+namespace T2t.Barcode.Skia;
 
-    /// <summary>
-    /// <b>Code93GlyphFactory</b> concrete implementation of 
-    /// <see cref="GlyphFactory"/> for providing Code 93 bar-code glyph
-    /// objects.
-    /// </summary>
-    public class Code93GlyphFactory : GlyphFactory
+using SkiaSharp;
+using System;
+using System.Collections.Generic;
+using T2t.Barcode.Core;
+
+/// <summary>
+/// <b>Code93GlyphFactory</b> concrete implementation of 
+/// <see cref="GlyphFactory"/> for providing Code 93 bar-code glyph
+/// objects.
+/// </summary>
+public class Code93GlyphFactory : GlyphFactory
 	{
 		#region Private Fields
 		private static Code93GlyphFactory _theFactory;
@@ -403,11 +404,10 @@ namespace T2t.Barcode.Skia
 		/// around the barcode as dictated by each symbology standard.
 		/// </remarks>
 		protected override int GetBarcodeLength(Glyph[] barcode,
-            int interGlyphSpace, int barMinWidth, int barMaxWidth)
+        int interGlyphSpace, int barMinWidth, int barMaxWidth)
 		{
 			return base.GetBarcodeLength(barcode, interGlyphSpace,
 				barMinWidth, barMaxWidth) - (8 * barMinWidth);
 		}
 		#endregion
 	}
-}

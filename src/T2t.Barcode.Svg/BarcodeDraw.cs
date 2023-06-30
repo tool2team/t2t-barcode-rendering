@@ -4,18 +4,19 @@
 // </copyright>
 //-----------------------------------------------------------------------
 
-namespace T2t.Barcode.Svg
-{
-    
-    using System;
-    using System.Xml;
-    using static System.Net.Mime.MediaTypeNames;
+namespace T2t.Barcode.Svg;
 
-    /// <summary>
-    /// <c>BarcodeMetrics</c> defines the measurement metrics used to render
-    /// a barcode.
-    /// </summary>
-    [Serializable]
+
+using System;
+using System.Xml;
+using T2t.Barcode.Core;
+using static System.Net.Mime.MediaTypeNames;
+
+/// <summary>
+/// <c>BarcodeMetrics</c> defines the measurement metrics used to render
+/// a barcode.
+/// </summary>
+[Serializable]
 	public abstract class BarcodeMetrics
 	{
 		/// <summary>
@@ -98,7 +99,7 @@ namespace T2t.Barcode.Svg
 		/// <param name="minHeight"></param>
 		/// <param name="maxHeight"></param>
 		public BarcodeMetrics1d(
-            int minWidth, int maxWidth, int minHeight, int maxHeight)
+        int minWidth, int maxWidth, int minHeight, int maxHeight)
 		{
 			_minWidth = minWidth;
 			_maxWidth = maxWidth;
@@ -203,15 +204,15 @@ namespace T2t.Barcode.Svg
 	/// classes.
 	/// </summary>
 	public abstract class BarcodeDraw
-    {
+{
 		protected const string SvgTmpl = """<svg version = "1.1" width="{0}" height="{1}" xmlns="http://www.w3.org/2000/svg"><g>{2}</g></svg>""";
-        protected const string RectTmpl = """<rect x="{0}" y="{1}" width="{2}" height="{3}" fill="{4}" />""";
+    protected const string RectTmpl = """<rect x="{0}" y="{1}" width="{2}" height="{3}" fill="{4}" />""";
 
-        #region Protected Constructors
-        /// <summary>
-        /// Initializes a new instance of <see cref="T:T2t.Barcode.Skia.BarcodeDraw"/> class.
-        /// </summary>
-        protected BarcodeDraw()
+    #region Protected Constructors
+    /// <summary>
+    /// Initializes a new instance of <see cref="T:T2t.Barcode.Skia.BarcodeDraw"/> class.
+    /// </summary>
+    protected BarcodeDraw()
 		{
 		}
 		#endregion
@@ -452,8 +453,8 @@ namespace T2t.Barcode.Svg
 			// Determine number of pixels required for final image
 			Glyph[] barcode = GetFullBarcode(text);
 
-            // Determine amount of inter-glyph space
-            int interGlyphSpace;
+        // Determine amount of inter-glyph space
+        int interGlyphSpace;
 			if (metrics.InterGlyphSpacing.HasValue)
 			{
 				interGlyphSpace = metrics.InterGlyphSpacing.Value;
@@ -464,8 +465,8 @@ namespace T2t.Barcode.Svg
 					metrics.MinWidth, metrics.MaxWidth);
 			}
 
-            // Determine bar code length in pixels
-            int totalImageWidth = GetBarcodeLength(
+        // Determine bar code length in pixels
+        int totalImageWidth = GetBarcodeLength(
 				barcode,
 				interGlyphSpace * metrics.Scale,
 				metrics.MinWidth * metrics.Scale,
@@ -494,7 +495,7 @@ namespace T2t.Barcode.Svg
 		/// By default this method returns zero.
 		/// </remarks>
 		protected virtual int GetDefaultInterGlyphSpace(
-            int barMinWidth, int barMaxWidth)
+        int barMinWidth, int barMaxWidth)
 		{
 			return 0;
 		}
@@ -521,8 +522,8 @@ namespace T2t.Barcode.Svg
 		protected virtual int GetBarcodeLength(
 			Glyph[] barcode, int interGlyphSpace, int barMinWidth, int barMaxWidth)
 		{
-            // Determine bar code length in pixels
-            int totalImageWidth = GetBarcodeInterGlyphLength(barcode, interGlyphSpace);
+        // Determine bar code length in pixels
+        int totalImageWidth = GetBarcodeInterGlyphLength(barcode, interGlyphSpace);
 			foreach (BarGlyph glyph in barcode)
 			{
 				// Determine encoding bit-width for this character
@@ -615,7 +616,7 @@ namespace T2t.Barcode.Svg
 		/// <param name="interGlyphSpace">Amount of inter-glyph space (in pixels) to be applied.</param>
 		/// <returns>Width in pixels.</returns>
 		protected int GetBarcodeInterGlyphLength(Glyph[] barcode,
-            int interGlyphSpace)
+        int interGlyphSpace)
 		{
 			return ((barcode.Length - 1) * interGlyphSpace);
 		}
@@ -649,8 +650,8 @@ namespace T2t.Barcode.Svg
 				string.Format(RectTmpl, bounds.Left, bounds.Top, bounds.Width, bounds.Height, "white")
 			};
 
-            // Render the bars
-            bars.AddRange(RenderBars(barcode, bounds, interGlyphSpace, barMinHeight,
+        // Render the bars
+        bars.AddRange(RenderBars(barcode, bounds, interGlyphSpace, barMinHeight,
 				barMinWidth, barMaxWidth));
 
 			return bars;
@@ -680,11 +681,11 @@ namespace T2t.Barcode.Svg
 			int barMinWidth,
 			int barMaxWidth)
 		{
-            int barOffset = 0;
+        int barOffset = 0;
 
 			List<string> res = new();
 
-            for (int index = 0; index < barcode.Length; ++index)
+        for (int index = 0; index < barcode.Length; ++index)
 			{
 				BarGlyph glyph = (BarGlyph)barcode[index];
 
@@ -715,7 +716,7 @@ namespace T2t.Barcode.Svg
 		protected virtual List<string> RenderBar(
 			int glyphIndex,
 			BarGlyph glyph,
-            T2Rect bounds,
+        T2Rect bounds,
 			ref int barOffset,
 			int barMinHeight,
 			int barMinWidth,
@@ -733,65 +734,65 @@ namespace T2t.Barcode.Svg
 			// Allow derived classes to modify the glyph bits
 			int glyphBits = GetGlyphEncoding(glyphIndex, glyph);
 
-            // Get glyph height
-            int height = GetGlyphHeight(glyph, barMinHeight, bounds.Height);
-            if (glyph is IBinaryPitchGlyph binGlyph)
+        // Get glyph height
+        int height = GetGlyphHeight(glyph, barMinHeight, bounds.Height);
+        if (glyph is IBinaryPitchGlyph binGlyph)
+        {
+
+            // Render glyph
+            int widthIndex = WidthBitCount - 1;
+            bool lastBitState = false;
+            for (int bitIndex = encodingBitCount - 1; bitIndex >= 0; --bitIndex)
             {
+                int bitMask = 1 << bitIndex;
+                int barWidth = barMinWidth;
 
-                // Render glyph
-                int widthIndex = WidthBitCount - 1;
-                bool lastBitState = false;
-                for (int bitIndex = encodingBitCount - 1; bitIndex >= 0; --bitIndex)
+                bool currentBitState = false;
+                if ((bitMask & glyphBits) != 0)
                 {
-                    int bitMask = 1 << bitIndex;
-                    int barWidth = barMinWidth;
-
-                    bool currentBitState = false;
-                    if ((bitMask & glyphBits) != 0)
-                    {
-                        currentBitState = true;
-                    }
-
-                    // Adjust the width bit checker
-                    if (bitIndex < (encodingBitCount - 1) &&
-                        lastBitState != currentBitState)
-                    {
-                        --widthIndex;
-                    }
-                    lastBitState = currentBitState;
-
-                    // Determine width encoding bit mask
-                    int widthMask = (1 << widthIndex);
-                    if ((widthMask & binGlyph.WidthEncoding) != 0)
-                    {
-                        barWidth = barMaxWidth;
-                    }
-
-                    if ((binGlyph.BitEncoding & bitMask) != 0)
-                    {
-                        bars.Add(string.Format(RectTmpl, barOffset, bounds.Top, barWidth, height, "black"));
-                    }
-
-                    // Update offset
-                    barOffset += barWidth;
+                    currentBitState = true;
                 }
-            }
-            else
-            {
-                for (int bitIndex = encodingBitCount - 1; bitIndex >= 0; --bitIndex)
+
+                // Adjust the width bit checker
+                if (bitIndex < (encodingBitCount - 1) &&
+                    lastBitState != currentBitState)
                 {
-                    int bitMask = (1 << bitIndex);
-                    if ((glyphBits & bitMask) != 0)
-                    {
-                        bars.Add(string.Format(RectTmpl, barOffset, bounds.Top, barMinWidth, height, "black"));
-                    }
-
-                    // Update offset
-                    barOffset += barMinWidth;
+                    --widthIndex;
                 }
+                lastBitState = currentBitState;
+
+                // Determine width encoding bit mask
+                int widthMask = (1 << widthIndex);
+                if ((widthMask & binGlyph.WidthEncoding) != 0)
+                {
+                    barWidth = barMaxWidth;
+                }
+
+                if ((binGlyph.BitEncoding & bitMask) != 0)
+                {
+                    bars.Add(string.Format(RectTmpl, barOffset, bounds.Top, barWidth, height, "black"));
+                }
+
+                // Update offset
+                barOffset += barWidth;
             }
-			return bars;
         }
+        else
+        {
+            for (int bitIndex = encodingBitCount - 1; bitIndex >= 0; --bitIndex)
+            {
+                int bitMask = (1 << bitIndex);
+                if ((glyphBits & bitMask) != 0)
+                {
+                    bars.Add(string.Format(RectTmpl, barOffset, bounds.Top, barMinWidth, height, "black"));
+                }
+
+                // Update offset
+                barOffset += barMinWidth;
+            }
+        }
+			return bars;
+    }
 
 		/// <summary>
 		/// Gets the glyph encoding.
@@ -825,4 +826,3 @@ namespace T2t.Barcode.Svg
 		}
 		#endregion
 	}
-}

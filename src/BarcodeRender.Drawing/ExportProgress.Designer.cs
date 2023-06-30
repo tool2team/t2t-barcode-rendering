@@ -1,5 +1,5 @@
-namespace BarcodeRender.Drawing
-{
+namespace BarcodeRender.Drawing;
+
 	partial class ExportProgress
 	{
 		/// <summary>
@@ -109,4 +109,3 @@ namespace BarcodeRender.Drawing
 		private System.Windows.Forms.Button cancelButton;
 		private System.ComponentModel.BackgroundWorker exportWorker;
 	}
-}

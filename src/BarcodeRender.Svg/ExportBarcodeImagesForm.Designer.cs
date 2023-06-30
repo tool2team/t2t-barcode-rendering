@@ -1,5 +1,5 @@
-namespace BarcodeRenderer.Skia
-{
+namespace BarcodeRenderer.Skia;
+
 	partial class ExportBarcodeImagesForm
 	{
 		/// <summary>
@@ -149,4 +149,3 @@ namespace BarcodeRenderer.Skia
 		private System.Windows.Forms.Button okButton;
 		private System.Windows.Forms.Button cancelButton;
 	}
-}

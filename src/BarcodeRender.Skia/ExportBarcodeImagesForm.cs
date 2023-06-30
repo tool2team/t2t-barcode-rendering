@@ -1,5 +1,5 @@
-namespace BarcodeRenderer.Skia
-{
+namespace BarcodeRenderer.Skia;
+
 	public partial class ExportBarcodeImagesForm : Form
 	{
 		public ExportBarcodeImagesForm ()
@@ -59,4 +59,3 @@ namespace BarcodeRenderer.Skia
 			}
 		}
 	}
-}

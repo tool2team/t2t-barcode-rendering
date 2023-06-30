@@ -4,18 +4,19 @@
 // </copyright>
 //-----------------------------------------------------------------------
 
-namespace T2t.Barcode.Drawing
-{
-    using System;
-    using System.Collections.Generic;
-    using System.Drawing;
+namespace T2t.Barcode.Drawing;
 
-    /// <summary>
-    /// <b>Code39GlyphFactory</b> concrete implementation of 
-    /// <see cref="GlyphFactory"/> for providing Code 39 bar-code glyph
-    /// objects.
-    /// </summary>
-    public sealed class Code39GlyphFactory : GlyphFactory
+using System;
+using System.Collections.Generic;
+using System.Drawing;
+using T2t.Barcode.Core;
+
+/// <summary>
+/// <b>Code39GlyphFactory</b> concrete implementation of 
+/// <see cref="GlyphFactory"/> for providing Code 39 bar-code glyph
+/// objects.
+/// </summary>
+public sealed class Code39GlyphFactory : GlyphFactory
 	{
 		#region Private Fields
 		private static Code39GlyphFactory _theFactory;
@@ -403,4 +404,3 @@ namespace T2t.Barcode.Drawing
 		}
 		#endregion
 	}
-}

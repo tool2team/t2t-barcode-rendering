@@ -4,16 +4,17 @@
 // </copyright>
 //-----------------------------------------------------------------------
 
-namespace T2t.Barcode.Skia
-{
-    using SkiaSharp;
-    using System;
+namespace T2t.Barcode.Skia;
 
-	/// <summary>
-	/// <c>BarcodeMetrics</c> defines the measurement metrics used to render
-	/// a barcode.
-	/// </summary>
-	[Serializable]
+using SkiaSharp;
+using System;
+using T2t.Barcode.Core;
+
+/// <summary>
+/// <c>BarcodeMetrics</c> defines the measurement metrics used to render
+/// a barcode.
+/// </summary>
+[Serializable]
 	public abstract class BarcodeMetrics
 	{
 		/// <summary>
@@ -97,7 +98,7 @@ namespace T2t.Barcode.Skia
 		/// <param name="minHeight"></param>
 		/// <param name="maxHeight"></param>
 		public BarcodeMetrics1d(
-            int minWidth, int maxWidth, int minHeight, int maxHeight)
+        int minWidth, int maxWidth, int minHeight, int maxHeight)
 		{
 			_minWidth = minWidth;
 			_maxWidth = maxWidth;
@@ -466,8 +467,8 @@ namespace T2t.Barcode.Skia
 			// Determine number of pixels required for final image
 			Glyph[] barcode = GetFullBarcode(text);
 
-            // Determine amount of inter-glyph space
-            int interGlyphSpace;
+        // Determine amount of inter-glyph space
+        int interGlyphSpace;
 			if (metrics.InterGlyphSpacing.HasValue)
 			{
 				interGlyphSpace = metrics.InterGlyphSpacing.Value;
@@ -478,8 +479,8 @@ namespace T2t.Barcode.Skia
 					metrics.MinWidth, metrics.MaxWidth);
 			}
 
-            // Determine bar code length in pixels
-            int totalImageWidth = GetBarcodeLength(
+        // Determine bar code length in pixels
+        int totalImageWidth = GetBarcodeLength(
 				barcode,
 				interGlyphSpace * metrics.Scale,
 				metrics.MinWidth * metrics.Scale,
@@ -517,7 +518,7 @@ namespace T2t.Barcode.Skia
 		/// By default this method returns zero.
 		/// </remarks>
 		protected virtual int GetDefaultInterGlyphSpace(
-            int barMinWidth, int barMaxWidth)
+        int barMinWidth, int barMaxWidth)
 		{
 			return 0;
 		}
@@ -544,8 +545,8 @@ namespace T2t.Barcode.Skia
 		protected virtual int GetBarcodeLength(
 			Glyph[] barcode, int interGlyphSpace, int barMinWidth, int barMaxWidth)
 		{
-            // Determine bar code length in pixels
-            int totalImageWidth = GetBarcodeInterGlyphLength(barcode, interGlyphSpace);
+        // Determine bar code length in pixels
+        int totalImageWidth = GetBarcodeInterGlyphLength(barcode, interGlyphSpace);
 			foreach (BarGlyph glyph in barcode)
 			{
 				// Determine encoding bit-width for this character
@@ -638,7 +639,7 @@ namespace T2t.Barcode.Skia
 		/// <param name="interGlyphSpace">Amount of inter-glyph space (in pixels) to be applied.</param>
 		/// <returns>Width in pixels.</returns>
 		protected int GetBarcodeInterGlyphLength(Glyph[] barcode,
-            int interGlyphSpace)
+        int interGlyphSpace)
 		{
 			return ((barcode.Length - 1) * interGlyphSpace);
 		}
@@ -669,7 +670,7 @@ namespace T2t.Barcode.Skia
 		{
 			// Render the background
 			using SKPaint paint = new() { Color = SKColors.White };
-            dc.DrawRect(bounds, paint);
+        dc.DrawRect(bounds, paint);
 
 			// Render the bars
 			RenderBars(barcode, dc, bounds, interGlyphSpace, barMinHeight,
@@ -701,7 +702,7 @@ namespace T2t.Barcode.Skia
 			int barMinWidth,
 			int barMaxWidth)
 		{
-            int barOffset = 0;
+        int barOffset = 0;
 			using SKPaint paint = new() { Color = SKColors.Black };
 			for (int index = 0; index < barcode.Length; ++index)
 			{
@@ -734,8 +735,8 @@ namespace T2t.Barcode.Skia
 			int glyphIndex,
 			BarGlyph glyph,
 			SKCanvas dc,
-            SKPaint paint,
-            SKRectI bounds,
+        SKPaint paint,
+        SKRectI bounds,
 			ref int barOffset,
 			int barMinHeight,
 			int barMinWidth,
@@ -752,66 +753,66 @@ namespace T2t.Barcode.Skia
 			// Allow derived classes to modify the glyph bits
 			int glyphBits = GetGlyphEncoding(glyphIndex, glyph);
 
-            // Get glyph height
-            int height = GetGlyphHeight(glyph, barMinHeight, bounds.Height);
-            if (glyph is IBinaryPitchGlyph binGlyph)
+        // Get glyph height
+        int height = GetGlyphHeight(glyph, barMinHeight, bounds.Height);
+        if (glyph is IBinaryPitchGlyph binGlyph)
+        {
+
+            // Render glyph
+            int widthIndex = WidthBitCount - 1;
+            bool lastBitState = false;
+            for (int bitIndex = encodingBitCount - 1; bitIndex >= 0; --bitIndex)
             {
+                int bitMask = 1 << bitIndex;
+                int barWidth = barMinWidth;
 
-                // Render glyph
-                int widthIndex = WidthBitCount - 1;
-                bool lastBitState = false;
-                for (int bitIndex = encodingBitCount - 1; bitIndex >= 0; --bitIndex)
+                bool currentBitState = false;
+                if ((bitMask & glyphBits) != 0)
                 {
-                    int bitMask = 1 << bitIndex;
-                    int barWidth = barMinWidth;
-
-                    bool currentBitState = false;
-                    if ((bitMask & glyphBits) != 0)
-                    {
-                        currentBitState = true;
-                    }
-
-                    // Adjust the width bit checker
-                    if (bitIndex < (encodingBitCount - 1) &&
-                        lastBitState != currentBitState)
-                    {
-                        --widthIndex;
-                    }
-                    lastBitState = currentBitState;
-
-                    // Determine width encoding bit mask
-                    int widthMask = (1 << widthIndex);
-                    if ((widthMask & binGlyph.WidthEncoding) != 0)
-                    {
-                        barWidth = barMaxWidth;
-                    }
-
-                    if ((binGlyph.BitEncoding & bitMask) != 0)
-                    {
-                        SKRect rect = new(barOffset, bounds.Top, barOffset + barWidth, bounds.Top + height);
-                        dc.DrawRect(rect, paint);
-                    }
-
-                    // Update offset
-                    barOffset += barWidth;
+                    currentBitState = true;
                 }
-            }
-            else
-            {
-                for (int bitIndex = encodingBitCount - 1; bitIndex >= 0; --bitIndex)
+
+                // Adjust the width bit checker
+                if (bitIndex < (encodingBitCount - 1) &&
+                    lastBitState != currentBitState)
                 {
-                    int bitMask = (1 << bitIndex);
-                    if ((glyphBits & bitMask) != 0)
-                    {
-                        SKRect rect = new(barOffset, bounds.Top, barOffset + barMinWidth, bounds.Top + height);
-                        dc.DrawRect(rect, paint);
-                    }
-
-                    // Update offset
-                    barOffset += barMinWidth;
+                    --widthIndex;
                 }
+                lastBitState = currentBitState;
+
+                // Determine width encoding bit mask
+                int widthMask = (1 << widthIndex);
+                if ((widthMask & binGlyph.WidthEncoding) != 0)
+                {
+                    barWidth = barMaxWidth;
+                }
+
+                if ((binGlyph.BitEncoding & bitMask) != 0)
+                {
+                    SKRect rect = new(barOffset, bounds.Top, barOffset + barWidth, bounds.Top + height);
+                    dc.DrawRect(rect, paint);
+                }
+
+                // Update offset
+                barOffset += barWidth;
             }
         }
+        else
+        {
+            for (int bitIndex = encodingBitCount - 1; bitIndex >= 0; --bitIndex)
+            {
+                int bitMask = (1 << bitIndex);
+                if ((glyphBits & bitMask) != 0)
+                {
+                    SKRect rect = new(barOffset, bounds.Top, barOffset + barMinWidth, bounds.Top + height);
+                    dc.DrawRect(rect, paint);
+                }
+
+                // Update offset
+                barOffset += barMinWidth;
+            }
+        }
+    }
 
 		/// <summary>
 		/// Gets the glyph encoding.
@@ -845,4 +846,3 @@ namespace T2t.Barcode.Skia
 		}
 		#endregion
 	}
-}

@@ -4,17 +4,17 @@ using System.Xml.Serialization;
 
 using T2t.Barcode.Drawing;
 
-namespace BarcodeRender.Drawing
-{
-    /// <summary>
-    /// Notification delegate called during image export.
-    /// </summary>
-    /// <param name="current"></param>
-    /// <param name="total"></param>
-    /// <param name="operation"></param>
-    /// <param name="detail"></param>
-    /// <returns></returns>
-    public delegate bool ExportProgressHandler (int done, int total,
+namespace BarcodeRender.Drawing;
+
+/// <summary>
+/// Notification delegate called during image export.
+/// </summary>
+/// <param name="current"></param>
+/// <param name="total"></param>
+/// <param name="operation"></param>
+/// <param name="detail"></param>
+/// <returns></returns>
+public delegate bool ExportProgressHandler (int done, int total,
 		string operation, string detail);
 
 	/// <summary>
@@ -538,4 +538,3 @@ namespace BarcodeRender.Drawing
 		} 
 		#endregion
 	}
-}

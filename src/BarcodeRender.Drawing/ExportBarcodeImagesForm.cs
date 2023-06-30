@@ -1,5 +1,5 @@
-namespace BarcodeRender.Drawing
-{
+namespace BarcodeRender.Drawing;
+
 	public partial class ExportBarcodeImagesForm : Form
 	{
 		public ExportBarcodeImagesForm ()
@@ -59,4 +59,3 @@ namespace BarcodeRender.Drawing
 			}
 		}
 	}
-}

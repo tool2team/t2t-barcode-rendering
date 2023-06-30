@@ -5,17 +5,17 @@ using System.Xml.Serialization;
 
 using T2t.Barcode.Skia;
 
-namespace BarcodeRenderer.Skia
-{
-    /// <summary>
-    /// Notification delegate called during image export.
-    /// </summary>
-    /// <param name="current"></param>
-    /// <param name="total"></param>
-    /// <param name="operation"></param>
-    /// <param name="detail"></param>
-    /// <returns></returns>
-    public delegate bool ExportProgressHandler (int done, int total,
+namespace BarcodeRenderer.Skia;
+
+/// <summary>
+/// Notification delegate called during image export.
+/// </summary>
+/// <param name="current"></param>
+/// <param name="total"></param>
+/// <param name="operation"></param>
+/// <param name="detail"></param>
+/// <returns></returns>
+public delegate bool ExportProgressHandler (int done, int total,
 		string operation, string detail);
 
 	/// <summary>
@@ -327,14 +327,14 @@ namespace BarcodeRenderer.Skia
 			{
 				if (_barcodeImage == null)
 				{
-                    SKBitmap skBitmap = BarcodeDrawFactory.GetSymbology(_symbology).Draw(
-                        _barcodeText, _maxBarHeight);
-                    using var skImage = SKImage.FromBitmap(skBitmap);
-                    using var data = skImage.Encode(SKEncodedImageFormat.Png, 100);
-                    using var stream = data.AsStream();
-                    
+                SKBitmap skBitmap = BarcodeDrawFactory.GetSymbology(_symbology).Draw(
+                    _barcodeText, _maxBarHeight);
+                using var skImage = SKImage.FromBitmap(skBitmap);
+                using var data = skImage.Encode(SKEncodedImageFormat.Png, 100);
+                using var stream = data.AsStream();
+                
 					_barcodeImage = Image.FromStream(stream);
-                }
+            }
 				return _barcodeImage;
 			}
 		}
@@ -454,12 +454,12 @@ namespace BarcodeRenderer.Skia
 		/// <returns></returns>
 		public Image GetBarcodeImage (int index, int maxBarHeight)
 		{
-            SKBitmap skBitmap = DrawObject.Draw(GetBarcodeText(index), maxBarHeight);
-            using var skImage = SKImage.FromBitmap(skBitmap);
-            using var data = skImage.Encode(SKEncodedImageFormat.Png, 100);
-            using var stream = data.AsStream();
+        SKBitmap skBitmap = DrawObject.Draw(GetBarcodeText(index), maxBarHeight);
+        using var skImage = SKImage.FromBitmap(skBitmap);
+        using var data = skImage.Encode(SKEncodedImageFormat.Png, 100);
+        using var stream = data.AsStream();
 
-            return Image.FromStream(stream);
+        return Image.FromStream(stream);
 		}
 
 		/// <summary>
@@ -548,4 +548,3 @@ namespace BarcodeRenderer.Skia
 		} 
 		#endregion
 	}
-}

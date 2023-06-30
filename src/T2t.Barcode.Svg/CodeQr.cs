@@ -4,10 +4,10 @@
 // </copyright>
 //-----------------------------------------------------------------------
 
-namespace T2t.Barcode.Svg
-{
-    
-    using System;
+namespace T2t.Barcode.Svg;
+
+
+using System;
 	using System.IO;
 	using System.Reflection;
 	using System.Text;
@@ -49,14 +49,14 @@ namespace T2t.Barcode.Svg
 				public static string FromASCIIByteArray(byte[] characters)
 				{
 					ASCIIEncoding encoding = new();
-                    string constructedString = encoding.GetString(characters);
+                string constructedString = encoding.GetString(characters);
 					return constructedString;
 				}
 
 				public static string FromUnicodeByteArray(byte[] characters)
 				{
 					UnicodeEncoding encoding = new();
-                    string constructedString = encoding.GetString(characters);
+                string constructedString = encoding.GetString(characters);
 					return constructedString;
 				}
 
@@ -411,23 +411,23 @@ namespace T2t.Barcode.Svg
 			{
 				int originaldataLength;
 				int i = 0;
-                originaldataLength = originaldata.Length;
+            originaldataLength = originaldata.Length;
 
-                int structureAppendParity;
-                if (originaldataLength > 1)
+            int structureAppendParity;
+            if (originaldataLength > 1)
+            {
+                structureAppendParity = 0;
+                while (i < originaldataLength)
                 {
-                    structureAppendParity = 0;
-                    while (i < originaldataLength)
-                    {
-                        structureAppendParity ^= (originaldata[i] & 0xFF);
-                        i++;
-                    }
+                    structureAppendParity ^= (originaldata[i] & 0xFF);
+                    i++;
                 }
-                else
-                {
-                    structureAppendParity = -1;
-                }
-                return structureAppendParity;
+            }
+            else
+            {
+                structureAppendParity = -1;
+            }
+            return structureAppendParity;
 			}
 
 			public virtual bool[][] CalculateQrCode(byte[] qrcodeData)
@@ -658,19 +658,19 @@ namespace T2t.Barcode.Svg
 				sbyte[] rsBlockOrderTemp = new sbyte[128];
 				try
 				{
-                    var assembly = Assembly.GetExecutingAssembly();
-                    var resourceName = $"qrv{_version}_{ec}.dat";
+                var assembly = Assembly.GetExecutingAssembly();
+                var resourceName = $"qrv{_version}_{ec}.dat";
 
-                    using Stream memoryStream = assembly.GetManifestResourceStream(resourceName);
-                    using BufferedStream bis = new(memoryStream);
-                    SystemUtils.ReadInput(bis, matrixX, 0, matrixX.Length);
-                    SystemUtils.ReadInput(bis, matrixY, 0, matrixY.Length);
-                    SystemUtils.ReadInput(bis, maskArray, 0, maskArray.Length);
-                    SystemUtils.ReadInput(bis, formatInformationX2, 0, formatInformationX2.Length);
-                    SystemUtils.ReadInput(bis, formatInformationY2, 0, formatInformationY2.Length);
-                    SystemUtils.ReadInput(bis, rsEccCodewords, 0, rsEccCodewords.Length);
-                    SystemUtils.ReadInput(bis, rsBlockOrderTemp, 0, rsBlockOrderTemp.Length);
-                }
+                using Stream memoryStream = assembly.GetManifestResourceStream(resourceName);
+                using BufferedStream bis = new(memoryStream);
+                SystemUtils.ReadInput(bis, matrixX, 0, matrixX.Length);
+                SystemUtils.ReadInput(bis, matrixY, 0, matrixY.Length);
+                SystemUtils.ReadInput(bis, maskArray, 0, maskArray.Length);
+                SystemUtils.ReadInput(bis, formatInformationX2, 0, formatInformationX2.Length);
+                SystemUtils.ReadInput(bis, formatInformationY2, 0, formatInformationY2.Length);
+                SystemUtils.ReadInput(bis, rsEccCodewords, 0, rsEccCodewords.Length);
+                SystemUtils.ReadInput(bis, rsBlockOrderTemp, 0, rsBlockOrderTemp.Length);
+            }
 				catch (Exception e)
 				{
 					SystemUtils.WriteStackTrace(e, Console.Error);
@@ -702,13 +702,13 @@ namespace T2t.Barcode.Svg
 
 				try
 				{
-                    //String filename = QRCODE_DATA_PATH + "/qrvfr" + System.Convert.ToString(qrcodeVersion) + ".dat";
-                    //StreamReader reader = new StreamReader(filename);
+                //String filename = QRCODE_DATA_PATH + "/qrvfr" + System.Convert.ToString(qrcodeVersion) + ".dat";
+                //StreamReader reader = new StreamReader(filename);
 
-                    var assembly = Assembly.GetExecutingAssembly();
-                    var resourceName = $"qrvfr{_version}.dat";
+                var assembly = Assembly.GetExecutingAssembly();
+                var resourceName = $"qrvfr{_version}.dat";
 
-                    using Stream memoryStream = assembly.GetManifestResourceStream(resourceName);
+                using Stream memoryStream = assembly.GetManifestResourceStream(resourceName);
 
 					BufferedStream bis = new(memoryStream);
 					SystemUtils.ReadInput(bis, frameData, 0, frameData.Length);
@@ -785,7 +785,7 @@ namespace T2t.Barcode.Svg
 
 				/* --- format information --- */
 				sbyte formatInformationValue = (sbyte)(((sbyte)(ec << 3)) | maskNumber);
-                string[] formatInformationArray = new string[] { "101010000010010", "101000100100101", "101111001111100", "101101101001011", "100010111111001", "100000011001110", "100111110010111", "100101010100000", "111011111000100", "111001011110011", "111110110101010", "111100010011101", "110011000101111", "110001100011000", "110110001000001", "110100101110110", "001011010001001", "001001110111110", "001110011100111", "001100111010000", "000011101100010", "000001001010101", "000110100001100", "000100000111011", "011010101011111", "011000001101000", "011111100110001", "011101000000110", "010010010110100", "010000110000011", "010111011011010", "010101111101101" };
+            string[] formatInformationArray = new string[] { "101010000010010", "101000100100101", "101111001111100", "101101101001011", "100010111111001", "100000011001110", "100111110010111", "100101010100000", "111011111000100", "111001011110011", "111110110101010", "111100010011101", "110011000101111", "110001100011000", "110110001000001", "110100101110110", "001011010001001", "001001110111110", "001110011100111", "001100111010000", "000011101100010", "000001001010101", "000110100001100", "000100000111011", "011010101011111", "011000001101000", "011111100110001", "011101000000110", "010010010110100", "010000110000011", "010111011011010", "010101111101101" };
 				for (int i = 0; i < 15; i++)
 				{
 					sbyte content = sbyte.Parse(formatInformationArray[formatInformationValue][i..(i + 1)]);
@@ -919,31 +919,31 @@ namespace T2t.Barcode.Svg
 				}
 				try
 				{
-                    var assembly = Assembly.GetExecutingAssembly();
-                    var resourceName = $"rsc{rsEccCodewords}.dat";
+                var assembly = Assembly.GetExecutingAssembly();
+                var resourceName = $"rsc{rsEccCodewords}.dat";
 
-                    using Stream memoryStream = assembly.GetManifestResourceStream(resourceName);
-                    using BufferedStream bis = new(memoryStream);
-                    for (int i = 0; i < 256; i++)
-                    {
-                        SystemUtils.ReadInput(bis, rsCalTableArray[i], 0, rsCalTableArray[i].Length);
-                    }
+                using Stream memoryStream = assembly.GetManifestResourceStream(resourceName);
+                using BufferedStream bis = new(memoryStream);
+                for (int i = 0; i < 256; i++)
+                {
+                    SystemUtils.ReadInput(bis, rsCalTableArray[i], 0, rsCalTableArray[i].Length);
                 }
+            }
 				catch (Exception e)
 				{
 					SystemUtils.WriteStackTrace(e, Console.Error);
 				}
 
-                int j = 0;
+            int j = 0;
 				int rsBlockNumber = 0;
 
 				sbyte[][] rsTemp = new sbyte[rsBlockOrder.Length][];
 				sbyte[] res = new sbyte[maxCodewords];
 				Array.Copy(codewords, 0, res, 0, codewords.Length);
 
-                /* ---- RS-ECC prepare */
-                int i2 = 0;
-                while (i2 < rsBlockOrder.Length)
+            /* ---- RS-ECC prepare */
+            int i2 = 0;
+            while (i2 < rsBlockOrder.Length)
 				{
 					rsTemp[i2] = new sbyte[(rsBlockOrder[i2] & 0xFF) - rsEccCodewords];
 					i2++;
@@ -1193,18 +1193,18 @@ namespace T2t.Barcode.Svg
 				int width = matrix.Length * _scale + 1;
 				int height = matrix.Length * _scale + 1;
 
-                List<string> rects = new()
-                {
-                    string.Format(RectTmpl, 0, 0, width, height, BackgroundColor)
-                };
+            List<string> rects = new()
+            {
+                string.Format(RectTmpl, 0, 0, width, height, BackgroundColor)
+            };
 
-                for (int i = 0; i < matrix.Length; i++)
+            for (int i = 0; i < matrix.Length; i++)
 				{
 					for (int j = 0; j < matrix.Length; j++)
 					{
 						if (matrix[j][i])
 						{
-                            rects.Add(string.Format(RectTmpl, j * _scale, i * _scale, _scale, _scale, ForegroundColor));
+                        rects.Add(string.Format(RectTmpl, j * _scale, i * _scale, _scale, _scale, ForegroundColor));
 						}
 					}
 				}
@@ -1296,7 +1296,7 @@ namespace T2t.Barcode.Svg
 		protected virtual string DrawQr(string text, BarcodeMetricsQr metrics)
 		{
 			QRCodeEncoder encoder = new()
-            {
+        {
 				Scale = metrics.Scale,
 				Version = metrics.Version,
 				EncodeMode = metrics.EncodeMode,
@@ -1351,24 +1351,24 @@ namespace T2t.Barcode.Svg
 			set;
 		}
 
-        /// <summary>
-        /// Color of QR code
-        /// </summary>
-        public string ForegroundColor
-        {
-            get;
-            set;
-        }
-
-        /// <summary>
-        /// Color of background of QR code
-        /// </summary>
-        public string BackgroundColor
-        {
-            get;
-            set;
-        }
+    /// <summary>
+    /// Color of QR code
+    /// </summary>
+    public string ForegroundColor
+    {
+        get;
+        set;
     }
+
+    /// <summary>
+    /// Color of background of QR code
+    /// </summary>
+    public string BackgroundColor
+    {
+        get;
+        set;
+    }
+}
 
 	/// <summary>
 	/// Defines the QR barcode encoding methods.
@@ -1416,4 +1416,3 @@ namespace T2t.Barcode.Svg
 		/// </summary>
 		Q = 3,
 	}
-}

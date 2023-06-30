@@ -2,12 +2,12 @@ using System.ComponentModel;
 
 using T2t.Barcode.Drawing;
 
-namespace BarcodeRender.Drawing
-{
-    /// <summary>
-    /// <c>BarcodePanel</c> encapsulates a Windows Forms barcode control.
-    /// </summary>
-    public partial class BarcodePanel : Panel
+namespace BarcodeRender.Drawing;
+
+/// <summary>
+/// <c>BarcodePanel</c> encapsulates a Windows Forms barcode control.
+/// </summary>
+public partial class BarcodePanel : Panel
 	{
 		#region Private Fields
 		private BarcodeSymbology _symbology;
@@ -130,4 +130,3 @@ namespace BarcodeRender.Drawing
 		}
 		#endregion
 	}
-}

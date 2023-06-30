@@ -1,8 +1,7 @@
-﻿namespace T2t.Barcode.Svg
+﻿namespace T2t.Barcode.Svg;
+
+public struct T2Size
 {
-    public struct T2Size
-    {
-        public int Width { get; set; }
-        public int Height { get; set; }
-    }
+    public int Width { get; set; }
+    public int Height { get; set; }
 }

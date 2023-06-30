@@ -1,5 +1,5 @@
-namespace BarcodeRenderer.Skia
-{
+namespace BarcodeRenderer.Skia;
+
 	partial class BarcodePanel
 	{
 		/// <summary>
@@ -41,4 +41,3 @@ namespace BarcodeRenderer.Skia
 
 		#endregion
 	}
-}

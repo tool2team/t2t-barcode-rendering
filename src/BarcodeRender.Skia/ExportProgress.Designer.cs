@@ -1,5 +1,5 @@
-namespace BarcodeRenderer.Skia
-{
+namespace BarcodeRenderer.Skia;
+
 	partial class ExportProgress
 	{
 		/// <summary>
@@ -109,4 +109,3 @@ namespace BarcodeRenderer.Skia
 		private System.Windows.Forms.Button cancelButton;
 		private System.ComponentModel.BackgroundWorker exportWorker;
 	}
-}

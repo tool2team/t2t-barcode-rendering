@@ -4,17 +4,18 @@
 // </copyright>
 //-----------------------------------------------------------------------
 
-namespace T2t.Barcode.Skia
-{
-    using SkiaSharp;
-    using System;
-    using System.Collections.Generic;
+namespace T2t.Barcode.Skia;
 
-    /// <summary>
-    /// <b>Code25GlyphFactory</b> base class for all code 25 
-    /// <see cref="GlyphFactory"/> objects.
-    /// </summary>
-    public abstract class Code25GlyphFactory : GlyphFactory
+using SkiaSharp;
+using System;
+using System.Collections.Generic;
+using T2t.Barcode.Core;
+
+/// <summary>
+/// <b>Code25GlyphFactory</b> base class for all code 25 
+/// <see cref="GlyphFactory"/> objects.
+/// </summary>
+public abstract class Code25GlyphFactory : GlyphFactory
 	{
 		#region Private Fields
 		private static Code25StandardGlyphFactory _theStdFactory;
@@ -368,8 +369,8 @@ namespace T2t.Barcode.Skia
 			SKSizeI desiredBarcodeDimensions, SKSizeI printResolution,
 			int barcodeCharLength)
 		{
-            int maxHeight = desiredBarcodeDimensions.Height * printResolution.Height / 100;
-            int narrowBarWidth = (printResolution.Width * desiredBarcodeDimensions.Width) /
+        int maxHeight = desiredBarcodeDimensions.Height * printResolution.Height / 100;
+        int narrowBarWidth = (printResolution.Width * desiredBarcodeDimensions.Width) /
 				(100 * (24 + (barcodeCharLength * 11)));
 			return new BarcodeMetrics1d(narrowBarWidth, maxHeight);
 		}
@@ -479,11 +480,11 @@ namespace T2t.Barcode.Skia
 				return;
 			}
 
-            // Interleaved version needs custom rendering support
+        // Interleaved version needs custom rendering support
 
-            int barOffset = 0;
-            using SKPaint paint = new() { Color = SKColors.Black };
-            for (int index = 0; index < barcode.Length; )
+        int barOffset = 0;
+        using SKPaint paint = new() { Color = SKColors.Black };
+        for (int index = 0; index < barcode.Length; )
 			{
 				BarGlyph glyph = (BarGlyph)barcode[index];
 				float height = GetGlyphHeight(glyph, barMinHeight, bounds.Height);
@@ -515,7 +516,7 @@ namespace T2t.Barcode.Skia
 						else
 						{
 							SKRect rect = new(barOffset, bounds.Top, barOffset + barMinWidth, bounds.Top + height);
-                            dc.DrawRect(rect, paint);
+                        dc.DrawRect(rect, paint);
 							barOffset += barMinWidth;
 						}
 
@@ -540,4 +541,3 @@ namespace T2t.Barcode.Skia
 		}
 		#endregion
 	}
-}
