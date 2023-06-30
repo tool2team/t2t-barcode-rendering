@@ -5,20 +5,20 @@
 	<GeneratePackageOnBuild>True</GeneratePackageOnBuild>
 	<PackageOutputPath>nupkg</PackageOutputPath>
 	<PackageIcon>t2t-bar-svg.png</PackageIcon>
+	<PackageTags>Barcode, qrcode, render, SVG</PackageTags>
 	<Configurations>Debug;Release</Configurations>
 	<RootNamespace>T2t.Barcode.Svg</RootNamespace>
 	<AssemblyName>T2t.Barcode.Svg</AssemblyName>
 	<PackageId>T2t.Barcode.Svg</PackageId>
 	<Product>Barcode renderer</Product>
-
 	<Authors>sinsedrix</Authors>
 	<Company>tool2team</Company>
-
 	<Description>Multi platform SVG barcode renderer, no dependency</Description>
 	<OutputType>Library</OutputType>
 	<LangVersion>latest</LangVersion>
 	<ImplicitUsings>enable</ImplicitUsings>
 	<RepositoryUrl>https://github.com/tool2team/t2t-barcode-rendering</RepositoryUrl>
+	  <BuildCommand>$(BuildCommand) -IncludeReferencedProjects</BuildCommand>
   </PropertyGroup>
 
 	<ItemGroup>

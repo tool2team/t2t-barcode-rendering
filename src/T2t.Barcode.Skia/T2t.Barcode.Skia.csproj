@@ -5,6 +5,7 @@
 	<GeneratePackageOnBuild>True</GeneratePackageOnBuild>
 	<PackageOutputPath>nupkg</PackageOutputPath>
 	<PackageIcon>t2t-bar-skia.png</PackageIcon>
+	<PackageTags>Barcode, qrcode, render, skia</PackageTags>
 	<Configurations>Debug;Release</Configurations>
 	<RootNamespace>T2t.Barcode.Skia</RootNamespace>
 	<AssemblyName>T2t.Barcode.Skia</AssemblyName>
@@ -12,12 +13,12 @@
 	<Authors>sinsedrix</Authors>
 	<Company>tool2team</Company>
 	<Product>Barcode renderer</Product>
-
 	<Description>Multi platform barcode renderer, depending on SkiaSharp</Description>
 	<OutputType>Library</OutputType>
 	<LangVersion>latest</LangVersion>
 	<ImplicitUsings>enable</ImplicitUsings>
 	<RepositoryUrl>https://github.com/tool2team/t2t-barcode-rendering</RepositoryUrl>
+	  <BuildCommand>$(BuildCommand) -IncludeReferencedProjects</BuildCommand>
   </PropertyGroup>
 
   <ItemGroup>

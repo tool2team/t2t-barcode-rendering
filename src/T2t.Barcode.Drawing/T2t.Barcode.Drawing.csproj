@@ -5,6 +5,7 @@
     <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
 	<PackageOutputPath>nupkg</PackageOutputPath>
 	<PackageIcon>t2t-bar-win.png</PackageIcon>
+	<PackageTags>Barcode, qrcode, render, windows</PackageTags>
     <Configurations>Debug;Release</Configurations>
     <RootNamespace>T2t.Barcode.Drawing</RootNamespace>
     <AssemblyName>T2t.Barcode.Drawing</AssemblyName>
@@ -17,6 +18,7 @@
     <LangVersion>latest</LangVersion>
     <ImplicitUsings>enable</ImplicitUsings>
     <RepositoryUrl>https://github.com/tool2team/t2t-barcode-rendering</RepositoryUrl>
+	  <BuildCommand>$(BuildCommand) -IncludeReferencedProjects</BuildCommand>
   </PropertyGroup>
 
 	<ItemGroup>

@@ -2,9 +2,28 @@
 
   <PropertyGroup>
     <TargetFrameworks>net6.0;net7.0;net6.0-windows;net7.0-windows</TargetFrameworks>
-    <ImplicitUsings>enable</ImplicitUsings>
+	  <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+	  <PackageOutputPath>nupkg</PackageOutputPath>
+	  <PackageIcon>t2t-bar-core.png</PackageIcon>
+	  <PackageTags>Barcode, qrcode, render</PackageTags>
+	  <Configurations>Debug;Release</Configurations>
+	  <RootNamespace>T2t.Barcode.Core</RootNamespace>
+	  <AssemblyName>T2t.Barcode.Core</AssemblyName>
+	  <PackageId>T2t.Barcode.Core</PackageId>
+	  <Authors>sinsedrix</Authors>
+	  <Company>tool2team</Company>
+	  <Product>Barcode renderer core</Product>
+	  <Description>Barcode renderer core library</Description>
+	  <OutputType>Library</OutputType>
+	  <LangVersion>latest</LangVersion>
+	  <ImplicitUsings>enable</ImplicitUsings>
+	  <RepositoryUrl>https://github.com/tool2team/t2t-barcode-rendering</RepositoryUrl>
   </PropertyGroup>
 
+	<ItemGroup>
+		<None Include="t2t-bar-core.png" Pack="true" Visible="false" PackagePath="t2t-bar-core.png" />
+	</ItemGroup>
+	
   <ItemGroup>
     <None Remove="Resources\qrv10_0.dat" />
     <None Remove="Resources\qrv10_1.dat" />
