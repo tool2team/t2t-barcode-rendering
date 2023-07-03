@@ -1,0 +1,1 @@
+# Multi platform SVG barcode renderer, no dependency

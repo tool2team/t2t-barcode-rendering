@@ -1,0 +1,1 @@
+# Core barcode Rendering Library
