@@ -4,13 +4,11 @@
 // </copyright>
 //-----------------------------------------------------------------------
 
-namespace T2t.Barcode.Drawing;
 
-using System;
-using System.Collections.Generic;
 using System.Drawing;
 using T2t.Barcode.Core;
 
+namespace T2t.Barcode.Drawing;
 /// <summary>
 /// <b>Code93GlyphFactory</b> concrete implementation of 
 /// <see cref="GlyphFactory"/> for providing Code 93 bar-code glyph

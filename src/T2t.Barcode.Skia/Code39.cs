@@ -4,13 +4,11 @@
 // </copyright>
 //-----------------------------------------------------------------------
 
-namespace T2t.Barcode.Skia;
 
 using SkiaSharp;
-using System;
-using System.Collections.Generic;
 using T2t.Barcode.Core;
 
+namespace T2t.Barcode.Skia;
 /// <summary>
 /// <b>Code39GlyphFactory</b> concrete implementation of 
 /// <see cref="GlyphFactory"/> for providing Code 39 bar-code glyph

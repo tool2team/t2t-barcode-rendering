@@ -4,14 +4,12 @@
 // </copyright>
 //-----------------------------------------------------------------------
 
-namespace T2t.Barcode.Svg;
 
 
-using System;
-using System.Collections.Generic;
 using System.Text.RegularExpressions;
 using T2t.Barcode.Core;
 
+namespace T2t.Barcode.Svg;
 /// <summary>
 /// <b>CodeEan13GlyphFactory</b> concrete implementation of 
 /// <see cref="GlyphFactory"/> for providing Code EAN 13 bar-code glyph

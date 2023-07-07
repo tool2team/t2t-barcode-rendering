@@ -4,13 +4,11 @@
 // </copyright>
 //-----------------------------------------------------------------------
 
-namespace T2t.Barcode.Svg;
 
 
-using System;
-using System.Collections.Generic;
 using T2t.Barcode.Core;
 
+namespace T2t.Barcode.Svg;
 /// <summary>
 /// <b>Code25GlyphFactory</b> base class for all code 25 
 /// <see cref="GlyphFactory"/> objects.

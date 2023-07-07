@@ -5,10 +5,6 @@
 //-----------------------------------------------------------------------
 
 namespace T2t.Barcode.Core;
-
-using System;
-using System.Collections.Generic;
-
 /// <summary>
 /// Abstract class factory for retrieval of barcode glyph objects.
 /// </summary>

@@ -5,9 +5,6 @@
 //-----------------------------------------------------------------------
 
 namespace T2t.Barcode.Core;
-
-using System;
-
 /// <summary>
 /// <b>MultisetGlyph</b> serves as a base class for barcode symbologies
 /// where a given encoding is reused by multiple characters.

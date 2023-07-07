@@ -4,12 +4,11 @@
 // </copyright>
 //-----------------------------------------------------------------------
 
-namespace T2t.Barcode.Skia;
 
 using SkiaSharp;
-using System;
 using T2t.Barcode.Core;
 
+namespace T2t.Barcode.Skia;
 /// <summary>
 /// <b>BinaryPitchBarcodeDraw</b> is an abstract class that serves as a
 /// base class for rendering all dual-pitch barcode symbologies.

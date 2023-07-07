@@ -4,13 +4,11 @@
 // </copyright>
 //-----------------------------------------------------------------------
 
-namespace T2t.Barcode.Skia;
 
 using SkiaSharp;
-using System;
-using System.Collections.Generic;
 using T2t.Barcode.Core;
 
+namespace T2t.Barcode.Skia;
 /// <summary>
 /// <b>Code128Glyph</b> extends <see cref="T:MultisetGlyph"/> by defining
 /// the three Code128 barcode sections.

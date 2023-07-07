@@ -4,14 +4,13 @@
 // </copyright>
 //-----------------------------------------------------------------------
 
-namespace T2t.Barcode.Svg;
 
 
-using System;
-using System.IO;
 using System.Reflection;
 using System.Text;
+using T2t.Barcode.Core;
 
+namespace T2t.Barcode.Svg;
 /// <summary>
 /// <c>CodeQrBarcodeDraw</c> extends <see cref="BarcodeDraw"/> to support
 /// rendering QR barcodes.

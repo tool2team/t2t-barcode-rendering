@@ -5,9 +5,6 @@
 //-----------------------------------------------------------------------
 
 namespace T2t.Barcode.Svg;
-
-using System;
-
 /// <summary>
 /// <b>BarcodeDrawFactory</b> returns draw agents capable of generating 
 /// the appropriate bar-code image.

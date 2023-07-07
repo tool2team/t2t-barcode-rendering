@@ -4,12 +4,11 @@
 // </copyright>
 //-----------------------------------------------------------------------
 
-namespace T2t.Barcode.Drawing;
 
-using System;
 using System.Drawing;
 using T2t.Barcode.Core;
 
+namespace T2t.Barcode.Drawing;
 /// <summary>
 /// <b>BinaryPitchBarcodeDraw</b> is an abstract class that serves as a
 /// base class for rendering all dual-pitch barcode symbologies.

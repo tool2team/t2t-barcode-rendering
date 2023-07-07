@@ -4,13 +4,11 @@
 // </copyright>
 //-----------------------------------------------------------------------
 
-namespace T2t.Barcode.Svg;
 
 
-using System;
-using System.Collections.Generic;
 using T2t.Barcode.Core;
 
+namespace T2t.Barcode.Svg;
 /// <summary>
 /// <b>Code93GlyphFactory</b> concrete implementation of 
 /// <see cref="GlyphFactory"/> for providing Code 93 bar-code glyph
