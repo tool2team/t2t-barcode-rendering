@@ -17,8 +17,8 @@ namespace T2t.Barcode.Core;
 public class CompositeGlyph : Glyph
 {
     #region Private Fields
-    private BarGlyph _first;
-    private BarGlyph _second;
+    private readonly BarGlyph _first;
+    private readonly BarGlyph _second;
     #endregion
 
     #region Public Constructors

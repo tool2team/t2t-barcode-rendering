@@ -1,4 +1,4 @@
-namespace BarcodeRenderer.Skia;
+namespace BarcodeRender.Skia;
 
 	partial class ExportBarcodeImagesForm
 	{

@@ -1,15 +1,15 @@
-namespace BarcodeRenderer.Skia;
+namespace BarcodeRender.Skia;
 
 static class Program
-	{
-		/// <summary>
-		/// The main entry point for the application.
-		/// </summary>
-		[STAThread]
-		static void Main ()
-		{
-			Application.EnableVisualStyles ();
-			Application.SetCompatibleTextRenderingDefault (false);
-			Application.Run (new BarcodeTestForm ());
-		}
-	}
+{
+    /// <summary>
+    /// The main entry point for the application.
+    /// </summary>
+    [STAThread]
+    static void Main()
+    {
+        Application.EnableVisualStyles();
+        Application.SetCompatibleTextRenderingDefault(false);
+        Application.Run(new BarcodeTestForm());
+    }
+}

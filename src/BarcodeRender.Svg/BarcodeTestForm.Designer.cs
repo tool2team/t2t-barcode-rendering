@@ -1,4 +1,7 @@
-﻿namespace BarcodeRenderer.Skia;
+﻿using BarcodeRender.Svg;
+using T2t.Barcode.Core;
+
+namespace BarcodeRender.Skia;
 
 	partial class BarcodeTestForm
 	{
@@ -47,7 +50,7 @@
 			this.label5 = new System.Windows.Forms.Label ();
 			this.scannerResult = new System.Windows.Forms.TextBox ();
 			this.label2 = new System.Windows.Forms.Label ();
-			this.barcodePanel = new BarcodeRenderer.Skia.BarcodePanel ();
+			this.barcodePanel = new BarcodeRender.Skia.BarcodePanel ();
 			this.barcodeLabel = new System.Windows.Forms.TextBox ();
 			this.label1 = new System.Windows.Forms.Label ();
 			this.nextTestButton = new System.Windows.Forms.Button ();
@@ -146,20 +149,22 @@
 			// testSymbology
 			// 
 			this.testSymbology.FormattingEnabled = true;
-			this.testSymbology.Items.AddRange (new object[] {
-        "Code 39 (No Checksum)",
-        "Code 39 (With Checksum)",
-        "Code 93 (With Checksum)",
-        "Code 128 (With Checksum)",
-        "Code 11 (No Checksum)",
-        "Code 11 (With Checksum)",
-        "Code EAN-13 (With Checksum)",
-        "Code EAN-8 (With Checksum)",
-        "Code 25 Standard (No Checksum)",
-        "Code 25 Standard (With Checksum)",
-        "Code 25 Interleaved (No Checksum)",
-        "Code 25 Interleaved (With Checksum)",
-        "Code PDF417 (With Checksum)"});
+			this.testSymbology.Items.AddRange (new ComboBoxItem<BarcodeSymbology>[] {
+                new ComboBoxItem<BarcodeSymbology> { Id = BarcodeSymbology.Code39NC, Label = "Code 39 (No Checksum)" },
+				new ComboBoxItem<BarcodeSymbology> { Id = BarcodeSymbology.Code39C, Label = "Code 39 (With Checksum)" },
+				new ComboBoxItem<BarcodeSymbology> { Id = BarcodeSymbology.Code93, Label = "Code 93 (With Checksum)" },
+				new ComboBoxItem<BarcodeSymbology> { Id = BarcodeSymbology.Code128, Label = "Code 128 (With Checksum)" },
+				new ComboBoxItem<BarcodeSymbology> { Id = BarcodeSymbology.Code11NC, Label = "Code 11 (No Checksum)" },
+				new ComboBoxItem<BarcodeSymbology> { Id = BarcodeSymbology.Code11C, Label = "Code 11 (With Checksum)" },
+				new ComboBoxItem<BarcodeSymbology> { Id = BarcodeSymbology.CodeEan13, Label = "Code EAN-13 (With Checksum)" },
+				new ComboBoxItem<BarcodeSymbology> { Id = BarcodeSymbology.CodeEan8, Label = "Code EAN-8 (With Checksum)" },
+				new ComboBoxItem<BarcodeSymbology> { Id = BarcodeSymbology.Code25StandardNC, Label = "Code 25 Standard (No Checksum)" },
+				new ComboBoxItem<BarcodeSymbology> { Id = BarcodeSymbology.Code25StandardC, Label = "Code 25 Standard (With Checksum)" },
+				new ComboBoxItem<BarcodeSymbology> { Id = BarcodeSymbology.Code25InterleavedNC, Label = "Code 25 Interleaved (No Checksum)" },
+				new ComboBoxItem<BarcodeSymbology> { Id = BarcodeSymbology.Code25InterleavedC, Label = "Code 25 Interleaved (With Checksum)" },
+				new ComboBoxItem<BarcodeSymbology> { Id = BarcodeSymbology.CodeQr, Label = "Code Qr" } });
+			this.testSymbology.DisplayMember = nameof(ComboBoxItem<BarcodeSymbology>.Label);
+			this.testSymbology.ValueMember = nameof(ComboBoxItem<BarcodeSymbology>.Id);
 			this.testSymbology.Location = new System.Drawing.Point (160, 57);
 			this.testSymbology.Name = "testSymbology";
 			this.testSymbology.Size = new System.Drawing.Size (191, 21);

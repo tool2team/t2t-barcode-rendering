@@ -1,11 +1,12 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFrameworks>net6.0;net7.0;net6.0-windows;net7.0-windows</TargetFrameworks>
+    <TargetFrameworks>netstandard2.0;net6.0;net7.0</TargetFrameworks>
 	  <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
 	  <PackageOutputPath>nupkg</PackageOutputPath>
 	  <PackageIcon>t2t-bar-core.png</PackageIcon>
 	  <PackageTags>Barcode, qrcode, render</PackageTags>
+	  <PackageReadmeFile>README.md</PackageReadmeFile>
 	  <Configurations>Debug;Release</Configurations>
 	  <RootNamespace>T2t.Barcode.Core</RootNamespace>
 	  <AssemblyName>T2t.Barcode.Core</AssemblyName>
@@ -22,6 +23,7 @@
 
 	<ItemGroup>
 		<None Include="t2t-bar-core.png" Pack="true" Visible="false" PackagePath="t2t-bar-core.png" />
+		<None Include="README.md" Pack="true" PackagePath="\" />
 	</ItemGroup>
 	
   <ItemGroup>

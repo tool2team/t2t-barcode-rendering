@@ -19,10 +19,10 @@ public abstract class BarcodeDrawBase<TGlyphFactory, TChecksum> : BarcodeDraw
     where TChecksum : Checksum
 {
     #region Private Fields
-    private TGlyphFactory _factory;
-    private TChecksum _checksum;
-    private int _encodingBitCount;
-    private int _widthBitCount;
+    private readonly TGlyphFactory _factory;
+    private readonly TChecksum _checksum;
+    private readonly int _encodingBitCount;
+    private readonly int _widthBitCount;
     #endregion
 
     #region Protected Constructors
@@ -266,7 +266,7 @@ public abstract class BarcodeDrawBase<TGlyphFactory, TChecksum> : BarcodeDraw
                 for (int bitIndex = encodingBitCount - 1; bitIndex >= 0; --bitIndex)
                 {
                     // Determine whether the bit state is changing
-                    int bitmask = (1 << bitIndex);
+                    int bitmask = 1 << bitIndex;
                     bool currentBitState = false;
                     if ((bitmask & binaryGlyph.BitEncoding) != 0)
                     {
@@ -282,7 +282,7 @@ public abstract class BarcodeDrawBase<TGlyphFactory, TChecksum> : BarcodeDraw
                     lastBitState = currentBitState;
 
                     // Determine width encoding bit mask
-                    bitmask = (1 << widthIndex);
+                    bitmask = 1 << widthIndex;
                     if ((bitmask & binaryGlyph.WidthEncoding) != 0)
                     {
                         totalImageWidth += barMaxWidth;
@@ -295,7 +295,7 @@ public abstract class BarcodeDrawBase<TGlyphFactory, TChecksum> : BarcodeDraw
             }
             else
             {
-                totalImageWidth += (encodingBitCount * barMinWidth);
+                totalImageWidth += encodingBitCount * barMinWidth;
             }
         }
         return totalImageWidth;
@@ -348,7 +348,7 @@ public abstract class BarcodeDrawBase<TGlyphFactory, TChecksum> : BarcodeDraw
     protected int GetBarcodeInterGlyphLength(Glyph[] barcode,
         int interGlyphSpace)
     {
-        return ((barcode.Length - 1) * interGlyphSpace);
+        return (barcode.Length - 1) * interGlyphSpace;
     }
 
     /// <summary>
@@ -486,7 +486,7 @@ public abstract class BarcodeDrawBase<TGlyphFactory, TChecksum> : BarcodeDraw
                 lastBitState = currentBitState;
 
                 // Determine width encoding bit mask
-                int widthMask = (1 << widthIndex);
+                int widthMask = 1 << widthIndex;
                 if ((widthMask & binGlyph.WidthEncoding) != 0)
                 {
                     barWidth = barMaxWidth;
@@ -506,7 +506,7 @@ public abstract class BarcodeDrawBase<TGlyphFactory, TChecksum> : BarcodeDraw
         {
             for (int bitIndex = encodingBitCount - 1; bitIndex >= 0; --bitIndex)
             {
-                int bitMask = (1 << bitIndex);
+                int bitMask = 1 << bitIndex;
                 if ((glyphBits & bitMask) != 0)
                 {
                     dc.FillRectangle(Brushes.Black, barOffset, bounds.Top,

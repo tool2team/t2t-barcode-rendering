@@ -111,7 +111,7 @@ public abstract class BinaryPitchBarcodeDraw<TGlyphFactory, TChecksum>
             for (int bitIndex = encodingBitCount - 1; bitIndex >= 0; --bitIndex)
             {
                 // Determine whether the bit state is changing
-                int bitmask = (1 << bitIndex);
+                int bitmask = 1 << bitIndex;
                 bool currentBitState = false;
                 if ((bitmask & glyph.BitEncoding) != 0)
                 {
@@ -127,7 +127,7 @@ public abstract class BinaryPitchBarcodeDraw<TGlyphFactory, TChecksum>
                 lastBitState = currentBitState;
 
                 // Determine width encoding bit mask
-                bitmask = (1 << widthIndex);
+                bitmask = 1 << widthIndex;
                 if ((bitmask & glyph.WidthEncoding) != 0)
                 {
                     totalImageWidth += barMaxWidth;
@@ -154,28 +154,27 @@ public abstract class BinaryPitchBarcodeDraw<TGlyphFactory, TChecksum>
         return EncodingBitCount;
     }
 
-		/// <summary>
-		/// Overridden. Renders the specified glyph.
-		/// </summary>
-		/// <param name="glyphIndex">Index of the glyph.</param>
-		/// <param name="glyph">A <see cref="T:Glyph"/> to be rendered.</param>
-		/// <param name="dc">A <see cref="T:SKCanvas"/> representing the device context.</param>
-		/// <param name="bounds">The bounding rectangle.</param>
-		/// <param name="barOffset">The bar offset in pixels.</param>
-		/// <param name="barMinHeight">Minimum bar height in pixels.</param>
-		/// <param name="barMinWidth">Minimum bar width.</param>
-		/// <param name="barMaxWidth">Maximum bar width.</param>
-		/// <exception cref="T:InvalidOperationException">
-		/// Thrown if the encoding bit count is zero or variable-pitch
-		/// bar rendering is attempted.
-		/// </exception>
+    /// <summary>
+    /// Overridden. Renders the specified glyph.
+    /// </summary>
+    /// <param name="glyphIndex">Index of the glyph.</param>
+    /// <param name="glyph">A <see cref="T:Glyph"/> to be rendered.</param>
+    /// <param name="dc">A <see cref="T:SKCanvas"/> representing the device context.</param>
+    /// <param name="bounds">The bounding rectangle.</param>
+    /// <param name="barOffset">The bar offset in pixels.</param>
+    /// <param name="barMinHeight">Minimum bar height in pixels.</param>
+    /// <param name="barMinWidth">Minimum bar width.</param>
+    /// <param name="barMaxWidth">Maximum bar width.</param>
+    /// <exception cref="T:InvalidOperationException">
+    /// Thrown if the encoding bit count is zero or variable-pitch
+    /// bar rendering is attempted.
+    /// </exception>
     protected override void RenderBar(int glyphIndex, BarGlyph glyph, SKCanvas dc, SKPaint paint,
         SKRectI bounds, ref int barOffset, int barMinHeight,
         int barMinWidth, int barMaxWidth)
     {
         // Sanity check
-        BinaryPitchGlyph binGlyph = glyph as BinaryPitchGlyph;
-        if (binGlyph == null)
+        if (glyph is not BinaryPitchGlyph binGlyph)
         {
             throw new InvalidOperationException("Glyph must be derived from BinaryPitchGlyph.");
         }
@@ -214,7 +213,7 @@ public abstract class BinaryPitchBarcodeDraw<TGlyphFactory, TChecksum>
             lastBitState = currentBitState;
 
             // Determine width encoding bit mask
-            int widthMask = (1 << widthIndex);
+            int widthMask = 1 << widthIndex;
             if ((widthMask & binGlyph.WidthEncoding) != 0)
             {
                 barWidth = barMaxWidth;

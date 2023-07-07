@@ -15,7 +15,7 @@ using System;
 public class MultisetGlyph : BarGlyph
 {
     #region Private Fields
-    private char[] _characters;
+    private readonly char[] _characters;
     #endregion
 
     #region Public Constructors
@@ -56,7 +56,7 @@ public class MultisetGlyph : BarGlyph
     {
         if (set < 0 || set >= _characters.Length)
         {
-            throw new ArgumentOutOfRangeException("set", set,
+            throw new ArgumentOutOfRangeException(nameof(set), set,
                 "set out of range.");
         }
         return _characters[set];

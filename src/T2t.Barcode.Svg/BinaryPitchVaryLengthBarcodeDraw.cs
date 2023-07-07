@@ -92,7 +92,7 @@ public abstract class BinaryPitchVaryLengthBarcodeDraw<TGlyphFactory, TChecksum>
     /// </exception>
     protected override int GetGlyphEncodingBitCount(Glyph glyph)
     {
-        return ((BinaryPitchVaryLengthGlyph) glyph).BitEncodingWidth;
+        return ((BinaryPitchVaryLengthGlyph)glyph).BitEncodingWidth;
     }
     #endregion
 }

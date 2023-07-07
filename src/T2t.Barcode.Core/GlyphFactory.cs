@@ -145,8 +145,7 @@ public abstract class GlyphFactory
     {
         EnsureFullLookup();
         Glyph glyph = _lookup[character];
-        CompositeGlyph compGlyph = glyph as CompositeGlyph;
-        if (compGlyph != null && !allowComposite)
+        if (glyph is CompositeGlyph compGlyph && !allowComposite)
         {
             return new Glyph[] { compGlyph.First, compGlyph.Second };
         }
@@ -187,7 +186,7 @@ public abstract class GlyphFactory
     {
         if (string.IsNullOrEmpty(text))
         {
-            return new Glyph[0];
+            return Array.Empty<Glyph>();
         }
 
         List<Glyph> glyphs = new();

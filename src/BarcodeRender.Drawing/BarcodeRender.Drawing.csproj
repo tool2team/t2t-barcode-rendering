@@ -3,8 +3,8 @@
   <PropertyGroup>
     <TargetFrameworks>net7.0-windows</TargetFrameworks>
     <Configurations>Debug;Release</Configurations>
-    <RootNamespace>BarcodeRender</RootNamespace>
-    <AssemblyName>BarcodeRender</AssemblyName>
+    <RootNamespace>BarcodeRender.Drawing</RootNamespace>
+    <AssemblyName>BarcodeRender.Drawing</AssemblyName>
     <LangVersion>latest</LangVersion>
     <ImplicitUsings>enable</ImplicitUsings>
     <OutputType>WinExe</OutputType>

@@ -24,7 +24,7 @@ namespace T2t.Barcode.Core;
 /// </remarks>
 public class Glyph : IGlyph
 {
-    private char _character;
+    private readonly char _character;
 
     /// <summary>
     /// Initialises a new instance of the <see cref="T:T2t.Barcode.Core.Glyph"/>

@@ -13,7 +13,7 @@ namespace T2t.Barcode.Core;
 public class BinaryPitchVaryLengthGlyph : BinaryPitchGlyph, IVaryLengthGlyph
 {
     #region Private Fields
-    private short _bitEncodingWidth;
+    private readonly short _bitEncodingWidth;
     #endregion
 
     #region Public Constructors
