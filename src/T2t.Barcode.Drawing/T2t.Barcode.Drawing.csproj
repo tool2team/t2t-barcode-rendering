@@ -7,6 +7,7 @@
 	<PackageIcon>t2t-bar-win.png</PackageIcon>
 	<PackageTags>Barcode, qrcode, render, windows</PackageTags>
 	<PackageReadmeFile>README.md</PackageReadmeFile>
+	<PackageLicenseFile>LICENSE.md</PackageLicenseFile>
     <Configurations>Debug;Release</Configurations>
     <RootNamespace>T2t.Barcode.Drawing</RootNamespace>
     <AssemblyName>T2t.Barcode.Drawing</AssemblyName>
@@ -33,5 +34,6 @@
 	<ItemGroup>
 		<None Include="t2t-bar-win.png" Pack="true" Visible="false" PackagePath="t2t-bar-win.png" />
 		<None Include="README.md" Pack="true" PackagePath="\" />
+		<None Include="LICENSE.md" Pack="true" PackagePath="\" />
 	</ItemGroup>
 </Project>

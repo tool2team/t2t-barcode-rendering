@@ -7,6 +7,7 @@
 	<PackageIcon>t2t-bar-svg.png</PackageIcon>
 	<PackageTags>Barcode, qrcode, render, SVG</PackageTags>
 	<PackageReadmeFile>README.md</PackageReadmeFile>
+	<PackageLicenseFile>LICENSE.md</PackageLicenseFile>
 	<Configurations>Debug;Release</Configurations>
 	<RootNamespace>T2t.Barcode.Svg</RootNamespace>
 	<AssemblyName>T2t.Barcode.Svg</AssemblyName>
@@ -29,5 +30,6 @@
 	<ItemGroup>
 		<None Include="t2t-bar-svg.png" Pack="true" Visible="false" PackagePath="t2t-bar-svg.png" />
 		<None Include="README.md" Pack="true" PackagePath="\" />
+		<None Include="LICENSE.md" Pack="true" PackagePath="\" />
 	</ItemGroup>
 </Project>

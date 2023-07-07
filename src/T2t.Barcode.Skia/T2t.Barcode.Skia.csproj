@@ -7,6 +7,7 @@
 	<PackageIcon>t2t-bar-skia.png</PackageIcon>
 	<PackageTags>Barcode, qrcode, render, skia</PackageTags>
 	<PackageReadmeFile>README.md</PackageReadmeFile>
+	<PackageLicenseFile>LICENSE.md</PackageLicenseFile>
 	<Configurations>Debug;Release</Configurations>
 	<RootNamespace>T2t.Barcode.Skia</RootNamespace>
 	<AssemblyName>T2t.Barcode.Skia</AssemblyName>
@@ -33,5 +34,6 @@
 	<ItemGroup>
 		<None Include="t2t-bar-skia.png" Pack="true" Visible="false" PackagePath="t2t-bar-skia.png" />
 		<None Include="README.md" Pack="true" PackagePath="\" />
+		<None Include="LICENSE.md" Pack="true" PackagePath="\" />
 	</ItemGroup>
 </Project>
