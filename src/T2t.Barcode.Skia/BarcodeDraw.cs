@@ -63,7 +63,7 @@ public abstract class BarcodeDraw
     /// <returns>
     /// An <see cref="SKImage"/> object containing the rendered barcode.
     /// </returns>
-    public SKBitmap Draw(string text, int maxBarHeight, int scale)
+    public SKBitmap Draw(string text, int maxBarHeight, float scale)
     {
         BarcodeMetrics defaultMetrics = GetDefaultMetrics(maxBarHeight);
         defaultMetrics.Scale = scale;
@@ -276,9 +276,9 @@ public abstract class BarcodeDrawBase<TGlyphFactory, TChecksum> : BarcodeDraw
         // Determine bar code length in pixels
         int totalImageWidth = GetBarcodeLength(
                 barcode,
-                interGlyphSpace * metrics.Scale,
-                metrics.MinWidth * metrics.Scale,
-                metrics.MaxWidth * metrics.Scale);
+                (int)(interGlyphSpace * metrics.Scale),
+                (int)(metrics.MinWidth * metrics.Scale),
+                (int)(metrics.MaxWidth * metrics.Scale));
 
         // Create image of correct size
         SKBitmap image = new(totalImageWidth, metrics.MaxHeight);
@@ -288,10 +288,10 @@ public abstract class BarcodeDrawBase<TGlyphFactory, TChecksum> : BarcodeDraw
             barcode,
             dc,
             bounds,
-            interGlyphSpace * metrics.Scale,
+            (int)(interGlyphSpace * metrics.Scale),
             metrics.MinHeight,
-            metrics.MinWidth * metrics.Scale,
-            metrics.MaxWidth * metrics.Scale);
+            (int)(metrics.MinWidth * metrics.Scale),
+            (int)(metrics.MaxWidth * metrics.Scale));
 
         // Handle rotation of image as necessary
         if (metrics.RenderVertically)

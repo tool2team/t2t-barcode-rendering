@@ -220,7 +220,7 @@ public abstract class BarcodeDraw
     /// <returns>
     /// An <see cref="SKImage"/> object containing the rendered barcode.
     /// </returns>
-    public string Draw(string text, int maxBarHeight, int scale)
+    public string Draw(string text, int maxBarHeight, float scale)
     {
         BarcodeMetrics defaultMetrics = GetDefaultMetrics(maxBarHeight);
         defaultMetrics.Scale = scale;
@@ -433,19 +433,19 @@ public abstract class BarcodeDrawBase<TGlyphFactory, TChecksum> : BarcodeDraw
         // Determine bar code length in pixels
         int totalImageWidth = GetBarcodeLength(
                 barcode,
-                interGlyphSpace * metrics.Scale,
-                metrics.MinWidth * metrics.Scale,
-                metrics.MaxWidth * metrics.Scale);
+                (int)(interGlyphSpace * metrics.Scale),
+                (int)(metrics.MinWidth * metrics.Scale),
+                (int)(metrics.MaxWidth * metrics.Scale));
 
         // Create image of correct size
         T2Rect bounds = new(0, 0, totalImageWidth, metrics.MaxHeight);
         List<string> content = Render(
             barcode,
             bounds,
-            interGlyphSpace * metrics.Scale,
+            (int)(interGlyphSpace * metrics.Scale),
             metrics.MinHeight,
-            metrics.MinWidth * metrics.Scale,
-            metrics.MaxWidth * metrics.Scale);
+            (int)(metrics.MinWidth * metrics.Scale),
+            (int)(metrics.MaxWidth * metrics.Scale));
 
         return string.Format(SvgTmpl, totalImageWidth, metrics.MaxHeight, string.Join('\n', content));
     }

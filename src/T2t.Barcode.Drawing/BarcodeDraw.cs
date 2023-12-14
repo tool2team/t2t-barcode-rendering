@@ -62,7 +62,7 @@ public abstract class BarcodeDraw
     /// <returns>
     /// An <see cref="Image"/> object containing the rendered barcode.
     /// </returns>
-    public Image Draw(string text, int maxBarHeight, int scale)
+    public Image Draw(string text, int maxBarHeight, float scale)
     {
         BarcodeMetrics defaultMetrics = GetDefaultMetrics(maxBarHeight);
         defaultMetrics.Scale = scale;

@@ -285,7 +285,7 @@ public class CodeQrBarcodeDraw : BarcodeDraw
         private int _structureAppendParity;
         //private string _structureAppendOriginaldata;
 
-        private int _scale;
+        private float _scale;
         private string _backgroundColor;
         private string _foregroundColor;
         #endregion
@@ -353,7 +353,7 @@ public class CodeQrBarcodeDraw : BarcodeDraw
             }
         }
 
-        public int Scale
+        public float Scale
         {
             get
             {
@@ -1189,8 +1189,8 @@ public class CodeQrBarcodeDraw : BarcodeDraw
         public virtual string Encode(string content, Encoding encoding)
         {
             bool[][] matrix = CalculateQrCode(encoding.GetBytes(content));
-            int width = matrix.Length * _scale + 1;
-            int height = matrix.Length * _scale + 1;
+            int width = (int)(matrix.Length * _scale) + 1;
+            int height = (int)(matrix.Length * _scale) + 1;
 
             List<string> rects = new()
             {

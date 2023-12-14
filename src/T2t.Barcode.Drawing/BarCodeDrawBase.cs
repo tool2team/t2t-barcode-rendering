@@ -187,9 +187,9 @@ public abstract class BarcodeDrawBase<TGlyphFactory, TChecksum> : BarcodeDraw
         // Determine bar code length in pixels
         int totalImageWidth = GetBarcodeLength(
             barcode,
-            interGlyphSpace * metrics.Scale,
-            metrics.MinWidth * metrics.Scale,
-            metrics.MaxWidth * metrics.Scale);
+            (int)(interGlyphSpace * metrics.Scale),
+            (int)(metrics.MinWidth * metrics.Scale),
+            (int)(metrics.MaxWidth * metrics.Scale));
 
         // Create image of correct size
         Bitmap image = new(totalImageWidth, metrics.MaxHeight);
@@ -200,10 +200,10 @@ public abstract class BarcodeDrawBase<TGlyphFactory, TChecksum> : BarcodeDraw
                 barcode,
                 dc,
                 bounds,
-                interGlyphSpace * metrics.Scale,
+                (int)(interGlyphSpace * metrics.Scale),
                 metrics.MinHeight,
-                metrics.MinWidth * metrics.Scale,
-                metrics.MaxWidth * metrics.Scale);
+                (int)(metrics.MinWidth * metrics.Scale),
+                (int)(metrics.MaxWidth * metrics.Scale));
         }
 
         // Handle rotation of image as necessary

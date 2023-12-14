@@ -285,7 +285,7 @@ public class CodeQrBarcodeDraw : BarcodeDraw
         private int _structureAppendParity;
         //private string _structureAppendOriginaldata;
 
-        private int _scale;
+        private float _scale;
         private SKColor _backgroundColor;
         private SKColor _foregroundColor;
         #endregion
@@ -353,7 +353,7 @@ public class CodeQrBarcodeDraw : BarcodeDraw
             }
         }
 
-        public int Scale
+        public float Scale
         {
             get
             {
@@ -1190,7 +1190,7 @@ public class CodeQrBarcodeDraw : BarcodeDraw
         {
             bool[][] matrix = CalculateQrCode(encoding.GetBytes(content));
             SKPaint brush = new() { Color = _backgroundColor };
-            SKBitmap image = new(matrix.Length * _scale + 1, matrix.Length * _scale + 1);
+            SKBitmap image = new((int)(matrix.Length * _scale) + 1, (int)(matrix.Length * _scale) + 1);
             SKCanvas g = new(image);
             g.DrawRect(new SKRect(0, 0, image.Width, image.Height), brush);
             brush.Color = _foregroundColor;

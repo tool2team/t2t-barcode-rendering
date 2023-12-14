@@ -26,7 +26,7 @@ public abstract class BarcodeMetrics
     /// When applied to a 2D barcode the scale adjusts both width and height
     /// of barcode elements.
     /// </remarks>
-    public int Scale
+    public float Scale
     {
         get;
         set;
