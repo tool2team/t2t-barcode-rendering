@@ -3,7 +3,7 @@ using Svg;
 using System.Drawing.Imaging;
 using System.Text;
 using System.Xml.Serialization;
-
+using T2t.Barcode.Core;
 using T2t.Barcode.Svg;
 
 namespace BarcodeRender.Skia;

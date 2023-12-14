@@ -5,7 +5,7 @@ using System.Drawing.Printing;
 using System.Text;
 using System.Xml;
 using System.Xml.Serialization;
-
+using T2t.Barcode.Core;
 using T2t.Barcode.Svg;
 
 namespace BarcodeRender.Skia;
@@ -280,7 +280,7 @@ public partial class BarcodeTestForm : Form
 
     private void barcodeDocument_BeginPrint(object sender, PrintEventArgs e)
     {
-        _testIterator = _testPlan.GetTestCases(_maxBarHeight).GetEnumerator();
+        _testIterator = _testPlan.GetTestCases(_maxBarHeight)?.GetEnumerator();
         _barcodeFont = new Font("Verdana", 8);
     }
 

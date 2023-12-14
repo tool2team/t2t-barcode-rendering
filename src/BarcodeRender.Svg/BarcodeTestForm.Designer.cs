@@ -211,7 +211,7 @@ namespace BarcodeRender.Skia;
 			this.barcodePanel.Location = new System.Drawing.Point (6, 129);
 			this.barcodePanel.Name = "barcodePanel";
 			this.barcodePanel.Size = new System.Drawing.Size (410, 88);
-			this.barcodePanel.Symbology = T2t.Barcode.Svg.BarcodeSymbology.Unknown;
+			this.barcodePanel.Symbology = T2t.Barcode.Core.BarcodeSymbology.Unknown;
 			this.barcodePanel.TabIndex = 3;
 			// 
 			// barcodeLabel

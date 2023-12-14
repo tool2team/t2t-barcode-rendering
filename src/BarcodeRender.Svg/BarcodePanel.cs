@@ -1,7 +1,7 @@
 
 using Svg;
 using System.ComponentModel;
-
+using T2t.Barcode.Core;
 using T2t.Barcode.Svg;
 
 namespace BarcodeRender.Skia;
