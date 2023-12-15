@@ -384,7 +384,7 @@ public class Code39BarcodeDraw
     /// <param name="barMinWidth"></param>
     /// <param name="barMaxWidth"></param>
     /// <returns></returns>
-    protected override int GetDefaultInterGlyphSpace(int barMinWidth, int barMaxWidth)
+    protected override float GetDefaultInterGlyphSpace(float barMinWidth, float barMaxWidth)
     {
         return barMinWidth;
     }

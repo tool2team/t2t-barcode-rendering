@@ -389,8 +389,8 @@ public class Code93BarcodeDraw
     /// Currently this method does not account for any "quiet space"
     /// around the barcode as dictated by each symbology standard.
     /// </remarks>
-    protected override int GetBarcodeLength(Glyph[] barcode,
-    int interGlyphSpace, int barMinWidth, int barMaxWidth)
+    protected override float GetBarcodeLength(Glyph[] barcode,
+        float interGlyphSpace, float barMinWidth, float barMaxWidth)
     {
         return base.GetBarcodeLength(barcode, interGlyphSpace,
             barMinWidth, barMaxWidth) - (8 * barMinWidth);

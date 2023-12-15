@@ -6,6 +6,7 @@
 
 
 
+using System.Globalization;
 using T2t.Barcode.Core;
 
 namespace T2t.Barcode.Svg;
@@ -175,7 +176,7 @@ public abstract class BarcodeDraw
 
     #region Protected Constructors
     /// <summary>
-    /// Initializes a new instance of <see cref="T:T2t.Barcode.Skia.BarcodeDraw"/> class.
+    /// Initializes a new instance of <see cref="T:T2t.Barcode.Svg.BarcodeDraw"/> class.
     /// </summary>
     protected BarcodeDraw()
     {
@@ -187,9 +188,9 @@ public abstract class BarcodeDraw
     /// Draws the specified text using the supplied barcode metrics.
     /// </summary>
     /// <param name="text">The text.</param>
-    /// <param name="metrics">A <see cref="T:T2t.Barcode.Skia.BarcodeMetrics"/> object.</param>
+    /// <param name="metrics">A <see cref="T:T2t.Barcode.Svg.BarcodeMetrics"/> object.</param>
     /// <returns>
-    /// An <see cref="SKImage"/> object containing the rendered barcode.
+    /// A string containing the rendered barcode.
     /// </returns>
     public abstract string Draw(string text, BarcodeMetrics metrics);
 
@@ -200,7 +201,7 @@ public abstract class BarcodeDraw
     /// <param name="text">The text.</param>
     /// <param name="maxBarHeight">The maximum bar height.</param>
     /// <returns>
-    /// An <see cref="SKImage"/> object containing the rendered barcode.
+    /// A string containing the rendered barcode.
     /// </returns>
     public string Draw(string text, int maxBarHeight)
     {
@@ -218,7 +219,7 @@ public abstract class BarcodeDraw
     /// The scale factor to use when rendering the barcode.
     /// </param>
     /// <returns>
-    /// An <see cref="SKImage"/> object containing the rendered barcode.
+    /// A string containing the rendered barcode.
     /// </returns>
     public string Draw(string text, int maxBarHeight, float scale)
     {
@@ -228,11 +229,11 @@ public abstract class BarcodeDraw
     }
 
     /// <summary>
-    /// Gets a <see cref="T:T2t.Barcode.Skia.BarcodeMetrics"/> object containing default
+    /// Gets a <see cref="T:T2t.Barcode.Svg.BarcodeMetrics"/> object containing default
     /// settings for the specified maximum bar height.
     /// </summary>
     /// <param name="maxHeight">The maximum barcode height.</param>
-    /// <returns>A <see cref="T:T2t.Barcode.Skia.BarcodeMetrics"/> object.</returns>
+    /// <returns>A <see cref="T:T2t.Barcode.Svg.BarcodeMetrics"/> object.</returns>
     public abstract BarcodeMetrics GetDefaultMetrics(int maxHeight);
 
     /// <summary>
@@ -243,7 +244,7 @@ public abstract class BarcodeDraw
     /// <param name="desiredBarcodeDimensions">The desired barcode dimensions in hundredth of an inch.</param>
     /// <param name="printResolution">The print resolution in pixels per inch.</param>
     /// <param name="barcodeCharLength">Length of the barcode in characters.</param>
-    /// <returns>A <see cref="T:T2t.Barcode.Skia.BarcodeMetrics"/> object.</returns>
+    /// <returns>A <see cref="T:T2t.Barcode.Svg.BarcodeMetrics"/> object.</returns>
     public abstract BarcodeMetrics GetPrintMetrics(
         T2Size desiredBarcodeDimensions, T2Size printResolution,
         int barcodeCharLength);
@@ -255,10 +256,10 @@ public abstract class BarcodeDraw
 /// glyph factory and optional checksum generator classes.
 /// </summary>
 /// <typeparam name="TGlyphFactory">
-/// A <see cref="T:T2t.Barcode.Skia.GlyphFactory"/> derived type.
+/// A <see cref="T:T2t.Barcode.Core.GlyphFactory"/> derived type.
 /// </typeparam>
 /// <typeparam name="TChecksum">
-/// A <see cref="T:T2t.Barcode.Skia.Checksum"/> derived type.
+/// A <see cref="T:T2t.Barcode.Svg.Checksum"/> derived type.
 /// </typeparam>
 public abstract class BarcodeDrawBase<TGlyphFactory, TChecksum> : BarcodeDraw
     where TGlyphFactory : GlyphFactory
@@ -273,7 +274,7 @@ public abstract class BarcodeDrawBase<TGlyphFactory, TChecksum> : BarcodeDraw
 
     #region Protected Constructors
     /// <summary>
-    /// Initialises an instance of <see cref="T:T2t.Barcode.Skia.BarcodeDraw"/>.
+    /// Initialises an instance of <see cref="T:T2t.Barcode.Svg.BarcodeDraw"/>.
     /// </summary>
     /// <param name="factory">The factory.</param>
     /// <param name="encodingBitCount">
@@ -287,7 +288,7 @@ public abstract class BarcodeDrawBase<TGlyphFactory, TChecksum> : BarcodeDraw
     }
 
     /// <summary>
-    /// Initialises an instance of <see cref="T:T2t.Barcode.Skia.BarcodeDraw"/>.
+    /// Initialises an instance of <see cref="T:T2t.Barcode.Svg.BarcodeDraw"/>.
     /// </summary>
     /// <param name="factory">The factory.</param>
     /// <param name="encodingBitCount">
@@ -304,7 +305,7 @@ public abstract class BarcodeDrawBase<TGlyphFactory, TChecksum> : BarcodeDraw
     }
 
     /// <summary>
-    /// Initialises an instance of <see cref="T:T2t.Barcode.Skia.BarcodeDraw"/>.
+    /// Initialises an instance of <see cref="T:T2t.Barcode.Svg.BarcodeDraw"/>.
     /// </summary>
     /// <param name="factory">The factory.</param>
     /// <param name="checksum">The checksum.</param>
@@ -321,7 +322,7 @@ public abstract class BarcodeDrawBase<TGlyphFactory, TChecksum> : BarcodeDraw
     }
 
     /// <summary>
-    /// Initialises an instance of <see cref="T:T2t.Barcode.Skia.BarcodeDraw"/>.
+    /// Initialises an instance of <see cref="T:T2t.Barcode.Svg.BarcodeDraw"/>.
     /// </summary>
     /// <param name="factory">The factory.</param>
     /// <param name="checksum">The checksum.</param>
@@ -345,7 +346,7 @@ public abstract class BarcodeDrawBase<TGlyphFactory, TChecksum> : BarcodeDraw
     /// Draws the specified text using the supplied barcode metrics.
     /// </summary>
     /// <param name="text">The text.</param>
-    /// <param name="metrics">A <see cref="T:T2t.Barcode.Skia.BarcodeMetrics"/> object.</param>
+    /// <param name="metrics">A <see cref="T:T2t.Barcode.Svg.BarcodeMetrics"/> object.</param>
     /// <returns></returns>
     public override sealed string Draw(string text, BarcodeMetrics metrics)
     {
@@ -409,9 +410,9 @@ public abstract class BarcodeDrawBase<TGlyphFactory, TChecksum> : BarcodeDraw
     /// Draws the specified text using the supplied barcode metrics.
     /// </summary>
     /// <param name="text">The text.</param>
-    /// <param name="metrics">A <see cref="T:T2t.Barcode.Skia.BarcodeMetrics"/> object.</param>
+    /// <param name="metrics">A <see cref="T:T2t.Barcode.Svg.BarcodeMetrics"/> object.</param>
     /// <returns>
-    /// An <see cref="SKImage"/> object containing the rendered barcode.
+    /// A string containing the rendered barcode.
     /// </returns>
     protected virtual string Draw1d(string text, BarcodeMetrics1d metrics)
     {
@@ -419,7 +420,7 @@ public abstract class BarcodeDrawBase<TGlyphFactory, TChecksum> : BarcodeDraw
         Glyph[] barcode = GetFullBarcode(text);
 
         // Determine amount of inter-glyph space
-        int interGlyphSpace;
+        float interGlyphSpace;
         if (metrics.InterGlyphSpacing.HasValue)
         {
             interGlyphSpace = metrics.InterGlyphSpacing.Value;
@@ -431,23 +432,23 @@ public abstract class BarcodeDrawBase<TGlyphFactory, TChecksum> : BarcodeDraw
         }
 
         // Determine bar code length in pixels
-        int totalImageWidth = GetBarcodeLength(
+        float totalImageWidth = GetBarcodeLength(
                 barcode,
-                (int)(interGlyphSpace * metrics.Scale),
-                (int)(metrics.MinWidth * metrics.Scale),
-                (int)(metrics.MaxWidth * metrics.Scale));
+                interGlyphSpace * metrics.Scale,
+                metrics.MinWidth * metrics.Scale,
+                metrics.MaxWidth * metrics.Scale);
 
         // Create image of correct size
-        T2Rect bounds = new(0, 0, totalImageWidth, metrics.MaxHeight);
+        T2Rect bounds = new(0, 0, (int)totalImageWidth, metrics.MaxHeight);
         List<string> content = Render(
             barcode,
             bounds,
-            (int)(interGlyphSpace * metrics.Scale),
-            metrics.MinHeight,
-            (int)(metrics.MinWidth * metrics.Scale),
-            (int)(metrics.MaxWidth * metrics.Scale));
+            interGlyphSpace * metrics.Scale,
+                    metrics.MinHeight,
+                    metrics.MinWidth * metrics.Scale,
+                    metrics.MaxWidth * metrics.Scale);
 
-        return string.Format(SvgTmpl, totalImageWidth, metrics.MaxHeight, string.Join('\n', content));
+        return string.Format(CultureInfo.InvariantCulture, SvgTmpl, totalImageWidth, metrics.MaxHeight, string.Join('\n', content));
     }
 
     /// <summary>
@@ -459,8 +460,8 @@ public abstract class BarcodeDrawBase<TGlyphFactory, TChecksum> : BarcodeDraw
     /// <remarks>
     /// By default this method returns zero.
     /// </remarks>
-    protected virtual int GetDefaultInterGlyphSpace(
-    int barMinWidth, int barMaxWidth)
+    protected virtual float GetDefaultInterGlyphSpace(
+        float barMinWidth, float barMaxWidth)
     {
         return 0;
     }
@@ -469,7 +470,7 @@ public abstract class BarcodeDrawBase<TGlyphFactory, TChecksum> : BarcodeDraw
     /// Gets the glyphs needed to render a full barcode.
     /// </summary>
     /// <param name="text">Text to convert into bar-code.</param>
-    /// <returns>A collection of <see cref="T:T2t.Barcode.Skia.Glyph"/> objects.</returns>
+    /// <returns>A collection of <see cref="T:T2t.Barcode.Core.Glyph"/> objects.</returns>
     protected abstract Glyph[] GetFullBarcode(string text);
 
     /// <summary>
@@ -484,11 +485,11 @@ public abstract class BarcodeDrawBase<TGlyphFactory, TChecksum> : BarcodeDraw
     /// Currently this method does not account for any "quiet space"
     /// around the barcode as dictated by each symbology standard.
     /// </remarks>
-    protected virtual int GetBarcodeLength(
-        Glyph[] barcode, int interGlyphSpace, int barMinWidth, int barMaxWidth)
+    protected virtual float GetBarcodeLength(
+        Glyph[] barcode, float interGlyphSpace, float barMinWidth, float barMaxWidth)
     {
         // Determine bar code length in pixels
-        int totalImageWidth = GetBarcodeInterGlyphLength(barcode, interGlyphSpace);
+        float totalImageWidth = GetBarcodeInterGlyphLength(barcode, interGlyphSpace);
         foreach (BarGlyph glyph in barcode)
         {
             // Determine encoding bit-width for this character
@@ -539,11 +540,11 @@ public abstract class BarcodeDrawBase<TGlyphFactory, TChecksum> : BarcodeDraw
     /// <summary>
     /// Gets the glyph's barcode encoding bit count.
     /// </summary>
-    /// <param name="glyph">A <see cref="T:T2t.Barcode.Skia.Glyph"/> to be queried.</param>
+    /// <param name="glyph">A <see cref="T:T2t.Barcode.Core.Glyph"/> to be queried.</param>
     /// <returns>Number of bits needed to encode the glyph.</returns>
     /// <remarks>
     /// By default this method returns the underlying encoding bit width.
-    /// If the glyph implements <see cref="T:T2t.Barcode.Skia.IVaryLengthGlyph"/> then the
+    /// If the glyph implements <see cref="T:T2t.Barcode.Svg.IVaryLengthGlyph"/> then the
     /// encoding width is requested from the interface.
     /// </remarks>
     protected virtual int GetEncodingBitCount(Glyph glyph)
@@ -560,7 +561,7 @@ public abstract class BarcodeDrawBase<TGlyphFactory, TChecksum> : BarcodeDraw
     /// <summary>
     /// Gets the glyph's width encoding bit count.
     /// </summary>
-    /// <param name="glyph">A <see cref="T:T2t.Barcode.Skia.Glyph"/> to be queried.</param>
+    /// <param name="glyph">A <see cref="T:T2t.Barcode.Core.Glyph"/> to be queried.</param>
     /// <returns>Number of bits needed to encode the width of the glyph.</returns>
     /// <remarks>
     /// By default this method returns the underlying width bit count.
@@ -576,12 +577,12 @@ public abstract class BarcodeDrawBase<TGlyphFactory, TChecksum> : BarcodeDraw
     /// incorporating the specified inter-glyph spacing.
     /// </summary>
     /// <param name="barcode">
-    /// Collection of <see cref="T:T2t.Barcode.Skia.Glyph"/> objects to be rendered.
+    /// Collection of <see cref="T:T2t.Barcode.Core.Glyph"/> objects to be rendered.
     /// </param>
     /// <param name="interGlyphSpace">Amount of inter-glyph space (in pixels) to be applied.</param>
     /// <returns>Width in pixels.</returns>
-    protected int GetBarcodeInterGlyphLength(Glyph[] barcode,
-    int interGlyphSpace)
+    protected float GetBarcodeInterGlyphLength(Glyph[] barcode,
+        float interGlyphSpace)
     {
         return (barcode.Length - 1) * interGlyphSpace;
     }
@@ -589,9 +590,8 @@ public abstract class BarcodeDrawBase<TGlyphFactory, TChecksum> : BarcodeDraw
     /// <summary>
     /// Renders the specified bar-code to the specified graphics port.
     /// </summary>
-    /// <param name="barcode">A collection of <see cref="T:T2t.Barcode.Skia.Glyph"/> objects representing the
+    /// <param name="barcode">A collection of <see cref="T:T2t.Barcode.Core.Glyph"/> objects representing the
     /// barcode to be rendered.</param>
-    /// <param name="dc">A <see cref="T:System.Drawing.SKCanvas"/> representing the draw context.</param>
     /// <param name="bounds">The bounding rectangle.</param>
     /// <param name="interGlyphSpace">The inter glyph space in pixels.</param>
     /// <param name="barMinHeight">Minimum bar height in pixels.</param>
@@ -604,16 +604,16 @@ public abstract class BarcodeDrawBase<TGlyphFactory, TChecksum> : BarcodeDraw
     protected virtual List<string> Render(
         Glyph[] barcode,
         T2Rect bounds,
-        int interGlyphSpace,
-        int barMinHeight,
-        int barMinWidth,
-        int barMaxWidth)
+        float interGlyphSpace,
+        float barMinHeight,
+        float barMinWidth,
+        float barMaxWidth)
     {
         // Render the background
         List<string> bars = new()
-            {
-                string.Format(RectTmpl, bounds.Left, bounds.Top, bounds.Width, bounds.Height, "white")
-            };
+        {
+            string.Format(CultureInfo.InvariantCulture, RectTmpl, bounds.Left, bounds.Top, bounds.Width, bounds.Height, "white")
+        };
 
         // Render the bars
         bars.AddRange(RenderBars(barcode, bounds, interGlyphSpace, barMinHeight,
@@ -625,9 +625,8 @@ public abstract class BarcodeDrawBase<TGlyphFactory, TChecksum> : BarcodeDraw
     /// <summary>
     /// Renders the barcode bars.
     /// </summary>
-    /// <param name="barcode">A collection of <see cref="T:T2t.Barcode.Skia.Glyph"/> objects representing the
+    /// <param name="barcode">A collection of <see cref="T:T2t.Barcode.Core.Glyph"/> objects representing the
     /// barcode to be rendered.</param>
-    /// <param name="dc">A <see cref="T:System.Drawing.SKCanvas"/> representing the draw context.</param>
     /// <param name="bounds">The bounding rectangle.</param>
     /// <param name="interGlyphSpace">The inter glyph space in pixels.</param>
     /// <param name="barMinHeight">Minimum bar height in pixels.</param>
@@ -641,12 +640,12 @@ public abstract class BarcodeDrawBase<TGlyphFactory, TChecksum> : BarcodeDraw
     protected virtual List<string> RenderBars(
         Glyph[] barcode,
         T2Rect bounds,
-        int interGlyphSpace,
-        int barMinHeight,
-        int barMinWidth,
-        int barMaxWidth)
+        float interGlyphSpace,
+        float barMinHeight,
+        float barMinWidth,
+        float barMaxWidth)
     {
-        int barOffset = 0;
+        float barOffset = 0;
 
         List<string> res = new();
 
@@ -667,8 +666,7 @@ public abstract class BarcodeDrawBase<TGlyphFactory, TChecksum> : BarcodeDraw
     /// Renders the bar-code glyph.
     /// </summary>
     /// <param name="glyphIndex">Index of the glyph.</param>
-    /// <param name="glyph">A <see cref="T:T2t.Barcode.Skia.Glyph"/> object to be rendered.</param>
-    /// <param name="dc">A <see cref="T:System.Drawing.SKCanvas"/> representing the draw context.</param>
+    /// <param name="glyph">A <see cref="T:T2t.Barcode.Core.Glyph"/> object to be rendered.</param>
     /// <param name="bounds">The bounding rectangle.</param>
     /// <param name="barOffset">The bar offset.</param>
     /// <param name="barMinHeight">Minimum bar height in pixels.</param>
@@ -682,10 +680,10 @@ public abstract class BarcodeDrawBase<TGlyphFactory, TChecksum> : BarcodeDraw
         int glyphIndex,
         BarGlyph glyph,
     T2Rect bounds,
-        ref int barOffset,
-        int barMinHeight,
-        int barMinWidth,
-        int barMaxWidth)
+        ref float barOffset,
+        float barMinHeight,
+        float barMinWidth,
+        float barMaxWidth)
     {
         List<string> bars = new();
         // Sanity check
@@ -700,7 +698,7 @@ public abstract class BarcodeDrawBase<TGlyphFactory, TChecksum> : BarcodeDraw
         int glyphBits = GetGlyphEncoding(glyphIndex, glyph);
 
         // Get glyph height
-        int height = GetGlyphHeight(glyph, barMinHeight, bounds.Height);
+        float height = GetGlyphHeight(glyph, barMinHeight, bounds.Height);
         if (glyph is IBinaryPitchGlyph binGlyph)
         {
 
@@ -710,7 +708,7 @@ public abstract class BarcodeDrawBase<TGlyphFactory, TChecksum> : BarcodeDraw
             for (int bitIndex = encodingBitCount - 1; bitIndex >= 0; --bitIndex)
             {
                 int bitMask = 1 << bitIndex;
-                int barWidth = barMinWidth;
+                float barWidth = barMinWidth;
 
                 bool currentBitState = false;
                 if ((bitMask & glyphBits) != 0)
@@ -749,7 +747,7 @@ public abstract class BarcodeDrawBase<TGlyphFactory, TChecksum> : BarcodeDraw
                 int bitMask = 1 << bitIndex;
                 if ((glyphBits & bitMask) != 0)
                 {
-                    bars.Add(string.Format(RectTmpl, barOffset, bounds.Top, barMinWidth, height, "black"));
+                    bars.Add(string.Format(CultureInfo.InvariantCulture, RectTmpl, barOffset, bounds.Top, barMinWidth, height, "black"));
                 }
 
                 // Update offset
@@ -778,14 +776,14 @@ public abstract class BarcodeDrawBase<TGlyphFactory, TChecksum> : BarcodeDraw
     /// <summary>
     /// Gets the height of the glyph.
     /// </summary>
-    /// <param name="glyph">A <see cref="T:T2t.Barcode.Skia.Glyph"/> to be queried.</param>
+    /// <param name="glyph">A <see cref="T:T2t.Barcode.Core.Glyph"/> to be queried.</param>
     /// <param name="barMinHeight">Minimum bar height in pixels.</param>
     /// <param name="barMaxHeight">Maximum bar height in pixels.</param>
     /// <returns>The height of associated glyph.</returns>
     /// <remarks>
     /// By default this method returns the maximum bar height.
     /// </remarks>
-    protected virtual int GetGlyphHeight(Glyph glyph, int barMinHeight, int barMaxHeight)
+    protected virtual float GetGlyphHeight(Glyph glyph, float barMinHeight, float barMaxHeight)
     {
         return barMaxHeight;
     }

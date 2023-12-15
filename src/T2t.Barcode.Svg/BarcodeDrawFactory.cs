@@ -34,7 +34,7 @@ public static class BarcodeDrawFactory
     /// Gets an agent capable of rendering a Code39 barcode without
     /// adding a checksum glyph.
     /// </summary>
-    /// <value>A <see cref="T:T2t.Barcode.Skia.Code39BarcodeDraw"/> object.</value>
+    /// <value>A <see cref="T:T2t.Barcode.Svg.Code39BarcodeDraw"/> object.</value>
     public static Code39BarcodeDraw Code39WithoutChecksum
     {
         get
@@ -49,7 +49,7 @@ public static class BarcodeDrawFactory
     /// Gets an agent capable of rendering a Code39 barcode with an
     /// added checksum glyph.
     /// </summary>
-    /// <value>A <see cref="T:T2t.Barcode.Skia.Code39BarcodeDraw"/> object.</value>
+    /// <value>A <see cref="T:T2t.Barcode.Svg.Code39BarcodeDraw"/> object.</value>
     public static Code39BarcodeDraw Code39WithChecksum
     {
         get
@@ -64,7 +64,7 @@ public static class BarcodeDrawFactory
     /// Gets an agent capable of rendering a Code93 barcode with added
     /// checksum glyphs.
     /// </summary>
-    /// <value>A <see cref="T:T2t.Barcode.Skia.Code93BarcodeDraw"/> object.</value>
+    /// <value>A <see cref="T:T2t.Barcode.Svg.Code93BarcodeDraw"/> object.</value>
     public static Code93BarcodeDraw Code93WithChecksum
     {
         get
@@ -79,7 +79,7 @@ public static class BarcodeDrawFactory
     /// Gets an agent capable of rendering a Code128 barcode with added
     /// checksum glyphs.
     /// </summary>
-    /// <value>A <see cref="T:T2t.Barcode.Skia.Code128BarcodeDraw"/> object.</value>
+    /// <value>A <see cref="T:T2t.Barcode.Svg.Code128BarcodeDraw"/> object.</value>
     public static Code128BarcodeDraw Code128WithChecksum
     {
         get
@@ -93,7 +93,7 @@ public static class BarcodeDrawFactory
     /// <summary>
     /// Gets an agent capable of rendering a Code11 barcode.
     /// </summary>
-    /// <value>A <see cref="T:T2t.Barcode.Skia.Code11BarcodeDraw"/> object.</value>
+    /// <value>A <see cref="T:T2t.Barcode.Svg.Code11BarcodeDraw"/> object.</value>
     public static Code11BarcodeDraw Code11WithoutChecksum
     {
         get
@@ -108,7 +108,7 @@ public static class BarcodeDrawFactory
     /// Gets an agent capable of rendering a Code11 barcode with added
     /// checksum glyphs.
     /// </summary>
-    /// <value>A <see cref="T:T2t.Barcode.Skia.Code11BarcodeDraw"/> object.</value>
+    /// <value>A <see cref="T:T2t.Barcode.Svg.Code11BarcodeDraw"/> object.</value>
     public static Code11BarcodeDraw Code11WithChecksum
     {
         get
@@ -123,7 +123,7 @@ public static class BarcodeDrawFactory
     /// Gets an agent capable of rendering a Code EAN-13 barcode with
     /// added checksum glyphs.
     /// </summary>
-    /// <value>A <see cref="T:T2t.Barcode.Skia.CodeEan13BarcodeDraw"/> object.</value>
+    /// <value>A <see cref="T:T2t.Barcode.Svg.CodeEan13BarcodeDraw"/> object.</value>
     public static CodeEan13BarcodeDraw CodeEan13WithChecksum
     {
         get
@@ -138,7 +138,7 @@ public static class BarcodeDrawFactory
     /// Gets an agent capable of rendering a Code EAN-8 barcode with
     /// added checksum glyphs.
     /// </summary>
-    /// <value>A <see cref="T:T2t.Barcode.Skia.CodeEan8BarcodeDraw"/> object.</value>
+    /// <value>A <see cref="T:T2t.Barcode.Svg.CodeEan8BarcodeDraw"/> object.</value>
     public static CodeEan8BarcodeDraw CodeEan8WithChecksum
     {
         get
@@ -153,7 +153,7 @@ public static class BarcodeDrawFactory
     /// Gets an agent capable of rendering a Code 25 barcode without
     /// checksum glyphs.
     /// </summary>
-    /// <value>A <see cref="T:T2t.Barcode.Skia.Code25BarcodeDraw"/> object.</value>
+    /// <value>A <see cref="T:T2t.Barcode.Svg.Code25BarcodeDraw"/> object.</value>
     public static Code25BarcodeDraw Code25StandardWithoutChecksum
     {
         get
@@ -168,7 +168,7 @@ public static class BarcodeDrawFactory
     /// Gets an agent capable of rendering a Code 25 barcode with
     /// added checksum glyphs.
     /// </summary>
-    /// <value>A <see cref="T:T2t.Barcode.Skia.Code25BarcodeDraw"/> object.</value>
+    /// <value>A <see cref="T:T2t.Barcode.Svg.Code25BarcodeDraw"/> object.</value>
     public static Code25BarcodeDraw Code25StandardWithChecksum
     {
         get
@@ -183,7 +183,7 @@ public static class BarcodeDrawFactory
     /// Gets an agent capable of rendering a Code 25 barcode without
     /// checksum glyphs.
     /// </summary>
-    /// <value>A <see cref="T:T2t.Barcode.Skia.Code25BarcodeDraw"/> object.</value>
+    /// <value>A <see cref="T:T2t.Barcode.Svg.Code25BarcodeDraw"/> object.</value>
     public static Code25BarcodeDraw Code25InterleavedWithoutChecksum
     {
         get
@@ -198,7 +198,7 @@ public static class BarcodeDrawFactory
     /// Gets an agent capable of rendering a Code 25 barcode with
     /// added checksum glyphs.
     /// </summary>
-    /// <value>A <see cref="T:T2t.Barcode.Skia.Code25BarcodeDraw"/> object.</value>
+    /// <value>A <see cref="T:T2t.Barcode.Svg.Code25BarcodeDraw"/> object.</value>
     public static Code25BarcodeDraw Code25InterleavedWithChecksum
     {
         get
@@ -212,7 +212,7 @@ public static class BarcodeDrawFactory
     /// <summary>
     /// Gets an agent capable of rendering a Code QR barcode.
     /// </summary>
-    /// <value>A <see cref="T:T2t.Barcode.Skia.CodeQrBarcodeDraw"/> object.</value>
+    /// <value>A <see cref="T:T2t.Barcode.Svg.CodeQrBarcodeDraw"/> object.</value>
     public static CodeQrBarcodeDraw CodeQr
     {
         get
@@ -232,7 +232,7 @@ public static class BarcodeDrawFactory
     /// A value from the <see cref="T:T2t.Barcode.Core.BarcodeSymbology"/> enumeration.
     /// </param>
     /// <returns>
-    /// A class derived from <see cref="T:T2t.Barcode.Skia.BarcodeDraw"/>.
+    /// A class derived from <see cref="T:T2t.Barcode.Svg.BarcodeDraw"/>.
     /// </returns>
     /// <exception cref="T:System.ArgumentException">
     /// Thrown if the specified symbology is invalid or unknown.

@@ -1238,7 +1238,7 @@ public class CodeQrBarcodeDraw : BarcodeDraw
     /// Draws the specified text using the supplied barcode metrics.
     /// </summary>
     /// <param name="text">The text.</param>
-    /// <param name="metrics">A <see cref="T:T2t.Barcode.Skia.BarcodeMetrics"/> object.</param>
+    /// <param name="metrics">A <see cref="T:T2t.Barcode.Svg.BarcodeMetrics"/> object.</param>
     /// <returns></returns>
     public override sealed string Draw(string text, BarcodeMetrics metrics)
     {
@@ -1246,12 +1246,12 @@ public class CodeQrBarcodeDraw : BarcodeDraw
     }
 
     /// <summary>
-    /// Gets a <see cref="T:T2t.Barcode.Skia.BarcodeMetrics"/> object containing default
+    /// Gets a <see cref="T:T2t.Barcode.Svg.BarcodeMetrics"/> object containing default
     /// settings for the specified maximum bar height.
     /// </summary>
     /// <param name="maxHeight">The maximum barcode height.</param>
     /// <returns>
-    /// A <see cref="T:T2t.Barcode.Skia.BarcodeMetrics"/> object.
+    /// A <see cref="T:T2t.Barcode.Svg.BarcodeMetrics"/> object.
     /// </returns>
     public override BarcodeMetrics GetDefaultMetrics(int maxHeight)
     {
@@ -1276,7 +1276,7 @@ public class CodeQrBarcodeDraw : BarcodeDraw
     /// <param name="printResolution">The print resolution in pixels per inch.</param>
     /// <param name="barcodeCharLength">Length of the barcode in characters.</param>
     /// <returns>
-    /// A <see cref="T:T2t.Barcode.Skia.BarcodeMetrics"/> object.
+    /// A <see cref="T:T2t.Barcode.Svg.BarcodeMetrics"/> object.
     /// </returns>
     public override BarcodeMetrics GetPrintMetrics(
         T2Size desiredBarcodeDimensions, T2Size printResolution, int barcodeCharLength)

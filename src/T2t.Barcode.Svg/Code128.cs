@@ -828,8 +828,8 @@ public class Code128BarcodeDraw
     /// <param name="barMinWidth">Minimum bar width.</param>
     /// <param name="barMaxWidth">Maximum bar width.</param>
     /// <returns></returns>
-    protected override int GetBarcodeLength(Glyph[] barcode,
-        int interGlyphSpace, int barMinWidth, int barMaxWidth)
+    protected override float GetBarcodeLength(Glyph[] barcode,
+        float interGlyphSpace, float barMinWidth, float barMaxWidth)
     {
         return base.GetBarcodeLength(barcode, interGlyphSpace,
             barMinWidth, barMaxWidth) - (9 * barMinWidth);

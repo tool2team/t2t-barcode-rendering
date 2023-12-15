@@ -90,8 +90,8 @@ public abstract class BinaryPitchBarcodeDraw<TGlyphFactory, TChecksum>
     /// <param name="barMinWidth">Minimum barcode width.</param>
     /// <param name="barMaxWidth">Maximum barcode width.</param>
     /// <returns></returns>
-    protected override int GetBarcodeLength(Glyph[] barcode,
-        int interGlyphSpace, int barMinWidth, int barMaxWidth)
+    protected override float GetBarcodeLength(Glyph[] barcode,
+        float interGlyphSpace, float barMinWidth, float barMaxWidth)
     {
         // Sanity check
         if (barMinWidth == barMaxWidth)
@@ -100,7 +100,7 @@ public abstract class BinaryPitchBarcodeDraw<TGlyphFactory, TChecksum>
         }
 
         // Determine bar code length in pixels
-        int totalImageWidth = GetBarcodeInterGlyphLength(barcode, interGlyphSpace);
+        float totalImageWidth = GetBarcodeInterGlyphLength(barcode, interGlyphSpace);
         foreach (BinaryPitchGlyph glyph in barcode)
         {
             // Determine encoding bit-width for this character
@@ -158,7 +158,6 @@ public abstract class BinaryPitchBarcodeDraw<TGlyphFactory, TChecksum>
     /// </summary>
     /// <param name="glyphIndex">Index of the glyph.</param>
     /// <param name="glyph">A <see cref="T:Glyph"/> to be rendered.</param>
-    /// <param name="dc">A <see cref="T:SKCanvas"/> representing the device context.</param>
     /// <param name="bounds">The bounding rectangle.</param>
     /// <param name="barOffset">The bar offset in pixels.</param>
     /// <param name="barMinHeight">Minimum bar height in pixels.</param>
@@ -169,8 +168,8 @@ public abstract class BinaryPitchBarcodeDraw<TGlyphFactory, TChecksum>
     /// bar rendering is attempted.
     /// </exception>
     protected override List<string> RenderBar(int glyphIndex, BarGlyph glyph,
-        T2Rect bounds, ref int barOffset, int barMinHeight,
-        int barMinWidth, int barMaxWidth)
+        T2Rect bounds, ref float barOffset, float barMinHeight,
+        float barMinWidth, float barMaxWidth)
     {
         List<string> res = new();
         // Sanity check
@@ -196,7 +195,7 @@ public abstract class BinaryPitchBarcodeDraw<TGlyphFactory, TChecksum>
         for (int bitIndex = encodingBitCount - 1; bitIndex >= 0; --bitIndex)
         {
             int bitMask = 1 << bitIndex;
-            int barWidth = barMinWidth;
+            float barWidth = barMinWidth;
 
             bool currentBitState = false;
             if ((bitMask & binGlyph.BitEncoding) != 0)

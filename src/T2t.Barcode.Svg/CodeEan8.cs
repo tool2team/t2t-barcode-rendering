@@ -372,7 +372,7 @@ public class CodeEan8BarcodeDraw
     /// For EAN 13 the only full height glyphs are start/stop/seperator
     /// glyphs.
     /// </remarks>
-    protected override int GetGlyphHeight(Glyph glyph, int barMinHeight, int barMaxHeight)
+    protected override float GetGlyphHeight(Glyph glyph, float barMinHeight, float barMaxHeight)
     {
         if (glyph.Character == '*' || glyph.Character == '|')
         {
@@ -387,7 +387,7 @@ public class CodeEan8BarcodeDraw
     /// <param name="barMinWidth"></param>
     /// <param name="barMaxWidth"></param>
     /// <returns></returns>
-    protected override int GetDefaultInterGlyphSpace(int barMinWidth, int barMaxWidth)
+    protected override float GetDefaultInterGlyphSpace(float barMinWidth, float barMaxWidth)
     {
         return 0;
     }

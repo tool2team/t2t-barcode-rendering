@@ -400,7 +400,7 @@ public class Code25BarcodeDraw
     /// <param name="barMinWidth"></param>
     /// <param name="barMaxWidth"></param>
     /// <returns></returns>
-    protected override int GetDefaultInterGlyphSpace(int barMinWidth, int barMaxWidth)
+    protected override float GetDefaultInterGlyphSpace(float barMinWidth, float barMaxWidth)
     {
         if (Factory is Code25StandardGlyphFactory)
         {
@@ -424,8 +424,8 @@ public class Code25BarcodeDraw
     /// Currently this method does not account for any "quiet space"
     /// around the barcode as dictated by each symbology standard.
     /// </remarks>
-    protected override int GetBarcodeLength(
-        Glyph[] barcode, int interGlyphSpace, int barMinWidth, int barMaxWidth)
+    protected override float GetBarcodeLength(
+        Glyph[] barcode, float interGlyphSpace, float barMinWidth, float barMaxWidth)
     {
         if (Factory is not Code25InterleavedGlyphFactory)
         {
@@ -438,9 +438,8 @@ public class Code25BarcodeDraw
     /// <summary>
     /// Renders the barcode bars.
     /// </summary>
-    /// <param name="barcode">A collection of <see cref="T:T2t.Barcode.Skia.Glyph"/> objects representing the
+    /// <param name="barcode">A collection of <see cref="T:T2t.Barcode.Core.Glyph"/> objects representing the
     /// barcode to be rendered.</param>
-    /// <param name="dc">A <see cref="T:System.Drawing.SKCanvas"/> representing the draw context.</param>
     /// <param name="bounds">The bounding rectangle.</param>
     /// <param name="interGlyphSpace">The inter glyph space in pixels.</param>
     /// <param name="barMinHeight">Minimum bar height in pixels.</param>
@@ -451,7 +450,7 @@ public class Code25BarcodeDraw
     /// <see cref="M:RenderBar"/> method, applying the specified
     /// inter-glyph spacing as necessary.
     /// </remarks>
-    protected override List<string> RenderBars(Glyph[] barcode, T2Rect bounds, int interGlyphSpace, int barMinHeight, int barMinWidth, int barMaxWidth)
+    protected override List<string> RenderBars(Glyph[] barcode, T2Rect bounds, float interGlyphSpace, float barMinHeight, float barMinWidth, float barMaxWidth)
     {
         List<string> res = new();
         // Standard Code 2 of 5 can be rendered via base class
@@ -462,7 +461,7 @@ public class Code25BarcodeDraw
 
         // Interleaved version needs custom rendering support
 
-        int barOffset = 0;
+        float barOffset = 0;
         for (int index = 0; index < barcode.Length;)
         {
             BarGlyph glyph = (BarGlyph)barcode[index];
