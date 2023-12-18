@@ -658,9 +658,8 @@ public class CodeQrBarcodeDraw : BarcodeDraw
             try
             {
                 var assembly = Assembly.GetExecutingAssembly();
-                var resourceName = $"qrv{_version}_{ec}.dat";
-
-                using Stream memoryStream = assembly.GetManifestResourceStream(resourceName);
+                var resourceName = $"qrv{_version}_{ec}";
+                using Stream memoryStream = new MemoryStream((byte[])CoreResources.ResourceManager.GetObject(resourceName));
                 using BufferedStream bis = new(memoryStream);
                 SystemUtils.ReadInput(bis, matrixX, 0, matrixX.Length);
                 SystemUtils.ReadInput(bis, matrixY, 0, matrixY.Length);
@@ -705,9 +704,8 @@ public class CodeQrBarcodeDraw : BarcodeDraw
                 //StreamReader reader = new StreamReader(filename);
 
                 var assembly = Assembly.GetExecutingAssembly();
-                var resourceName = $"qrvfr{_version}.dat";
-
-                using Stream memoryStream = assembly.GetManifestResourceStream(resourceName);
+                var resourceName = $"qrvfr{_version}";
+                using Stream memoryStream = new MemoryStream((byte[])CoreResources.ResourceManager.GetObject(resourceName)); ;
 
                 BufferedStream bis = new(memoryStream);
                 SystemUtils.ReadInput(bis, frameData, 0, frameData.Length);
@@ -919,9 +917,8 @@ public class CodeQrBarcodeDraw : BarcodeDraw
             try
             {
                 var assembly = Assembly.GetExecutingAssembly();
-                var resourceName = $"rsc{rsEccCodewords}.dat";
-
-                using Stream memoryStream = assembly.GetManifestResourceStream(resourceName);
+                var resourceName = $"rsc{rsEccCodewords}";
+                using Stream memoryStream = new MemoryStream((byte[])CoreResources.ResourceManager.GetObject(resourceName));
                 using BufferedStream bis = new(memoryStream);
                 for (int i = 0; i < 256; i++)
                 {
