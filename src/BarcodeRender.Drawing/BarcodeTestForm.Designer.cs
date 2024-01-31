@@ -49,9 +49,11 @@ partial class BarcodeTestForm
 		this.label5 = new System.Windows.Forms.Label();
 		this.scannerResult = new System.Windows.Forms.TextBox();
 		this.label2 = new System.Windows.Forms.Label();
+		this.label3 = new System.Windows.Forms.Label();
 		this.barcodePanel = new BarcodeRender.Drawing.BarcodePanel();
 		this.barcodeLabel = new System.Windows.Forms.TextBox();
-		this.label1 = new System.Windows.Forms.Label();
+		this.binaryChk = new System.Windows.Forms.CheckBox();
+        this.label1 = new System.Windows.Forms.Label();
 		this.nextTestButton = new System.Windows.Forms.Button();
 		this.previousTestButton = new System.Windows.Forms.Button();
 		this.mainMenu = new System.Windows.Forms.MenuStrip();
@@ -133,14 +135,16 @@ partial class BarcodeTestForm
 		this.groupBox2.Controls.Add(this.label5);
 		this.groupBox2.Controls.Add(this.scannerResult);
 		this.groupBox2.Controls.Add(this.label2);
+		this.groupBox2.Controls.Add(this.label3);
 		this.groupBox2.Controls.Add(this.barcodePanel);
 		this.groupBox2.Controls.Add(this.barcodeLabel);
+		this.groupBox2.Controls.Add(this.binaryChk);
 		this.groupBox2.Controls.Add(this.label1);
 		this.groupBox2.Controls.Add(this.nextTestButton);
 		this.groupBox2.Controls.Add(this.previousTestButton);
 		this.groupBox2.Location = new System.Drawing.Point(260, 39);
 		this.groupBox2.Name = "groupBox2";
-		this.groupBox2.Size = new System.Drawing.Size(422, 276);
+		this.groupBox2.Size = new System.Drawing.Size(422, 330);
 		this.groupBox2.TabIndex = 1;
 		this.groupBox2.TabStop = false;
 		this.groupBox2.Text = "Test Area";
@@ -174,7 +178,7 @@ partial class BarcodeTestForm
 		// label5
 		// 
 		this.label5.AutoSize = true;
-		this.label5.Location = new System.Drawing.Point(92, 61);
+		this.label5.Location = new System.Drawing.Point(85, 61);
 		this.label5.Name = "label5";
 		this.label5.Size = new System.Drawing.Size(61, 13);
 		this.label5.TabIndex = 9;
@@ -183,7 +187,7 @@ partial class BarcodeTestForm
 		// scannerResult
 		// 
 		this.scannerResult.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-		this.scannerResult.Location = new System.Drawing.Point(160, 236);
+		this.scannerResult.Location = new System.Drawing.Point(160, 270);
 		this.scannerResult.Name = "scannerResult";
 		this.scannerResult.Size = new System.Drawing.Size(191, 20);
 		this.scannerResult.TabIndex = 5;
@@ -193,23 +197,24 @@ partial class BarcodeTestForm
 		// 
 		this.label2.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
 		this.label2.AutoSize = true;
-		this.label2.Location = new System.Drawing.Point(70, 239);
+		this.label2.Location = new System.Drawing.Point(70, 273);
 		this.label2.Name = "label2";
 		this.label2.Size = new System.Drawing.Size(83, 13);
 		this.label2.TabIndex = 4;
 		this.label2.Text = "Scanner Result:";
-		// 
-		// barcodePanel
-		// 
-		this.barcodePanel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+
+        // 
+        // barcodePanel
+        // 
+        this.barcodePanel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
 					| System.Windows.Forms.AnchorStyles.Left)
 					| System.Windows.Forms.AnchorStyles.Right)));
 		this.barcodePanel.BackColor = System.Drawing.Color.White;
 		this.barcodePanel.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
 		this.barcodePanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-		this.barcodePanel.Location = new System.Drawing.Point(6, 129);
+		this.barcodePanel.Location = new System.Drawing.Point(6, 151);
 		this.barcodePanel.Name = "barcodePanel";
-		this.barcodePanel.Size = new System.Drawing.Size(410, 88);
+		this.barcodePanel.Size = new System.Drawing.Size(410, 108);
 		this.barcodePanel.Symbology = T2t.Barcode.Core.BarcodeSymbology.Unknown;
 		this.barcodePanel.TabIndex = 3;
 		// 
@@ -222,20 +227,40 @@ partial class BarcodeTestForm
 		this.barcodeLabel.TabIndex = 2;
 		this.barcodeLabel.TextChanged += new System.EventHandler(this.barcodeLabel_TextChanged);
 		this.barcodeLabel.Leave += new System.EventHandler(this.barcodeLabel_Leave);
-		// 
-		// label1
-		// 
-		this.label1.Anchor = System.Windows.Forms.AnchorStyles.Top;
+        // 
+        // binaryChk
+        // 
+        this.binaryChk.Anchor = System.Windows.Forms.AnchorStyles.Top;
+        this.binaryChk.Location = new System.Drawing.Point(180, 126);
+        this.binaryChk.Name = "barcodeLabel";
+        this.binaryChk.Size = new System.Drawing.Size(191, 20);
+        this.binaryChk.TabIndex = 2;
+        this.binaryChk.TextChanged += new System.EventHandler(this.barcodeLabel_TextChanged);
+        this.binaryChk.Leave += new System.EventHandler(this.barcodeLabel_Leave);
+        // 
+        // label1
+        // 
+        this.label1.Anchor = System.Windows.Forms.AnchorStyles.Top;
 		this.label1.AutoSize = true;
 		this.label1.Location = new System.Drawing.Point(79, 95);
 		this.label1.Name = "label1";
 		this.label1.Size = new System.Drawing.Size(74, 13);
 		this.label1.TabIndex = 1;
 		this.label1.Text = "Barcode Text:";
-		// 
-		// nextTestButton
-		// 
-		this.nextTestButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+        // 
+        // label3
+        // 
+        this.label3.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+        this.label3.AutoSize = true;
+        this.label3.Location = new System.Drawing.Point(120, 129);
+        this.label3.Name = "label3";
+        this.label3.Size = new System.Drawing.Size(83, 13);
+        this.label3.TabIndex = 4;
+        this.label3.Text = "Hexa:";
+        // 
+        // nextTestButton
+        // 
+        this.nextTestButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
 		this.nextTestButton.Location = new System.Drawing.Point(341, 20);
 		this.nextTestButton.Name = "nextTestButton";
 		this.nextTestButton.Size = new System.Drawing.Size(75, 23);
@@ -524,7 +549,7 @@ partial class BarcodeTestForm
 		this.groupBox1.Controls.Add(this.testTree);
 		this.groupBox1.Location = new System.Drawing.Point(12, 39);
 		this.groupBox1.Name = "groupBox1";
-		this.groupBox1.Size = new System.Drawing.Size(242, 276);
+		this.groupBox1.Size = new System.Drawing.Size(242, 330);
 		this.groupBox1.TabIndex = 6;
 		this.groupBox1.TabStop = false;
 		this.groupBox1.Text = "Test Plan";
@@ -537,7 +562,7 @@ partial class BarcodeTestForm
 		this.testTree.HideSelection = false;
 		this.testTree.Location = new System.Drawing.Point(7, 20);
 		this.testTree.Name = "testTree";
-		this.testTree.Size = new System.Drawing.Size(229, 247);
+		this.testTree.Size = new System.Drawing.Size(229, 301);
 		this.testTree.TabIndex = 0;
 		this.testTree.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.testTree_AfterSelect);
 		// 
@@ -561,7 +586,7 @@ partial class BarcodeTestForm
 		// 
 		// BarcodeTestForm
 		// 
-		this.ClientSize = new System.Drawing.Size(694, 327);
+		this.ClientSize = new System.Drawing.Size(694, 371);
 		this.Controls.Add(this.groupBox1);
 		this.Controls.Add(this.groupBox2);
 		this.Controls.Add(this.mainMenu);
@@ -590,7 +615,9 @@ partial class BarcodeTestForm
 	private System.Windows.Forms.TextBox scannerResult;
 	private System.Windows.Forms.Label label2;
 	private BarcodePanel barcodePanel;
-	private System.Windows.Forms.TextBox barcodeLabel;
+    private System.Windows.Forms.Label label3;
+    private System.Windows.Forms.TextBox barcodeLabel;
+	private System.Windows.Forms.CheckBox binaryChk;
 	private System.Windows.Forms.Label label1;
 	private System.Windows.Forms.Button nextTestButton;
 	private System.Windows.Forms.Button previousTestButton;

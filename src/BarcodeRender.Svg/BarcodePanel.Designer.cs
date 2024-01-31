@@ -1,4 +1,4 @@
-namespace BarcodeRender.Skia;
+namespace BarcodeRender.Svg;
 
 	partial class BarcodePanel
 	{

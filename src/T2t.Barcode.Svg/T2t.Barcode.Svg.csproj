@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-	<TargetFrameworks>net6.0;net7.0;net8.0</TargetFrameworks>
+	<TargetFrameworks>net7.0;net8.0</TargetFrameworks>
 	<GeneratePackageOnBuild>True</GeneratePackageOnBuild>
 	<PackageOutputPath>nupkg</PackageOutputPath>
 	<PackageIcon>t2t-bar-svg.png</PackageIcon>
@@ -17,7 +17,7 @@
 	<Company>tool2team</Company>
 	<Description>Multi platform SVG barcode renderer, no dependency</Description>
 	<OutputType>Library</OutputType>
-	<LangVersion>latest</LangVersion>
+	  <LangVersion>12.0</LangVersion>
 	<ImplicitUsings>enable</ImplicitUsings>
 	<RepositoryUrl>https://github.com/tool2team/t2t-barcode-rendering</RepositoryUrl>
 	  <BuildCommand>$(BuildCommand) -IncludeReferencedProjects</BuildCommand>

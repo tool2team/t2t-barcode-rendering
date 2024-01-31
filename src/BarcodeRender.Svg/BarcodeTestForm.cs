@@ -258,6 +258,7 @@ public partial class BarcodeTestForm : Form
     {
         barcodePanel.Text = string.Empty;
         barcodePanel.Symbology = SelectedSymbology;
+        barcodePanel.IsHexa = binaryChk.Checked;
         barcodePanel.Text = barcodeLabel.Text;
     }
     #endregion

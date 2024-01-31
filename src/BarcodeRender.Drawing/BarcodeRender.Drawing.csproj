@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFrameworks>net7.0-windows</TargetFrameworks>
+    <TargetFrameworks>net8.0-windows</TargetFrameworks>
     <Configurations>Debug;Release</Configurations>
     <RootNamespace>BarcodeRender.Drawing</RootNamespace>
     <AssemblyName>BarcodeRender.Drawing</AssemblyName>

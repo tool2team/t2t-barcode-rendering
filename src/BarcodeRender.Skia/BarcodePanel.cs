@@ -1,5 +1,6 @@
 using SkiaSharp;
 using System.ComponentModel;
+using System.Text;
 using T2t.Barcode.Core;
 using T2t.Barcode.Skia;
 
@@ -72,6 +73,10 @@ public partial class BarcodePanel : Panel
         }
     }
 
+    bool isHexa;
+    [Browsable(true)]
+    public bool IsHexa { get => isHexa; set { isHexa = value; RefreshBarcodeImage(); } }
+
     /// <summary>
     /// Gets or sets the maximum height of the rendered barcode.
     /// </summary>
@@ -97,6 +102,20 @@ public partial class BarcodePanel : Panel
     #endregion
 
     #region Private Methods
+    static string HexToString(string hexString)
+    {
+        StringBuilder sb = new();
+
+        for (int i = 0; i < hexString.Length; i += 2)
+        {
+            string hexChar = hexString.Substring(i, 2);
+            short asciiValue = Convert.ToInt16(hexChar, 16);
+            sb.Append((char)asciiValue);
+        }
+
+        return sb.ToString();
+    }
+
     private void RefreshBarcodeImage()
     {
         // Allocate new barcode image as needed
@@ -104,11 +123,12 @@ public partial class BarcodePanel : Panel
         {
             try
             {
+                string text = IsHexa ? HexToString(Text) : Text;
                 var drawObject = BarcodeDrawFactory.GetSymbology(_symbology);
                 var metrics = drawObject.GetDefaultMetrics(_maxBarHeight);
                 metrics.Scale = 2;
 
-                SKBitmap skBitmap = drawObject.Draw(Text, metrics);
+                SKBitmap skBitmap = drawObject.Draw(text, metrics);
                 using var skImage = SKImage.FromBitmap(skBitmap);
                 using var data = skImage.Encode(SKEncodedImageFormat.Png, 100);
                 using var stream = data.AsStream();
