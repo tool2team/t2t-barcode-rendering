@@ -1,4 +1,4 @@
-namespace BarcodeRender.Drawing;
+namespace T2t.Barcode.TestForms;
 
 	partial class ExportProgress
 	{

@@ -1,4 +1,4 @@
-namespace BarcodeRender.Skia;
+namespace T2t.Barcode.TestForms;
 
 static class Program
 {

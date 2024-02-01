@@ -6,7 +6,7 @@ using System.Xml;
 using System.Xml.Serialization;
 using T2t.Barcode.Core;
 
-namespace BarcodeRender.Skia;
+namespace T2t.Barcode.TestForms;
 
 /// <summary>
 /// <c>BarcodeTestForm</c> is designed to support the printing and
@@ -61,6 +61,7 @@ public partial class BarcodeTestForm : Form
     private bool _testPlanDirty;
     private bool _testChangesPending;
     private bool _symbologyChanged;
+    private bool _libChanged;
     private bool _barcodeTextChanged;
     #endregion
 
@@ -100,6 +101,19 @@ public partial class BarcodeTestForm : Form
             if (testSymbology.SelectedIndex != -1)
             {
                 current = (testSymbology.SelectedItem as ComboBoxItem<BarcodeSymbology>).Id;
+            }
+            return current;
+        }
+    }
+
+    private string SelectedLib
+    {
+        get
+        {
+            string current = "Drawing";
+            if (testLib.SelectedIndex != -1)
+            {
+                current = (testLib.SelectedItem as ComboBoxItem<string>).Id;
             }
             return current;
         }
@@ -256,7 +270,8 @@ public partial class BarcodeTestForm : Form
     {
         barcodePanel.Text = string.Empty;
         barcodePanel.Symbology = SelectedSymbology;
-        barcodePanel.IsHexa = binaryChk.Checked;
+        barcodePanel.Lib = SelectedLib;
+        barcodePanel.IsHexa = hexaChk.Checked;
         barcodePanel.Text = barcodeLabel.Text;
     }
     #endregion
@@ -477,6 +492,12 @@ public partial class BarcodeTestForm : Form
         _symbologyChanged = true;
     }
 
+    private void Lib_SelectedIndexChanged(object sender, EventArgs e)
+    {
+        _testChangesPending = true;
+        _libChanged = true;
+    }
+
     private void barcodeLabel_TextChanged(object sender, EventArgs e)
     {
         _testChangesPending = true;
@@ -489,6 +510,15 @@ public partial class BarcodeTestForm : Form
         {
             RefreshBarcode();
             _symbologyChanged = false;
+        }
+    }
+
+    private void Lib_Leave(object sender, EventArgs e)
+    {
+        if (_libChanged)
+        {
+            RefreshBarcode();
+            _libChanged = false;
         }
     }
 

@@ -1,11 +1,10 @@
-using SkiaSharp;
 using System.Drawing.Imaging;
 using System.Text;
 using System.Xml.Serialization;
 using T2t.Barcode.Core;
-using T2t.Barcode.Skia;
+using T2t.Barcode.Drawing;
 
-namespace BarcodeRender.Skia;
+namespace T2t.Barcode.TestForms;
 
 /// <summary>
 /// Notification delegate called during image export.
@@ -295,16 +294,9 @@ public class SymbologyTestCase : IDisposable
     {
         get
         {
-            if (_barcodeImage == null)
-            {
-                SKBitmap skBitmap = BarcodeDrawFactory.GetSymbology(_symbology).Draw(
+            _barcodeImage ??=
+                    BarcodeDrawFactory.GetSymbology(_symbology).Draw(
                     _barcodeText, _maxBarHeight);
-                using var skImage = SKImage.FromBitmap(skBitmap);
-                using var data = skImage.Encode(SKEncodedImageFormat.Png, 100);
-                using var stream = data.AsStream();
-
-                _barcodeImage = Image.FromStream(stream);
-            }
             return _barcodeImage;
         }
     }
@@ -421,12 +413,7 @@ public class SymbologyTestGroup
     /// <returns></returns>
     public Image GetBarcodeImage(int index, int maxBarHeight)
     {
-        SKBitmap skBitmap = DrawObject.Draw(GetBarcodeText(index), maxBarHeight);
-        using var skImage = SKImage.FromBitmap(skBitmap);
-        using var data = skImage.Encode(SKEncodedImageFormat.Png, 100);
-        using var stream = data.AsStream();
-
-        return Image.FromStream(stream);
+        return DrawObject.Draw(GetBarcodeText(index), maxBarHeight);
     }
 
     /// <summary>

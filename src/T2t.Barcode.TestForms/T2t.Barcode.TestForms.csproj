@@ -1,0 +1,45 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+	  <TargetFrameworks>net8.0-windows</TargetFrameworks>
+	  <Configurations>Debug;Release</Configurations>
+	  <RootNamespace>T2t.Barcode.TestForms</RootNamespace>
+	  <AssemblyName>T2t.Barcode.TestForms</AssemblyName>
+
+	  <ImplicitUsings>enable</ImplicitUsings>
+	  <OutputType>WinExe</OutputType>
+	  <UseWindowsForms>True</UseWindowsForms>
+  </PropertyGroup>
+
+
+	<ItemGroup>
+		<PackageReference Include="Svg" Version="3.4.4" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<ProjectReference Include="..\T2t.Barcode.Drawing\T2t.Barcode.Drawing.csproj" />
+		<ProjectReference Include="..\T2t.Barcode.Skia\T2t.Barcode.Skia.csproj" />
+		<ProjectReference Include="..\T2t.Barcode.Svg\T2t.Barcode.Svg.csproj" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <Compile Update="BarcodePanel.cs">
+	    <SubType>Component</SubType>
+	  </Compile>
+	  <Compile Update="BarcodeTestForm.cs">
+	    <SubType>Form</SubType>
+	  </Compile>
+	  <Compile Update="ExportBarcodeImagesForm.cs">
+	    <SubType>Form</SubType>
+	  </Compile>
+	  <Compile Update="ExportProgress.cs">
+	    <SubType>Form</SubType>
+	  </Compile>
+	</ItemGroup>
+
+	<ItemGroup>
+	  <EmbeddedResource Update="BarcodeTestForm.resx">
+	    <SubType>Designer</SubType>
+	  </EmbeddedResource>
+	</ItemGroup>
+</Project>

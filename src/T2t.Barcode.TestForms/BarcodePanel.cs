@@ -1,11 +1,10 @@
-
+using SkiaSharp;
 using Svg;
 using System.ComponentModel;
 using System.Text;
 using T2t.Barcode.Core;
-using T2t.Barcode.Svg;
 
-namespace BarcodeRender.Svg;
+namespace T2t.Barcode.TestForms;
 
 /// <summary>
 /// <c>BarcodePanel</c> encapsulates a Windows Forms barcode control.
@@ -14,6 +13,7 @@ public partial class BarcodePanel : Panel
 {
     #region Private Fields
     private BarcodeSymbology _symbology;
+    private string _lib;
     private int _maxBarHeight = 30;
     #endregion
 
@@ -47,6 +47,25 @@ public partial class BarcodePanel : Panel
             if (_symbology != value)
             {
                 _symbology = value;
+                RefreshBarcodeImage();
+            }
+        }
+    }
+
+    [Category("Appearance")]
+    [DefaultValue("")]
+    [Description("Gets/sets the rendering lib used by this control.")]
+    public string Lib
+    {
+        get
+        {
+            return _lib;
+        }
+        set
+        {
+            if (_lib != value)
+            {
+                _lib = value;
                 RefreshBarcodeImage();
             }
         }
@@ -125,14 +144,40 @@ public partial class BarcodePanel : Panel
             try
             {
                 string text = IsHexa ? HexToString(Text) : Text;
-                var drawObject = BarcodeDrawFactory.GetSymbology(_symbology);
-                var metrics = drawObject.GetDefaultMetrics(_maxBarHeight);
-                metrics.Scale = 2;
 
-                SvgDocument svgDoc = SvgDocument.FromSvg<SvgDocument>(drawObject.Draw(text, metrics));
-                Bitmap bitmap = svgDoc.Draw();
-                //bitmap.Save("test.png", System.Drawing.Imaging.ImageFormat.Png);
-                BackgroundImage = bitmap;
+                switch(_lib)
+                {
+                    case "Drawing":
+                        var drawObject1 = T2t.Barcode.Drawing.BarcodeDrawFactory.GetSymbology(_symbology);
+                        var metrics1 = drawObject1.GetDefaultMetrics(_maxBarHeight);
+                        metrics1.Scale = 2;
+                        BackgroundImage = drawObject1.Draw(text, metrics1);
+                        break;
+                    case "Skia":
+                        var drawObject2 = T2t.Barcode.Skia.BarcodeDrawFactory.GetSymbology(_symbology);
+                        var metrics2 = drawObject2.GetDefaultMetrics(_maxBarHeight);
+                        metrics2.Scale = 2;
+                        {
+                            SKBitmap skBitmap = drawObject2.Draw(text, metrics2);
+                            using var skImage = SKImage.FromBitmap(skBitmap);
+                            using var data = skImage.Encode(SKEncodedImageFormat.Png, 100);
+                            using var stream = data.AsStream();
+                            BackgroundImage = Image.FromStream(stream);
+                        }
+                        break;
+                    case "Svg":
+                        var drawObject3 = T2t.Barcode.Svg.BarcodeDrawFactory.GetSymbology(_symbology);
+                        var metrics3 = drawObject3.GetDefaultMetrics(_maxBarHeight);
+                        metrics3.Scale = 2;
+                        SvgDocument svgDoc = SvgDocument.FromSvg<SvgDocument>(drawObject3.Draw(text, metrics3));
+                        Bitmap bitmap = svgDoc.Draw();
+                        //bitmap.Save("test.png", System.Drawing.Imaging.ImageFormat.Png);
+                        BackgroundImage = bitmap;
+                        break;
+                    default:
+                        BackgroundImage = null;
+                        break;
+                }
             }
             catch
             {

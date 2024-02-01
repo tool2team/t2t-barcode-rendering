@@ -1,6 +1,6 @@
 using System.ComponentModel;
 
-namespace BarcodeRender.Skia;
+namespace T2t.Barcode.TestForms;
 
 public partial class ExportProgress : Form
 {

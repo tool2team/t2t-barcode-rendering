@@ -1,4 +1,4 @@
-namespace BarcodeRender.Svg;
+namespace T2t.Barcode.TestForms;
 
 	partial class BarcodePanel
 	{

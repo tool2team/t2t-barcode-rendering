@@ -1,6 +1,6 @@
 ﻿using T2t.Barcode.Core;
 
-namespace BarcodeRender.Drawing;
+namespace T2t.Barcode.TestForms;
 
 partial class BarcodeTestForm
 {
@@ -46,13 +46,15 @@ partial class BarcodeTestForm
 		this.printDialog = new System.Windows.Forms.PrintDialog();
 		this.groupBox2 = new System.Windows.Forms.GroupBox();
 		this.testSymbology = new System.Windows.Forms.ComboBox();
+		this.testLib = new System.Windows.Forms.ComboBox();
 		this.label5 = new System.Windows.Forms.Label();
 		this.scannerResult = new System.Windows.Forms.TextBox();
 		this.label2 = new System.Windows.Forms.Label();
 		this.label3 = new System.Windows.Forms.Label();
-		this.barcodePanel = new BarcodeRender.Drawing.BarcodePanel();
+		this.label4 = new System.Windows.Forms.Label();
+		this.barcodePanel = new T2t.Barcode.TestForms.BarcodePanel();
 		this.barcodeLabel = new System.Windows.Forms.TextBox();
-		this.binaryChk = new System.Windows.Forms.CheckBox();
+		this.hexaChk = new System.Windows.Forms.CheckBox();
         this.label1 = new System.Windows.Forms.Label();
 		this.nextTestButton = new System.Windows.Forms.Button();
 		this.previousTestButton = new System.Windows.Forms.Button();
@@ -132,13 +134,15 @@ partial class BarcodeTestForm
 					| System.Windows.Forms.AnchorStyles.Left)
 					| System.Windows.Forms.AnchorStyles.Right)));
 		this.groupBox2.Controls.Add(this.testSymbology);
+		this.groupBox2.Controls.Add(this.testLib);
 		this.groupBox2.Controls.Add(this.label5);
 		this.groupBox2.Controls.Add(this.scannerResult);
 		this.groupBox2.Controls.Add(this.label2);
 		this.groupBox2.Controls.Add(this.label3);
+		this.groupBox2.Controls.Add(this.label4);
 		this.groupBox2.Controls.Add(this.barcodePanel);
 		this.groupBox2.Controls.Add(this.barcodeLabel);
-		this.groupBox2.Controls.Add(this.binaryChk);
+		this.groupBox2.Controls.Add(this.hexaChk);
 		this.groupBox2.Controls.Add(this.label1);
 		this.groupBox2.Controls.Add(this.nextTestButton);
 		this.groupBox2.Controls.Add(this.previousTestButton);
@@ -187,7 +191,7 @@ partial class BarcodeTestForm
 		// scannerResult
 		// 
 		this.scannerResult.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-		this.scannerResult.Location = new System.Drawing.Point(160, 270);
+		this.scannerResult.Location = new System.Drawing.Point(160, 302);
 		this.scannerResult.Name = "scannerResult";
 		this.scannerResult.Size = new System.Drawing.Size(191, 20);
 		this.scannerResult.TabIndex = 5;
@@ -197,7 +201,7 @@ partial class BarcodeTestForm
 		// 
 		this.label2.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
 		this.label2.AutoSize = true;
-		this.label2.Location = new System.Drawing.Point(70, 273);
+		this.label2.Location = new System.Drawing.Point(70, 305);
 		this.label2.Name = "label2";
 		this.label2.Size = new System.Drawing.Size(83, 13);
 		this.label2.TabIndex = 4;
@@ -212,7 +216,7 @@ partial class BarcodeTestForm
 		this.barcodePanel.BackColor = System.Drawing.Color.White;
 		this.barcodePanel.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
 		this.barcodePanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-		this.barcodePanel.Location = new System.Drawing.Point(6, 151);
+		this.barcodePanel.Location = new System.Drawing.Point(6, 186);
 		this.barcodePanel.Name = "barcodePanel";
 		this.barcodePanel.Size = new System.Drawing.Size(410, 108);
 		this.barcodePanel.Symbology = T2t.Barcode.Core.BarcodeSymbology.Unknown;
@@ -228,15 +232,15 @@ partial class BarcodeTestForm
 		this.barcodeLabel.TextChanged += new System.EventHandler(this.barcodeLabel_TextChanged);
 		this.barcodeLabel.Leave += new System.EventHandler(this.barcodeLabel_Leave);
         // 
-        // binaryChk
+        // hexaChk
         // 
-        this.binaryChk.Anchor = System.Windows.Forms.AnchorStyles.Top;
-        this.binaryChk.Location = new System.Drawing.Point(180, 126);
-        this.binaryChk.Name = "barcodeLabel";
-        this.binaryChk.Size = new System.Drawing.Size(191, 20);
-        this.binaryChk.TabIndex = 2;
-        this.binaryChk.TextChanged += new System.EventHandler(this.barcodeLabel_TextChanged);
-        this.binaryChk.Leave += new System.EventHandler(this.barcodeLabel_Leave);
+        this.hexaChk.Anchor = System.Windows.Forms.AnchorStyles.Top;
+        this.hexaChk.Location = new System.Drawing.Point(170, 126);
+        this.hexaChk.Name = "binaruChk";
+        this.hexaChk.Size = new System.Drawing.Size(191, 20);
+        this.hexaChk.TabIndex = 2;
+        this.hexaChk.TextChanged += new System.EventHandler(this.barcodeLabel_TextChanged);
+        this.hexaChk.Leave += new System.EventHandler(this.barcodeLabel_Leave);
         // 
         // label1
         // 
@@ -257,6 +261,33 @@ partial class BarcodeTestForm
         this.label3.Size = new System.Drawing.Size(83, 13);
         this.label3.TabIndex = 4;
         this.label3.Text = "Hexa:";
+        // 
+        // label5
+        // 
+        this.label4.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+        this.label4.AutoSize = true;
+        this.label4.Location = new System.Drawing.Point(130, 160);
+        this.label4.Name = "label5";
+        this.label4.Size = new System.Drawing.Size(80, 13);
+        this.label4.TabIndex = 4;
+        this.label4.Text = "Lib:";
+        // 
+        // testLib
+        // 
+        this.testLib.FormattingEnabled = true;
+		this.testLib.Items.AddRange(new ComboBoxItem<string>[] {
+			new ComboBoxItem<string> { Id = nameof(T2t.Barcode.Drawing), Label = nameof(T2t.Barcode.Drawing) },
+			new ComboBoxItem<string> { Id = nameof(T2t.Barcode.Skia), Label = nameof(T2t.Barcode.Skia) },
+			new ComboBoxItem<string> { Id = nameof(T2t.Barcode.Svg), Label = nameof(T2t.Barcode.Svg) },
+		});
+        this.testLib.DisplayMember = nameof(ComboBoxItem<string>.Label);
+        this.testLib.ValueMember = nameof(ComboBoxItem<string>.Id);
+        this.testLib.Location = new System.Drawing.Point(160, 157);
+        this.testLib.Name = "testLib";
+        this.testLib.Size = new System.Drawing.Size(191, 21);
+        this.testLib.TabIndex = 10;
+        this.testLib.SelectedIndexChanged += new System.EventHandler(this.Lib_SelectedIndexChanged);
+        this.testLib.Leave += new System.EventHandler(this.Lib_Leave);
         // 
         // nextTestButton
         // 
@@ -616,8 +647,9 @@ partial class BarcodeTestForm
 	private System.Windows.Forms.Label label2;
 	private BarcodePanel barcodePanel;
     private System.Windows.Forms.Label label3;
+    private System.Windows.Forms.Label label4;
     private System.Windows.Forms.TextBox barcodeLabel;
-	private System.Windows.Forms.CheckBox binaryChk;
+	private System.Windows.Forms.CheckBox hexaChk;
 	private System.Windows.Forms.Label label1;
 	private System.Windows.Forms.Button nextTestButton;
 	private System.Windows.Forms.Button previousTestButton;
@@ -655,7 +687,8 @@ partial class BarcodeTestForm
 	private System.Windows.Forms.GroupBox groupBox1;
 	private System.Windows.Forms.TreeView testTree;
 	private System.Windows.Forms.ComboBox testSymbology;
-	private System.Windows.Forms.Label label5;
+    private System.Windows.Forms.ComboBox testLib;
+    private System.Windows.Forms.Label label5;
 	private System.Windows.Forms.OpenFileDialog openFileDialog;
 	private System.Windows.Forms.SaveFileDialog saveFileDialog;
 	private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
