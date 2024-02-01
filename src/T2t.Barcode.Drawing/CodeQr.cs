@@ -699,17 +699,10 @@ public class CodeQrBarcodeDraw : BarcodeDraw
 
             try
             {
-                //String filename = QRCODE_DATA_PATH + "/qrvfr" + System.Convert.ToString(qrcodeVersion) + ".dat";
-                //StreamReader reader = new StreamReader(filename);
-
-                var resourceName = $"qrv{_version}_{ec}";
+                var resourceName = $"qrvfr{_version}";
                 using Stream memoryStream = new MemoryStream((byte[])CoreResources.ResourceManager.GetObject(resourceName));
-                BufferedStream bis = new(memoryStream);
+                using BufferedStream bis = new(memoryStream);
                 SystemUtils.ReadInput(bis, frameData, 0, frameData.Length);
-                bis.Close();
-                memoryStream.Close();
-                //reader.Close();
-                //fis.Close();
             }
             catch (Exception e)
             {
@@ -913,7 +906,6 @@ public class CodeQrBarcodeDraw : BarcodeDraw
             }
             try
             {
-                var assembly = Assembly.GetExecutingAssembly();
                 var resourceName = $"rsc{rsEccCodewords}";
                 using Stream memoryStream = new MemoryStream((byte[])CoreResources.ResourceManager.GetObject(resourceName));
                 using BufferedStream bis = new(memoryStream);

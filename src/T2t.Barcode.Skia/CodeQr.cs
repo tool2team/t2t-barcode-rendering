@@ -657,7 +657,6 @@ public class CodeQrBarcodeDraw : BarcodeDraw
             sbyte[] rsBlockOrderTemp = new sbyte[128];
             try
             {
-                var assembly = Assembly.GetExecutingAssembly();
                 var resourceName = $"qrv{_version}_{ec}";
                 using Stream memoryStream = new MemoryStream((byte[])CoreResources.ResourceManager.GetObject(resourceName));
                 using BufferedStream bis = new(memoryStream);
