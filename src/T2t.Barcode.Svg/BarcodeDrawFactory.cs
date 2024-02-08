@@ -27,6 +27,7 @@ public static class BarcodeDrawFactory
     private static Code25BarcodeDraw _code25InterleavedWithoutChecksum;
     private static Code25BarcodeDraw _code25InterleavedWithChecksum;
     private static CodeQrBarcodeDraw _codeQr;
+    private static CodeDmBarcodeDraw _codeDm;
     #endregion
 
     #region Public Properties
@@ -221,6 +222,20 @@ public static class BarcodeDrawFactory
             return _codeQr;
         }
     }
+
+
+    /// <summary>
+    /// Gets an agent capable of rendering a Code QR barcode.
+    /// </summary>
+    /// <value>A <see cref="T:T2t.Barcode.Svg.CodeQrBarcodeDraw"/> object.</value>
+    public static CodeDmBarcodeDraw CodeDm
+    {
+        get
+        {
+            _codeDm ??= new CodeDmBarcodeDraw();
+            return _codeDm;
+        }
+    }
     #endregion
 
     #region Public Methods
@@ -239,37 +254,24 @@ public static class BarcodeDrawFactory
     /// </exception>
     public static BarcodeDraw GetSymbology(BarcodeSymbology symbology)
     {
-        switch (symbology)
+        return symbology switch
         {
-            case BarcodeSymbology.Code39NC:
-                return Code39WithoutChecksum;
-            case BarcodeSymbology.Code39C:
-                return Code39WithChecksum;
-            case BarcodeSymbology.Code93:
-                return Code93WithChecksum;
-            case BarcodeSymbology.Code128:
-                return Code128WithChecksum;
-            case BarcodeSymbology.Code11NC:
-                return Code11WithoutChecksum;
-            case BarcodeSymbology.Code11C:
-                return Code11WithChecksum;
-            case BarcodeSymbology.CodeEan13:
-                return CodeEan13WithChecksum;
-            case BarcodeSymbology.CodeEan8:
-                return CodeEan8WithChecksum;
-            case BarcodeSymbology.Code25StandardNC:
-                return Code25StandardWithoutChecksum;
-            case BarcodeSymbology.Code25StandardC:
-                return Code25StandardWithChecksum;
-            case BarcodeSymbology.Code25InterleavedNC:
-                return Code25InterleavedWithoutChecksum;
-            case BarcodeSymbology.Code25InterleavedC:
-                return Code25InterleavedWithChecksum;
-            case BarcodeSymbology.CodeQr:
-                return CodeQr;
-            default:
-                throw new ArgumentException("BarcodeSymbologyInvalid", nameof(symbology));
-        }
+            BarcodeSymbology.Code39NC => Code39WithoutChecksum,
+            BarcodeSymbology.Code39C => Code39WithChecksum,
+            BarcodeSymbology.Code93 => Code93WithChecksum,
+            BarcodeSymbology.Code128 => Code128WithChecksum,
+            BarcodeSymbology.Code11NC => Code11WithoutChecksum,
+            BarcodeSymbology.Code11C => Code11WithChecksum,
+            BarcodeSymbology.CodeEan13 => CodeEan13WithChecksum,
+            BarcodeSymbology.CodeEan8 => CodeEan8WithChecksum,
+            BarcodeSymbology.Code25StandardNC => Code25StandardWithoutChecksum,
+            BarcodeSymbology.Code25StandardC => Code25StandardWithChecksum,
+            BarcodeSymbology.Code25InterleavedNC => Code25InterleavedWithoutChecksum,
+            BarcodeSymbology.Code25InterleavedC => Code25InterleavedWithChecksum,
+            BarcodeSymbology.CodeQr => CodeQr,
+            BarcodeSymbology.CodeDm => CodeDm,
+            _ => throw new ArgumentException("BarcodeSymbologyInvalid", nameof(symbology)),
+        };
     }
     #endregion
 }

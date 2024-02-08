@@ -14,3 +14,4 @@ Currently supported bar-code symbologies;
 * Code EAN 13 with checksum only
 * Code EAN 8 with checksum only
 * Code QR 2D (new)
+* Code Datamatrix 2D (new)

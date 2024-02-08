@@ -6,7 +6,6 @@
 
 
 using System.Drawing;
-using System.Reflection;
 using System.Text;
 using T2t.Barcode.Core;
 

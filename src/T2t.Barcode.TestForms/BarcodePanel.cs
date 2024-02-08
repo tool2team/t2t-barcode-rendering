@@ -144,15 +144,17 @@ public partial class BarcodePanel : Panel
             try
             {
                 string text = IsHexa ? HexToString(Text) : Text;
+                string pngFile = SanitizeFilename($"test-{Text}-{Lib}.png");
+                string svgFile = SanitizeFilename($"test-{Text}-{Lib}.svg");
 
-                switch(_lib)
+                switch (_lib)
                 {
                     case "Drawing":
                         var drawObject1 = Drawing.BarcodeDrawFactory.GetSymbology(_symbology);
                         var metrics1 = drawObject1.GetDefaultMetrics(_maxBarHeight);
                         metrics1.Scale = 2;
                         BackgroundImage = drawObject1.Draw(text, metrics1);
-                        BackgroundImage.Save($"test-{Text}-{Lib}.png", System.Drawing.Imaging.ImageFormat.Png);
+                        BackgroundImage.Save(pngFile, System.Drawing.Imaging.ImageFormat.Png);
                         break;
                     case "Skia":
                         var drawObject2 = Skia.BarcodeDrawFactory.GetSymbology(_symbology);
@@ -164,7 +166,7 @@ public partial class BarcodePanel : Panel
                             using var data = skImage.Encode(SKEncodedImageFormat.Png, 100);
                             using var stream = data.AsStream();
                             BackgroundImage = Image.FromStream(stream);
-                            BackgroundImage.Save($"test-{Text}-{Lib}.png", System.Drawing.Imaging.ImageFormat.Png);
+                            BackgroundImage.Save(pngFile, System.Drawing.Imaging.ImageFormat.Png);
                         }
                         break;
                     case "Svg":
@@ -175,8 +177,8 @@ public partial class BarcodePanel : Panel
                         SvgDocument svgDoc = SvgDocument.FromSvg<SvgDocument>(svgStr);
                         Bitmap bitmap = svgDoc.Draw();
                         BackgroundImage = bitmap;
-                        BackgroundImage.Save($"test-{Text}-{Lib}.png", System.Drawing.Imaging.ImageFormat.Png);
-                        File.WriteAllText($"test-{Text}-{Lib}.svg", svgStr);
+                        BackgroundImage.Save(pngFile, System.Drawing.Imaging.ImageFormat.Png);
+                        File.WriteAllText(svgFile, svgStr);
                         break;
                     default:
                         BackgroundImage = null;
@@ -204,4 +206,12 @@ public partial class BarcodePanel : Panel
         }
     }
     #endregion
+
+    string SanitizeFilename(string origFileName)
+    {
+        var invalids = Path.GetInvalidFileNameChars();
+        var newName = string.Join("_", origFileName.Split(invalids, StringSplitOptions.RemoveEmptyEntries));
+
+        return newName;
+    }
 }

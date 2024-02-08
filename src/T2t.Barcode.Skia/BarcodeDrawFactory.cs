@@ -28,6 +28,7 @@ public static class BarcodeDrawFactory
     private static Code25BarcodeDraw _code25InterleavedWithoutChecksum;
     private static Code25BarcodeDraw _code25InterleavedWithChecksum;
     private static CodeQrBarcodeDraw _codeQr;
+    private static CodeDmBarcodeDraw _codeDm;
     #endregion
 
     #region Public Properties
@@ -222,6 +223,20 @@ public static class BarcodeDrawFactory
             return _codeQr;
         }
     }
+
+
+    /// <summary>
+    /// Gets an agent capable of rendering a Code QR barcode.
+    /// </summary>
+    /// <value>A <see cref="T:T2t.Barcode.Skia.CodeQrBarcodeDraw"/> object.</value>
+    public static CodeDmBarcodeDraw CodeDm
+    {
+        get
+        {
+            _codeDm ??= new CodeDmBarcodeDraw();
+            return _codeDm;
+        }
+    }
     #endregion
 
     #region Public Methods
@@ -255,6 +270,7 @@ public static class BarcodeDrawFactory
             BarcodeSymbology.Code25InterleavedNC => Code25InterleavedWithoutChecksum,
             BarcodeSymbology.Code25InterleavedC => Code25InterleavedWithChecksum,
             BarcodeSymbology.CodeQr => CodeQr,
+            BarcodeSymbology.CodeDm => CodeDm,
             _ => throw new ArgumentException("BarcodeSymbologyInvalid", nameof(symbology)),
         };
     }

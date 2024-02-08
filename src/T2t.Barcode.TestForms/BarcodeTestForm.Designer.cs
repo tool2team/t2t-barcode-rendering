@@ -169,7 +169,9 @@ partial class BarcodeTestForm
 			new ComboBoxItem<BarcodeSymbology> { Id = BarcodeSymbology.Code25StandardC, Label = "Code 25 Standard (With Checksum)" },
 			new ComboBoxItem<BarcodeSymbology> { Id = BarcodeSymbology.Code25InterleavedNC, Label = "Code 25 Interleaved (No Checksum)" },
 			new ComboBoxItem<BarcodeSymbology> { Id = BarcodeSymbology.Code25InterleavedC, Label = "Code 25 Interleaved (With Checksum)" },
-			new ComboBoxItem<BarcodeSymbology> { Id = BarcodeSymbology.CodeQr, Label = "Code Qr" } });
+			new ComboBoxItem<BarcodeSymbology> { Id = BarcodeSymbology.CodeQr, Label = "Code Qr" },
+			new ComboBoxItem<BarcodeSymbology> { Id = BarcodeSymbology.CodeDm, Label = "Code Datamatrix" }
+		});
 		this.testSymbology.DisplayMember = nameof(ComboBoxItem<BarcodeSymbology>.Label);
         this.testSymbology.ValueMember = nameof(ComboBoxItem<BarcodeSymbology>.Id);
         this.testSymbology.Location = new System.Drawing.Point(160, 57);

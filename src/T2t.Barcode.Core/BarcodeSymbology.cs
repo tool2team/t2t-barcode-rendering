@@ -81,4 +81,9 @@ public enum BarcodeSymbology
     /// Code QR (2D symbology with error correction)
     /// </summary>
     CodeQr = 14,
+
+    /// <summary>
+    /// Code QR (2D symbology with error correction)
+    /// </summary>
+    CodeDm = 15,
 }
