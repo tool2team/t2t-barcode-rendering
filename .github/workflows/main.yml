@@ -9,7 +9,7 @@ on:
 jobs:
   build-and-pack:
     name: Build, Pack and Publish
-    runs-on: ubuntu-latest
+    runs-on: windows-latest
     permissions:
       contents: read
       packages: write
