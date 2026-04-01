@@ -1,23 +1,28 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-	<TargetFrameworks>net7.0-windows;net8.0-windows</TargetFrameworks>
+	<TargetFrameworks>net7.0-windows;net8.0-windows;net10.0-windows</TargetFrameworks>
     <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
-	<PackageOutputPath>nupkg</PackageOutputPath>
+	<PackageId>T2t.Barcode.Drawing</PackageId>
+	<PackageVersion>1.0.0-local</PackageVersion>
+	<PackageDescription>Windows barcode renderer</PackageDescription>
 	<PackageIcon>t2t-bar-win.png</PackageIcon>
-	<PackageTags>Barcode, qrcode, render, windows</PackageTags>
+	<PackageTags>barcode,qrcode</PackageTags>
+	<RepositoryUrl>https://github.com/tool2team/t2t-barcode-rendering</RepositoryUrl>
+	<RepositoryType>git</RepositoryType>
+	<PackageProjectUrl>https://github.com/tool2team/t2t-barcode-rendering</PackageProjectUrl>
+	<PackageLicenseExpression>Apache-2.0</PackageLicenseExpression>
 	<PackageReadmeFile>README.md</PackageReadmeFile>
-	<PackageLicenseFile>LICENSE.md</PackageLicenseFile>
     <Configurations>Debug;Release</Configurations>
     <RootNamespace>T2t.Barcode.Drawing</RootNamespace>
     <AssemblyName>T2t.Barcode.Drawing</AssemblyName>
 	<PackageId>T2t.Barcode.Drawing</PackageId>
-	<Authors>sinsedrix</Authors>
+	<Authors>sinsedrix,ccoulioufr</Authors>
 	<Company>tool2team</Company>
 	<Product>Barcode renderer</Product>
 	<Description>Windows barcode renderer, depending on System.Drawing.Common</Description>
     <OutputType>Library</OutputType>
-	  <LangVersion>12.0</LangVersion>
+	<LangVersion>12.0</LangVersion>
     <ImplicitUsings>enable</ImplicitUsings>
     <RepositoryUrl>https://github.com/tool2team/t2t-barcode-rendering</RepositoryUrl>
 	  <BuildCommand>$(BuildCommand) -IncludeReferencedProjects</BuildCommand>

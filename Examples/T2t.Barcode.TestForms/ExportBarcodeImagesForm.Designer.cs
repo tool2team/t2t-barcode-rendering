@@ -66,7 +66,7 @@ namespace T2t.Barcode.TestForms;
 			this.browseButton.TabIndex = 2;
 			this.browseButton.Text = "...";
 			this.browseButton.UseVisualStyleBackColor = true;
-			this.browseButton.Click += new System.EventHandler (this.browseButton_Click);
+			this.browseButton.Click += new System.EventHandler (this.BrowseButton_Click);
 			// 
 			// overwriteExistingFiles
 			// 

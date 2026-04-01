@@ -95,6 +95,7 @@ public partial class BarcodePanel : Panel
 
     bool isHexa;
     [Browsable(true)]
+    [DefaultValue(false)]
     public bool IsHexa { get => isHexa; set { isHexa = value; RefreshBarcodeImage(); } }
 
     /// <summary>

@@ -1,3 +1,5 @@
+using System.ComponentModel;
+
 namespace T2t.Barcode.TestForms;
 
 public partial class ExportBarcodeImagesForm : Form
@@ -7,6 +9,7 @@ public partial class ExportBarcodeImagesForm : Form
         InitializeComponent();
     }
 
+    [DefaultValue(false)]
     public string RootFolder
     {
         get
@@ -19,6 +22,7 @@ public partial class ExportBarcodeImagesForm : Form
         }
     }
 
+    [DefaultValue(false)]
     public bool OverwriteFiles
     {
         get
@@ -31,6 +35,7 @@ public partial class ExportBarcodeImagesForm : Form
         }
     }
 
+    [DefaultValue(false)]
     public bool FlattenHierarchy
     {
         get
@@ -43,7 +48,7 @@ public partial class ExportBarcodeImagesForm : Form
         }
     }
 
-    private void browseButton_Click(object sender, EventArgs e)
+    private void BrowseButton_Click(object sender, EventArgs e)
     {
         if (!string.IsNullOrEmpty(rootFolder.Text.Trim()))
         {
