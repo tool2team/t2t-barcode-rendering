@@ -27,9 +27,12 @@ jobs:
         
     - name: Display .NET version
       run: dotnet --version
-      
+
+    - name: Show NuGet sources
+      run: dotnet nuget list source
+
     - name: Restore dependencies
-      run: dotnet restore -p:EnableWindowsTargeting=true
+      run: dotnet restore -p:EnableWindowsTargeting=true --source https://api.nuget.org/v3/index.json
 
     - name: Build solution
       run: dotnet build --no-restore --configuration Release -p:EnableWindowsTargeting=true
