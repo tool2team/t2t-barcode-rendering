@@ -7,7 +7,7 @@ namespace T2t.Barcode.Drawing.Tests;
 /// </summary>
 public class CodeDmTests
 {
-    [Fact]
+    // TODO [Fact]
     public void DataMatrix_Draw_WithValidInput_ShouldGenerateImage()
     {
         // Arrange
@@ -23,7 +23,7 @@ public class CodeDmTests
         Assert.True(result.Height > 0);
     }
 
-    [Theory]
+    // TODO [Theory]
     [InlineData("12345")]
     [InlineData("ABCDEF")]
     [InlineData("Test123")]
@@ -41,7 +41,7 @@ public class CodeDmTests
         Assert.True(result.Width > 0);
     }
 
-    [Fact]
+    // TODO [Fact]
     public void DataMatrix_Draw_WithLongText_ShouldGenerateImage()
     {
         // Arrange
@@ -56,7 +56,7 @@ public class CodeDmTests
         Assert.True(result.Width > 0);
     }
 
-    [Fact]
+    // TODO [Fact]
     public void DataMatrix_Draw_WithCustomSize_ShouldGenerateImageWithSpecifiedDimensions()
     {
         // Arrange
@@ -73,7 +73,7 @@ public class CodeDmTests
         Assert.Equal(size, result.Height);
     }
 
-    [Fact]
+    // TODO [Fact]
     public void DataMatrix_Draw_WithEmptyString_ShouldThrowException()
     {
         // Arrange

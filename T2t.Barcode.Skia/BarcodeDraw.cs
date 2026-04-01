@@ -34,7 +34,7 @@ public abstract class BarcodeDraw
     /// <returns>
     /// An <see cref="SKImage"/> object containing the rendered barcode.
     /// </returns>
-    public abstract SKBitmap Draw(string text, BarcodeMetrics metrics);
+    public abstract SKBitmap Draw<T>(string text, T metrics) where T : BarcodeMetrics;
 
     /// <summary>
     /// Draws the specified text using the default barcode metrics for
@@ -190,9 +190,12 @@ public abstract class BarcodeDrawBase<TGlyphFactory, TChecksum> : BarcodeDraw
     /// <param name="text">The text.</param>
     /// <param name="metrics">A <see cref="T:T2t.Barcode.Skia.BarcodeMetrics"/> object.</param>
     /// <returns></returns>
-    public override sealed SKBitmap Draw(string text, BarcodeMetrics metrics)
+    public override sealed SKBitmap Draw<T>(string text, T metrics)
     {
-        return Draw1d(text, (BarcodeMetrics1d)metrics);
+        if (string.IsNullOrEmpty(text)) throw new ArgumentNullException(nameof(text), "text cannot be null or empty.");
+        if (metrics is not BarcodeMetrics1d m1d) throw new ArgumentException($"metrics must be of type {nameof(BarcodeMetrics1d)}.", nameof(metrics));
+
+        return Draw1d(text, m1d);
     }
     #endregion
 

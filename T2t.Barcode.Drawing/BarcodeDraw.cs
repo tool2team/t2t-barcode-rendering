@@ -33,7 +33,7 @@ public abstract class BarcodeDraw
     /// <returns>
     /// An <see cref="Image"/> object containing the rendered barcode.
     /// </returns>
-    public abstract Image Draw(string text, BarcodeMetrics metrics);
+    public abstract Image Draw<T>(string text, T metrics) where T : BarcodeMetrics;
 
     /// <summary>
     /// Draws the specified text using the default barcode metrics for
@@ -65,6 +65,7 @@ public abstract class BarcodeDraw
     public Image Draw(string text, int maxBarHeight, float scale)
     {
         if (string.IsNullOrEmpty(text)) throw new ArgumentNullException(nameof(text), "text cannot be null or empty.");
+
         BarcodeMetrics defaultMetrics = GetDefaultMetrics(maxBarHeight);
         defaultMetrics.Scale = scale;
         return Draw(text, defaultMetrics);

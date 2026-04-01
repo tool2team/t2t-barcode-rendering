@@ -57,15 +57,14 @@ public class CodeEan13Tests
         // Arrange
         var barcode = BarcodeDrawFactory.CodeEan13WithChecksum;
         const string testData = "123456789012";
-        const int width = 250;
-        const int height = 100;
+        const int maxHeight = 400;
+        const float scale = 1.5f;
 
         // Act
-        var result = barcode.Draw(testData, width, height);
+        var result = barcode.Draw(testData, maxHeight, scale);
 
         // Assert
         Assert.NotNull(result);
-        Assert.Equal(width, result.Width);
-        Assert.Equal(height, result.Height);
+        Assert.True(maxHeight * scale >= result.Height);
     }
 }

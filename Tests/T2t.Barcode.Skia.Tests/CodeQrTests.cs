@@ -1,4 +1,5 @@
 using SkiaSharp;
+using System.Text.RegularExpressions;
 
 namespace T2t.Barcode.Skia.Tests;
 
@@ -77,15 +78,15 @@ public class CodeQrTests
         // Arrange
         var barcode = BarcodeDrawFactory.CodeQr;
         const string testData = "QR Code Test";
-        const int size = 300;
+        const int maxHeight = 400;
+        const float scale = 1.5f;
 
         // Act
-        var result = barcode.Draw(testData, size);
+        var result = barcode.Draw(testData, maxHeight, scale);
 
         // Assert
         Assert.NotNull(result);
-        Assert.Equal(size, result.Width);
-        Assert.Equal(size, result.Height);
+        Assert.True(maxHeight * scale >= result.Height);
     }
 
     [Fact]

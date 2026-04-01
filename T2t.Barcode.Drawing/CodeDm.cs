@@ -24,12 +24,14 @@ public class CodeDmBarcodeDraw : BarcodeDraw
     /// <param name="text">The text.</param>
     /// <param name="metrics">A <see cref="T:T2t.Barcode.Svg.BarcodeMetrics"/> object.</param>
     /// <returns></returns>
-    public override sealed System.Drawing.Image Draw(string text, BarcodeMetrics metrics)
+    public override sealed System.Drawing.Image Draw<T>(string text, T metrics)
     {
         if (string.IsNullOrEmpty(text)) throw new ArgumentNullException(nameof(text), "text cannot be null or empty.");
+        if (metrics is not BarcodeMetricsDm mDm) throw new ArgumentException($"metrics must be of type {nameof(BarcodeMetricsDm)}.", nameof(metrics));
+
         Encoding enc = DMCodeUtility.IsUnicode(text) ? Encoding.Unicode : Encoding.ASCII;
 
-        return DrawDm(text, (BarcodeMetricsDm)metrics, enc);
+        return DrawDm(text, mDm, enc);
     }
 
     /// <summary>

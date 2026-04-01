@@ -1233,9 +1233,12 @@ public class CodeQrBarcodeDraw : BarcodeDraw
     /// <param name="text">The text.</param>
     /// <param name="metrics">A <see cref="T:T2t.Barcode.Skia.BarcodeMetrics"/> object.</param>
     /// <returns></returns>
-    public override sealed SKBitmap Draw(string text, BarcodeMetrics metrics)
+    public override sealed SKBitmap Draw<T>(string text, T metrics)
     {
-        return DrawQr(text, (BarcodeMetricsQr)metrics);
+        if (string.IsNullOrEmpty(text)) throw new ArgumentNullException(nameof(text), "text cannot be null or empty.");
+        if (metrics is not BarcodeMetricsQr mQr) throw new ArgumentException($"metrics must be of type {nameof(BarcodeMetricsQr)}.", nameof(metrics));
+
+        return DrawQr(text, mQr);
     }
 
     /// <summary>
