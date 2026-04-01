@@ -1,10 +1,8 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 17
-VisualStudioVersion = 17.6.33606.364
+# Visual Studio Version 18
+VisualStudioVersion = 18.5.11626.173 insiders
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Core", "Core", "{029C56B2-55CA-45D2-91E3-654473D945C6}"
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{64A88384-A777-47DE-A213-13A0157DC278}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{57BD0CD8-DCE9-4F5B-8A75-3A1A1EE18309}"
@@ -18,6 +16,8 @@ EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "T2t.Barcode.Core", "T2t.Barcode.Core\T2t.Barcode.Core.csproj", "{A890780A-AA8F-4DCB-8290-CCA66D1E86E9}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "T2t.Barcode.TestForms", "T2t.Barcode.TestForms\T2t.Barcode.TestForms.csproj", "{0703F251-F34C-464F-B9E6-78FAD1B3B57B}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Examples", "Examples", "{739989BA-4D22-4D4A-AA62-81D2E5C96FAF}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -220,11 +220,7 @@ Global
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
-		{77484B9B-7400-4C6E-A997-CAB7FA7F9B1E} = {029C56B2-55CA-45D2-91E3-654473D945C6}
-		{1F5F6D44-DD73-4D1E-882D-ED0681A0F4AB} = {029C56B2-55CA-45D2-91E3-654473D945C6}
-		{416E6295-156F-4576-A4D4-A64224ED9391} = {029C56B2-55CA-45D2-91E3-654473D945C6}
-		{A890780A-AA8F-4DCB-8290-CCA66D1E86E9} = {029C56B2-55CA-45D2-91E3-654473D945C6}
-		{0703F251-F34C-464F-B9E6-78FAD1B3B57B} = {64A88384-A777-47DE-A213-13A0157DC278}
+		{0703F251-F34C-464F-B9E6-78FAD1B3B57B} = {739989BA-4D22-4D4A-AA62-81D2E5C96FAF}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {92513C39-0B48-4819-9ED3-C7F17F820A97}
