@@ -6,7 +6,7 @@ Unit test project for the T2t.Barcode.Svg library.
 
 - **Test Framework**: xUnit
 - **Code Coverage**: Coverlet
-- **Target Frameworks**: .NET 7.0, .NET 8.0, .NET 10.0
+- **Target Frameworks**: .NET 8.0, .NET 10.0
 
 ## Test Coverage
 
