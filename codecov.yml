@@ -1,0 +1,63 @@
+# Codecov configuration
+# Documentation: https://docs.codecov.io/docs/codecov-yaml
+
+codecov:
+  require_ci_to_pass: true
+  notify:
+    wait_for_ci: true
+
+# Coverage targets and thresholds
+coverage:
+  precision: 2
+  round: down
+  range: "60...90"
+  
+  status:
+    project:
+      default:
+        target: 75%
+        threshold: 1%
+        if_ci_failed: error
+        # Only measure T2t.Barcode.Core
+        paths:
+          - "T2t.Barcode.Core/"
+          - "T2t.Barcode.Svg/"
+          - "T2t.Barcode.Drawing/"
+          - "T2t.Barcode.Skia/"
+    
+    patch:
+      default:
+        target: 70%
+        threshold: 5%
+        if_ci_failed: error
+        # Only measure T2t.Barcode.Core
+        paths:
+          - "T2t.Barcode.Core/"
+          - "T2t.Barcode.Svg/"
+          - "T2t.Barcode.Drawing/"
+          - "T2t.Barcode.Skia/"
+
+comment:
+  layout: "reach,diff,flags,tree"
+  behavior: default
+  require_changes: false
+  require_base: false
+  require_head: true
+  
+ignore:
+  - "Tests/**"
+  - "Examples/**"
+  - "Tools/**"
+  - "**/*.g.cs"
+  - "**/obj/**"
+  - "**/bin/**"
+
+flags:
+  unittests:
+    carryforward: false           # Don't carry forward if missing
+    paths:
+      - "T2t.Barcode.Core/"
+      - "T2t.Barcode.Svg/"
+      - "T2t.Barcode.Drawing/"
+      - "T2t.Barcode.Skia/"
+
