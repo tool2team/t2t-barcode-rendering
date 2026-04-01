@@ -27,6 +27,7 @@ public static class BarcodeDrawFactory
     private static Code25BarcodeDraw _code25InterleavedWithoutChecksum;
     private static Code25BarcodeDraw _code25InterleavedWithChecksum;
     private static CodeQrBarcodeDraw _codeQr;
+    private static CodeDmBarcodeDraw _codeDm;
     #endregion
 
     #region Public Properties
@@ -210,7 +211,7 @@ public static class BarcodeDrawFactory
     }
 
     /// <summary>
-    /// Gets an agent capable of rendering a Code QR barcode.
+    /// Gets an agent capable of rendering a CodeQR barcode.
     /// </summary>
     /// <value>A <see cref="T:T2t.Barcode.Drawing.CodeQrBarcodeDraw"/> object.</value>
     public static CodeQrBarcodeDraw CodeQr
@@ -219,6 +220,20 @@ public static class BarcodeDrawFactory
         {
             _codeQr ??= new CodeQrBarcodeDraw();
             return _codeQr;
+        }
+    }
+
+
+    /// <summary>
+    /// Gets an agent capable of rendering a Code DataMatrix barcode.
+    /// </summary>
+    /// <value>A <see cref="T:T2t.Barcode.Svg.CodeDmBarcodeDraw"/> object.</value>
+    public static CodeDmBarcodeDraw CodeDm
+    {
+        get
+        {
+            _codeDm ??= new CodeDmBarcodeDraw();
+            return _codeDm;
         }
     }
     #endregion

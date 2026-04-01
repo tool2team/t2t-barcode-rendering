@@ -226,9 +226,9 @@ public static class BarcodeDrawFactory
 
 
     /// <summary>
-    /// Gets an agent capable of rendering a Code QR barcode.
+    /// Gets an agent capable of rendering a Code DataMatrix barcode.
     /// </summary>
-    /// <value>A <see cref="T:T2t.Barcode.Skia.CodeQrBarcodeDraw"/> object.</value>
+    /// <value>A <see cref="T:T2t.Barcode.Skia.CodeDmBarcodeDraw"/> object.</value>
     public static CodeDmBarcodeDraw CodeDm
     {
         get

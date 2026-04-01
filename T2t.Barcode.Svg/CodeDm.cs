@@ -24,7 +24,7 @@ public class CodeDmBarcodeDraw : BarcodeDraw
     /// <returns></returns>
     public override sealed string Draw(string text, BarcodeMetrics metrics)
     {
-        if (string.IsNullOrEmpty(text)) throw new ArgumentNullException(nameof(text));
+        if (string.IsNullOrEmpty(text)) throw new ArgumentNullException(nameof(text), "text cannot be null or empty.");
         Encoding enc = DMCodeUtility.IsUnicode(text) ? Encoding.Unicode : Encoding.ASCII;
 
         return DrawDm(text, (BarcodeMetricsDm)metrics, enc);

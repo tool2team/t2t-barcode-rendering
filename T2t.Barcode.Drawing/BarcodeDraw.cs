@@ -64,6 +64,7 @@ public abstract class BarcodeDraw
     /// </returns>
     public Image Draw(string text, int maxBarHeight, float scale)
     {
+        if (string.IsNullOrEmpty(text)) throw new ArgumentNullException(nameof(text), "text cannot be null or empty.");
         BarcodeMetrics defaultMetrics = GetDefaultMetrics(maxBarHeight);
         defaultMetrics.Scale = scale;
         return Draw(text, defaultMetrics);
