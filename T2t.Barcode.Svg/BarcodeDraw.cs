@@ -350,6 +350,7 @@ public abstract class BarcodeDrawBase<TGlyphFactory, TChecksum> : BarcodeDraw
     /// <returns></returns>
     public override sealed string Draw(string text, BarcodeMetrics metrics)
     {
+        if (string.IsNullOrEmpty(text)) throw new ArgumentNullException(nameof(text));
         return Draw1d(text, (BarcodeMetrics1d)metrics);
     }
     #endregion

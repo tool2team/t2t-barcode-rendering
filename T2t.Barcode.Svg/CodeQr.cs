@@ -1238,6 +1238,7 @@ public class CodeQrBarcodeDraw : BarcodeDraw
     /// <returns></returns>
     public override sealed string Draw(string text, BarcodeMetrics metrics)
     {
+        if (string.IsNullOrEmpty(text)) throw new ArgumentNullException(nameof(text));
         return DrawQr(text, (BarcodeMetricsQr)metrics);
     }
 
