@@ -8,14 +8,10 @@ on:
   workflow_dispatch:
 
 jobs:
-  build-and-test:
-    name: Build and Test
+  build:
+    name: Build
     runs-on: windows-latest
-    
-    strategy:
-      matrix:
-        dotnet-version: ['10.0.x']
-    
+
     steps:
     - name: Checkout code
       uses: actions/checkout@v4
@@ -23,7 +19,9 @@ jobs:
     - name: Setup .NET ${{ matrix.dotnet-version }}
       uses: actions/setup-dotnet@v4
       with:
-        dotnet-version: ${{ matrix.dotnet-version }}
+        dotnet-version: |
+          8.0.x
+          10.0.x
         
     - name: Display .NET version
       run: dotnet --version
@@ -37,32 +35,117 @@ jobs:
     - name: Build solution
       run: dotnet build --no-restore --configuration Release
 
-    - name: Run all tests
-      run: dotnet test --no-build --configuration Release --verbosity normal --logger "trx;LogFileName=test-results.trx" --collect:"XPlat Code Coverage"
+  test-linux:
+    name: Test on linux
+    runs-on: ubuntu-latest
+    needs:
+      - build
+
+    strategy:
+      matrix:
+        dotnet-version: ['8.0.x', '10.0.x']
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
       
-    - name: Publish test results
-      uses: EnricoMi/publish-unit-test-result-action@v2
-      if: always()
+    - name: Setup .NET ${{ matrix.dotnet-version }}
+      uses: actions/setup-dotnet@v4
       with:
-        files: |
-          **/test-results.trx
-        check_name: Test Results
+        dotnet-version: ${{ matrix.dotnet-version }}
         
-    - name: Upload test results
+    - name: Display .NET version
+      run: dotnet --version
+
+    - name: Restore dependencies
+      run: dotnet restore --source https://api.nuget.org/v3/index.json
+
+    - name: Run SVG tests
+      run: dotnet test Tests/T2t.Barcode.Svg.Tests/T2t.Barcode.Svg.Tests.csproj --configuration Release --verbosity normal --logger "trx;LogFileName=test-results-svg.trx" --collect:"XPlat Code Coverage"
+      
+    - name: Run Skia tests
+      run: dotnet test Tests/T2t.Barcode.Skia.Tests/T2t.Barcode.Skia.Tests.csproj --configuration Release --verbosity normal --logger "trx;LogFileName=test-results-skia.trx" --collect:"XPlat Code Coverage"
+
+    - name: Upload linux test results
+      if: always()
       uses: actions/upload-artifact@v4
-      if: always()
       with:
-        name: test-results
+        name: test-results-linux-${{ matrix.dotnet-version }}
         path: |
-          **/test-results.trx
+          **/test-results-*.trx
           **/coverage.cobertura.xml
-        retention-days: 30
-        
-    - name: Upload coverage to Codecov
-      uses: codecov/codecov-action@v5
+
+  test-windows:
+    name: Test on windows
+    runs-on: windows-latest
+    needs:
+      - build
+          
+    strategy:
+      matrix:
+        dotnet-version: ['8.0.x', '10.0.x']
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+      
+    - name: Setup .NET ${{ matrix.dotnet-version }}
+      uses: actions/setup-dotnet@v4
       with:
-        files: '**/coverage.cobertura.xml'
-        fail_ci_if_error: true
-        verbose: true
-      env:
-        CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
+        dotnet-version: ${{ matrix.dotnet-version }}
+        
+    - name: Display .NET version
+      run: dotnet --version
+
+    - name: Restore dependencies
+      run: dotnet restore --source https://api.nuget.org/v3/index.json
+
+    - name: Run SVG tests
+      run: dotnet test Tests/T2t.Barcode.Svg.Tests/T2t.Barcode.Svg.Tests.csproj --configuration Release --verbosity normal --logger "trx;LogFileName=test-results-svg-win.trx" --collect:"XPlat Code Coverage"
+      
+    - name: Run Skia tests
+      run: dotnet test Tests/T2t.Barcode.Skia.Tests/T2t.Barcode.Skia.Tests.csproj --configuration Release --verbosity normal --logger "trx;LogFileName=test-results-skia-win.trx" --collect:"XPlat Code Coverage"
+
+    - name: Run Drawing tests
+      run: dotnet test Tests/T2t.Barcode.Drawing.Tests/T2t.Barcode.Drawing.Tests.csproj --configuration Release --verbosity normal --logger "trx;LogFileName=test-results-drawing-win.trx" --collect:"XPlat Code Coverage"
+
+    - name: Upload Windows test results
+      if: always()
+      uses: actions/upload-artifact@v4
+      with:
+        name: test-results-windows-${{ matrix.dotnet-version }}
+        path: |
+          **/test-results-*.trx
+          **/coverage.cobertura.xml
+
+  publish-test-results:
+    name: Publish test results
+    runs-on: ubuntu-latest
+    needs:
+      - build
+      - test-linux
+      - test-windows
+    if: always()
+
+    steps:
+      - name: Download all test results
+        uses: actions/download-artifact@v4
+        with:
+          path: artifacts
+
+      - name: Publish test results
+        uses: EnricoMi/publish-unit-test-result-action@v2
+        if: always()
+        with:
+          files: |
+            artifacts/**/test-results-*.trx
+          check_name: Test Results
+                    
+      - name: Upload coverage to Codecov
+        uses: codecov/codecov-action@v5
+        with:
+          files: 'artifacts/**/coverage.cobertura.xml'
+          fail_ci_if_error: true
+          verbose: true
+        env:
+          CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}

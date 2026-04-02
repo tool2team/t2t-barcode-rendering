@@ -24,10 +24,10 @@ public class CodeDmTests
     }
 
     // TODO [Theory]
-    [InlineData("12345")]
-    [InlineData("ABCDEF")]
-    [InlineData("Test123")]
-    [InlineData("https://example.com")]
+    //[InlineData("12345")]
+    //[InlineData("ABCDEF")]
+    //[InlineData("Test123")]
+    //[InlineData("https://example.com")]
     public void DataMatrix_Draw_WithDifferentInputs_ShouldGenerateImage(string input)
     {
         // Arrange

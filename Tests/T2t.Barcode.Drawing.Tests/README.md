@@ -9,21 +9,6 @@ Unit test project for the T2t.Barcode.Drawing library.
 - **Target Frameworks**: .NET 8.0-windows, .NET 10.0-windows
 - **Rendering Engine**: System.Drawing.Common
 
-## Structure
-
-```
-Tests/T2t.Barcode.Drawing.Tests/
-├── T2t.Barcode.Drawing.Tests.csproj
-├── Usings.cs                      # Global usings
-├── BarcodeDrawFactoryTests.cs     # Tests for BarcodeDrawFactory
-├── Code39Tests.cs                 # Tests for Code39 barcode
-├── Code128Tests.cs                # Tests for Code128 barcode
-├── CodeQrTests.cs                 # Tests for QR Code
-├── CodeEan13Tests.cs              # Tests for EAN-13 barcode
-├── CodeDmTests.cs                 # Tests for DataMatrix barcode
-└── BarcodeMetrics1dTests.cs       # Tests for BarcodeMetrics1d
-```
-
 ## Test Coverage
 
 ### Barcode Types Tested

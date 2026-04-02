@@ -6,23 +6,8 @@ Unit test project for the T2t.Barcode.Skia library.
 
 - **Test Framework**: xUnit
 - **Code Coverage**: Coverlet
-- **Target Frameworks**: .NET 7.0, .NET 8.0, .NET 10.0
+- **Target Frameworks**: .NET 8.0, .NET 10.0
 - **Rendering Engine**: SkiaSharp
-
-## Structure
-
-```
-Tests/T2t.Barcode.Skia.Tests/
-├── T2t.Barcode.Skia.Tests.csproj
-├── Usings.cs                      # Global usings
-├── BarcodeDrawFactoryTests.cs     # Tests for BarcodeDrawFactory
-├── Code39Tests.cs                 # Tests for Code39 barcode
-├── Code128Tests.cs                # Tests for Code128 barcode
-├── CodeQrTests.cs                 # Tests for QR Code
-├── CodeEan13Tests.cs              # Tests for EAN-13 barcode
-├── CodeDmTests.cs                 # Tests for DataMatrix barcode
-└── BarcodeMetrics1dTests.cs       # Tests for BarcodeMetrics1d
-```
 
 ## Test Coverage
 
