@@ -119,7 +119,7 @@ jobs:
       run: dotnet test Tests/T2t.Barcode.Drawing.Tests/T2t.Barcode.Drawing.Tests.csproj --configuration Release --verbosity normal --logger "trx;LogFileName=test-results-drawing-win.trx" --collect:"XPlat Code Coverage"
 
     - name: Upload Windows test results
-      if: always()
+      if: always() && matrix.dotnet-version == '10.0.x'
       uses: actions/upload-artifact@v4
       with:
         name: test-results-windows-${{ matrix.dotnet-version }}
