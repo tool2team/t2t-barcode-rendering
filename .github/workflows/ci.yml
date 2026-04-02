@@ -149,12 +149,53 @@ jobs:
           files: |
             artifacts/**/test-results-*.trx
           check_name: Test Results
-                    
-      - name: Upload coverage to Codecov
+
+      - name: Upload SVG Linux coverage
         uses: codecov/codecov-action@v5
         with:
-          files: 'artifacts/**/coverage.cobertura.xml'
+          files: artifacts/test-results-linux-10.0.x/Tests/T2t.Barcode.Svg.Tests/**/coverage.cobertura.xml
+          flags: svg,linux
+          disable_search: true
           fail_ci_if_error: true
-          verbose: true
+        env:
+          CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
+
+      - name: Upload Skia Linux coverage
+        uses: codecov/codecov-action@v5
+        with:
+          files: artifacts/test-results-linux-10.0.x/Tests/T2t.Barcode.Skia.Tests/**/coverage.cobertura.xml
+          flags: skia,linux
+          disable_search: true
+          fail_ci_if_error: true
+        env:
+          CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
+
+      - name: Upload SVG Windows coverage
+        uses: codecov/codecov-action@v5
+        with:
+          files: artifacts/test-results-windows-10.0.x/Tests/T2t.Barcode.Svg.Tests/**/coverage.cobertura.xml
+          flags: svg,windows
+          disable_search: true
+          fail_ci_if_error: true
+        env:
+          CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
+
+      - name: Upload Skia Windows coverage
+        uses: codecov/codecov-action@v5
+        with:
+          files: artifacts/test-results-windows-10.0.x/Tests/T2t.Barcode.Skia.Tests/**/coverage.cobertura.xml
+          flags: skia,windows
+          disable_search: true
+          fail_ci_if_error: true
+        env:
+          CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
+
+      - name: Upload Drawing Windows coverage
+        uses: codecov/codecov-action@v5
+        with:
+          files: artifacts/test-results-windows-10.0.x/Tests/T2t.Barcode.Drawing.Tests/**/coverage.cobertura.xml
+          flags: drawing,windows
+          disable_search: true
+          fail_ci_if_error: true
         env:
           CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
