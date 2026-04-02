@@ -64,10 +64,10 @@ jobs:
       run: dotnet restore Tests/T2t.Barcode.Skia.Tests/T2t.Barcode.Skia.Tests.csproj --source https://api.nuget.org/v3/index.json
 
     - name: Run SVG tests
-      run: dotnet test Tests/T2t.Barcode.Svg.Tests/T2t.Barcode.Svg.Tests.csproj --configuration Release --verbosity normal --logger "trx;LogFileName=test-results-svg.trx" --collect:"XPlat Code Coverage"
+      run: dotnet test Tests/T2t.Barcode.Svg.Tests/T2t.Barcode.Svg.Tests.csproj --configuration Release --verbosity normal --logger "trx;LogFileName=test-results-svg.trx"
       
     - name: Run Skia tests
-      run: dotnet test Tests/T2t.Barcode.Skia.Tests/T2t.Barcode.Skia.Tests.csproj --configuration Release --verbosity normal --logger "trx;LogFileName=test-results-skia.trx" --collect:"XPlat Code Coverage"
+      run: dotnet test Tests/T2t.Barcode.Skia.Tests/T2t.Barcode.Skia.Tests.csproj --configuration Release --verbosity normal --logger "trx;LogFileName=test-results-skia.trx"
 
     - name: Upload linux test results
       if: always()
@@ -150,31 +150,12 @@ jobs:
             artifacts/**/test-results-*.trx
           check_name: Test Results
 
-      - name: Upload SVG Linux coverage
-        uses: codecov/codecov-action@v5
-        with:
-          files: artifacts/test-results-linux-10.0.x/Tests/T2t.Barcode.Svg.Tests/**/coverage.cobertura.xml
-          flags: svg,linux
-          disable_search: true
-          fail_ci_if_error: true
-        env:
-          CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
-
-      - name: Upload Skia Linux coverage
-        uses: codecov/codecov-action@v5
-        with:
-          files: artifacts/test-results-linux-10.0.x/Tests/T2t.Barcode.Skia.Tests/**/coverage.cobertura.xml
-          flags: skia,linux
-          disable_search: true
-          fail_ci_if_error: true
-        env:
-          CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
 
       - name: Upload SVG Windows coverage
         uses: codecov/codecov-action@v5
         with:
           files: artifacts/test-results-windows-10.0.x/Tests/T2t.Barcode.Svg.Tests/**/coverage.cobertura.xml
-          flags: svg,windows
+          flags: svg
           disable_search: true
           fail_ci_if_error: true
         env:
@@ -184,7 +165,7 @@ jobs:
         uses: codecov/codecov-action@v5
         with:
           files: artifacts/test-results-windows-10.0.x/Tests/T2t.Barcode.Skia.Tests/**/coverage.cobertura.xml
-          flags: skia,windows
+          flags: skia
           disable_search: true
           fail_ci_if_error: true
         env:
@@ -194,7 +175,7 @@ jobs:
         uses: codecov/codecov-action@v5
         with:
           files: artifacts/test-results-windows-10.0.x/Tests/T2t.Barcode.Drawing.Tests/**/coverage.cobertura.xml
-          flags: drawing,windows
+          flags: drawing
           disable_search: true
           fail_ci_if_error: true
         env:
