@@ -30,7 +30,7 @@ jobs:
       run: dotnet nuget list source
 
     - name: Restore dependencies
-      run: dotnet restore --source https://api.nuget.org/v3/index.json
+      run: dotnet restore
 
     - name: Build solution
       run: dotnet build --no-restore --configuration Release
@@ -58,10 +58,10 @@ jobs:
       run: dotnet --version
 
     - name: Restore SVG dependencies
-      run: dotnet restore Tests/T2t.Barcode.Svg.Tests/T2t.Barcode.Svg.Tests.csproj --source https://api.nuget.org/v3/index.json
+      run: dotnet restore Tests/T2t.Barcode.Svg.Tests/T2t.Barcode.Svg.Tests.csproj
 
     - name: Restore Skia dependencies
-      run: dotnet restore Tests/T2t.Barcode.Skia.Tests/T2t.Barcode.Skia.Tests.csproj --source https://api.nuget.org/v3/index.json
+      run: dotnet restore Tests/T2t.Barcode.Skia.Tests/T2t.Barcode.Skia.Tests.csproj
 
     - name: Run SVG tests
       run: dotnet test Tests/T2t.Barcode.Svg.Tests/T2t.Barcode.Svg.Tests.csproj --configuration Release --verbosity normal --logger "trx;LogFileName=test-results-svg.trx"
@@ -101,13 +101,13 @@ jobs:
       run: dotnet --version
 
     - name: Restore SVG dependencies
-      run: dotnet restore Tests/T2t.Barcode.Svg.Tests/T2t.Barcode.Svg.Tests.csproj --source https://api.nuget.org/v3/index.json
+      run: dotnet restore Tests/T2t.Barcode.Svg.Tests/T2t.Barcode.Svg.Tests.csproj
 
     - name: Restore Skia dependencies
-      run: dotnet restore Tests/T2t.Barcode.Skia.Tests/T2t.Barcode.Skia.Tests.csproj --source https://api.nuget.org/v3/index.json
+      run: dotnet restore Tests/T2t.Barcode.Skia.Tests/T2t.Barcode.Skia.Tests.csproj
 
     - name: Restore Drawing dependencies
-      run: dotnet restore Tests/T2t.Barcode.Drawing.Tests/T2t.Barcode.Drawing.Tests.csproj --source https://api.nuget.org/v3/index.json
+      run: dotnet restore Tests/T2t.Barcode.Drawing.Tests/T2t.Barcode.Drawing.Tests.csproj
       
     - name: Run SVG tests
       run: dotnet test Tests/T2t.Barcode.Svg.Tests/T2t.Barcode.Svg.Tests.csproj --configuration Release --verbosity normal --logger "trx;LogFileName=test-results-svg-win.trx" --collect:"XPlat Code Coverage"
