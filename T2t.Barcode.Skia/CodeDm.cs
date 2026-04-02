@@ -28,7 +28,7 @@ public class CodeDmBarcodeDraw : BarcodeDraw
         if (string.IsNullOrEmpty(text)) throw new ArgumentNullException(nameof(text), "text cannot be null or empty.");
         if (metrics is not BarcodeMetricsDm mDm) throw new ArgumentException($"metrics must be of type {nameof(BarcodeMetricsDm)}.", nameof(metrics));
 
-        Encoding enc = DMCodeUtility.IsUnicode(text) ? Encoding.Unicode : Encoding.ASCII;
+        Encoding enc = Code2dUtility.IsUnicode(text) ? Encoding.Unicode : Encoding.ASCII;
 
         return Encode(text, mDm, enc);
     }
