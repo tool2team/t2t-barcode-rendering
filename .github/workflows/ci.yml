@@ -69,15 +69,6 @@ jobs:
     - name: Run Skia tests
       run: dotnet test Tests/T2t.Barcode.Skia.Tests/T2t.Barcode.Skia.Tests.csproj --configuration Release --verbosity normal --logger "trx;LogFileName=test-results-skia.trx"
 
-    - name: Upload linux test results
-      if: always()
-      uses: actions/upload-artifact@v4
-      with:
-        name: test-results-linux-${{ matrix.dotnet-version }}
-        path: |
-          **/test-results-*.trx
-          **/coverage.cobertura.xml
-
   test-windows:
     name: Test on windows
     runs-on: windows-latest

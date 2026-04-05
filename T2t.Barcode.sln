@@ -25,6 +25,22 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "T2t.Barcode.Drawing.Tests",
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "T2t.Barcode.Skia.Tests", "Tests\T2t.Barcode.Skia.Tests\T2t.Barcode.Skia.Tests.csproj", "{94CD5DD4-1026-5124-3151-1362C5E360C8}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "GitHub", "GitHub", "{98EE4D01-A3F5-4B7A-A873-A7AAAB4F5089}"
+	ProjectSection(SolutionItems) = preProject
+		.github\workflows\ci.yml = .github\workflows\ci.yml
+		.github\workflows\release.yml = .github\workflows\release.yml
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Testing", "Testing", "{DC406100-C105-4AE8-8BD1-4EF6EB5045A1}"
+	ProjectSection(SolutionItems) = preProject
+		codecov.yml = codecov.yml
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Settings", "Settings", "{8BED688B-BC83-4B92-BB6B-D8D78EB6922C}"
+	ProjectSection(SolutionItems) = preProject
+		.gitignore = .gitignore
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug x64|Any CPU = Debug x64|Any CPU
@@ -338,6 +354,9 @@ Global
 		{A1E4AB90-1DFD-E3B8-7CC4-5C9E23001E05} = {64A88384-A777-47DE-A213-13A0157DC278}
 		{E7C17FFF-2453-5599-4DAE-D22656B1CC91} = {64A88384-A777-47DE-A213-13A0157DC278}
 		{94CD5DD4-1026-5124-3151-1362C5E360C8} = {64A88384-A777-47DE-A213-13A0157DC278}
+		{98EE4D01-A3F5-4B7A-A873-A7AAAB4F5089} = {57BD0CD8-DCE9-4F5B-8A75-3A1A1EE18309}
+		{DC406100-C105-4AE8-8BD1-4EF6EB5045A1} = {57BD0CD8-DCE9-4F5B-8A75-3A1A1EE18309}
+		{8BED688B-BC83-4B92-BB6B-D8D78EB6922C} = {57BD0CD8-DCE9-4F5B-8A75-3A1A1EE18309}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {92513C39-0B48-4819-9ED3-C7F17F820A97}
