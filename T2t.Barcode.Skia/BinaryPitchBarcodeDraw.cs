@@ -21,18 +21,6 @@ public abstract class BinaryPitchBarcodeDraw<TGlyphFactory, TChecksum>
     where TChecksum : Checksum
 {
     #region Protected Constructors
-    /// <summary>
-    /// Initialises an instance of <see cref="T:BinaryPitchBarcodeDraw"/>.
-    /// </summary>
-    /// <param name="factory">The factory.</param>
-    /// <param name="encodingBitCount">
-    /// Number of bits in each encoded glyph.
-    /// Set to <c>0</c> for variable length bit encoded glyphs.
-    /// </param>
-    protected BinaryPitchBarcodeDraw(TGlyphFactory factory, int encodingBitCount)
-        : base(factory, encodingBitCount)
-    {
-    }
 
     /// <summary>
     /// Initialises an instance of <see cref="T:BinaryPitchBarcodeDraw"/>.

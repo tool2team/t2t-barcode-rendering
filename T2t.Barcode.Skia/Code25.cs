@@ -114,8 +114,8 @@ public sealed class Code25StandardGlyphFactory : Code25GlyphFactory
     /// <returns></returns>
     protected override BarGlyph[] GetGlyphs()
     {
-        _glyphs ??= new BarGlyph[]
-            {
+        _glyphs ??=
+            [
                     new VaryLengthGlyph ('0', 0x15DD, 13),
                     new VaryLengthGlyph ('1', 0x1D57, 13),
                     new VaryLengthGlyph ('2', 0x1757, 13),
@@ -128,7 +128,7 @@ public sealed class Code25StandardGlyphFactory : Code25GlyphFactory
                     new VaryLengthGlyph ('9', 0x175D, 13),
                     new VaryLengthGlyph ('-', 0x006D, 7),
                     new VaryLengthGlyph ('*', 0x006B, 7)
-            };
+            ];
         return _glyphs;
     }
     #endregion
@@ -163,8 +163,8 @@ public sealed class Code25InterleavedGlyphFactory : Code25GlyphFactory
     /// <returns></returns>
     protected override BarGlyph[] GetGlyphs()
     {
-        _glyphs ??= new BarGlyph[]
-            {
+        _glyphs ??=
+            [
                     new VaryLengthGlyph ('0', 6, 5),
                     new VaryLengthGlyph ('1', 17, 5),
                     new VaryLengthGlyph ('2', 9, 5),
@@ -177,7 +177,7 @@ public sealed class Code25InterleavedGlyphFactory : Code25GlyphFactory
                     new VaryLengthGlyph ('9', 10, 5),
                     new VaryLengthGlyph ('-', 0x0A, 4),
                     new VaryLengthGlyph ('*', 0x0D, 4)
-            };
+            ];
         return _glyphs;
     }
     #endregion
@@ -286,7 +286,7 @@ public sealed class Code25Checksum : FactoryChecksum<Code25GlyphFactory>
         }
 
         int checkDigit = 10 - ((evenTotal + oddTotal) % 10);
-        return new Glyph[] { Factory.GetRawGlyph(checkDigit) };
+        return [Factory.GetRawGlyph(checkDigit)];
     }
     #endregion
 }

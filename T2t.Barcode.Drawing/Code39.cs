@@ -59,8 +59,8 @@ public sealed class Code39GlyphFactory : GlyphFactory
     /// <returns></returns>
     protected override BarGlyph[] GetGlyphs()
     {
-        _glyphs ??= new BarGlyph[]
-            {
+        _glyphs ??=
+            [
                     new BinaryPitchGlyph ('0', 0xA6D, 0x034),
                     new BinaryPitchGlyph ('1', 0xD2B, 0x121),
                     new BinaryPitchGlyph ('2', 0xB2B, 0x061),
@@ -105,7 +105,7 @@ public sealed class Code39GlyphFactory : GlyphFactory
                     new BinaryPitchGlyph ('+', 0x949, 0x08A),
                     new BinaryPitchGlyph ('%', 0xA49, 0x02A),
                     new BinaryPitchGlyph ('*', 0x96D, 0x094),
-            };
+            ];
         return _glyphs;
     }
 
@@ -117,8 +117,8 @@ public sealed class Code39GlyphFactory : GlyphFactory
     /// <returns></returns>
     protected override CompositeGlyph[] GetCompositeGlyphs()
     {
-        _compositeGlyphs ??= new CompositeGlyph[]
-            {
+        _compositeGlyphs ??=
+            [
                     new CompositeGlyph ((char) 0, GetRawGlyph('%'), GetRawGlyph ('U')),
                     new CompositeGlyph ((char) 1, GetRawGlyph('$'), GetRawGlyph ('A')),
                     new CompositeGlyph ((char) 2, GetRawGlyph('$'), GetRawGlyph ('B')),
@@ -206,7 +206,7 @@ public sealed class Code39GlyphFactory : GlyphFactory
                     new CompositeGlyph ('x', GetRawGlyph('+'), GetRawGlyph ('X')),
                     new CompositeGlyph ('y', GetRawGlyph('+'), GetRawGlyph ('Y')),
                     new CompositeGlyph ('z', GetRawGlyph('+'), GetRawGlyph ('Z'))
-            };
+            ];
         return _compositeGlyphs;
     }
     #endregion

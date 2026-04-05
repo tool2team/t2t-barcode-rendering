@@ -87,8 +87,8 @@ public sealed class CodeEan8GlyphFactory : GlyphFactory
     /// <returns></returns>
     protected override BarGlyph[] GetGlyphs()
     {
-        _glyphs ??= new BarGlyph[]
-            {
+        _glyphs ??=
+            [
 					// Start/stop glyphs
 					new VaryLengthGlyph ('*', 0x05, 3),	// 0000101
 
@@ -118,7 +118,7 @@ public sealed class CodeEan8GlyphFactory : GlyphFactory
 					new BarGlyph ('h', 0x44),	// 1000100
 					new BarGlyph ('i', 0x48),	// 1001000
 					new BarGlyph ('j', 0x74),   // 1110100
-            };
+            ];
         return _glyphs;
     }
 
@@ -130,8 +130,8 @@ public sealed class CodeEan8GlyphFactory : GlyphFactory
     /// <returns></returns>
     protected override CompositeGlyph[] GetCompositeGlyphs()
     {
-        _compositeGlyphs ??= new CompositeGlyph[]
-            {
+        _compositeGlyphs ??=
+            [
                     new CompositeGlyph ('0', GetRawGlyph('A'), GetRawGlyph ('a')),
                     new CompositeGlyph ('1', GetRawGlyph('B'), GetRawGlyph ('b')),
                     new CompositeGlyph ('2', GetRawGlyph('C'), GetRawGlyph ('c')),
@@ -142,7 +142,7 @@ public sealed class CodeEan8GlyphFactory : GlyphFactory
                     new CompositeGlyph ('7', GetRawGlyph('H'), GetRawGlyph ('h')),
                     new CompositeGlyph ('8', GetRawGlyph('I'), GetRawGlyph ('i')),
                     new CompositeGlyph ('9', GetRawGlyph('J'), GetRawGlyph ('j')),
-            };
+            ];
         return _compositeGlyphs;
     }
     #endregion

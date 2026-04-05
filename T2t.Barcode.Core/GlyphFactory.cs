@@ -143,11 +143,11 @@ public abstract class GlyphFactory
         Glyph glyph = _lookup[character];
         if (glyph is CompositeGlyph compGlyph && !allowComposite)
         {
-            return new Glyph[] { compGlyph.First, compGlyph.Second };
+            return [compGlyph.First, compGlyph.Second];
         }
         else
         {
-            return new Glyph[] { glyph };
+            return [glyph];
         }
     }
 

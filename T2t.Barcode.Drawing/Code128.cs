@@ -28,38 +28,16 @@ public class Code128Glyph : MultisetGlyph
     /// <param name="third">The third set character.</param>
     /// <param name="bitEncoding">The glyph bit encoding.</param>
     public Code128Glyph(char first, char second, char third, short bitEncoding)
-        : base(new char[] { first, second, third }, bitEncoding)
+        : base([first, second, third], bitEncoding)
     {
-        _special = new Code128SpecialGlyph[]
-            {
+        _special =
+            [
                     Code128SpecialGlyph.None,
                     Code128SpecialGlyph.None,
                     Code128SpecialGlyph.None
-            };
+            ];
     }
 
-    /// <summary>
-    /// Initializes a new instance of the <see cref="Code128Glyph"/> class.
-    /// </summary>
-    /// <param name="first">A <see cref="T:Code128SpecialGlyph"/> 
-    /// representing the first set object.</param>
-    /// <param name="second">The second set character.</param>
-    /// <param name="third">The third set character.</param>
-    /// <param name="bitEncoding">The glyph bit encoding.</param>
-    public Code128Glyph(Code128SpecialGlyph first, char second, char third, short bitEncoding)
-        : base(new char[] { (char)0, second, third }, bitEncoding)
-    {
-        if (first == Code128SpecialGlyph.None)
-        {
-            throw new ArgumentException("first cannot be None.");
-        }
-        _special = new Code128SpecialGlyph[]
-            {
-                    first,
-                    Code128SpecialGlyph.None,
-                    Code128SpecialGlyph.None
-            };
-    }
 
     /// <summary>
     /// Initializes a new instance of the <see cref="Code128Glyph"/> class.
@@ -71,7 +49,7 @@ public class Code128Glyph : MultisetGlyph
     /// <param name="third">The third set character.</param>
     /// <param name="bitEncoding">The glyph bit encoding.</param>
     public Code128Glyph(Code128SpecialGlyph first, Code128SpecialGlyph second, char third, short bitEncoding)
-        : base(new char[] { (char)0, (char)0, third }, bitEncoding)
+        : base([(char)0, (char)0, third], bitEncoding)
     {
         if (first == Code128SpecialGlyph.None)
         {
@@ -81,12 +59,12 @@ public class Code128Glyph : MultisetGlyph
         {
             throw new ArgumentException("second cannot be None.");
         }
-        _special = new Code128SpecialGlyph[]
-            {
+        _special =
+            [
                     first,
                     second,
                     Code128SpecialGlyph.None
-            };
+            ];
     }
 
     /// <summary>
@@ -100,7 +78,7 @@ public class Code128Glyph : MultisetGlyph
     /// representing the third set object.</param>
     /// <param name="bitEncoding">The glyph bit encoding.</param>
     public Code128Glyph(Code128SpecialGlyph first, Code128SpecialGlyph second, Code128SpecialGlyph third, short bitEncoding)
-        : base(new char[] { (char)0, (char)0, (char)0 }, bitEncoding)
+        : base([(char)0, (char)0, (char)0], bitEncoding)
     {
         if (first == Code128SpecialGlyph.None)
         {
@@ -114,12 +92,12 @@ public class Code128Glyph : MultisetGlyph
         {
             throw new ArgumentException("third cannot be None.");
         }
-        _special = new Code128SpecialGlyph[]
-            {
+        _special =
+            [
                     first,
                     second,
                     third
-            };
+            ];
     }
     #endregion
 
@@ -369,8 +347,8 @@ public class Code128GlyphFactory : GlyphFactory
     /// </returns>
     protected override BarGlyph[] GetGlyphs()
     {
-        _glyphs ??= new Code128Glyph[]
-            {
+        _glyphs ??=
+            [
                     new Code128Glyph (' ', ' ', (char)0, 0x6CC),
                     new Code128Glyph ('!', '!', (char)1, 0x66C),
                     new Code128Glyph ('\"', '\"', (char)2, 0x666),
@@ -479,7 +457,7 @@ public class Code128GlyphFactory : GlyphFactory
                     new Code128Glyph (Code128SpecialGlyph.StartSetC, Code128SpecialGlyph.StartSetC, Code128SpecialGlyph.StartSetC, 0x69C),
                     new Code128Glyph (Code128SpecialGlyph.Stop, Code128SpecialGlyph.Stop, Code128SpecialGlyph.Stop, 0x63A),
                     new Code128Glyph (Code128SpecialGlyph.Terminal, Code128SpecialGlyph.Terminal, Code128SpecialGlyph.Terminal, 0x600)
-            };
+            ];
         return _glyphs;
     }
 
@@ -726,7 +704,7 @@ public sealed class Code128Checksum : FactoryChecksum<Code128GlyphFactory>
                 (BarGlyph)fullGlyph[index]);
         }
         checksum %= 103;
-        return new Glyph[] { Factory.GetRawGlyph((int)checksum) };
+        return [Factory.GetRawGlyph((int)checksum)];
     }
     #endregion
 

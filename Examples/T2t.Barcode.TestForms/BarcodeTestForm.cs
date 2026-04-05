@@ -80,7 +80,7 @@ public partial class BarcodeTestForm : Form
     /// Raises the <see cref="E:System.Windows.Forms.Form.Closing"></see> event.
     /// </summary>
     /// <param name="e">A <see cref="T:System.ComponentModel.CancelEventArgs"></see> that contains the event data.</param>
-    protected override void OnClosing(CancelEventArgs e)
+    protected override void OnFormClosing(FormClosingEventArgs e)
     {
         // Allow save of dirty test plan...
         if (!SaveModified())
@@ -88,7 +88,7 @@ public partial class BarcodeTestForm : Form
             e.Cancel = true;
             return;
         }
-        base.OnClosing(e);
+        base.OnFormClosing(e);
     }
     #endregion
 
@@ -609,8 +609,8 @@ public partial class BarcodeTestForm : Form
                 // Pass to XmlSerializer
                 XmlSerializer xmlSerializer = new(
                     typeof(SymbologyTestPlan),
-                    new Type[] { typeof (SymbologyTestGroup),
-                            typeof (SymbologyTestItem) });
+                    [ typeof (SymbologyTestGroup),
+                            typeof (SymbologyTestItem) ]);
                 _testPlan = (SymbologyTestPlan)xmlSerializer.Deserialize(xmlReader);
 
                 // Close xml reader and cache name
@@ -643,8 +643,8 @@ public partial class BarcodeTestForm : Form
             // Pass to XmlSerializer
             XmlSerializer xmlSerializer = new(
                 typeof(SymbologyTestPlan),
-                new Type[] { typeof (SymbologyTestGroup),
-                            typeof (SymbologyTestItem) });
+                [ typeof (SymbologyTestGroup),
+                            typeof (SymbologyTestItem) ]);
             xmlSerializer.Serialize(xmlWriter, _testPlan);
 
             // Flush and close

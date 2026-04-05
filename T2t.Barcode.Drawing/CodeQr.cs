@@ -185,7 +185,7 @@ public class CodeQrBarcodeDraw : BarcodeDraw
 
             if (dataLength <= 0)
             {
-                bool[][] ret = new bool[][] { new bool[] { false } };
+                bool[][] ret = [[false]];
                 return ret;
             }
 
@@ -216,7 +216,7 @@ public class CodeQrBarcodeDraw : BarcodeDraw
             {
                 /* ---- alphanumeric mode ---  */
                 case QrEncodeMode.AlphaNumeric:
-                    codewordNumPlus = new int[] { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4 };
+                    codewordNumPlus = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4];
                     dataValue[dataCounter] = 2;
                     dataCounter++;
                     dataValue[dataCounter] = dataLength;
@@ -299,7 +299,7 @@ public class CodeQrBarcodeDraw : BarcodeDraw
                 /* ---- numeric mode ---- */
 
                 case QrEncodeMode.Numeric:
-                    codewordNumPlus = new int[] { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4 };
+                    codewordNumPlus = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4];
                     dataValue[dataCounter] = 1;
                     dataCounter++;
                     dataValue[dataCounter] = dataLength;
@@ -337,7 +337,7 @@ public class CodeQrBarcodeDraw : BarcodeDraw
 
                 /* ---- 8bit byte ---- */
                 default:
-                    codewordNumPlus = new int[] { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8 };
+                    codewordNumPlus = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8];
                     dataValue[dataCounter] = 4;
                     dataCounter++;
                     dataValue[dataCounter] = dataLength;
@@ -361,7 +361,7 @@ public class CodeQrBarcodeDraw : BarcodeDraw
             }
 
             sbyte ec = (sbyte)_errorCorrect;
-            int[][] maxDataBitsArray = new int[][] { new int[] { 0, 128, 224, 352, 512, 688, 864, 992, 1232, 1456, 1728, 2032, 2320, 2672, 2920, 3320, 3624, 4056, 4504, 5016, 5352, 5712, 6256, 6880, 7312, 8000, 8496, 9024, 9544, 10136, 10984, 11640, 12328, 13048, 13800, 14496, 15312, 15936, 16816, 17728, 18672 }, new int[] { 0, 152, 272, 440, 640, 864, 1088, 1248, 1552, 1856, 2192, 2592, 2960, 3424, 3688, 4184, 4712, 5176, 5768, 6360, 6888, 7456, 8048, 8752, 9392, 10208, 10960, 11744, 12248, 13048, 13880, 14744, 15640, 16568, 17528, 18448, 19472, 20528, 21616, 22496, 23648 }, new int[] { 0, 72, 128, 208, 288, 368, 480, 528, 688, 800, 976, 1120, 1264, 1440, 1576, 1784, 2024, 2264, 2504, 2728, 3080, 3248, 3536, 3712, 4112, 4304, 4768, 5024, 5288, 5608, 5960, 6344, 6760, 7208, 7688, 7888, 8432, 8768, 9136, 9776, 10208 }, new int[] { 0, 104, 176, 272, 384, 496, 608, 704, 880, 1056, 1232, 1440, 1648, 1952, 2088, 2360, 2600, 2936, 3176, 3560, 3880, 4096, 4544, 4912, 5312, 5744, 6032, 6464, 6968, 7288, 7880, 8264, 8920, 9368, 9848, 10288, 10832, 11408, 12016, 12656, 13328 } };
+            int[][] maxDataBitsArray = [[0, 128, 224, 352, 512, 688, 864, 992, 1232, 1456, 1728, 2032, 2320, 2672, 2920, 3320, 3624, 4056, 4504, 5016, 5352, 5712, 6256, 6880, 7312, 8000, 8496, 9024, 9544, 10136, 10984, 11640, 12328, 13048, 13800, 14496, 15312, 15936, 16816, 17728, 18672], [0, 152, 272, 440, 640, 864, 1088, 1248, 1552, 1856, 2192, 2592, 2960, 3424, 3688, 4184, 4712, 5176, 5768, 6360, 6888, 7456, 8048, 8752, 9392, 10208, 10960, 11744, 12248, 13048, 13880, 14744, 15640, 16568, 17528, 18448, 19472, 20528, 21616, 22496, 23648], [0, 72, 128, 208, 288, 368, 480, 528, 688, 800, 976, 1120, 1264, 1440, 1576, 1784, 2024, 2264, 2504, 2728, 3080, 3248, 3536, 3712, 4112, 4304, 4768, 5024, 5288, 5608, 5960, 6344, 6760, 7208, 7688, 7888, 8432, 8768, 9136, 9776, 10208], [0, 104, 176, 272, 384, 496, 608, 704, 880, 1056, 1232, 1440, 1648, 1952, 2088, 2360, 2600, 2936, 3176, 3560, 3880, 4096, 4544, 4912, 5312, 5744, 6032, 6464, 6968, 7288, 7880, 8264, 8920, 9368, 9848, 10288, 10832, 11408, 12016, 12656, 13328]];
             int maxDataBits = 0;
 
             if (_version == 0)
@@ -385,10 +385,10 @@ public class CodeQrBarcodeDraw : BarcodeDraw
             totalDataBits += codewordNumPlus[_version];
             dataBits[codewordNumCounterValue] = (sbyte)(dataBits[codewordNumCounterValue] + codewordNumPlus[_version]);
 
-            int[] maxCodewordsArray = new int[] { 0, 26, 44, 70, 100, 134, 172, 196, 242, 292, 346, 404, 466, 532, 581, 655, 733, 815, 901, 991, 1085, 1156, 1258, 1364, 1474, 1588, 1706, 1828, 1921, 2051, 2185, 2323, 2465, 2611, 2761, 2876, 3034, 3196, 3362, 3532, 3706 };
+            int[] maxCodewordsArray = [0, 26, 44, 70, 100, 134, 172, 196, 242, 292, 346, 404, 466, 532, 581, 655, 733, 815, 901, 991, 1085, 1156, 1258, 1364, 1474, 1588, 1706, 1828, 1921, 2051, 2185, 2323, 2465, 2611, 2761, 2876, 3034, 3196, 3362, 3532, 3706];
             int maxCodewords = maxCodewordsArray[_version];
             int maxModules1side = 17 + (_version << 2);
-            int[] matrixRemainBit = new int[] { 0, 0, 7, 7, 7, 7, 7, 0, 0, 0, 0, 0, 0, 0, 3, 3, 3, 3, 3, 3, 3, 4, 4, 4, 4, 4, 4, 4, 3, 3, 3, 3, 3, 3, 3, 0, 0, 0, 0, 0, 0 };
+            int[] matrixRemainBit = [0, 0, 7, 7, 7, 7, 7, 0, 0, 0, 0, 0, 0, 0, 3, 3, 3, 3, 3, 3, 3, 4, 4, 4, 4, 4, 4, 4, 3, 3, 3, 3, 3, 3, 3, 0, 0, 0, 0, 0, 0];
 
             /* ---- read version ECC data file */
             int byte_num = matrixRemainBit[_version] + (maxCodewords << 3);
@@ -430,8 +430,8 @@ public class CodeQrBarcodeDraw : BarcodeDraw
             Array.Copy(rsBlockOrderTemp, 0, rsBlockOrder, 0, (byte)rsBlockOrderLength);
 
 
-            sbyte[] formatInformationX1 = new sbyte[] { 0, 1, 2, 3, 4, 5, 7, 8, 8, 8, 8, 8, 8, 8, 8 };
-            sbyte[] formatInformationY1 = new sbyte[] { 8, 8, 8, 8, 8, 8, 8, 8, 7, 5, 4, 3, 2, 1, 0 };
+            sbyte[] formatInformationX1 = [0, 1, 2, 3, 4, 5, 7, 8, 8, 8, 8, 8, 8, 8, 8];
+            sbyte[] formatInformationY1 = [8, 8, 8, 8, 8, 8, 8, 8, 7, 5, 4, 3, 2, 1, 0];
 
             int maxDataCodewords = maxDataBits >> 3;
 
@@ -516,7 +516,7 @@ public class CodeQrBarcodeDraw : BarcodeDraw
 
             /* --- format information --- */
             sbyte formatInformationValue = (sbyte)(((sbyte)(ec << 3)) | maskNumber);
-            string[] formatInformationArray = new string[] { "101010000010010", "101000100100101", "101111001111100", "101101101001011", "100010111111001", "100000011001110", "100111110010111", "100101010100000", "111011111000100", "111001011110011", "111110110101010", "111100010011101", "110011000101111", "110001100011000", "110110001000001", "110100101110110", "001011010001001", "001001110111110", "001110011100111", "001100111010000", "000011101100010", "000001001010101", "000110100001100", "000100000111011", "011010101011111", "011000001101000", "011111100110001", "011101000000110", "010010010110100", "010000110000011", "010111011011010", "010101111101101" };
+            string[] formatInformationArray = ["101010000010010", "101000100100101", "101111001111100", "101101101001011", "100010111111001", "100000011001110", "100111110010111", "100101010100000", "111011111000100", "111001011110011", "111110110101010", "111100010011101", "110011000101111", "110001100011000", "110110001000001", "110100101110110", "001011010001001", "001001110111110", "001110011100111", "001100111010000", "000011101100010", "000001001010101", "000110100001100", "000100000111011", "011010101011111", "011000001101000", "011111100110001", "011101000000110", "010010010110100", "010000110000011", "010111011011010", "010101111101101"];
             for (int i = 0; i < 15; i++)
             {
                 sbyte content = sbyte.Parse(formatInformationArray[formatInformationValue][i..(i + 1)]);
@@ -789,21 +789,21 @@ public class CodeQrBarcodeDraw : BarcodeDraw
         private static sbyte selectMask(sbyte[][] matrixContent, int maxCodewordsBitWithRemain)
         {
             int l = matrixContent.Length;
-            int[] d1 = new int[] { 0, 0, 0, 0, 0, 0, 0, 0 };
-            int[] d2 = new int[] { 0, 0, 0, 0, 0, 0, 0, 0 };
-            int[] d3 = new int[] { 0, 0, 0, 0, 0, 0, 0, 0 };
-            int[] d4 = new int[] { 0, 0, 0, 0, 0, 0, 0, 0 };
+            int[] d1 = [0, 0, 0, 0, 0, 0, 0, 0];
+            int[] d2 = [0, 0, 0, 0, 0, 0, 0, 0];
+            int[] d3 = [0, 0, 0, 0, 0, 0, 0, 0];
+            int[] d4 = [0, 0, 0, 0, 0, 0, 0, 0];
 
             int d2And = 0;
             int d2Or = 0;
-            int[] d4Counter = new int[] { 0, 0, 0, 0, 0, 0, 0, 0 };
+            int[] d4Counter = [0, 0, 0, 0, 0, 0, 0, 0];
 
             for (int y = 0; y < l; y++)
             {
-                int[] xData = new int[] { 0, 0, 0, 0, 0, 0, 0, 0 };
-                int[] yData = new int[] { 0, 0, 0, 0, 0, 0, 0, 0 };
-                bool[] xD1Flag = new bool[] { false, false, false, false, false, false, false, false };
-                bool[] yD1Flag = new bool[] { false, false, false, false, false, false, false, false };
+                int[] xData = [0, 0, 0, 0, 0, 0, 0, 0];
+                int[] yData = [0, 0, 0, 0, 0, 0, 0, 0];
+                bool[] xD1Flag = [false, false, false, false, false, false, false, false];
+                bool[] yD1Flag = [false, false, false, false, false, false, false, false];
 
                 for (int x = 0; x < l; x++)
                 {
@@ -889,7 +889,7 @@ public class CodeQrBarcodeDraw : BarcodeDraw
 
             int minValue = 0;
             sbyte res = 0;
-            int[] d4Value = new int[] { 90, 80, 70, 60, 50, 40, 30, 20, 10, 0, 0, 10, 20, 30, 40, 50, 60, 70, 80, 90, 90 };
+            int[] d4Value = [90, 80, 70, 60, 50, 40, 30, 20, 10, 0, 0, 10, 20, 30, 40, 50, 60, 70, 80, 90, 90];
             for (int maskNumber = 0; maskNumber < 8; maskNumber++)
             {
                 d4[maskNumber] = d4Value[20 * d4Counter[maskNumber] / maxCodewordsBitWithRemain];

@@ -59,8 +59,8 @@ public class Code93GlyphFactory : GlyphFactory
     /// <returns></returns>
     protected override BarGlyph[] GetGlyphs()
     {
-        _glyphs ??= new BarGlyph[]
-            {
+        _glyphs ??=
+            [
                     new BarGlyph ('0', 0x114),
                     new BarGlyph ('1', 0x148),
                     new BarGlyph ('2', 0x144),
@@ -110,7 +110,7 @@ public class Code93GlyphFactory : GlyphFactory
 					new BarGlyph ('?', 0x132), // (+)
 					new BarGlyph ('*', 0x15E),
                     new BarGlyph ('|', 0x100),
-            };
+            ];
         return _glyphs;
     }
 
@@ -122,8 +122,8 @@ public class Code93GlyphFactory : GlyphFactory
     /// <returns></returns>
     protected override CompositeGlyph[] GetCompositeGlyphs()
     {
-        _compositeGlyphs ??= new CompositeGlyph[]
-            {
+        _compositeGlyphs ??=
+            [
                     new CompositeGlyph ((char) 0, GetRawGlyph('='), GetRawGlyph ('U')),
                     new CompositeGlyph ((char) 1, GetRawGlyph('<'), GetRawGlyph ('A')),
                     new CompositeGlyph ((char) 2, GetRawGlyph('<'), GetRawGlyph ('B')),
@@ -211,7 +211,7 @@ public class Code93GlyphFactory : GlyphFactory
                     new CompositeGlyph ('x', GetRawGlyph('?'), GetRawGlyph ('X')),
                     new CompositeGlyph ('y', GetRawGlyph('?'), GetRawGlyph ('Y')),
                     new CompositeGlyph ('z', GetRawGlyph('?'), GetRawGlyph ('Z'))
-            };
+            ];
         return _compositeGlyphs;
     }
     #endregion

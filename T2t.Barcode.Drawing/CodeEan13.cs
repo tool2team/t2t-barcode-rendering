@@ -95,8 +95,8 @@ public sealed class CodeEan13GlyphFactory : GlyphFactory
     /// <returns></returns>
     protected override BarGlyph[] GetGlyphs()
     {
-        _glyphs ??= new BarGlyph[]
-            {
+        _glyphs ??=
+            [
 					// Start/stop glyphs
 					new VaryLengthGlyph ('*', 0x05, 3),	// 0000101
 
@@ -138,7 +138,7 @@ public sealed class CodeEan13GlyphFactory : GlyphFactory
 					new BarGlyph ('r', 0x44),	// 1000100
 					new BarGlyph ('s', 0x48),	// 1001000
 					new BarGlyph ('t', 0x74),   // 1110100
-            };
+            ];
         return _glyphs;
     }
 
@@ -150,8 +150,8 @@ public sealed class CodeEan13GlyphFactory : GlyphFactory
     /// <returns></returns>
     protected override CompositeGlyph[] GetCompositeGlyphs()
     {
-        _compositeGlyphs ??= new CompositeGlyph[]
-            {
+        _compositeGlyphs ??=
+            [
                     new CompositeGlyph ('0', GetRawGlyph('A'), GetRawGlyph ('a')),
                     new CompositeGlyph ('1', GetRawGlyph('B'), GetRawGlyph ('b')),
                     new CompositeGlyph ('2', GetRawGlyph('C'), GetRawGlyph ('c')),
@@ -162,7 +162,7 @@ public sealed class CodeEan13GlyphFactory : GlyphFactory
                     new CompositeGlyph ('7', GetRawGlyph('H'), GetRawGlyph ('h')),
                     new CompositeGlyph ('8', GetRawGlyph('I'), GetRawGlyph ('i')),
                     new CompositeGlyph ('9', GetRawGlyph('J'), GetRawGlyph ('j')),
-            };
+            ];
         return _compositeGlyphs;
     }
     #endregion
@@ -340,8 +340,8 @@ public class CodeEan13BarcodeDraw
         string barcodeText = m.Groups["barcode"].Value;
 
         // Determine parity to use
-        byte[] parityTable = new byte[]
-        {
+        byte[] parityTable =
+        [
                 0x00, // OOOOOO
 				0x0B, // OOEOEE
 				0x0D, // OOEEOE
@@ -352,7 +352,7 @@ public class CodeEan13BarcodeDraw
 				0x15, // OEOEOE
 				0x16, // OEOEEO
 				0x1A, // OEEOEO
-        };
+        ];
 
         // Determine parity value for remaining encoding then strip
         //	after calculating the checksum

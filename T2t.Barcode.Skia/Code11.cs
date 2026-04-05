@@ -58,8 +58,8 @@ public sealed class Code11GlyphFactory : GlyphFactory
     /// <returns></returns>
     protected override BarGlyph[] GetGlyphs()
     {
-        _glyphs ??= new BarGlyph[]
-            {
+        _glyphs ??=
+            [
                     new BinaryPitchVaryLengthGlyph ('0', 0x2B, 0x01, 6),
                     new BinaryPitchVaryLengthGlyph ('1', 0x6B, 0x11, 7),
                     new BinaryPitchVaryLengthGlyph ('2', 0x4B, 0x09, 7),
@@ -72,7 +72,7 @@ public sealed class Code11GlyphFactory : GlyphFactory
                     new BinaryPitchVaryLengthGlyph ('9', 0x35, 0x10, 6),
                     new BinaryPitchVaryLengthGlyph ('-', 0x2D, 0x04, 6),
                     new BinaryPitchVaryLengthGlyph ('*', 0x59, 0x06, 7)
-            };
+            ];
         return _glyphs;
     }
 
