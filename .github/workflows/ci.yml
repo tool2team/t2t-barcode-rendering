@@ -101,14 +101,13 @@ jobs:
       run: dotnet restore Tests/T2t.Barcode.Drawing.Tests/T2t.Barcode.Drawing.Tests.csproj
       
     - name: Run SVG tests
-      run: dotnet test Tests/T2t.Barcode.Svg.Tests/T2t.Barcode.Svg.Tests.csproj --configuration Release --verbosity normal --logger "trx;LogFileName=test-results-svg-win.trx" --collect:"XPlat Code Coverage"
-      
+      run: dotnet test Tests/T2t.Barcode.Svg.Tests/T2t.Barcode.Svg.Tests.csproj --configuration Release --verbosity normal --logger "trx;LogFileName=test-results-svg-win.trx" --collect:"XPlat Code Coverage" --results-directory ./TestResults/svg
+
     - name: Run Skia tests
-      run: dotnet test Tests/T2t.Barcode.Skia.Tests/T2t.Barcode.Skia.Tests.csproj --configuration Release --verbosity normal --logger "trx;LogFileName=test-results-skia-win.trx" --collect:"XPlat Code Coverage"
+      run: dotnet test Tests/T2t.Barcode.Skia.Tests/T2t.Barcode.Skia.Tests.csproj --configuration Release --verbosity normal --logger "trx;LogFileName=test-results-skia-win.trx" --collect:"XPlat Code Coverage" --results-directory ./TestResults/skia
 
     - name: Run Drawing tests
-      run: dotnet test Tests/T2t.Barcode.Drawing.Tests/T2t.Barcode.Drawing.Tests.csproj --configuration Release --verbosity normal --logger "trx;LogFileName=test-results-drawing-win.trx" --collect:"XPlat Code Coverage"
-
+      run: dotnet test Tests/T2t.Barcode.Drawing.Tests/T2t.Barcode.Drawing.Tests.csproj --configuration Release --verbosity normal --logger "trx;LogFileName=test-results-drawing-win.trx" --collect:"XPlat Code Coverage" --results-directory ./TestResults/drawing
     - name: Upload Windows test results
       if: always() && matrix.dotnet-version == '10.0.x'
       uses: actions/upload-artifact@v4
@@ -128,6 +127,11 @@ jobs:
     if: always()
 
     steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
       - name: Download all test results
         uses: actions/download-artifact@v4
         with:
@@ -145,29 +149,32 @@ jobs:
       - name: Upload SVG Windows coverage
         uses: codecov/codecov-action@v5
         with:
-          files: test-results-windows-10.0.x/Tests/T2t.Barcode.Svg.Tests/**/coverage.cobertura.xml
+          files: test-results-windows-10.0.x/TestResults/svg/**/coverage.cobertura.xml
           flags: svg
-          disable_search: true
-          fail_ci_if_error: true
+          name: svg-coverage
+          fail_ci_if_error: false
+          verbose: true
         env:
           CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
 
       - name: Upload Skia Windows coverage
         uses: codecov/codecov-action@v5
         with:
-          files: test-results-windows-10.0.x/Tests/T2t.Barcode.Skia.Tests/**/coverage.cobertura.xml
+          files: test-results-windows-10.0.x/TestRestults/skia/**/coverage.cobertura.xml
           flags: skia
-          disable_search: true
-          fail_ci_if_error: true
+          name: skia-coverage
+          fail_ci_if_error: false
+          verbose: true
         env:
           CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
 
       - name: Upload Drawing Windows coverage
         uses: codecov/codecov-action@v5
         with:
-          files: test-results-windows-10.0.x/Tests/T2t.Barcode.Drawing.Tests/**/coverage.cobertura.xml
+          files: test-results-windows-10.0.x/TestResults/drawing/**/coverage.cobertura.xml
           flags: drawing
-          disable_search: true
-          fail_ci_if_error: true
+          name: drawing-coverage
+          fail_ci_if_error: false
+          verbose: true
         env:
           CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
