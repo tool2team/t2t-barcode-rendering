@@ -5,6 +5,13 @@
 //-----------------------------------------------------------------------
 
 using T2t.Barcode.Core;
+using T2t.Barcode.Core.Code11;
+using T2t.Barcode.Core.Code128;
+using T2t.Barcode.Core.Code25;
+using T2t.Barcode.Core.Code39;
+using T2t.Barcode.Core.Code93;
+using T2t.Barcode.Core.CodeEan13;
+using T2t.Barcode.Core.CodeEan8;
 
 namespace T2t.Barcode.Svg;
 /// <summary>
