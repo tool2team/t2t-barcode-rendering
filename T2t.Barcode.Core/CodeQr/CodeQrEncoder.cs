@@ -26,7 +26,7 @@ public static class CodeQrEncoder
         if (string.IsNullOrEmpty(text))
             throw new ArgumentNullException(nameof(text), "text cannot be null or empty.");
 
-        encoding ??= encoding = Code2dUtility.IsUnicode(text) ? Encoding.Unicode : Encoding.ASCII;
+        encoding ??= Code2dUtility.IsUnicode(text) ? Encoding.Unicode : Encoding.ASCII;
         options ??= new CodeQrEncoderOptions();
 
         byte[] qrcodeData = encoding.GetBytes(text);
