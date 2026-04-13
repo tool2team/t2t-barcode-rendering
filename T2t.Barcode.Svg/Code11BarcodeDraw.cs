@@ -82,15 +82,7 @@ public class Code11BarcodeDraw
     /// <returns>A collection of <see cref="T:Glyph"/> objects.</returns>
     protected override Glyph[] GetFullBarcode(string text)
     {
-        List<Glyph> result = new();
-        result.AddRange(Factory.GetGlyphs(text));
-        if (Checksum != null)
-        {
-            result.AddRange(Checksum.GetChecksum(text));
-        }
-        result.Insert(0, Factory.GetRawGlyph('*'));
-        result.Add(Factory.GetRawGlyph('*'));
-        return result.ToArray();
+        return Code11Encoder.Encode(text, Factory, Checksum);
     }
     #endregion
 }
