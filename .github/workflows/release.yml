@@ -29,16 +29,17 @@ jobs:
         
     - name: Get version
       id: get_version
-      shell: bash
+      shell: pwsh
       run: |
-        if [ "${{ github.event_name }}" == "workflow_dispatch" ]; then
-          VERSION="${{ github.event.inputs.version }}"
-        else
-          VERSION="${GITHUB_REF#refs/tags/}"
-        fi
+        if ("${{ github.event_name }}" -eq "workflow_dispatch") {
+          $version = "${{ github.event.inputs.version }}"
+        } else {
+          $version = "${{ github.ref }}".Replace("refs/tags/", "")
+        }
         # Remove 'v' prefix if present
-        VERSION="${VERSION#v}"
-        echo "VERSION=$VERSION" >> $GITHUB_OUTPUT
+        $version = $version.TrimStart("v")
+        Write-Output "VERSION=$version" >> $env:GITHUB_OUTPUT
+        Write-Output "Version: $version"
         
     - name: Display version
       run: echo "Building version ${{ steps.get_version.outputs.VERSION }}"
