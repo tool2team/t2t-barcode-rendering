@@ -72,15 +72,7 @@ public class Code128BarcodeDraw
     /// <returns>A collection of <see cref="T:Glyph"/> objects.</returns>
     protected override Glyph[] GetFullBarcode(string text)
     {
-        List<Glyph> result = new();
-        result.AddRange(Factory.GetGlyphs(text));
-        if (Checksum != null)
-        {
-            result.AddRange(Checksum.GetChecksum(text));
-        }
-        result.Add(Factory.GetRawGlyph(106));   // Stop
-        result.Add(Factory.GetRawGlyph(107));   // Terminator
-        return result.ToArray();
+        return Code128Encoder.Encode(text, Factory, Checksum);
     }
 
     /// <summary>
