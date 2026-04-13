@@ -72,7 +72,7 @@ public class Code25BarcodeDraw
 
     protected override List<string> RenderBars(Glyph[] barcode, T2Rect bounds, float interGlyphSpace, float barMinHeight, float barMinWidth, float barMaxWidth)
     {
-        List<string> res = new();
+        List<string> res = [];
         if (Factory is not Code25InterleavedGlyphFactory)
         {
             return base.RenderBars(barcode, bounds, interGlyphSpace, barMinHeight, barMinWidth, barMaxWidth);

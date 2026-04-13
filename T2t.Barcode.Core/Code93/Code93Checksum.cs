@@ -49,10 +49,8 @@ public sealed class Code93Checksum : FactoryChecksum<Code93GlyphFactory>
         text += firstCheck;
         char secondCheck = GetChecksumChar(text, 15);
 
-        List<Glyph> result = new();
-        result.Add(Factory.GetRawGlyph(firstCheck));
-        result.Add(Factory.GetRawGlyph(secondCheck));
-        return result.ToArray();
+        List<Glyph> result = [Factory.GetRawGlyph(firstCheck), Factory.GetRawGlyph(secondCheck)];
+        return [.. result];
     }
     #endregion
 

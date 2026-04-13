@@ -18,7 +18,7 @@ public static class Code25Encoder
     /// <returns>An array of glyphs representing the complete Code25 barcode.</returns>
     public static Glyph[] Encode(string text, Code25GlyphFactory factory, Code25Checksum checksum)
     {
-        List<Glyph> result = new();
+        List<Glyph> result = [];
 
         if (factory is Code25InterleavedGlyphFactory)
         {
@@ -42,6 +42,6 @@ public static class Code25Encoder
 
         result.Insert(0, factory.GetRawGlyph('-'));
         result.Add(factory.GetRawGlyph('*'));
-        return result.ToArray();
+        return [.. result];
     }
 }

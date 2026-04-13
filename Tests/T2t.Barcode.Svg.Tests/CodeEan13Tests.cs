@@ -1,5 +1,4 @@
 using System.Text.RegularExpressions;
-using static System.Formats.Asn1.AsnWriter;
 
 namespace T2t.Barcode.Svg.Tests;
 

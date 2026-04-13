@@ -18,14 +18,13 @@ public static class Code128Encoder
     /// <returns>An array of glyphs representing the complete Code128 barcode.</returns>
     public static Glyph[] Encode(string text, Code128GlyphFactory factory, Code128Checksum checksum)
     {
-        List<Glyph> result = new();
-        result.AddRange(factory.GetGlyphs(text));
+        List<Glyph> result = [.. factory.GetGlyphs(text)];
         if (checksum != null)
         {
             result.AddRange(checksum.GetChecksum(text));
         }
         result.Add(factory.GetRawGlyph(106));   // Stop
         result.Add(factory.GetRawGlyph(107));   // Terminator
-        return result.ToArray();
+        return [.. result];
     }
 }

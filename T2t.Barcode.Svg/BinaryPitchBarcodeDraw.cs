@@ -159,7 +159,7 @@ public abstract class BinaryPitchBarcodeDraw<TGlyphFactory, TChecksum>
         T2Rect bounds, ref float barOffset, float barMinHeight,
         float barMinWidth, float barMaxWidth)
     {
-        List<string> res = new();
+        List<string> res = [];
         // Sanity check
         if (glyph is not BinaryPitchGlyph binGlyph)
         {

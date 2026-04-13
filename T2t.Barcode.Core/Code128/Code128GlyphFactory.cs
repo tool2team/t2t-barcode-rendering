@@ -67,7 +67,7 @@ public class Code128GlyphFactory : GlyphFactory
                 "Return of composite glyphs not supported.");
         }
 
-        List<Glyph> list = new();
+        List<Glyph> list = [];
         while (!string.IsNullOrEmpty(text))
         {
             // Get next sub-block in a character set.
@@ -139,7 +139,7 @@ public class Code128GlyphFactory : GlyphFactory
                 list.Add(_glyphs[glyphIndex]);
             }
         }
-        return list.ToArray();
+        return [.. list];
     }
     #endregion
 

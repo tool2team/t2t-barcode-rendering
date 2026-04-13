@@ -40,10 +40,10 @@ public class CodeDmBarcodeDraw : BarcodeDraw
         int width = (int)(matrix.Length * metrics.Scale) + 1;
         int height = (int)(matrix.Length * metrics.Scale) + 1;
 
-        List<string> rects = new()
-        {
+        List<string> rects =
+        [
             string.Format(RectTmpl, 0, 0, width, height, metrics.BackgroundColor)
-        };
+        ];
 
         for (int j = 0; j < matrix.GetLength(1); j++)
         {

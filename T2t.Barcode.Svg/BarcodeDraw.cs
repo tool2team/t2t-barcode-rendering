@@ -613,14 +613,13 @@ public abstract class BarcodeDrawBase<TGlyphFactory, TChecksum> : BarcodeDraw
         float barMaxWidth)
     {
         // Render the background
-        List<string> bars = new()
-        {
-            string.Format(CultureInfo.InvariantCulture, RectTmpl, bounds.Left, bounds.Top, bounds.Width, bounds.Height, "white")
-        };
-
-        // Render the bars
-        bars.AddRange(RenderBars(barcode, bounds, interGlyphSpace, barMinHeight,
-                barMinWidth, barMaxWidth));
+        List<string> bars =
+        [
+            string.Format(CultureInfo.InvariantCulture, RectTmpl, bounds.Left, bounds.Top, bounds.Width, bounds.Height, "white"),
+            // Render the bars
+            .. RenderBars(barcode, bounds, interGlyphSpace, barMinHeight,
+                    barMinWidth, barMaxWidth),
+        ];
 
         return bars;
     }
@@ -650,7 +649,7 @@ public abstract class BarcodeDrawBase<TGlyphFactory, TChecksum> : BarcodeDraw
     {
         float barOffset = 0;
 
-        List<string> res = new();
+        List<string> res = [];
 
         for (int index = 0; index < barcode.Length; ++index)
         {
@@ -688,7 +687,7 @@ public abstract class BarcodeDrawBase<TGlyphFactory, TChecksum> : BarcodeDraw
         float barMinWidth,
         float barMaxWidth)
     {
-        List<string> bars = new();
+        List<string> bars = [];
         // Sanity check
         int encodingBitCount = GetEncodingBitCount(glyph);
         if (encodingBitCount == 0)

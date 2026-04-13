@@ -57,7 +57,7 @@ public class CodeDmTests
     }
 
     [Fact]
-    public void DataMatrix_Draw_WithCustomSize_ShouldGenerateSvgWithSpecifiedDimensions()
+    public void DataMatrix_Draw_WithCustomSize_ShouldGenerateImageWithSpecifiedDimensions()
     {
         // Arrange
         var barcode = BarcodeDrawFactory.CodeDm;

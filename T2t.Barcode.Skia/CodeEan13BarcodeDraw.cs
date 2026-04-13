@@ -11,7 +11,7 @@ using T2t.Barcode.Core.CodeEan13;
 
 namespace T2t.Barcode.Skia;
 
-public class CodeEan13BarcodeDraw
+public partial class CodeEan13BarcodeDraw
     : BarcodeDrawBase<CodeEan13GlyphFactory, CodeEan13Checksum>
 {
     #region Public Constructors
@@ -42,7 +42,7 @@ public class CodeEan13BarcodeDraw
     #region Protected Methods
     protected override Glyph[] GetFullBarcode(string text)
     {
-        Match m = Regex.Match(text, @"^\s*(?<barcode>[0-9]{12})\s*$");
+        Match m = RxEan13().Match(text);
         if (!m.Success)
         {
             throw new ArgumentException("Invalid barcode.");
@@ -71,8 +71,7 @@ public class CodeEan13BarcodeDraw
         }
         barcodeText = barcodeText[1..];
 
-        List<Glyph> result = new();
-        result.AddRange(Factory.GetGlyphs(barcodeText, true));
+        List<Glyph> result = [.. Factory.GetGlyphs(barcodeText, true)];
 
         int parityIndex = 32;
         for (int index = 0; index < result.Count; ++index)
@@ -100,7 +99,7 @@ public class CodeEan13BarcodeDraw
         result.Insert(6, Factory.GetRawGlyph('|'));
         result.Insert(0, Factory.GetRawGlyph('*'));
         result.Add(Factory.GetRawGlyph('*'));
-        return result.ToArray();
+        return [.. result];
     }
 
     protected override int GetGlyphHeight(Glyph glyph, int barMinHeight, int barMaxHeight)
@@ -116,5 +115,8 @@ public class CodeEan13BarcodeDraw
     {
         return 0;
     }
+
+    [GeneratedRegex(@"^\s*(?<barcode>[0-9]{12})\s*$")]
+    private static partial Regex RxEan13();
     #endregion
 }

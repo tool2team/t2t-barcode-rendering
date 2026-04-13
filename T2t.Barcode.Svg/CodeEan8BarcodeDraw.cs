@@ -53,8 +53,7 @@ public class CodeEan8BarcodeDraw
             barcodeText += Checksum.GetChecksumChar(barcodeText);
         }
 
-        List<Glyph> result = new();
-        result.AddRange(Factory.GetGlyphs(barcodeText, true));
+        List<Glyph> result = [.. Factory.GetGlyphs(barcodeText, true)];
 
         for (int index = 0; index < result.Count; ++index)
         {
@@ -74,7 +73,7 @@ public class CodeEan8BarcodeDraw
         result.Insert(4, Factory.GetRawGlyph('|'));
         result.Insert(0, Factory.GetRawGlyph('*'));
         result.Add(Factory.GetRawGlyph('*'));
-        return result.ToArray();
+        return [.. result];
     }
 
     protected override float GetGlyphHeight(Glyph glyph, float barMinHeight, float barMaxHeight)

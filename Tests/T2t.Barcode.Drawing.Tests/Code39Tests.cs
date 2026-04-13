@@ -1,5 +1,3 @@
-using System.Drawing;
-
 namespace T2t.Barcode.Drawing.Tests;
 
 /// <summary>

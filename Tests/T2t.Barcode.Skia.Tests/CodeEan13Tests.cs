@@ -1,5 +1,3 @@
-using SkiaSharp;
-
 namespace T2t.Barcode.Skia.Tests;
 
 /// <summary>

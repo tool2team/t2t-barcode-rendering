@@ -1,6 +1,4 @@
-using T2t.Barcode.Core;
 using T2t.Barcode.Core.Code128;
-using Xunit;
 
 namespace T2t.Barcode.Core.Tests;
 
@@ -161,7 +159,7 @@ public class Code128EncoderTests
         Glyph[] result = Code128Encoder.Encode(testData, _factory, _checksum);
 
         // Manually get what the checksum should produce
-        Glyph[] checksumGlyphs = _checksum.GetChecksum(testData).ToArray();
+        Glyph[] checksumGlyphs = [.. _checksum.GetChecksum(testData)];
 
         // Assert
         Assert.NotNull(result);

@@ -1,6 +1,4 @@
-﻿using System.Text;
-
-namespace T2t.Barcode.Core.Dmtx
+﻿namespace T2t.Barcode.Core.Dmtx
 {
     public class DmtxEncode
     {
@@ -1453,7 +1451,7 @@ namespace T2t.Barcode.Core.Dmtx
             {
                 List<byte> prefixedRawData = new(new[] { (byte)232 });
                 prefixedRawData.AddRange(result);
-                result = prefixedRawData.ToArray();
+                result = [.. prefixedRawData];
                 Scheme = DmtxScheme.DmtxSchemeAscii;
             }
             return result;

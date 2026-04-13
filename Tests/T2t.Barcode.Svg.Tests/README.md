@@ -16,10 +16,10 @@ Unit test project for the T2t.Barcode.Svg library.
 - ✅ QR Code
 - ✅ EAN-13
 - ✅ DataMatrix
-- 🔲 EAN-8 (to be added)
-- 🔲 Code93 (to be added)
-- 🔲 Code11 (to be added)
-- 🔲 Code25 variants (to be added)
+- ✅ EAN-8
+- ✅ Code93
+- ✅ Code11
+- ✅ Code25 variants
 
 ### Test Scenarios
 - ✅ Valid input generates SVG
@@ -38,7 +38,6 @@ Unit test project for the T2t.Barcode.Svg library.
 
 ## TODO
 
-- [ ] Add tests for remaining barcode types (EAN-8, Code93, Code11, Code25)
 - [ ] Add integration tests for SVG output validation
 - [ ] Add performance tests for large data sets
 - [ ] Add tests for edge cases and boundary conditions

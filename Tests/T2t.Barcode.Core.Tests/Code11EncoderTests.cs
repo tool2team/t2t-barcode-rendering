@@ -1,6 +1,4 @@
-using T2t.Barcode.Core;
 using T2t.Barcode.Core.Code11;
-using Xunit;
 
 namespace T2t.Barcode.Core.Tests;
 
@@ -162,7 +160,7 @@ public class Code11EncoderTests
         Glyph[] result = Code11Encoder.Encode(testData, _factory, _checksum);
 
         // Manually get what the checksum should produce
-        Glyph[] checksumGlyphs = _checksum.GetChecksum(testData).ToArray();
+        Glyph[] checksumGlyphs = [.. _checksum.GetChecksum(testData)];
 
         // Assert
         Assert.NotNull(result);

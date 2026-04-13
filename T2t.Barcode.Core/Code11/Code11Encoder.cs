@@ -18,14 +18,13 @@ public static class Code11Encoder
     /// <returns>An array of glyphs representing the complete Code11 barcode.</returns>
     public static Glyph[] Encode(string text, Code11GlyphFactory factory, Code11Checksum checksum)
     {
-        List<Glyph> result = new();
-        result.AddRange(factory.GetGlyphs(text));
+        List<Glyph> result = [.. factory.GetGlyphs(text)];
         if (checksum != null)
         {
             result.AddRange(checksum.GetChecksum(text));
         }
         result.Insert(0, factory.GetRawGlyph('*'));
         result.Add(factory.GetRawGlyph('*'));
-        return result.ToArray();
+        return [.. result];
     }
 }

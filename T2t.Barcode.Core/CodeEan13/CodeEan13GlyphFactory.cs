@@ -42,7 +42,7 @@ public sealed class CodeEan13GlyphFactory : GlyphFactory
     #region Protected Methods
     public override Glyph[] GetGlyphs(string text, bool allowComposite)
     {
-        List<Glyph> result = new();
+        List<Glyph> result = [];
         for (int index = 0; index < text.Length; ++index)
         {
             int digit = text[index] - '0';
@@ -60,7 +60,7 @@ public sealed class CodeEan13GlyphFactory : GlyphFactory
                 result.Add(GetRawGlyph((char)('k' + digit)));
             }
         }
-        return result.ToArray();
+        return [.. result];
     }
 
     protected override BarGlyph[] GetGlyphs()

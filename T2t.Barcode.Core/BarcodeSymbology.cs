@@ -72,12 +72,6 @@ public enum BarcodeSymbology
     Code25InterleavedC = 12,
 
     /// <summary>
-    /// Code PDF 417 (2D symbology with variable error correction)
-    /// </summary>
-    [Obsolete("Broken")]
-    CodePdf417 = 13,
-
-    /// <summary>
     /// Code QR (2D symbology with error correction)
     /// </summary>
     CodeQr = 14,

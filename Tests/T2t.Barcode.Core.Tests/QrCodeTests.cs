@@ -1,6 +1,5 @@
 using System.Text;
 using T2t.Barcode.Core.CodeQr;
-using Xunit;
 
 namespace T2t.Barcode.Core.Tests;
 
@@ -123,7 +122,8 @@ public class QrCodeTests
         var assembly = typeof(CodeQrEncoder).Assembly;
         var resourceManager = new System.Resources.ResourceManager("T2t.Barcode.Core.CoreResources", assembly);
 
-        var frameDataBytes = (byte[])resourceManager.GetObject("qrvfr1");
+        var resx = resourceManager.GetObject("qrvfr1");
+        var frameDataBytes = (byte[])resx!;
         Assert.NotNull(frameDataBytes);
 
         _output.WriteLine($"FrameData length: {frameDataBytes.Length}");

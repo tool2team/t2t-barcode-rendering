@@ -1,6 +1,3 @@
-using SkiaSharp;
-using System.Text.RegularExpressions;
-
 namespace T2t.Barcode.Skia.Tests;
 
 /// <summary>

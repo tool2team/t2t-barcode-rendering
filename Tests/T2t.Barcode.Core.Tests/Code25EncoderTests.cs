@@ -1,6 +1,4 @@
-using T2t.Barcode.Core;
 using T2t.Barcode.Core.Code25;
-using Xunit;
 
 namespace T2t.Barcode.Core.Tests;
 
@@ -235,7 +233,7 @@ public class Code25EncoderTests
 
         // Act
         Glyph[] result = Code25Encoder.Encode(testData, _standardFactory, _checksumStandard);
-        Glyph[] checksumGlyphs = _checksumStandard.GetChecksum(testData).ToArray();
+        Glyph[] checksumGlyphs = [.. _checksumStandard.GetChecksum(testData)];
 
         // Assert
         Assert.NotNull(result);
@@ -253,7 +251,7 @@ public class Code25EncoderTests
 
         // Act
         Glyph[] result = Code25Encoder.Encode(testData, _interleavedFactory, _checksumInterleaved);
-        Glyph[] checksumGlyphs = _checksumInterleaved.GetChecksum(testData).ToArray();
+        Glyph[] checksumGlyphs = [.. _checksumInterleaved.GetChecksum(testData)];
 
         // Assert
         Assert.NotNull(result);

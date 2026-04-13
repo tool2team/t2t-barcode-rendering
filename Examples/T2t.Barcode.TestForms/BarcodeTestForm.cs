@@ -1,5 +1,4 @@
 ﻿using System.Collections;
-using System.ComponentModel;
 using System.Drawing.Printing;
 using System.Text;
 using System.Xml;
@@ -356,16 +355,10 @@ public partial class BarcodeTestForm : Form
 
     private void barcodeDocument_EndPrint(object sender, PrintEventArgs e)
     {
-        if (_barcodeFont != null)
-        {
-            _barcodeFont.Dispose();
-            _barcodeFont = null;
-        }
-        if (_testIterator != null)
-        {
-            _testIterator.Dispose();
-            _testIterator = null;
-        }
+        _barcodeFont?.Dispose();
+        _barcodeFont = null;
+        _testIterator?.Dispose();
+        _testIterator = null;
     }
     #endregion
 

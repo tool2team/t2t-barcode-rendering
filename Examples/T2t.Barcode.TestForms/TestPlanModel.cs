@@ -75,7 +75,7 @@ public class SymbologyTestPlan
     {
         get
         {
-            _groupTests ??= new List<SymbologyTestGroup>();
+            _groupTests ??= [];
             return _groupTests;
         }
     }
@@ -321,11 +321,8 @@ public class SymbologyTestCase : IDisposable
     {
         if (disposing)
         {
-            if (_barcodeImage != null)
-            {
-                _barcodeImage.Dispose();
-                _barcodeImage = null;
-            }
+            _barcodeImage?.Dispose();
+            _barcodeImage = null;
         }
     }
 }
@@ -388,7 +385,7 @@ public class SymbologyTestGroup
     {
         get
         {
-            _testItems ??= new List<SymbologyTestItem>();
+            _testItems ??= [];
             return _testItems;
         }
     }

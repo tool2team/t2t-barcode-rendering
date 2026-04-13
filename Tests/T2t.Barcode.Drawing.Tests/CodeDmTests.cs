@@ -1,5 +1,3 @@
-using System.Drawing;
-
 namespace T2t.Barcode.Drawing.Tests;
 
 /// <summary>
@@ -7,7 +5,7 @@ namespace T2t.Barcode.Drawing.Tests;
 /// </summary>
 public class CodeDmTests
 {
-    // TODO [Fact]
+    [Fact]
     public void DataMatrix_Draw_WithValidInput_ShouldGenerateImage()
     {
         // Arrange

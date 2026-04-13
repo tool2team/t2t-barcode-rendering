@@ -29,7 +29,6 @@ Contact: Michael Faschinger - michfasch@gmx.at
 */
 
 using System.Text;
-using System.Drawing;
 
 namespace T2t.Barcode.Core.Dmtx
 {

@@ -16,9 +16,6 @@ namespace T2t.Barcode.Svg;
 /// </summary>
 public class CodeQrBarcodeDraw : BarcodeDraw
 {
-    const string SvgTmpl = "<svg viewBox=\"0 0 {0} {1}\" xmlns=\"http://www.w3.org/2000/svg\">\n{2}\n</svg>";
-    const string RectTmpl = "<rect x=\"{0}\" y=\"{1}\" width=\"{2}\" height=\"{3}\" fill=\"{4}\"/>";
-
     #region Public Methods
     /// <summary>
     /// Draws the specified text using the supplied barcode metrics.
@@ -97,10 +94,10 @@ public class CodeQrBarcodeDraw : BarcodeDraw
         int width = (int)(matrix.Length * metrics.Scale) + 1;
         int height = (int)(matrix.Length * metrics.Scale) + 1;
 
-        List<string> rects = new()
-        {
+        List<string> rects =
+        [
             string.Format(RectTmpl, 0, 0, width, height, metrics.BackgroundColor)
-        };
+        ];
 
         for (int i = 0; i < matrix.Length; i++)
         {

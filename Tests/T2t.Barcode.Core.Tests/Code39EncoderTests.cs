@@ -1,6 +1,4 @@
-using T2t.Barcode.Core;
 using T2t.Barcode.Core.Code39;
-using Xunit;
 
 namespace T2t.Barcode.Core.Tests;
 
@@ -169,7 +167,7 @@ public class Code39EncoderTests
         Glyph[] result = Code39Encoder.Encode(testData, _factory, _checksum);
 
         // Manually get what the checksum should produce
-        Glyph[] checksumGlyphs = _checksum.GetChecksum(testData).ToArray();
+        Glyph[] checksumGlyphs = [.. _checksum.GetChecksum(testData)];
 
         // Assert
         Assert.NotNull(result);

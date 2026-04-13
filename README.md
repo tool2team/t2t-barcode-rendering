@@ -3,6 +3,8 @@
 [![CI](https://github.com/tool2team/t2t-barcode-rendering/workflows/CI%20-%20Build%20and%20Test/badge.svg)](https://github.com/tool2team/t2t-barcode-rendering/actions)
 [![codecov](https://codecov.io/gh/tool2team/t2t-barcode-rendering/branch/main/graph/badge.svg)](https://codecov.io/gh/tool2team/t2t-barcode-rendering)
 
+> **Important Note**: This project is an actively maintained continuation of the original [BarcodeRenderingFramework](https://github.com/Binarymason/BarcodeRenderingFramework), which is no longer maintained. We have performed substantial refactoring and continue to develop this project independently with modern .NET support and new features.
+
 The bar-code rendering library quite simply encapsulates the native rendering of barcode symbologies without requiring third-party fonts.
 
 The framework makes it easy to define new symbologies and use the resultant images from web or forms applications in a variety of usage scenarios.
@@ -18,6 +20,7 @@ Currently supported bar-code symbologies;
 * Code EAN 8 with checksum only
 * Code PDF417 2D (still alpha – still broken)
 * Code QR 2D (new)
+* Code DataMatrix 2D (new)
 
 ## Integration
 

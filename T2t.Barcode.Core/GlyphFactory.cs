@@ -185,12 +185,12 @@ public abstract class GlyphFactory
             return Array.Empty<Glyph>();
         }
 
-        List<Glyph> glyphs = new();
+        List<Glyph> glyphs = [];
         foreach (char character in text)
         {
             glyphs.AddRange(GetGlyphs(character, allowComposite));
         }
-        return glyphs.ToArray();
+        return [.. glyphs];
     }
     #endregion
 
@@ -221,7 +221,7 @@ public abstract class GlyphFactory
         // Raw lookup table is simple.
         if (_rawLookup == null)
         {
-            _rawLookup = new Dictionary<char, BarGlyph>();
+            _rawLookup = [];
             BarGlyph[] barGlyphs = GetGlyphs();
             foreach (BarGlyph glyph in barGlyphs)
             {
@@ -234,7 +234,7 @@ public abstract class GlyphFactory
     {
         if (_lookup == null)
         {
-            _lookup = new Dictionary<char, Glyph>();
+            _lookup = [];
             CompositeGlyph[] glyphs = GetCompositeGlyphs();
             foreach (CompositeGlyph glyph in glyphs)
             {
