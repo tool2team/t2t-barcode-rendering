@@ -17,7 +17,7 @@ public class CodeDmBarcodeDraw : BarcodeDraw
         if (metrics is not BarcodeMetricsDm mDm) throw new ArgumentException($"metrics must be of type {nameof(BarcodeMetricsDm)}.", nameof(metrics));
 
         Encoding enc = Code2dUtility.IsUnicode(text) ? Encoding.Unicode : Encoding.ASCII;
-        return Encode(text, mDm, enc);
+        return DrawDm(text, mDm, enc);
     }
 
     public override BarcodeMetrics GetDefaultMetrics(int maxHeight)
@@ -35,7 +35,7 @@ public class CodeDmBarcodeDraw : BarcodeDraw
         return GetDefaultMetrics(30);
     }
 
-    public virtual SKBitmap Encode(string content, BarcodeMetricsDm metrics, Encoding encoding)
+    public virtual SKBitmap DrawDm(string content, BarcodeMetricsDm metrics, Encoding encoding)
     {
         bool[,] matrix = CodeDmEncoder.EncodeMatrix(content, encoding);
 

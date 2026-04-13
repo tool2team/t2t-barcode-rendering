@@ -7,7 +7,7 @@ namespace T2t.Barcode.Svg.Tests;
 /// </summary>
 public class CodeDmTests
 {
-    // TODO [Fact]
+    [Fact]
     public void DataMatrix_Draw_WithValidInput_ShouldGenerateSvg()
     {
         // Arrange
@@ -23,11 +23,11 @@ public class CodeDmTests
         Assert.Contains("<svg", result);
     }
 
-    // TODO [Theory]
-    //[InlineData("12345")]
-    //[InlineData("ABCDEF")]
-    //[InlineData("Test123")]
-    //[InlineData("https://example.com")]
+    [Theory]
+    [InlineData("12345")]
+    [InlineData("ABCDEF")]
+    [InlineData("Test123")]
+    [InlineData("https://example.com")]
     public void DataMatrix_Draw_WithDifferentInputs_ShouldGenerateSvg(string input)
     {
         // Arrange
@@ -41,7 +41,7 @@ public class CodeDmTests
         Assert.Contains("<svg", result);
     }
 
-    // TODO [Fact]
+    [Fact]
     public void DataMatrix_Draw_WithLongText_ShouldGenerateSvg()
     {
         // Arrange
@@ -56,7 +56,7 @@ public class CodeDmTests
         Assert.Contains("<svg", result);
     }
 
-    // TODO [Fact]
+    [Fact]
     public void DataMatrix_Draw_WithCustomSize_ShouldGenerateSvgWithSpecifiedDimensions()
     {
         // Arrange
@@ -77,7 +77,7 @@ public class CodeDmTests
         Assert.True(height > 0);
     }
 
-    // TODO [Fact]
+    [Fact]
     public void DataMatrix_Draw_WithEmptyString_ShouldThrowException()
     {
         // Arrange

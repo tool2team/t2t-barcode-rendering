@@ -276,6 +276,7 @@ public static class BarcodeDrawFactory
             BarcodeSymbology.Code25InterleavedNC => Code25InterleavedWithoutChecksum,
             BarcodeSymbology.Code25InterleavedC => Code25InterleavedWithChecksum,
             BarcodeSymbology.CodeQr => CodeQr,
+            BarcodeSymbology.CodeDm => CodeDm,
             _ => throw new ArgumentException("BarcodeSymbologyInvalid", nameof(symbology)),
         };
     }
