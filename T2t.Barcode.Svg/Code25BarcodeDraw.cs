@@ -44,31 +44,7 @@ public class Code25BarcodeDraw
     #region Protected Methods
     protected override Glyph[] GetFullBarcode(string text)
     {
-        List<Glyph> result = new();
-
-        if (Factory is Code25InterleavedGlyphFactory)
-        {
-            bool isOddLength = false;
-            if ((text.Length % 2) == 1)
-            {
-                isOddLength = true;
-            }
-
-            if (isOddLength)
-            {
-                text = "0" + text;
-            }
-        }
-
-        result.AddRange(Factory.GetGlyphs(text));
-        if (Checksum != null)
-        {
-            result.AddRange(Checksum.GetChecksum(text));
-        }
-
-        result.Insert(0, Factory.GetRawGlyph('-'));
-        result.Add(Factory.GetRawGlyph('*'));
-        return result.ToArray();
+        return Code25Encoder.Encode(text, Factory, Checksum);
     }
 
     protected override float GetDefaultInterGlyphSpace(float barMinWidth, float barMaxWidth)
