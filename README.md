@@ -18,7 +18,6 @@ Currently supported bar-code symbologies;
 * Code 128 with checksum only
 * Code EAN 13 with checksum only
 * Code EAN 8 with checksum only
-* Code PDF417 2D (still alpha – still broken)
 * Code QR 2D (new)
 * Code DataMatrix 2D (new)
 
