@@ -54,16 +54,16 @@ jobs:
       run: dotnet test --no-build --configuration Release --verbosity normal
       
     - name: Pack NuGet Core package
-      run: dotnet pack T2t.Barcode.Rendering.Core/T2t.Barcode.Core.csproj --no-build --configuration Release --output ./artifacts /p:PackageVersion=${{ steps.get_version.outputs.VERSION }}
+      run: dotnet pack T2t.Barcode.Core/T2t.Barcode.Core.csproj --no-build --configuration Release --output ./artifacts /p:PackageVersion=${{ steps.get_version.outputs.VERSION }}
       
     - name: Pack NuGet Svg package
-      run: dotnet pack T2t.Barcode.Rendering.Svg/T2t.Barcode.Svg.csproj --no-build --configuration Release --output ./artifacts /p:PackageVersion=${{ steps.get_version.outputs.VERSION }}
+      run: dotnet pack T2t.Barcode.Svg/T2t.Barcode.Svg.csproj --no-build --configuration Release --output ./artifacts /p:PackageVersion=${{ steps.get_version.outputs.VERSION }}
       
     - name: Pack NuGet Skia package
-      run: dotnet pack T2t.Barcode.Rendering.Skia/T2t.Barcode.Skia.csproj --no-build --configuration Release --output ./artifacts /p:PackageVersion=${{ steps.get_version.outputs.VERSION }}
+      run: dotnet pack T2t.Barcode.Skia/T2t.Barcode.Skia.csproj --no-build --configuration Release --output ./artifacts /p:PackageVersion=${{ steps.get_version.outputs.VERSION }}
       
     - name: Pack NuGet Drawing package
-      run: dotnet pack T2t.Barcode.Rendering.Drawing/T2t.Barcode.Drawing.csproj --no-build --configuration Release --output ./artifacts /p:PackageVersion=${{ steps.get_version.outputs.VERSION }}
+      run: dotnet pack T2t.Barcode.Drawing/T2t.Barcode.Drawing.csproj --no-build --configuration Release --output ./artifacts /p:PackageVersion=${{ steps.get_version.outputs.VERSION }}
       
     - name: Upload NuGet package artifacts
       uses: actions/upload-artifact@v4
